@@ -30,6 +30,13 @@ New to it? The first stages of the Jungle walk you through everything.
 - **Collection**: buddies to meet, hats to wear, board themes and treats, paid for with seeds you earn by solving.
 - **Comfort**: English, Русский, Polski, 日本語 and 繁體中文; light and dark themes; a colour-blind mode; and an option to turn animations off.
 
+## How it's made
+
+Tuckle is made with AI assistance. SloppyWyn designs it, decides how everything should look, sound and feel, and
+play-tests every change; the code, the drawings and the text are written with Claude, an AI model by Anthropic, under
+that direction. The translations are AI-made too, so if you speak one of the languages and something reads wrong,
+corrections are very welcome.
+
 ## Privacy
 
 No ads, no accounts, no analytics. Your progress is saved on your own device only. A backup code (Settings → Your
@@ -39,4 +46,4 @@ record) lets you keep it safe or move it to another device.
 
 - Fonts: Fredoka and Nunito, from Google Fonts.
 - Applause recordings: BigSoundBank.com (CC0).
-- Made by SloppyWyn.
+- Made by SloppyWyn, with Claude (Anthropic).

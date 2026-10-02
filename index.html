@@ -873,6 +873,7 @@ html.calm #bt-peek .hp-disc{transition:none}
 
 .n-words .n-word span.hop{animation:wordHop .55s cubic-bezier(.3,1.4,.5,1) calc(var(--k,0) * 55ms) both,wordBreathe 3.6s ease-in-out calc(var(--k,0) * 220ms + .6s) infinite}
 @keyframes wordHop{40%{transform:translateY(-7px) rotate(-7deg)}}
+html.grabbing,html.grabbing *{cursor:grabbing!important}
 
 .jdeco,.m-map,.cdeco{--jstem:color-mix(in srgb,var(--rj) 72%,#16301f);--jvein:color-mix(in srgb,#fff 38%,var(--rj))}
 .board.jungle{background:color-mix(in srgb,var(--rj) 12%,var(--b-bg,var(--board-bg)));border-color:color-mix(in srgb,var(--rj) 32%,var(--b-edge,var(--tray-edge)))}
@@ -2038,7 +2039,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='30052eedab';let updateTo=null;
+const BUILD='6a77cc89da';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5331,14 +5332,44 @@ function edgeFade(el){
 function rowMouse(el){
   el.addEventListener('wheel',e=>{if(el.scrollWidth<=el.clientWidth+1)return;const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY,b=el.scrollLeft;
     el.scrollLeft+=d;if(el.scrollLeft!==b)e.preventDefault()},{passive:false});
-  let m=null;
-  el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0)m={x:e.clientX,sl:el.scrollLeft,on:false}});
-  addEventListener('pointermove',e=>{if(!m||el._holding)return;const dx=e.clientX-m.x;
-    if(!m.on&&Math.abs(dx)>6){m.on=true;el.style.scrollSnapType='none';el.style.cursor='grabbing'}
+  let m=null;el._row=true;
+  el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0)m={x:e.clientX,y:e.clientY,sl:el.scrollLeft,on:false}});
+  addEventListener('pointermove',e=>{if(!m||el._holding)return;const dx=e.clientX-m.x,dy=e.clientY-m.y;
+
+    if(!m.on&&Math.hypot(dx,dy)>6){if(Math.abs(dy)>Math.abs(dx)){m=null;return}m.on=true;el.style.scrollSnapType='none';el.style.cursor='grabbing'}
     if(m.on){el.scrollLeft=m.sl-dx;el._dragged=performance.now()}});
   addEventListener('pointerup',()=>{if(m&&m.on){el.style.scrollSnapType='';el.style.cursor=''}m=null});
   el.addEventListener('click',e=>{if(performance.now()-(el._dragged||0)<250){e.stopPropagation();e.preventDefault()}},true);
 }
+
+(function pageMouse(){
+  const SCROLLERS='.sheet,.overlay.full,.rw,.intro';
+  let m=null,glide=0;
+  const stop=()=>cancelAnimationFrame(glide);
+  addEventListener('pointerdown',e=>{stop();
+    if(e.pointerType!=='mouse'||e.button!==0||!e.target.closest)return;
+    const el=e.target.closest(SCROLLERS);
+    if(!el||el.scrollHeight<=el.clientHeight+1||e.target.closest('input,textarea,select,[contenteditable],#n-disc,.board'))return;
+    m={el,tgt:e.target,x:e.clientX,y:e.clientY,st:el.scrollTop,on:false,v:0,t:performance.now(),ly:e.clientY}},true);
+  addEventListener('pointermove',e=>{if(!m)return;
+    for(let n=m.tgt;n&&n!==m.el;n=n.parentNode)if(n._holding){m=null;return}
+    const dx=e.clientX-m.x,dy=e.clientY-m.y;
+    if(!m.on){if(Math.hypot(dx,dy)<=6)return;
+      let row=false;for(let n=m.tgt;n&&n!==m.el;n=n.parentNode)if(n._row){row=true;break}
+      if(row&&Math.abs(dx)>=Math.abs(dy)){m=null;return}
+      m.on=true;document.documentElement.classList.add('grabbing')}
+    const now=performance.now(),dt=Math.max(1,now-m.t);m.v=.8*((m.ly-e.clientY)/dt)+.2*m.v;m.t=now;m.ly=e.clientY;
+    m.el.scrollTop=m.st-dy;m.el._dragged=now});
+  addEventListener('pointerup',()=>{if(!m)return;const g=m;m=null;if(!g.on)return;document.documentElement.classList.remove('grabbing');
+
+    let v=performance.now()-g.t>80?0:g.v,last=performance.now();if(calm()||Math.abs(v)<.05)return;
+    const step=now=>{const dt=now-last;last=now;const b=g.el.scrollTop;g.el.scrollTop+=v*dt;v*=Math.pow(.995,dt);
+      if(Math.abs(v)>.02&&g.el.scrollTop!==b)glide=requestAnimationFrame(step)};
+    glide=requestAnimationFrame(step)});
+  addEventListener('wheel',stop,{passive:true});
+  addEventListener('dragstart',e=>{if(m)e.preventDefault()});
+  addEventListener('click',e=>{const el=e.target.closest&&e.target.closest(SCROLLERS);if(el&&performance.now()-(el._dragged||0)<250){e.stopPropagation();e.preventDefault()}},true);
+})();
 
 let skinFor=null,skinT=0;
 const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="0 ${(d.cy-48.5).toFixed(1)} 100 100" aria-hidden="true">${d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}</svg>`};

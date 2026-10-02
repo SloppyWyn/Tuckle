@@ -4,7 +4,7 @@ A cosy, ad-free logic puzzle you play in your browser.
 
 **Play:** https://sloppywyn.github.io/Tuckle/
 
-On a phone, add it to your home screen to play it like an app.
+On a phone, add it to your home screen to play it like an app. Once it has loaded, it plays offline too.
 
 ## About
 

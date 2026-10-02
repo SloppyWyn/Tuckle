@@ -824,7 +824,9 @@ html.calm .medal-wrap.shine::before,html.calm .medal-wrap.shine::after,html.calm
 .rw-sub{margin:0 0 12px;max-width:300px;font:600 15.5px/1.4 var(--body);color:var(--muted)}
 .rw-ok{min-width:min(240px,80vw);justify-content:center;text-align:center}
 
-.rw-btns{display:flex;justify-content:center}.rw-btns.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(360px,88vw);margin:0 auto}
+.rw-btns{display:flex;justify-content:center;opacity:0;transition:opacity .3s ease .6s}.rw.in .rw-btns{opacity:1}.rw.out .rw-btns{transition-delay:0s}
+
+.rw-btns.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(360px,88vw);margin:0 auto}
 .rw-btns.two .btn{min-width:0;width:100%;justify-content:center;text-align:center;font-size:16px;padding-left:10px;padding-right:10px}
 
 html.calm .rw{transition:opacity .5s ease}html.calm .rw.out{transition-duration:.3s}html.calm .rw-rays,html.calm .rw-art{transform:none;transition:opacity .6s ease .25s}html.calm .rw-rays::before,html.calm .rw-glow{animation:none}
@@ -2040,7 +2042,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='ae6364141f';let updateTo=null;
+const BUILD='67f37f246d';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3674,6 +3676,7 @@ $('res-back').onclick=()=>{$('res-back').hidden=true;if(won&&lastWin)showWin(las
 
 const Reward=(function(){
   let queue=[],done=null,el=null,shownAt=0,toNest=false,toWorld=null,cur=null;
+  const RW_READY=950;
 
   function useOf(r){
     if(r.k==='hat'&&wornHat()!==r.id)return{label:t('rwWear'),act(){store.hat=r.id;save();Mascot.setHat(wornHat())}};
@@ -3700,7 +3703,8 @@ const Reward=(function(){
     if(el)return el;
     el=document.createElement('div');el.id='reward';el.className='rw';el.hidden=true;el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');
     document.body.appendChild(el);
-    el.addEventListener('click',e=>{if(performance.now()-shownAt<700)return;
+
+    el.addEventListener('click',e=>{if(performance.now()-shownAt<RW_READY)return;
       if(e.target.closest('.rw-use')){const u=cur&&useOf(cur);if(u){if(cur.k!=='world')toNest=true;u.act()}return next()}
       if(e.target.closest('.rw-ok')||!e.target.closest('.rw-card'))next()});
     return el;
@@ -4980,6 +4984,7 @@ function closeIntro(action){
   },calm()?0:540);
 }
 
+const GRACE=900;
 function pointAt(el,text,ms=5000,onDone){
   const r=el.getBoundingClientRect(),c=document.createElement('div');
   c.className='coach';c.setAttribute('role','status');c.textContent=text;
@@ -4990,7 +4995,8 @@ function pointAt(el,text,ms=5000,onDone){
 
   const done=now=>{if(gone)return;gone=true;document.removeEventListener('pointerdown',done);if(now===true||calm())c.remove();else{c.classList.add('leaving');setTimeout(()=>c.remove(),300)}if(onDone)onDone()};
   c._done=done;
-  setTimeout(()=>document.addEventListener('pointerdown',done),300);setTimeout(done,ms);
+
+  setTimeout(()=>document.addEventListener('pointerdown',done),GRACE);setTimeout(done,ms);
 }
 
 function coachWhenQuiet(){const t0=performance.now(),wait=calm()?600:(pz?2*pz.N*42+pz.N*14+1600:1600);

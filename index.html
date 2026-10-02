@@ -894,6 +894,7 @@ html.grabbing,html.grabbing *{cursor:grabbing!important}
 .boardwrap>.status,.tray,.puzzle-label,.hint-left{transition:opacity .35s ease}
 .play.clearing .board .cell{opacity:0;transition:opacity .35s ease}
 .play.clearing .boardwrap>.status,.play.clearing .tray,.play.clearing .puzzle-label,.play.clearing .hint-left{opacity:0}
+.play.clearing.keeptray .tray{opacity:1}
 .lf{transform-origin:0 0}
 .vine{stroke-dasharray:1 1}
 
@@ -2048,7 +2049,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='6ac16339b8';let updateTo=null;
+const BUILD='59225438f4';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -2581,14 +2582,14 @@ const treatSym=k=>k==='heart'?'hrt':k;
 const skinOf=k=>{const L=SKINS[k];if(!L)return'';const id=(store.skin||{})[k];return L[id]?id:Object.keys(L)[0]};
 function applySkins(){for(const k in SKINS)applySkin(k,skinOf(k))}
 
-function startPuzzle(p,restore){
+function startPuzzle(p,restore,same){
   $('res-back').hidden=true;
   pz=p;const N=p.N;applyWorld();
   pz.solSet=new Set(p.sol.map((c,r)=>r*N+c));
   Tour.clear();cells=new Uint8Array(N*N);undoStack=[];crossForgive=null;hearts=3;elapsed=0;won=false;lost=false;gHearts=!!S.hearts;G={mistakes:0,hints:0,crosses:!!S.auto};
   if(restore){cells=Uint8Array.from(restore.cells);elapsed=restore.elapsed||0;hearts=restore.hearts??3;won=!!restore.won;undoStack=[];gHearts=restore.gHearts??!!S.hearts;if(restore.G)G=Object.assign({mistakes:0,hints:0,crosses:false},restore.G)}
   updateHeartsNote();
-  hideHint();trayPz=null;shownHearts=null;$('hearts').innerHTML='';document.querySelector('.play').classList.remove('clearing');buildBoard(true);render();Chat.reset();
+  hideHint();if(!same)trayPz=null;shownHearts=null;$('hearts').innerHTML='';document.querySelector('.play').classList.remove('clearing','keeptray');buildBoard.same=!!same;buildBoard(true);if(same)trayIn=0;render();Chat.reset();
   hideOverlay();
   if(won)showWin(true);
   timerOn=!won;lastTick=performance.now();
@@ -2597,11 +2598,11 @@ function startPuzzle(p,restore){
 function restartSoft(){
   if(!pz)return;
 
-  const used=G.hints,P=pz,again=()=>{lost=false;startPuzzle(P);G.hints=used;render();
+  const used=G.hints,P=pz,again=()=>{lost=false;startPuzzle(P,null,true);G.hints=used;render();
     if(mode==='free'&&freeSeeds(P)&&!P.restartSaid){P.restartSaid=true;setTimeout(()=>{if(pz===P&&!won)Chat.line(t('freeRestart'),5500,true)},calm()?300:1400)}};
   if(mode==='free')P.restarted=true;
   if(calm())return again();
-  timerOn=false;hideHint();document.querySelector('.play').classList.add('clearing');clearTimeout(restartSoft.t);
+  timerOn=false;hideHint();document.querySelector('.play').classList.add('clearing','keeptray');clearTimeout(restartSoft.t);
   restartSoft.t=setTimeout(again,370);
 }
 let dailyCache=null;
@@ -2978,7 +2979,9 @@ function buildBoard(animate){
   doneRows=null;doneAreas=null;
   if(animate){
     const total=(2*N)*42+N*14+720;
-    clearTimeout(buildBoard.t);buildBoard.t=setTimeout(()=>{cellEls.forEach(e=>e.classList.remove('form'));Mascot.react('formed')},total);
+
+    const fresh=!buildBoard.same;buildBoard.same=false;
+    clearTimeout(buildBoard.t);buildBoard.t=setTimeout(()=>{cellEls.forEach(e=>e.classList.remove('form'));if(fresh)Mascot.react('formed')},total);
     Sound.play('form',N);trayIn=N*42+220;
   }
   focusIdx=Math.min(focusIdx,N*N-1);

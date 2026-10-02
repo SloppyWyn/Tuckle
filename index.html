@@ -659,19 +659,25 @@ html.calm .mc-sit{animation:none}
 html.calm #n-disc .pc.perk,html.calm #n-pick .pc.perk,html.calm #n-disc .pc.startle,html.calm #n-pick .pc.startle{animation:none}
 
 .n-buddy{position:relative}
-.n-ask{position:absolute;left:50%;top:calc(clamp(116px,34vw,156px) + 10px);z-index:4;width:min(340px,calc(100vw - 32px));box-sizing:border-box;transform:translateX(-50%);
-  padding:12px 14px 13px;border-radius:18px;background:var(--surface);border:1px solid color-mix(in srgb,#E0A43C 45%,var(--line));
-  box-shadow:0 14px 30px -14px rgba(60,40,50,.45);text-align:center;font:600 15.5px/1.4 var(--body);color:var(--ink);animation:askIn .4s cubic-bezier(.3,1.3,.5,1) both}
-.n-ask::before{content:"";position:absolute;left:50%;top:-8px;width:14px;height:14px;margin-left:-7px;background:var(--surface);border-left:1px solid color-mix(in srgb,#E0A43C 45%,var(--line));border-top:1px solid color-mix(in srgb,#E0A43C 45%,var(--line));transform:rotate(45deg)}
+.n-ask{position:absolute;left:50%;top:calc(clamp(116px,34vw,156px) + 10px);z-index:4;width:min(344px,calc(100vw - 32px));box-sizing:border-box;transform:translateX(-50%);
+  padding:15px 12px 12px;border-radius:24px;background:var(--surface);border:1px solid color-mix(in srgb,var(--ink) 9%,transparent);
+  box-shadow:0 22px 44px -20px rgba(60,40,50,.5),0 3px 10px -4px rgba(60,40,50,.16);text-align:center;font:600 15.5px/1.4 var(--body);color:var(--ink);animation:askIn .4s cubic-bezier(.3,1.3,.5,1) both}
+.n-ask::before{content:"";position:absolute;left:50%;top:-8px;width:14px;height:14px;margin-left:-7px;background:var(--surface);border-left:1px solid color-mix(in srgb,var(--ink) 9%,transparent);border-top:1px solid color-mix(in srgb,var(--ink) 9%,transparent);border-top-left-radius:3px;transform:rotate(45deg)}
 .n-ask.out{animation:askOut .35s ease both}
 @keyframes askIn{from{opacity:0;transform:translateX(-50%) translateY(6px) scale(.96)}}
 @keyframes askOut{to{opacity:0;transform:translateX(-50%) scale(.1)}}
 .n-ask.out{transform-origin:50% -8px;animation-timing-function:cubic-bezier(.55,0,.9,.4)}
 .n-ask p{margin:0}
-.n-ask .moods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:11px}
-.n-ask .moods button{display:flex;align-items:center;gap:8px;min-width:0;padding:8px 10px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:600 13.5px/1.15 var(--display);text-align:left;cursor:pointer;transition:border-color .2s,transform .2s}
-@media (hover:hover){.n-ask .moods button:hover{border-color:var(--accent);transform:translateY(-1px)}}
-.n-ask .moods svg{width:24px;height:24px;flex:none}
+.n-ask .ask-q{font:600 16px/1.35 var(--display);padding:0 6px}
+
+.n-ask .moods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:13px}
+.n-ask .moods button{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;min-width:0;padding:11px 3px 10px;border-radius:17px;border:0;
+  background:color-mix(in srgb,var(--mc) 15%,var(--surface));color:var(--ink);font:600 12.5px/1.2 var(--display);text-align:center;cursor:pointer;
+  transition:background-color .2s,transform .2s cubic-bezier(.3,1.4,.5,1)}
+.n-ask .moods button span{overflow-wrap:break-word;hyphens:auto;max-width:100%}
+.n-ask .moods button:active{transform:scale(.95)}
+@media (hover:hover){.n-ask .moods button:hover{background:color-mix(in srgb,var(--mc) 27%,var(--surface));transform:translateY(-2px)}}
+.n-ask .moods svg{width:34px;height:34px;flex:none}
 .n-ask .reply{animation:askFade .4s ease both}@keyframes askFade{from{opacity:0}}
 html.calm .n-ask,html.calm .n-ask.out,html.calm .n-ask .reply{animation:none}#n-disc .hat{cursor:grab}#n-disc.dragging .hat{cursor:grabbing}
 
@@ -2042,7 +2048,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='67f37f246d';let updateTo=null;
+const BUILD='6ac16339b8';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5453,7 +5459,7 @@ function nestBuddy(center){
 
 let nestPreview=null;
 function previewBuddy(k){
-  const d=$('n-disc'),a=$('n-ask');nestPreview=k;
+  const d=$('n-disc'),a=$('n-ask');nestPreview=k;moodOpen=false;
   d.innerHTML=buddySVG(k,wornHat());d.classList.add('trying');$('n-name').textContent=t('names')[k];
   if(SHOP[k])a.innerHTML=`<p class="reply">${t('shopBuddy',{n:t('names')[k],p:SHOP[k].price,have:store.seeds})}</p>`;
   else{const[have,all]=BUDDY_GOAL[BUDDY_LOCKS[k]]();a.innerHTML=`<p class="reply">${t('buddyLock_'+BUDDY_LOCKS[k],{n:t('names')[k],have,all})}</p>`}
@@ -5505,17 +5511,18 @@ $('n-disc').onclick=()=>{if(performance.now()-hatDrag.end<350)return;bobNest();n
 function nestFace(c,ms){const p=$('n-disc').querySelector('.pc');if(!p)return;p.classList.remove('happy','sleepy','soft');p.classList.add(c);clearTimeout(nestFace.t);nestFace.t=setTimeout(()=>p.classList.remove(c),ms)}
 function nestHeart(sad){const d=$('n-disc'),h=document.createElement('span');h.className='m-heart'+(sad?' sad':'');h.textContent='♥';h.style.left=(35+Math.random()*30)+'%';d.appendChild(h);setTimeout(()=>h.remove(),sad?1700:1100)}
 
+let moodOpen=false;
 const MOODS=[['great','M8 13.5q4 4 8 0','#F4B638'],['okay','M8.5 14.5h7','#8CC2F2'],['tired','M9 15q3-1.5 6 0','#BBA9F0'],['low','M8.5 15.5q3.5-3 7 0','#F79BBB']];
 const moodFace=([m,mouth,col])=>`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="${col}" opacity=".35"/><circle cx="12" cy="12" r="9.5" fill="none" stroke="${col}" stroke-width="1.6"/>${m==='tired'?'<path d="M7.8 10.2h2.6M13.6 10.2h2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>':'<circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/>'}<path d="${mouth}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
 function askMood(){
   const a=$('n-ask');if(!a.hidden||$('step-nest').hidden)return;
-  store.mood=Object.assign({},store.mood,{asked:todayStr()});save();
-  a.innerHTML=`<p>${t('moodAsk')[S.piece]}</p><div class="moods">${MOODS.map(x=>`<button data-m="${x[0]}">${moodFace(x)}${t('moodNames')[x[0]]}</button>`).join('')}</div>`;
-  a.classList.remove('out');a.hidden=false;nestFace('happy',700);
+  askMood.prev=(store.mood||{}).asked;store.mood=Object.assign({},store.mood,{asked:todayStr()});save();
+  a.innerHTML=`<p class="ask-q">${t('moodAsk')[S.piece]}</p><div class="moods">${MOODS.map(x=>`<button data-m="${x[0]}" style="--mc:${x[2]}">${moodFace(x)}<span>${t('moodNames')[x[0]]}</span></button>`).join('')}</div>`;
+  a.classList.remove('out');a.hidden=false;nestFace('happy',700);moodOpen=true;askMood.at=performance.now();
   a.querySelectorAll('.moods button').forEach(b=>b.onclick=e=>{e.stopPropagation();answerMood(b.dataset.m)});
 }
 function answerMood(m){
-  const a=$('n-ask');store.mood=Object.assign({},store.mood,{d:todayStr(),m});save();
+  const a=$('n-ask');moodOpen=false;store.mood=Object.assign({},store.mood,{d:todayStr(),m});save();
   a.innerHTML=`<p class="reply">${t('moodReply')[m]}</p>`;
   if(m==='great'){nestFace('happy',2200);bobNest();nestHeart();setTimeout(nestHeart,300)}
   else if(m==='okay'){nestFace('happy',1200)}
@@ -5523,8 +5530,11 @@ function answerMood(m){
   else{nestFace('soft',1800);setTimeout(()=>{nestFace('happy',1400);nestHeart()},1900)}
   clearTimeout(askMood.t);askMood.t=setTimeout(closeAsk,5200);
 }
-function closeAsk(){const a=$('n-ask');if(a.hidden||a.classList.contains('out'))return;clearTimeout(askMood.t);endPreview();if(calm()){a.hidden=true;return}a.classList.add('out');setTimeout(()=>{a.hidden=true;a.classList.remove('out')},340)}
-document.addEventListener('pointerdown',e=>{if(!$('n-ask').hidden&&!e.target.closest('#n-ask,#n-disc,#n-pick .locked'))closeAsk()});
+function closeAsk(){const a=$('n-ask');if(a.hidden||a.classList.contains('out'))return;clearTimeout(askMood.t);endPreview();
+  if(moodOpen&&performance.now()-askMood.at<4000){store.mood=Object.assign({},store.mood,{asked:askMood.prev});save()}moodOpen=false;if(calm()){a.hidden=true;return}a.classList.add('out');setTimeout(()=>{a.hidden=true;a.classList.remove('out')},340)}
+document.addEventListener('pointerdown',e=>{if(!moodOpen&&!$('n-ask').hidden&&!e.target.closest('#n-ask,#n-disc,#n-pick .locked'))closeAsk()});
+
+document.addEventListener('click',e=>{if(moodOpen&&!$('n-ask').hidden&&performance.now()-askMood.at>=GRACE&&!e.target.closest('#n-ask,#n-disc'))closeAsk()});
 
 const hatDrag={end:0,last:0};
 {const disc=$('n-disc');let d=null;

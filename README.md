@@ -28,7 +28,8 @@ New to it? The first stages of the Jungle walk you through everything.
 - **Worlds**: the Jungle, Antarctica and Shangri-La, each with 36 stages over three difficulties, medals to earn,
   and bonus letter boards that spell a word.
 - **Collection**: buddies to meet, hats to wear, board themes and treats, paid for with seeds you earn by solving.
-- **Comfort**: English, Русский, Polski, 日本語 and 繁體中文; light and dark themes; a colour-blind mode; and an option to turn animations off.
+- **Comfort**: English, Deutsch, Español, Français, Polski, Português (Brasil), Русский, Українська, 日本語, 한국어 and
+  繁體中文; light and dark themes; a colour-blind mode; and an option to turn animations off.
 
 ## How it's made
 

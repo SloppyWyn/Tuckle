@@ -856,8 +856,8 @@ html.calm #bt-peek .hp-disc{transition:none}
 
 .n-pick .skn{position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);display:flex;gap:2px;padding:2px 4px;border-radius:999px;background:var(--surface);border:1px solid var(--line);pointer-events:none}
 .n-pick .skn i{width:5px;height:5px;border-radius:50%;background:#F2DFC4}.n-pick .skn i+i{background:#9C6B4E}
-.n-skins{position:absolute;z-index:6;transform:translateX(-50%);display:flex;gap:8px;padding:7px 9px;background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);transform-origin:calc(50% + var(--tx,0px)) calc(100% + 8px)}
-.n-skins::after{content:'';position:absolute;left:calc(50% + var(--tx,0px));bottom:-7px;width:12px;height:12px;margin-left:-6px;background:var(--surface);border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg)}
+.n-skins{position:absolute;z-index:6;transform:translateX(-50%);display:flex;gap:8px;padding:7px 9px;background:var(--surface);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);transform-origin:calc(50% + var(--tx,0px)) -8px}
+.n-skins::after{content:'';position:absolute;left:calc(50% + var(--tx,0px));top:-7px;width:12px;height:12px;margin-left:-6px;background:var(--surface);border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
 .n-skins button{width:54px;height:54px;border-radius:50%;border:2px solid var(--line);background:var(--ground);padding:5px;cursor:pointer;transition:border-color .2s,transform .2s}
 .n-skins button svg{width:100%;height:100%;display:block}
 .n-skins button[aria-pressed="true"]{border-color:var(--accent)}
@@ -2039,7 +2039,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='6a77cc89da';let updateTo=null;
+const BUILD='b94a953b8d';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5371,24 +5371,26 @@ function rowMouse(el){
   addEventListener('click',e=>{const el=e.target.closest&&e.target.closest(SCROLLERS);if(el&&performance.now()-(el._dragged||0)<250){e.stopPropagation();e.preventDefault()}},true);
 })();
 
-let skinFor=null,skinT=0;
+let skinFor=null,skinT=0,skinHover=false;
+
+const skinLater=ms=>{clearTimeout(skinT);skinT=setTimeout(()=>{if(!skinHover)closeSkins()},ms)};
 const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="0 ${(d.cy-48.5).toFixed(1)} 100 100" aria-hidden="true">${d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}</svg>`};
 function openSkins(k,b,slide){
   const box=$('n-skins'),wrap=box.parentNode,cur=skinOf(k);skinFor=k;clearTimeout(skinT);
   box.innerHTML=Object.keys(SKINS[k]).map(id=>`<button data-s="${id}" aria-pressed="${id===cur}" aria-label="${t('skinNames')[id]}">${skinArt(k,id)}</button>`).join('');
   box.hidden=false;box.classList.remove('out','in');
   const wr=wrap.getBoundingClientRect(),br=b.getBoundingClientRect(),w=box.offsetWidth,h=box.offsetHeight,cx=br.left+br.width/2-wr.left,x=Math.max(w/2+4,Math.min(wr.width-w/2-4,cx));
-  box.style.left=x+'px';box.style.top=(br.top-wr.top-h-12)+'px';box.style.setProperty('--tx',(cx-x).toFixed(1)+'px');
+  box.style.left=x+'px';box.style.top=(br.bottom-wr.top+12)+'px';box.style.setProperty('--tx',(cx-x).toFixed(1)+'px');
   void box.offsetWidth;if(!calm())box.classList.add('in');
   box.querySelectorAll('button').forEach(s=>s.onclick=()=>pickSkin(k,s.dataset.s));
-  if(!slide)skinT=setTimeout(closeSkins,6000);
+  if(!slide)skinLater(6000);
 }
-function closeSkins(){const box=$('n-skins');clearTimeout(skinT);skinFor=null;if(box.hidden||box.classList.contains('out'))return;
+function closeSkins(){const box=$('n-skins');clearTimeout(skinT);skinFor=null;skinHover=false;if(box.hidden||box.classList.contains('out'))return;
   if(calm()){box.hidden=true;return}box.classList.remove('in');box.classList.add('out');setTimeout(()=>{if(box.classList.contains('out')){box.hidden=true;box.classList.remove('out')}},260)}
 function pickSkin(k,id){
   store.skin=Object.assign({},store.skin,{[k]:id});save();applySkins();if(S.piece===k){Mascot.refresh();if(pz)render()}
   $('n-skins').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.s===id));
-  nestBuddy();bobNest();nestFace('happy',900);clearTimeout(skinT);skinT=setTimeout(closeSkins,6000);
+  nestBuddy();bobNest();nestFace('happy',900);skinLater(6000);
 }
 
 function previewSkin(k,id,b){applySkin(k,id);$('n-disc').innerHTML=buddySVG(k,wornHat());const ic=b.querySelector('svg');if(ic)ic.outerHTML=buddySVG(k,wornHat())}
@@ -5410,12 +5412,16 @@ function skinButton(b){
 
   b.addEventListener('touchmove',e=>{if(hold&&hold.on)e.preventDefault()},{passive:false});
   const end=e=>{clearTimeout(tm);if(!hold||e.pointerId!==hold.pid)return;const h0=hold;hold=null;$('n-pick')._holding=false;if(!h0.on)return;b._held=performance.now();
-    if(e.type!=='pointercancel'&&h0.over){pickSkin(k,h0.over);skinT=setTimeout(closeSkins,700)}
-    else{previewSkin(k,skinOf(k),b);$('n-skins').querySelectorAll('.over').forEach(x=>x.classList.remove('over'));skinT=setTimeout(closeSkins,6000)}};
+    if(e.type!=='pointercancel'&&h0.over){pickSkin(k,h0.over);skinHover=false;skinLater(700)}
+    else{previewSkin(k,skinOf(k),b);$('n-skins').querySelectorAll('.over').forEach(x=>x.classList.remove('over'));skinLater(6000)}};
   b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end);
 }
 document.addEventListener('pointerdown',e=>{if(skinFor&&!e.target.closest(`#n-skins,#n-pick [data-p="${skinFor}"]`))closeSkins()});
 $('n-pick').addEventListener('scroll',()=>{if(skinFor&&!$('n-pick')._holding)closeSkins()},{passive:true});
+
+$('n-skins').addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){skinHover=true;clearTimeout(skinT)}});
+$('n-skins').addEventListener('pointerleave',e=>{if(e.pointerType!=='mouse'||!skinFor)return;skinHover=false;
+  const to=e.relatedTarget&&e.relatedTarget.closest&&e.relatedTarget.closest(`#n-pick [data-p="${skinFor}"]`);skinLater(to?1500:250)});
 function nestBuddy(center){
   const keep=$('n-pick').scrollLeft;
   $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-name').textContent=t('names')[S.piece];

@@ -192,7 +192,7 @@ html.calm .cell:hover{transform:none}
 .cell.auto .mk path,.cell.demo .mk path{animation-duration:.34s;animation-delay:var(--rd,0ms)}.cell.auto .mk .s2,.cell.demo .mk .s2{animation-delay:calc(var(--rd,0ms) + .2s)}
 
 .cell.auto .mk{animation:markin .26s cubic-bezier(.3,1.5,.5,1) both}.cell.auto .mk path{animation-duration:.2s;animation-delay:0s}.cell.auto .mk .s2{animation-delay:.15s}
-.cell .mk.out{animation:markout .3s ease-in forwards}
+.cell .mk.out{animation:markout .24s cubic-bezier(.2,.6,.4,1) forwards}
 .cell .mk.out path{stroke-dashoffset:0;animation:none}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes markout{to{opacity:0;transform:scale(.55) rotate(25deg)}}
@@ -826,7 +826,8 @@ html.calm .medal-wrap.shine::before,html.calm .medal-wrap.shine::after,html.calm
 
 .rw-btns{display:flex;justify-content:center}.rw-btns.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(360px,88vw);margin:0 auto}
 .rw-btns.two .btn{min-width:0;width:100%;justify-content:center;text-align:center;font-size:16px;padding-left:10px;padding-right:10px}
-html.calm .rw,html.calm .rw-rays,html.calm .rw-art{transition:none}html.calm .rw-rays::before,html.calm .rw-glow{animation:none}
+
+html.calm .rw{transition:opacity .5s ease}html.calm .rw.out{transition-duration:.3s}html.calm .rw-rays,html.calm .rw-art{transform:none;transition:opacity .6s ease .25s}html.calm .rw-rays::before,html.calm .rw-glow{animation:none}
 
 .rw-tease{animation:rwTease .62s cubic-bezier(.3,1.4,.5,1)}
 @keyframes rwTease{25%{transform:scale(1.025) rotate(-.6deg)}55%{transform:scale(.995) rotate(.4deg)}}
@@ -2039,7 +2040,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='b94a953b8d';let updateTo=null;
+const BUILD='ae6364141f';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3023,8 +3024,9 @@ function render(){
     const key=v+'|'+isAuto+'|'+S.piece+skinOf(S.piece);
     if(el._k!==key){
       const old=el.querySelector('.mk');
-      if(!html&&old&&!old.classList.contains('out')){
-        old.classList.add('out');setTimeout(()=>{if(old.parentNode===el&&el._k===key)old.remove()},310);
+
+      if(!html&&old&&!old.classList.contains('out')&&!calm()){
+        old.classList.add('out');setTimeout(()=>{if(old.parentNode===el&&el._k===key)old.remove()},240);
       }else{
         el.innerHTML=html;
 
@@ -3721,7 +3723,7 @@ const Reward=(function(){
         if(w)return showWorld(w);
         if(d)d();
 
-        else if(n&&!intro.hidden){if($('step-nest').hidden)showStep('nest');else renderNest()}}},calm()?0:320);
+        else if(n&&!intro.hidden){if($('step-nest').hidden)showStep('nest');else renderNest()}}},320);
   }
   return{
 
@@ -3730,7 +3732,7 @@ const Reward=(function(){
       queue=list.slice(1);done=then||null;toNest=false;toWorld=null;
       if(from&&!calm()){from.classList.remove('rw-tease');void from.offsetWidth;from.classList.add('rw-tease');setTimeout(()=>from.classList.remove('rw-tease'),700)}
       Sound.play('tease');
-      setTimeout(()=>{draw(list[0]);if(ting)Sound.play('medal',3)},calm()?350:780);
+      setTimeout(()=>{draw(list[0]);if(ting)Sound.play('medal',3)},calm()?650:780);
     },
     open:()=>!!el&&!el.hidden,
     drop(){if(!el)return;queue=[];const d=done;done=null;el.hidden=true;el.classList.remove('in','out');if(d)d()}

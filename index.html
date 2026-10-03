@@ -504,6 +504,7 @@ html.calm .rowdone.flash{animation:rowfade 1.4s}
 html.calm .resume-disc{animation:none}
 
 .menu{max-width:500px;gap:10px;padding-top:40px}
+
 .menu .rules-title{font-size:28px;margin:0}
 .modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:8px}
 .mode-card{font:inherit;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:11px 14px;border-radius:18px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:border-color .25s,box-shadow .25s,transform .25s}
@@ -572,6 +573,8 @@ html.calm .chip-seed{transition:none}
 @media (hover:hover){.chips button:not([aria-pressed="true"]):hover{border-color:color-mix(in srgb,var(--accent) 60%,var(--line));color:var(--ink)}}
 
 .menu{align-self:stretch}
+
+.menu.home,.menu.nest{align-self:auto}
 
 .m-prev-wrap{flex:1 1 0;min-height:260px;width:100%;container-type:size;display:grid;place-items:center}
 .m-stack{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%}
@@ -1657,7 +1660,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=661fb1067b"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=82fb6da03a"><\/script>')})();
 </script>
 <script>
 
@@ -2178,7 +2181,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='661fb1067b';let updateTo=null;
+const BUILD='82fb6da03a';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

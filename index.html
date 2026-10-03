@@ -1194,10 +1194,10 @@ html.calm .hat .pom{animation:none!important}
 .hat .flame-in{transform-box:fill-box;transform-origin:50% 100%;animation:flickerIn .7s ease-in-out var(--fd,0s) infinite}
 @keyframes flicker{0%,100%{transform:none}25%{transform:scale(.9,1.12) skewX(-6deg)}50%{transform:scale(1.06,.9) skewX(3deg)}75%{transform:scale(.94,1.07) skewX(-2deg)}}
 @keyframes flickerIn{0%,100%{transform:none;opacity:1}40%{transform:scale(.85,1.15);opacity:.8}70%{transform:scale(1.1,.88)}}
-.hat .vbub{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:lavaBub 2.6s ease-out var(--bd,0s) infinite}
-.hat .vring{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:lavaPop 2.6s ease-out var(--bd,0s) infinite}
-@keyframes lavaBub{0%{transform:translateY(0) scale(.3);opacity:0}12%{opacity:1}68%{transform:translateY(-7px) scale(1);opacity:1}76%{transform:translateY(-7.4px) scale(1.5);opacity:0}100%{opacity:0}}
-@keyframes lavaPop{0%,70%{transform:scale(.6);opacity:0}74%{opacity:1}92%{transform:scale(2.4);opacity:0}100%{opacity:0}}
+.hat .vbub{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:lavaBub 3.9s ease-out var(--bd,0s) infinite}
+.hat .vring{transform-box:fill-box;transform-origin:50% 50%;opacity:0;animation:lavaPop 3.9s ease-out var(--bd,0s) infinite}
+@keyframes lavaBub{0%{transform:translateY(0) scale(.3);opacity:0}8%{opacity:1}45%{transform:translateY(-7px) scale(1);opacity:1}51%{transform:translateY(-7.4px) scale(1.5);opacity:0}100%{opacity:0}}
+@keyframes lavaPop{0%,47%{transform:scale(.6);opacity:0}50%{opacity:1}62%{transform:scale(2.4);opacity:0}100%{opacity:0}}
 html.calm .hat .flame,html.calm .hat .flame-in{animation:none}
 html.calm .hat .vbub{animation:none;opacity:1;transform:translateY(-3px)}html.calm .hat .vring{animation:none;opacity:0}
 html.calm .m-breathe,html.calm .mascot .tail,html.calm .mascot .glow,html.calm .mascot svg,html.calm .mascot .wing,html.calm .cell .pc.wig{animation:none!important}
@@ -1660,7 +1660,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=82fb6da03a"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=533fb87436"><\/script>')})();
 </script>
 <script>
 
@@ -2181,7 +2181,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='82fb6da03a';let updateTo=null;
+const BUILD='533fb87436';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -4379,7 +4379,7 @@ HATS.volcanohat={s:1.32,dy:1,top:-17,vb:'-21 -34 42 38',
     <path d="M-10.5 -11.5l3-4.6" stroke="#A8928A" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
     <ellipse cy="-16" rx="8.4" ry="2.6" fill="#FF8A3D" stroke="#C44E1E" stroke-width="1.2"/><ellipse cy="-16.4" rx="4.6" ry="1.2" fill="#FFD27A"/>
     <path d="M-5.4 -15.4q-1.2 4.6.6 7.2 1.8-1.4 1.6-6.8M4.4 -15.2q1.6 6 .2 9.4-2.2-1.8-1.8-8.8" fill="#F8702E" stroke="#C44E1E" stroke-width=".9" stroke-linejoin="round"/>`+
-    lavaBubble(-1,2.6,0,'smoke')+lavaBubble(4,1.9,.52,'ember')+lavaBubble(1.8,2.3,1.04,'smoke')+lavaBubble(-4,2,1.56,'ember')+lavaBubble(.4,2,2.08,'smoke'),
+    lavaBubble(-1,2.5,0,'smoke')+lavaBubble(3.4,2,1.3,'ember')+lavaBubble(.8,2.2,2.6,'smoke'),
   pom:''};
 
 HATS.embercrown={s:1.45,dy:0,top:-14,covers:false,vb:'-18 -24 36 27',

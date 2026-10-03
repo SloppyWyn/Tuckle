@@ -1,5 +1,7 @@
 /* pl: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).pl={t:{
+"buyNo":"Nie teraz",
+"buyBtn":"Kup",
 "tagline":"Jeden kumpel na kolor, wiersz i kolumnę, bez dotykania.",
 "rules":"Zasady",
 "settings":"Ustawienia",

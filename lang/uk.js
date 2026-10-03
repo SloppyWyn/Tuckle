@@ -1,5 +1,7 @@
 /* uk: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).uk={t:{
+"buyNo":"Не зараз",
+"buyBtn":"Купити",
 "tagline":"Один дружок на кожен колір, рядок і стовпець, і жодні двоє не торкаються.",
 "rules":"Правила",
 "settings":"Налаштування",

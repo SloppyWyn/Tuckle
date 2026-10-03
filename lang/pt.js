@@ -1,5 +1,7 @@
 /* pt: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).pt={t:{
+"buyNo":"Agora não",
+"buyBtn":"Comprar",
 "tagline":"Um amiguinho por cor, linha e coluna. Eles nunca se tocam.",
 "rules":"Regras",
 "settings":"Configurações",

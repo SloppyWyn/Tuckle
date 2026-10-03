@@ -1,5 +1,7 @@
 /* ja: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).ja={t:{
+"buyNo":"やめておく",
+"buyBtn":"買う",
 "tagline":"どの色・行・列にも{P}はひとりずつ。となり合わせには置けません。",
 "rules":"ルール",
 "settings":"設定",

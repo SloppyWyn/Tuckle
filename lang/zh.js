@@ -1,5 +1,7 @@
 /* zh: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).zh={t:{
+"buyNo":"先不要",
+"buyBtn":"購買",
 "tagline":"每種顏色、每一橫列、每一直行各放一位{P}，彼此不能相鄰。",
 "rules":"規則",
 "settings":"設定",

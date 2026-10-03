@@ -2153,7 +2153,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='4bbddb7f0a';let updateTo=null;
+const BUILD='58ad17cad8';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -4277,10 +4277,10 @@ const PIECES={
 
   tortoise:{
     extra:`<ellipse class="wing wl" cx="14" cy="84" rx="8" ry="10" fill="url(#g-tortoise)" stroke="#5F5B44" stroke-width="2.2"/><ellipse class="wing wr" cx="86" cy="84" rx="8" ry="10" fill="url(#g-tortoise)" stroke="#5F5B44" stroke-width="2.2"/>`,
-    body:`<path d="M4 97Q5 69 50 63Q95 69 96 97Z" fill="url(#g-shell)" stroke="#4E3A25" stroke-width="2.4" stroke-linejoin="round"/>
-      <g fill="none" stroke="#4E3A25" stroke-width="1.5" stroke-linejoin="round" opacity=".8"><path d="M8.5 86Q11 72 50 67Q89 72 91.5 86"/><path d="M14 76.4l3 3.6M22 72.4l2 4.6M31 69.6l1.4 5M69 69.6l-1.4 5M78 72.4l-2 4.6M86 76.4l-3 3.6"/>
-        <path d="M24 97L27.5 85L39 81.5L50 85L61 81.5L72.5 85L76 97M39 81.5L37.5 72.5M61 81.5L62.5 72.5"/></g>
-      <g fill="none" stroke="#C9A36B" stroke-width="1.2" stroke-linecap="round" opacity=".55"><path d="M30.5 94L32.5 87.6L39.6 85.5L46.5 88"/><path d="M53.5 88L60.4 85.5L67.5 87.6L69.5 94"/><path d="M42 97l1.2-5.6 6.8-2.4 6.8 2.4 1.2 5.6"/></g>
+    body:`<path d="M11 80Q12 66 50 61Q88 66 89 80Q86 93 50 96Q14 93 11 80Z" fill="url(#g-shell)" stroke="#4E3A25" stroke-width="2.4" stroke-linejoin="round"/>
+      <g fill="none" stroke="#4E3A25" stroke-width="1.5" stroke-linejoin="round" opacity=".8"><path d="M15.5 78Q18 68.5 50 65Q82 68.5 84.5 78"/><path d="M19 73.4l2.8 3M26 69.6l1.8 4M34 67.2l1.2 4.2M66 67.2l-1.2 4.2M74 69.6l-1.8 4M81 73.4l-2.8 3"/>
+        <path d="M24.5 88L28 81.5L39 78.5L50 82L61 78.5L72 81.5L75.5 88M39 78.5L38 71M61 78.5L62 71"/></g>
+      <g fill="none" stroke="#C9A36B" stroke-width="1.2" stroke-linecap="round" opacity=".55"><path d="M31 89L33 84L39.6 82L46 84.6"/><path d="M54 84.6L60.4 82L67 84L69 89"/><path d="M43 93l1.2-4.4 5.8-2 5.8 2 1.2 4.4"/></g>
       <path d="M50 16c20 0 33 13 33 33 0 17-10 28-21 31v5H38v-5C27 77 17 66 17 49c0-20 13-33 33-33Z" fill="url(#g-tortoise)" stroke="#5F5B44" stroke-width="2.6" stroke-linejoin="round"/>
       <g fill="none" stroke="#6E6A50" stroke-width="1.3" stroke-linejoin="round" opacity=".6"><path d="M37 30L43 22.6L50 24.6L57 22.6L63 30M43 22.6L44.6 31.4L50 33.4L55.4 31.4L57 22.6M44.6 31.4L37 30M55.4 31.4L63 30M50 24.6V33.4"/></g>
       <g fill="#7E7A5C" opacity=".45"><circle cx="28" cy="36" r="1.6"/><circle cx="72" cy="36" r="1.6"/><circle cx="24" cy="46" r="1.3"/><circle cx="76" cy="46" r="1.3"/></g>

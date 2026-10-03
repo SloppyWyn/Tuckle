@@ -3,9 +3,10 @@
    - The page: network first, so a new build arrives as soon as there's a connection (the page's own update check then
      reloads it on the menus); if the network fails or hangs for 4 s, the last good copy is served.
    - version.json: always the network (it only matters when online; the page ignores a failed check).
-   - Fonts (Google Fonts CSS and font files) and the icons: from the cache, refreshed in the background. */
-const CACHE = 'tuckle-v1';
-const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
+   - Fonts (Google Fonts CSS and font files), the icons, the applause and the language files (lang/<code>.js?v=<build>,
+     only the newest copy of each kept): from the cache, refreshed in the background. */
+const CACHE = 'tuckle-v2';
+const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png', 'applause-1.mp3', 'applause-2.mp3', 'applause-3.mp3'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -30,7 +31,14 @@ self.addEventListener('fetch', e => {
   const font = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';
   if (font || url.origin === location.origin) {
     e.respondWith(caches.open(CACHE).then(c => c.match(req).then(hit => {
-      const net = fetch(req).then(res => { if (res.ok || res.type === 'opaque') c.put(req, res.clone()); return res }).catch(() => hit);
+      const net = fetch(req).then(res => {
+        if (res.ok || res.type === 'opaque') {
+          c.put(req, res.clone());
+          // a language file is fetched with ?v=<build>: keep only the newest copy of each
+          if (url.pathname.includes('/lang/')) c.keys().then(ks => ks.forEach(k => { const u = new URL(k.url); if (u.pathname === url.pathname && u.search !== url.search) c.delete(k) }));
+        }
+        return res;
+      }).catch(() => hit);
       return hit || net;
     })));
   }

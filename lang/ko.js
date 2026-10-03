@@ -1,5 +1,7 @@
 /* ko: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).ko={t:{
+"shopTwice":"씨앗 {n}개 · 두 번 눌러서 사기",
+"shopBuddyTwice":"{n} · 씨앗 {p}개. 두 번 눌러 집으로 데려와요! 가진 씨앗: {have}개",
 "buyNo":"다음에",
 "buyBtn":"사기",
 "tagline":"색깔, 가로줄, 세로줄마다 친구는 하나씩. 서로 닿으면 안 돼요.",

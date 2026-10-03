@@ -1,5 +1,7 @@
 /* ru: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).ru={t:{
+"shopTwice":"{n} семечек · нажми дважды, чтобы купить",
+"shopBuddyTwice":"{n} · {p} семечек. Нажми дважды, чтобы забрать домой! У тебя {have}.",
 "buyNo":"Не сейчас",
 "buyBtn":"Купить",
 "tagline":"Один дружок на цвет, строку и столбец, и без касаний.",

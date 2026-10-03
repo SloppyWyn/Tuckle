@@ -1,5 +1,7 @@
 /* de: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).de={t:{
+"shopTwice":"{n} Samen · zweimal tippen zum Kaufen",
+"shopBuddyTwice":"{n} · {p} Samen. Zweimal tippen und ab nach Hause! Du hast {have}.",
 "buyNo":"Jetzt nicht",
 "buyBtn":"Kaufen",
 "tagline":"Ein Kumpel pro Farbe, Zeile und Spalte, und keine zwei berühren sich.",

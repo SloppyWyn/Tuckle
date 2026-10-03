@@ -1,5 +1,7 @@
 /* uk: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).uk={t:{
+"shopTwice":"Насінин: {n} · торкніться двічі, щоб купити",
+"shopBuddyTwice":"{n} · {p} насінин. Торкніться двічі, щоб забрати додому! У вас {have}.",
 "buyNo":"Не зараз",
 "buyBtn":"Купити",
 "tagline":"Один дружок на кожен колір, рядок і стовпець, і жодні двоє не торкаються.",

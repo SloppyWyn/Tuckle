@@ -1,5 +1,7 @@
 /* pl: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).pl={t:{
+"shopTwice":"Nasionka: {n} · stuknij dwa razy, by kupić",
+"shopBuddyTwice":"{n} · {p} nasionek. Stuknij dwa razy, by zabrać do domu! Masz {have}.",
 "buyNo":"Nie teraz",
 "buyBtn":"Kup",
 "tagline":"Jeden kumpel na kolor, wiersz i kolumnę, bez dotykania.",

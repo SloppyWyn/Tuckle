@@ -25,7 +25,7 @@ New to it? The first stages of the Jungle walk you through everything.
 
 - **Daily puzzle**: a new one every day.
 - **Free play**: boards from 5×5 to 10×10 in three difficulties.
-- **Worlds**: the Jungle, Antarctica, Shangri-La and the Galápagos, each with 36 stages over three difficulties, medals to earn,
+- **Worlds**: the Jungle, Antarctica, Shangri-La, the Galápagos and the Nebula, each with 36 stages over three difficulties, medals to earn,
   and bonus letter boards that spell a word.
 - **Collection**: buddies to meet, hats to wear, board themes and treats, paid for with seeds you earn by solving.
 - **Comfort**: English, Deutsch, Español, Français, Polski, Português (Brasil), Русский, Українська, 日本語, 한국어 and

@@ -1068,7 +1068,9 @@ html.calm .ts-hint,html.calm .tapstart.leaving{animation:none}
 :root:lang(de) .res-stats span{text-transform:none}
 .res-stats .res-seeds{background:color-mix(in srgb,#7CC47F 16%,var(--surface))}.res-seeds b{color:color-mix(in srgb,#3F7A37 85%,var(--ink))}.res-seeds .seed-i{width:18px;height:18px}
 .res-new{font-style:normal;font-weight:700;color:var(--accent);text-transform:none}
-.res-bonus{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 10px}
+
+.res-bonus{display:grid;grid-template-columns:repeat(2,max-content);justify-content:center;gap:6px;margin:0 0 10px}
+.res-bonus .res-chip{justify-content:center;white-space:nowrap}
 .res-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px 4px 7px;border-radius:999px;font:600 12.5px var(--display);color:var(--muted);background:color-mix(in srgb,var(--line) 55%,transparent);opacity:.7;animation:chipIn .4s ease calc(.5s + var(--i) * .26s) both}
 .res-chip svg{width:14px;height:14px}
 .res-chip.on{color:color-mix(in srgb,var(--accent) 80%,var(--ink));background:color-mix(in srgb,var(--accent) 14%,var(--surface));opacity:1}
@@ -1666,7 +1668,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e8de2ac735"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=32cc0c445f"><\/script>')})();
 </script>
 <script>
 
@@ -2187,7 +2189,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='e8de2ac735';let updateTo=null;
+const BUILD='32cc0c445f';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

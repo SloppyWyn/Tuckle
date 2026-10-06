@@ -1712,7 +1712,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=82d65a05a3"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=ae073d918d"><\/script>')})();
 </script>
 <script>
 
@@ -2296,7 +2296,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='82d65a05a3';let updateTo=null;
+const BUILD='ae073d918d';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5314,7 +5314,7 @@ if(!S.tap||!store.tapV2){S.tap='double';store.tapV2=1;save()}
 document.querySelectorAll('#tapseg button').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.t===S.tap);b.onclick=()=>{S.tap=b.dataset.t;save();document.querySelectorAll('#tapseg button').forEach(x=>x.setAttribute('aria-pressed',x===b))}});
 syncPieces();updateStats();
 
-const FEEDBACK={url:'https://docs.google.com/forms/d/e/1FAIpQLSdUAklA_FsqtQjBrHc7glADT4YP-TU4GuFJG5v2W3BLkr3fiQ/viewform',v:'',lang:'',dev:''};
+const FEEDBACK={url:'https://docs.google.com/forms/d/e/1FAIpQLSdUAklA_FsqtQjBrHc7glADT4YP-TU4GuFJG5v2W3BLkr3fiQ/viewform',v:'entry.1240073651',lang:'entry.16490751',dev:'entry.1645156688'};
 if(FEEDBACK.url){$('fb-panel').hidden=false;
   $('fb-go').onclick=()=>{const q=new URLSearchParams({usp:'pp_url'}),app=matchMedia('(display-mode: standalone)').matches;
     if(FEEDBACK.v)q.set(FEEDBACK.v,BUILD);if(FEEDBACK.lang)q.set(FEEDBACK.lang,LANG);

@@ -1712,7 +1712,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=cbf33a18c5"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=09023caabd"><\/script>')})();
 </script>
 <script>
 
@@ -2296,7 +2296,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='cbf33a18c5';let updateTo=null;
+const BUILD='09023caabd';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -4345,6 +4345,7 @@ const PIECES={
     eyes:[[38,50],[62,50]],ew:5.6,eh:6.2,pw:3.9,ph:4.6,lid:'#ABA686',cy:50,peekDy:4},
 
   iguana:{
+    topS:.66,
     extra:`<path class="tail" d="M78 86q22 2 17-24" fill="none" stroke="#24282C" stroke-width="10" stroke-linecap="round"/><path class="tail" d="M78 86q22 2 17-24" fill="none" stroke="#4E555C" stroke-width="6.4" stroke-linecap="round"/><path class="tail" d="M78 86q22 2 17-24" fill="none" stroke="#7C848C" stroke-width="6.4" stroke-dasharray="1.6 4.6" stroke-linecap="round"/>`,
     top:`<path d="M36 29L39 17L43 27.4L46 13L50 26.4L54 13L57 27.4L61 17L64 29Z" fill="#5E656C" stroke="#1E2226" stroke-width="1.8" stroke-linejoin="round"/>`,
     body:`<path d="M36 29L39 17L43 27.4L46 13L50 26.4L54 13L57 27.4L61 17L64 29Z" fill="#5E656C" stroke="#1E2226" stroke-width="1.8" stroke-linejoin="round"/>
@@ -4437,7 +4438,7 @@ const SKINS={poodle:{
         <path d="M45.5 65h9q0 4.4-4.5 5.6q-4.5-1.2-4.5-5.6Z" fill="#2E2220"/><ellipse cx="48.4" cy="66.4" rx="1.5" ry=".8" fill="#fff" opacity=".45"/>
         <path d="M45.5 74.5q4.5 4 9 0" fill="none" stroke="${LINE}" stroke-width="1.9" stroke-linecap="round"/><path d="M48.3 76.6q1.7 2.6 3.4 0Z" fill="#F08A9E"/>`,
       eyes:[[39,56],[61,56]],pw:6,ph:7,lid:f,cy:54,
-      fit:{hat:{x:50,y:28,r:-6,s:.95},ear:{l:[17,58],r:[83,58],top:14,m:10},flap:[[0,50],[0,50]],mane:{x:50,y:58,s:1.06}}}})(),
+      fit:{hat:{x:50,y:28,r:-6,s:.95},ear:{l:[17,58],r:[83,58],top:14,m:10},flap:[[0,50],[0,50]],mane:{x:50,y:58,s:1.06},band:{l:[17.5,46],r:[82.5,46],top:25}}}})(),
 
   teddy:(()=>{const f='#9C6B4E',o='#4E3122',m='#C8A184',c='#7E5238';
     return{extra:poodleTail(f,o),top:undefined,
@@ -4446,7 +4447,7 @@ const SKINS={poodle:{
         <path d="M45.5 63h9q0 4.4-4.5 5.6q-4.5-1.2-4.5-5.6Z" fill="#2E2220"/><ellipse cx="48.4" cy="64.4" rx="1.5" ry=".8" fill="#fff" opacity=".45"/>
         <path d="M45 72.5q2.5 2.5 5 0 2.5 2.5 5 0" fill="none" stroke="${LINE}" stroke-width="1.9" stroke-linecap="round"/>`,
       eyes:[[38,53],[62,53]],pw:5.6,ph:6.6,lid:f,cy:56,
-      fit:{hat:{x:50,y:28,r:-6,s:.95},ear:{l:[19,38],r:[81,38],top:14,m:10},flap:[[0,50],[0,50]],mane:{x:50,y:57,s:1.08}}}})()}};
+      fit:{hat:{x:50,y:28,r:-6,s:.95},ear:{l:[19,38],r:[81,38],top:14,m:10},flap:[[0,50],[0,50]],mane:{x:50,y:57,s:1.08},band:{l:[17,42],r:[83,42],top:22.5}}}})()}};
 const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy'];
 PIECES.poodle={};for(const f of SKIN_FIELDS)PIECES.poodle[f]=SKINS.poodle.cloud[f];
 
@@ -4630,11 +4631,22 @@ function helmetSVG(k){const a=hatAdjust(k);return`<g transform="translate(${a.x.
   <path d="M19 33A38 38 0 0 1 41 14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/><circle cx="21.6" cy="41.6" r="2" fill="#fff" opacity=".7"/>
   <path d="M15 84Q50 104 85 84" fill="none" stroke="#8E98AE" stroke-width="7.6" stroke-linecap="round"/><path d="M15 84Q50 104 85 84" fill="none" stroke="#DCE2EC" stroke-width="4.8" stroke-linecap="round"/>
   <g class="pom"><path d="M68.6 0.5999999999999996Q69.24 3.16 71.8 3.8Q69.24 4.44 68.6 7.0Q67.96 4.44 65.39999999999999 3.8Q67.96 3.16 68.6 0.5999999999999996Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/></g></g>`}
-HATS.spacehelmet={covers:false,buddy:true,draw:helmetSVG,vb:'-24 -26 48 48',top:-10,
+HATS.spacehelmet={covers:false,buddy:true,inside:true,draw:helmetSVG,vb:'-24 -26 48 48',top:-10,
   base:`<circle r="20" fill="#DDEBFF" fill-opacity=".35" stroke="#A9C6EA" stroke-width="2.4"/><path d="M-15 -8A17 17 0 0 1 -5 -17" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/><path d="M-14 14Q0 22 14 14" fill="none" stroke="#8E98AE" stroke-width="5" stroke-linecap="round"/><path d="M-14 14Q0 22 14 14" fill="none" stroke="#DCE2EC" stroke-width="3" stroke-linecap="round"/><path d="M8 -18.6L11 -23" stroke="#9AA6BC" stroke-width="1.4" stroke-linecap="round"/>`,
   pom:`<path d="M11.4 -26.200000000000003Q11.92 -24.12 14.0 -23.6Q11.92 -23.08 11.4 -21.0Q10.88 -23.08 8.8 -23.6Q10.88 -24.12 11.4 -26.200000000000003Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/>`};
 
-HATS.moonband={s:1.6,dy:1,top:-10,covers:false,vb:'-24 -24 48 30',
+const BAND_STAR=(x,y)=>`<path d="M${x.toFixed(2)} ${(y-2.6).toFixed(2)}l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6Z" fill="#FFE58A"/>`;
+function bandSVG(k,over){const B=BAND_FIT[k],T=PIECES[k],a=hatAdjust(k);if(!B)return'';const H=HATS.moonband,onTop=T.topFront&&T.top;
+  if(over&&!onTop)return'';const g=x=>`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})">${x}</g>`;
+  if(over)return g(`<g transform="translate(54.6 16.6) rotate(-16) scale(.8)">${H.crest}<g class="pom">${H.pom}</g></g>`);
+  const[lx,ly]=B.l,[rx,ry]=B.r,i=(rx-lx)*.1,c=(B.top-.25*(ly+ry)/2)/.75,d=`M${lx} ${ly}C${(lx+i).toFixed(1)} ${c.toFixed(1)} ${(rx-i).toFixed(1)} ${c.toFixed(1)} ${rx} ${ry}`;
+  const at=u=>{const v=1-u;return[v*v*v*lx+3*v*u*(v*(lx+i)+u*(rx-i))+u*u*u*rx,v*v*v*ly+3*v*u*c+u*u*u*ry]};
+  const tan=u=>{const[x,y]=at(u),[x2,y2]=at(u+.01);return Math.atan2(y2-y,x2-x)*180/Math.PI};
+  const m=B.at??.5,sc=(rx-lx)/42,[mx,my]=at(m);
+  return g(`<path d="${d}" fill="none" stroke="#4A3B9C" stroke-width="5.2" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#8E7CF0" stroke-width="3.2" stroke-linecap="round"/>`+
+    [.14,.32,.5,.68,.86].filter(u=>Math.abs(u-m)>.1).map(u=>BAND_STAR(...at(u))).join('')+
+    (onTop?'':`<g transform="translate(${mx.toFixed(2)} ${my.toFixed(2)}) rotate(${(tan(m)*.55).toFixed(1)}) scale(${sc.toFixed(3)}) translate(-1 7.6)">${H.crest}<g class="pom">${H.pom}</g></g>`))}
+HATS.moonband={buddy:true,under:true,draw:k=>bandSVG(k),over:k=>bandSVG(k,1),top:-10,covers:false,vb:'-24 -24 48 30',
   base:`<path d="M-21 4Q0 -14 21 4" fill="none" stroke="#4A3B9C" stroke-width="3.6" stroke-linecap="round"/><path d="M-21 4Q0 -14 21 4" fill="none" stroke="#8E7CF0" stroke-width="2.2" stroke-linecap="round"/><path d="M-12.6 -2.6Q-6 -6.4 0 -6.6" fill="none" stroke="#C9BEFF" stroke-width=".9" stroke-linecap="round"/>${(()=>{const[x,y]=hugAt(.14);return`<path d="M${x} ${(y-2.2).toFixed(2)}l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5Z" fill="#FFE58A"/>`})()}${(()=>{const[x,y]=hugAt(.32);return`<path d="M${x} ${(y-2.2).toFixed(2)}l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5Z" fill="#FFE58A"/>`})()}${(()=>{const[x,y]=hugAt(.68);return`<path d="M${x} ${(y-2.2).toFixed(2)}l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5Z" fill="#FFE58A"/>`})()}${(()=>{const[x,y]=hugAt(.86);return`<path d="M${x} ${(y-2.2).toFixed(2)}l.5 1.6 1.6.5-1.6.5-.5 1.6-.5-1.6-1.6-.5 1.6-.5Z" fill="#FFE58A"/>`})()}`,
   crest:`<path d="M-2.8 -17.6A6.8 6.8 0 1 0 5.2 -7.4A5.6 5.6 0 1 1 -2.8 -17.6Z" fill="#F2C94C" stroke="#C99A2E" stroke-width="1" stroke-linejoin="round"/><path d="M-3.6 -12.6q.2-2.4 1.8-3.8" fill="none" stroke="#FFF1BC" stroke-width="1" stroke-linecap="round"/>`,
   pom:`<path d="M4.6 -8.6v4.2" stroke="#C99A2E" stroke-width=".7"/><path d="M4.6 -4.4Q5.04 -2.64 6.8 -2.2Q5.04 -1.76 4.6 0.0Q4.16 -1.76 2.3999999999999995 -2.2Q4.16 -2.64 4.6 -4.4Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/>`};
@@ -4646,11 +4658,20 @@ HATS.novacrown={s:1.42,dy:0,top:-14,covers:false,vb:'-18 -24 36 27',
     <g class="tw" style="--td:0s"><path d="M-11 -14.600000000000001Q-10.56 -12.84 -8.8 -12.4Q-10.56 -11.96 -11 -10.2Q-11.44 -11.96 -13.2 -12.4Q-11.44 -12.84 -11 -14.600000000000001Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/></g><g class="tw" style="--td:.7s"><path d="M-3.6 -15Q-3.20 -13.40 -1.6 -13Q-3.20 -12.60 -3.6 -11Q-4.00 -12.60 -5.6 -13Q-4.00 -13.40 -3.6 -15Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/></g><g class="tw" style="--td:1.4s"><path d="M3.6 -15Q4.00 -13.40 5.6 -13Q4.00 -12.60 3.6 -11Q3.20 -12.60 1.6 -13Q3.20 -13.40 3.6 -15Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/></g><g class="tw" style="--td:2.1s"><path d="M11 -14.600000000000001Q11.44 -12.84 13.2 -12.4Q11.44 -11.96 11 -10.2Q10.56 -11.96 8.8 -12.4Q10.56 -12.84 11 -14.600000000000001Z" fill="#FFE58A" stroke="#E2B53C" stroke-width="0.6" stroke-linejoin="round"/></g>`,
   pom:`<path d="M0 -20.0Q0.88 -16.48 4.4 -15.6Q0.88 -14.72 0 -11.2Q-0.88 -14.72 -4.4 -15.6Q-0.88 -16.48 0 -20.0Z" fill="#FFE58A" stroke="#D19A1E" stroke-width="0.9" stroke-linejoin="round"/>`};
 
-HATS.planethalo={s:1.32,dy:-3,top:-12,covers:false,vb:'-20 -20 40 22',
-  base:`<ellipse cy="-8" rx="17" ry="4.6" fill="none" stroke="#C99A2E" stroke-width="3.2"/><ellipse cy="-8" rx="17" ry="4.6" fill="none" stroke="#FFE38A" stroke-width="1.8"/>`,
+const HALO_ARC=sw=>`<path d="M-17 -8A17 4.6 0 0 ${sw} 17 -8" fill="none" stroke="#C99A2E" stroke-width="3.2"/><path d="M-17 -8A17 4.6 0 0 ${sw} 17 -8" fill="none" stroke="#FFE38A" stroke-width="1.8"/>`;
+HATS.planethalo={s:1.32,dy:-3,top:-12,covers:false,vb:'-20 -20 40 22',crownFit:{s:1.1,dy:6.5},
+  base:HALO_ARC(1),front:HALO_ARC(0),
   pom:`<g class="orbit"><circle cx="0" cy="-8" r="3.8" fill="#8FD3FF" stroke="#4C86C2" stroke-width="1"/><path d="M-3.4 -8.8q3.4-1.6 6.8 0" fill="none" stroke="#fff" stroke-width=".8" opacity=".7"/><ellipse cx="0" cy="-8" rx="6.2" ry="1.6" fill="none" stroke="#F6B5D3" stroke-width="1.1" transform="rotate(-14 0 -8)"/></g>`};
 
 const MANE_FIT={moonbun:{x:50,y:57,s:1},starwhale:{x:50,y:58,s:1.06},cometfox:{x:50,y:57,s:1.04},booby:{x:50,y:56,s:1.02},tortoise:{x:50,y:52,s:.92},iguana:{x:50,y:57,s:1.04},poodle:{x:50,y:58,s:1.06},redpanda:{x:50,y:57,s:1.03},snowleo:{x:50,y:56,s:1.02},yak:{x:50,y:58,s:1.04},cat:{x:50,y:57,s:1.02},owl:{x:50,y:54,s:1},lantern:{x:50,y:52,s:.96},stone:{x:50,y:58,s:1},monkey:{x:50,y:56,s:1.04},emperor:{x:50,y:56,s:1.02},lion:{x:50,y:57,s:1.08},seal:{x:50,y:58,s:1.02},toucan:{x:50,y:57,s:1.02},orca:{x:50,y:57,s:1.02}};
+
+const BAND_FIT={cat:{l:[14,42],r:[86,42],top:23},owl:{l:[15.5,40],r:[84.5,40],top:17},lantern:{l:[16,40],r:[84,40],top:22},
+  stone:{l:[14.5,44],r:[85.5,44],top:24,at:.24},poodle:{l:[17.5,46],r:[82.5,46],top:25},monkey:{l:[17,40],r:[83,40],top:22.5},
+  emperor:{l:[16.5,40],r:[83.5,40],top:21},lion:{l:[22,47],r:[78,47],top:31},seal:{l:[16,42],r:[84,42],top:22},
+  toucan:{l:[16.5,42],r:[83.5,42],top:23.5,at:.22},orca:{l:[16,42],r:[84,42],top:23,at:.24},redpanda:{l:[15,42],r:[85,42],top:24},
+  snowleo:{l:[16,42],r:[84,42],top:23},yak:{l:[17.5,40],r:[82.5,40],top:25},booby:{l:[23.5,36],r:[76.5,36],top:16},
+  tortoise:{l:[20,38],r:[80,38],top:18},iguana:{l:[17,44],r:[83,44],top:28.5,at:.2},moonbun:{l:[21,46],r:[79,46],top:29.5},
+  starwhale:{l:[10.5,44],r:[89.5,44],top:30.5,at:.24},cometfox:{l:[19,44],r:[81,44],top:26}};
 
 const EAR_FIT={moonbun:{l:[36,22],r:[64,22],top:6,m:7},starwhale:{acc:true,l:[24,40],r:[76,40],top:20,m:7},cometfox:{l:[28,26],r:[72,26],top:12,m:8},booby:{acc:true,l:[30,28],r:[70,28],top:11,m:6.6},tortoise:{acc:true,l:[29,27],r:[71,27],top:12,m:6.5},iguana:{acc:true,l:[27,33],r:[73,33],top:16,m:7},poodle:{l:[17,58],r:[83,58],top:14,m:10},redpanda:{l:[27,27],r:[73,27],top:12,m:9},snowleo:{l:[25,30],r:[75,30],top:14,m:9},yak:{l:[15,53],r:[85,53],top:12,m:10},cat:{l:[23,29],r:[77,29],top:13,m:9},owl:{l:[22,28],r:[78,28],top:9,m:9},monkey:{l:[14,53],r:[86,53],top:12,m:11},
   lantern:{acc:true,l:[31,19],r:[69,19],top:8,m:6.5},stone:{acc:true,l:[29,31],r:[71,31],top:20,m:7},emperor:{acc:true,l:[29,27],r:[71,27],top:16,m:7},lion:{l:[27,30],r:[73,30],top:15,m:9},seal:{acc:true,l:[29,30],r:[71,30],top:16,m:7},toucan:{acc:true,l:[29,28],r:[71,28],top:13,m:7},orca:{acc:true,l:[29,29],r:[71,29],top:15,m:7}};
@@ -4659,12 +4680,12 @@ const FLAP_FIT={moonbun:[[0,46],[0,46]],starwhale:[[0,48],[0,48]],cometfox:[[0,4
 const HAT_FIT={moonbun:{x:50,y:29,r:-5,s:.86},starwhale:{x:50,y:30,r:-3,s:1},cometfox:{x:50,y:29.5,r:-6,s:.9},booby:{x:50,y:24.5,r:-5,s:.86},tortoise:{x:50,y:25,r:-5,s:.86},iguana:{x:50,y:32.5,r:-4,s:.92},poodle:{x:50,y:28,r:-6,s:.95},redpanda:{x:50,y:27,r:-6,s:.93},snowleo:{x:50,y:27,r:-6,s:.94},yak:{x:50,y:29,r:-5,s:.95},cat:{x:50,y:31,r:-7,s:.94},owl:{x:50,y:27.5,r:6,s:.94},lantern:{x:50,y:25,r:-6,s:.9},stone:{x:50,y:34,r:5,s:.98},monkey:{x:50,y:28,r:-6,s:.94},emperor:{x:50,y:28,r:-5,s:.94},lion:{x:50,y:34,r:-6,s:.9},seal:{x:50,y:30,r:-5,s:.95},toucan:{x:50,y:28,r:-5,s:.92},orca:{x:50,y:29,r:-5,s:.95}};
 
 function applySkin(k,id){const L=SKINS[k];if(!L)return;const d=L[id]||Object.values(L)[0],P=PIECES[k];for(const f of SKIN_FIELDS)P[f]=d[f];
-  HAT_FIT[k]=d.fit.hat;EAR_FIT[k]=d.fit.ear;FLAP_FIT[k]=d.fit.flap;MANE_FIT[k]=d.fit.mane;delete _pcCache[k];for(const x in _bdCache)if(x.startsWith(k+'/'))delete _bdCache[x];pieceSymbols()}
+  HAT_FIT[k]=d.fit.hat;EAR_FIT[k]=d.fit.ear;BAND_FIT[k]=d.fit.band;FLAP_FIT[k]=d.fit.flap;MANE_FIT[k]=d.fit.mane;delete _pcCache[k];for(const x in _bdCache)if(x.startsWith(k+'/'))delete _bdCache[x];pieceSymbols()}
 
 let HAT_ADJ={};
 function hatAdjust(k){const a=HAT_ADJ[k]||{};return{x:Math.max(-7,Math.min(7,+a.x||0)),y:Math.max(-5,Math.min(3,+a.y||0))}}
 
-function hatTransform(k,h){const f=HAT_FIT[k],H=HATS[h]||{},a=hatAdjust(k),cf=H.covers===false&&(PIECES[k]||{}).crownFit||{s:1,dy:0};if(H.buddy)return'';const y=f.y+(H.dy||0)+cf.dy+a.y+(a.x/7)**2*2;
+function hatTransform(k,h){const f=HAT_FIT[k],H=HATS[h]||{},a=hatAdjust(k),cf=H.covers===false&&(PIECES[k]||{}).crownFit&&(H.crownFit||PIECES[k].crownFit)||{s:1,dy:0};if(H.buddy)return'';const y=f.y+(H.dy||0)+cf.dy+a.y+(a.x/7)**2*2;
   return`translate(${(f.x+a.x).toFixed(2)} ${y.toFixed(2)}) rotate(${(f.r+a.x*1.5).toFixed(2)}) scale(${(f.s*(H.s||1)*cf.s).toFixed(3)})`}
 function setHatAdj(o){HAT_ADJ=o||{};for(const k in _bdCache)delete _bdCache[k]}
 
@@ -4679,23 +4700,31 @@ function trapperFlaps(k){const F=FLAP_FIT[k];if(!F||(EAR_FIT[k]||{}).acc)return'
   return`<path d="${d}" fill="none" stroke="#BCA88C" stroke-width="12" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#F4E9D8" stroke-width="9" stroke-linecap="round"/>`}).join('')}
 function hatExtra(k,h){const H=HATS[h];return !H?'':H.buddy?(H.draw?H.draw(k):earmuffSVG(k)):H.flaps?trapperFlaps(k):''}
 
-function hatLive(svg,k,h){const g=svg&&svg.querySelector('.hat');if(g)g.setAttribute('transform',hatTransform(k,h));const x=svg&&svg.querySelector('.hat-x');if(x)x.innerHTML=hatExtra(k,h)}
+function hatLive(svg,k,h){if(!svg)return;svg.querySelectorAll('.hat[transform]').forEach(g=>g.setAttribute('transform',hatTransform(k,h)));const x=svg.querySelector('.hat-x');if(x)x.innerHTML=hatExtra(k,h);
+  const o=svg.querySelector('.hat-over');if(o&&HATS[h].over)o.innerHTML=HATS[h].over(k)}
 function hatSVG(k,h){
   const H=HATS[h],T=PIECES[k],f=HAT_FIT[k];if(!H||!f)return'';
-  const front=T.topFront&&T.top&&!H.draw&&(H.buddy||H.covers===false)?`<g class="top-front">${T.top}</g>`:'';
-  if(H.buddy)return`<g class="hat hat-x" data-h="${h}">${H.draw?H.draw(k):earmuffSVG(k)}</g>${front}`;
+
+  const front=T.topFront&&T.top&&(H.under||!H.draw)&&(H.buddy||H.covers===false)?`<g class="top-front">${T.top}</g>`:'';
+  if(H.buddy)return`<g class="hat hat-x" data-h="${h}">${H.draw?H.draw(k):earmuffSVG(k)}</g>${front}${H.over?`<g class="hat-over">${H.over(k)}</g>`:''}`;
 
   const pom=T.top&&!H.back&&H.covers!==false?`<g transform="translate(0 ${H.top}) scale(${((T.topS||1)/(H.s||1)).toFixed(3)}) translate(-50 -22)">${T.top}</g>`:H.pom;
 
   const tied=H.flaps&&(EAR_FIT[k]||{}).acc?`<path d="M-20 -3Q-29 -10 -25 -20Q-20 -23 -15 -14Z" fill="#F4E9D8" stroke="#BCA88C" stroke-width="2" stroke-linejoin="round"/><path d="M20 -3Q29 -10 25 -20Q20 -23 15 -14Z" fill="#F4E9D8" stroke="#BCA88C" stroke-width="2" stroke-linejoin="round"/><path d="M-21 -16q3 2 6 1M21 -16q-3 2-6 1" fill="none" stroke="#A83E39" stroke-width="1.4" stroke-linecap="round"/>`:'';
   const onTop=H.crest&&front;
-  return`${H.flaps?`<g class="hat-x">${trapperFlaps(k)}</g>`:''}<g class="hat" data-h="${h}" transform="${hatTransform(k,h)}">${tied}${H.base}${onTop?'':H.crest||''}<g class="pom">${onTop?'':pom}</g></g>${front}`+
+
+  const ring=H.front?`${front||(T.top&&H.covers===false?T.top:'')}<g class="hat" data-h="${h}" transform="${hatTransform(k,h)}">${H.front}<g class="pom">${pom}</g></g>`:'';
+  return`${H.flaps?`<g class="hat-x">${trapperFlaps(k)}</g>`:''}<g class="hat" data-h="${h}" transform="${hatTransform(k,h)}">${tied}${H.base}${onTop?'':H.crest||''}${ring?'':`<g class="pom">${onTop?'':pom}</g>`}</g>${ring||front}`+
     (onTop?`<g class="hat-crest" transform="translate(54.6 16.6) rotate(-16) scale(.8)">${H.crest}<g class="pom">${pom}</g></g>`:'');
 }
 
 function hatBack(k,h){const H=HATS[h],m=MANE_FIT[k];return H&&H.back&&m?`<g class="hat-back" transform="translate(${m.x} ${m.y}) scale(${m.s})">${H.back}</g>`:''}
 
-function hatBody(k,h){const T=PIECES[k],H=HATS[h];return H&&!H.back&&H.covers!==false&&T.top?T.body.replace(T.top,''):T.body}
+function hatBody(k,h){const T=PIECES[k],H=HATS[h];if(H&&H.inside&&TALL[k]){const[x,b,sc]=TALL[k],t=x==='top'?T.top:x;
+    if(t&&T.body.includes(t))return T.body.replace(t,`<g transform="translate(50 ${b}) scale(${sc}) translate(-50 -${b})">${t}</g>`)}
+  return H&&!H.back&&H.covers!==false&&T.top?T.body.replace(T.top,''):T.body}
+
+const TALL={orca:['top',23,.62],poodle:['top',31,.86],toucan:[PIECES.toucan.body.match(/^<g stroke[^>]*>[\s\S]*?<\/g><g fill="#5AA9D6">[\s\S]*?<\/g>/)[0],25,.8]};
 
 function hatIcon(h){const H=HATS[h];return`<svg viewBox="${H.vb}" aria-hidden="true">${H.back||''}${H.back?`<g transform="translate(0 -30)">${H.pom}</g>`:H.base+(H.crest||'')+H.pom}</svg>`}
 

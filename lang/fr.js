@@ -1,7 +1,6 @@
 /* fr: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).fr={t:{
 "shopTwice":"{n} graines · touchez deux fois pour acheter",
-"shopBuddyTwice":"{n} · {p} graines. Touchez deux fois pour l’accueillir ! Vous en avez {have}.",
 "buyNo":"Pas maintenant",
 "buyBtn":"Acheter",
 "tagline":"Un copain par couleur, par ligne et par colonne, et jamais deux qui se touchent.",
@@ -350,7 +349,6 @@
 "skinNames":{"cloud":"Petit nuage","teddy":"Coupe nounours"},
 "skinsT":"Looks",
 "wordTodo":"{w} : {n} lettres sur {t} ({wn}, {d}). Récompense : {h}.",
-"shopBuddy":"{n} · {p} graines. Touchez encore pour l’adopter ! Vous en avez {have}.",
 "moodNames":{"great":"Super","okay":"Ça va","tired":"Un peu KO","low":"Pas terrible"},
 "moodReply":{"great":"Youpi ! Ça me fait plaisir aussi.","okay":"Ça va, c’est très bien. C’est bon de vous avoir ici.","tired":"Allons-y doucement aujourd’hui. Une petite grille, puis du repos ?","low":"Pas facile, aujourd’hui. Je suis là, prenez tout le temps qu’il faut."},
 "petT":"Caresser votre copain",
@@ -388,7 +386,10 @@
 "keepGoingSd":"Continuer sans bonbons étoiles",
 "treatLock_stardrop":"Finissez le sentier Moyen de la Nébuleuse pour débloquer les bonbons étoiles.",
 "buddyLock_nebGold":"{n} arrive quand {all} étapes de la Nébuleuse sont en or. Pour l’instant : {have}.",
-"buddyLock_nebAll":"{n} arrive quand toutes les étapes de la Nébuleuse sont en or. Pour l’instant : {have} sur {all}."
+"buddyLock_nebAll":"{n} arrive quand toutes les étapes de la Nébuleuse sont en or. Pour l’instant : {have} sur {all}.",
+"shopBuddyAsk":"{n} · {p} graines. Vous en avez {have}.",
+"shopBuddyShort":"{n} · {p} graines. Vous en avez {have}, encore {m} à trouver.",
+"homeBtn":"Accueillir"
 },
 s:{
 "owl":{"first":["Joli début.","Tranquillement. Bien.","Un de trouvé. Respirez."],"row":["Bien fait.","Cette ligne est réglée.","Calme et soigné."],"mistake":["Ce n’est rien. Regardez encore.","Doucement. Encore une fois.","Hm. Pas celui-là."],"two":["Plus que deux. Rien ne presse.","Presque. Tranquillement.","Presque fini, sans hâte."],"idle":["Prenez votre temps.","Réfléchir en silence, c’est bien.","J’attends avec vous."],"win":["Magnifiquement résolu.","Vraiment bien joué.","Tous les nids sont pleins."]},

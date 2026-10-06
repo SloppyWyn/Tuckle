@@ -1,7 +1,6 @@
 /* zh: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).zh={t:{
 "shopTwice":"{n} 顆種子・點兩下購買",
-"shopBuddyTwice":"{n}・{p} 顆種子。點兩下帶回家！你有 {have} 顆。",
 "buyNo":"先不要",
 "buyBtn":"購買",
 "tagline":"每種顏色、每一橫列、每一直行各放一位{P}，彼此不能相鄰。",
@@ -353,7 +352,6 @@
 "skinNames":{"cloud":"小雲朵","teddy":"泰迪造型"},
 "skinsT":"造型",
 "wordTodo":"{w}：{t} 個字母中的 {n} 個（{wn}・{d}）。獎勵：{h}。",
-"shopBuddy":"{n}・{p} 顆種子。再點一次就帶它回家！你有 {have} 顆。",
 "moodNames":{"great":"很好","okay":"還可以","tired":"累了","low":"不太好"},
 "moodReply":{"great":"太好了！我也好開心。","okay":"還可以就很好了。很高興你來了。","tired":"今天就輕鬆一點吧。玩一題小謎題，然後休息？","low":"今天辛苦了。我就在這裡，慢慢來就好。"},
 "petT":"摸摸你的小夥伴",
@@ -388,7 +386,10 @@
 "keepGoingSd":"沒有星星糖也繼續",
 "treatLock_stardrop":"完成星雲的「普通」路線就能解鎖星星糖。",
 "buddyLock_nebGold":"星雲有 {all} 關拿到金牌時，{n}就會加入。目前 {have} 關。",
-"buddyLock_nebAll":"星雲每一關都拿到金牌時，{n}就會加入。目前 {all} 關中的 {have} 關。"
+"buddyLock_nebAll":"星雲每一關都拿到金牌時，{n}就會加入。目前 {all} 關中的 {have} 關。",
+"shopBuddyAsk":"{n}・{p} 顆種子。你有 {have} 顆。",
+"shopBuddyShort":"{n}・{p} 顆種子。你有 {have} 顆，還差 {m} 顆。",
+"homeBtn":"帶回家"
 },
 s:{
 "owl":{"first":["好的開始。","穩穩的，很好。","找到一位了。深呼吸。"],"row":["整整齊齊。","這一排定了。","平靜又整齊。"],"mistake":["沒關係，再看一次。","慢慢來，再試一次。","嗯，不是那一格。"],"two":["還有兩位，慢慢來。","快到了，穩住。","就快完成了，別急。"],"idle":["想多久都可以。","靜靜思考很好。","我陪你等。"],"win":["解得真漂亮。","真的做得很好。","每個窩都滿了。"]},

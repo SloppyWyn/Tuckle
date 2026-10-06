@@ -1,7 +1,6 @@
 /* es: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).es={t:{
 "shopTwice":"{n} semillas · toca dos veces para comprar",
-"shopBuddyTwice":"{n} · {p} semillas. ¡Toca dos veces y vendrá a casa! Tienes {have}.",
 "buyNo":"Ahora no",
 "buyBtn":"Comprar",
 "tagline":"Un amiguito por color, fila y columna, y nunca se tocan.",
@@ -350,7 +349,6 @@
 "skinNames":{"cloud":"Nubecita","teddy":"Corte osito"},
 "skinsT":"Looks",
 "wordTodo":"{w}: {n} de {t} letras ({wn}, {d}). Premio: {h}.",
-"shopBuddy":"{n} · {p} semillas. ¡Toca otra vez para llevártelo a casa! Tienes {have}.",
 "moodNames":{"great":"Genial","okay":"Bien","tired":"Sin energía","low":"Regular"},
 "moodReply":{"great":"¡Bien! Eso me alegra a mí también.","okay":"Bien está perfecto. Me alegra que estés aquí.","tired":"Hoy, con calma. ¿Un puzle pequeño y a descansar?","low":"Siento que sea un día difícil. Estoy aquí, tómate todo el tiempo que necesites."},
 "petT":"Acariciar a tu amiguito",
@@ -388,7 +386,10 @@
 "keepGoingSd":"Seguir sin estrellitas",
 "treatLock_stardrop":"Termina el camino Medio de la Nebulosa para desbloquear las estrellitas de azúcar.",
 "buddyLock_nebGold":"{n} llega cuando {all} niveles de la Nebulosa tengan oro. Por ahora: {have}.",
-"buddyLock_nebAll":"{n} llega cuando todos los niveles de la Nebulosa tengan oro. Por ahora: {have} de {all}."
+"buddyLock_nebAll":"{n} llega cuando todos los niveles de la Nebulosa tengan oro. Por ahora: {have} de {all}.",
+"shopBuddyAsk":"{n} · {p} semillas. Tienes {have}.",
+"shopBuddyShort":"{n} · {p} semillas. Tienes {have}; te faltan {m}.",
+"homeBtn":"Llevar a casa"
 },
 s:{
 "owl":{"first":["Buen comienzo.","Con calma. Bien.","Uno encontrado. Respira."],"row":["Muy pulcro.","Esa línea ya está.","Tranquilo y ordenado."],"mistake":["No importa. Mira otra vez.","Con calma. Otra vez.","Hm. Ese no."],"two":["Dos más. Sin prisa.","Casi. Con calma.","Ya casi, tranquilo."],"idle":["Tómate el tiempo que necesites.","Pensar en silencio está bien.","Esperaré contigo."],"win":["Precioso.","Muy bien hecho, de verdad.","Todos los nidos llenos."]},

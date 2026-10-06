@@ -1,7 +1,6 @@
 /* ja: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).ja={t:{
 "shopTwice":"タネ{n}個・2回タップで買う",
-"shopBuddyTwice":"{n}・タネ{p}個。2回タップでおうちに迎えよう！持っているタネ：{have}個",
 "buyNo":"やめておく",
 "buyBtn":"買う",
 "tagline":"どの色・行・列にも{P}はひとりずつ。となり合わせには置けません。",
@@ -353,7 +352,6 @@
 "skinNames":{"cloud":"ちいさな雲","teddy":"テディカット"},
 "skinsT":"見た目",
 "wordTodo":"{w}：{t}文字中{n}（{wn}・{d}）。ごほうび：{h}。",
-"shopBuddy":"{n}・タネ{p}個。もう一度タップで、おうちにお迎え！所持：{have}",
 "moodNames":{"great":"最高","okay":"ふつう","tired":"つかれた","low":"いまいち"},
 "moodReply":{"great":"やった！わたしもうれしい。","okay":"ふつうで十分。来てくれてうれしいよ。","tired":"今日はゆっくりいこう。パズルをひとつ解いたら、休まない？","low":"つらい日なんだね。ここにいるから、ゆっくりでいいよ。"},
 "petT":"なかまをなでる",
@@ -388,7 +386,10 @@
 "keepGoingSd":"金平糖なしで続ける",
 "treatLock_stardrop":"星雲の「ふつう」の道をクリアすると金平糖が使えます。",
 "buddyLock_nebGold":"星雲の{all}ステージで金メダルを取ると{n}が来ます。いま{have}。",
-"buddyLock_nebAll":"星雲の全ステージで金メダルを取ると{n}が来ます。いま{all}中{have}。"
+"buddyLock_nebAll":"星雲の全ステージで金メダルを取ると{n}が来ます。いま{all}中{have}。",
+"shopBuddyAsk":"{n}・タネ{p}個。持っているタネ：{have}個",
+"shopBuddyShort":"{n}・タネ{p}個。持っているタネ：{have}個、あと{m}個！",
+"homeBtn":"おうちに迎える"
 },
 s:{
 "owl":{"first":["いい出だしだ。","落ち着いて。いいね。","ひとり見つけた。深呼吸。"],"row":["きれいにできた。","ここは決まりだ。","静かで、整っている。"],"mistake":["かまわないよ。もう一度見てごらん。","落ち着いて。もう一度。","ふむ。そこじゃないね。"],"two":["あとふたり。ゆっくりでいい。","もうすぐだ。落ち着いて。","もう少し、静かにね。"],"idle":["好きなだけ時間をかけていいよ。","静かに考えるのはいいことだ。","いっしょに待っているよ。"],"win":["見事に解けたね。","本当によくやった。","巣がみんな埋まった。"]},

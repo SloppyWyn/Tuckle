@@ -1,7 +1,6 @@
 /* ko: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).ko={t:{
 "shopTwice":"씨앗 {n}개 · 두 번 눌러서 사기",
-"shopBuddyTwice":"{n} · 씨앗 {p}개. 두 번 눌러 집으로 데려와요! 가진 씨앗: {have}개",
 "buyNo":"다음에",
 "buyBtn":"사기",
 "tagline":"색깔, 가로줄, 세로줄마다 친구는 하나씩. 서로 닿으면 안 돼요.",
@@ -350,7 +349,6 @@
 "skinNames":{"cloud":"작은 구름","teddy":"곰돌이 컷"},
 "skinsT":"모습",
 "wordTodo":"{w}: {t}글자 중 {n} ({wn}, {d}). 보상: {h}.",
-"shopBuddy":"{n} · 씨앗 {p}개. 한 번 더 탭하면 데려와요! 가진 씨앗: {have}.",
 "moodNames":{"great":"최고","okay":"괜찮아","tired":"피곤해","low":"별로"},
 "moodReply":{"great":"야호! 저도 기뻐요.","okay":"괜찮은 것도 좋아요. 와 줘서 반가워요.","tired":"오늘은 천천히 해요. 작은 퍼즐 하나 하고 쉴까요?","low":"오늘 힘들다니 마음이 쓰여요. 제가 곁에 있을게요. 천천히 해요."},
 "petT":"친구 쓰다듬기",
@@ -388,7 +386,10 @@
 "keepGoingSd":"별사탕 없이 계속하기",
 "treatLock_stardrop":"성운 보통 길을 끝내면 별사탕이 열려요.",
 "buddyLock_nebGold":"{n}: 성운 단계 {all}개가 금메달이면 와요. 지금까지: {have}.",
-"buddyLock_nebAll":"{n}: 성운의 모든 단계가 금메달이면 와요. 지금까지: {all}개 중 {have}."
+"buddyLock_nebAll":"{n}: 성운의 모든 단계가 금메달이면 와요. 지금까지: {all}개 중 {have}.",
+"shopBuddyAsk":"{n} · 씨앗 {p}개. 가진 씨앗: {have}개",
+"shopBuddyShort":"{n} · 씨앗 {p}개. 가진 씨앗: {have}개, {m}개만 더 모아요!",
+"homeBtn":"집으로 데려오기"
 },
 s:{
 "owl":{"first":["좋은 시작이에요.","차분하게. 좋아요.","하나 찾았어요. 숨 한번 쉬어요."],"row":["잘했어요.","이 줄은 끝났어요.","차분하고 깔끔해요."],"mistake":["괜찮아요. 다시 봐요.","천천히. 한 번 더.","음. 그건 아니에요."],"two":["둘 남았어요. 서두르지 마요.","거의 다 왔어요. 차분하게.","거의 끝, 느긋하게."],"idle":["천천히 해요.","조용히 생각하는 것도 좋아요.","같이 기다릴게요."],"win":["아름답게 풀었어요.","정말 잘했어요.","둥지가 모두 찼어요."]},

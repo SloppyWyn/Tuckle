@@ -1,7 +1,6 @@
 /* pt: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).pt={t:{
 "shopTwice":"{n} sementes · toque duas vezes para comprar",
-"shopBuddyTwice":"{n} · {p} sementes. Toque duas vezes para levar para casa! Você tem {have}.",
 "buyNo":"Agora não",
 "buyBtn":"Comprar",
 "tagline":"Um amiguinho por cor, linha e coluna. Eles nunca se tocam.",
@@ -350,7 +349,6 @@
 "skinNames":{"cloud":"Nuvenzinha","teddy":"Corte ursinho"},
 "skinsT":"Visuais",
 "wordTodo":"{w}: {n} de {t} letras ({wn}, {d}). Prêmio: {h}.",
-"shopBuddy":"{n} · {p} sementes. Toque de novo para levar para casa! Você tem {have}.",
 "moodNames":{"great":"Ótimo","okay":"Tudo bem","tired":"Sem energia","low":"Mais ou menos"},
 "moodReply":{"great":"Oba! Isso me deixa feliz também.","okay":"Tudo bem está ótimo. Que bom que você está aqui.","tired":"Hoje vamos com calma. Um desafiozinho e depois descanso?","low":"Sinto muito que hoje esteja difícil. Estou aqui, leve o tempo que precisar."},
 "petT":"Fazer carinho no amiguinho",
@@ -388,7 +386,10 @@
 "keepGoingSd":"Continuar sem docinhos",
 "treatLock_stardrop":"Termine a trilha Média da Nebulosa para liberar os docinhos de estrela.",
 "buddyLock_nebGold":"{n} chega quando {all} fases da Nebulosa tiverem ouro. Até agora: {have}.",
-"buddyLock_nebAll":"{n} chega quando todas as fases da Nebulosa tiverem ouro. Até agora: {have} de {all}."
+"buddyLock_nebAll":"{n} chega quando todas as fases da Nebulosa tiverem ouro. Até agora: {have} de {all}.",
+"shopBuddyAsk":"{n} · {p} sementes. Você tem {have}.",
+"shopBuddyShort":"{n} · {p} sementes. Você tem {have}; faltam {m}.",
+"homeBtn":"Levar para casa"
 },
 s:{
 "owl":{"first":["Bom começo.","Com calma. Bom.","Um encontrado. Respire."],"row":["Bem feito.","Essa linha está resolvida.","Calmo e arrumado."],"mistake":["Não tem problema. Olhe de novo.","Com calma. Mais uma vez.","Hm. Esse não."],"two":["Mais dois. Sem pressa.","Quase lá. Com calma.","Quase pronto, tranquilo."],"idle":["Leve o tempo que precisar.","Pensar em silêncio é bom.","Vou esperar com você."],"win":["Lindamente resolvido.","Muito bem, de verdade.","Todos os ninhos cheios."]},

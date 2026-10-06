@@ -1,7 +1,6 @@
 /* pl: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).pl={t:{
 "shopTwice":"Nasionka: {n} · stuknij dwa razy, by kupić",
-"shopBuddyTwice":"{n} · {p} nasionek. Stuknij dwa razy, by zabrać do domu! Masz {have}.",
 "buyNo":"Nie teraz",
 "buyBtn":"Kup",
 "tagline":"Jeden kumpel na kolor, wiersz i kolumnę, bez dotykania.",
@@ -353,7 +352,6 @@
 "skinNames":{"cloud":"Chmurka","teddy":"Miś"},
 "skinsT":"Wyglądy",
 "wordTodo":"{w}: {n} z {t} liter ({wn}, {d}). Nagroda: {h}.",
-"shopBuddy":"{n} · {p} nasionek. Dotknij znowu, by zaprosić do domu! Masz {have}.",
 "moodNames":{"great":"Świetnie","okay":"W porządku","tired":"Bez sił","low":"Tak sobie"},
 "moodReply":{"great":"Hura! Mnie też to cieszy.","okay":"„W porządku” to całkiem dobrze. Fajnie, że jesteś.","tired":"Dziś na spokojnie. Jedna mała łamigłówka i odpoczynek?","low":"Przykro mi, że dzień jest trudny. Jestem tu — nie spiesz się."},
 "petT":"Pogłaszcz kumpla",
@@ -388,7 +386,10 @@
 "keepGoingSd":"Graj bez cukierków",
 "treatLock_stardrop":"Ukończ średni szlak Mgławicy, by odblokować gwiezdne cukierki.",
 "buddyLock_nebGold":"{n} dołączy, gdy {all} etapów Mgławicy będzie miało złoto. Na razie {have}.",
-"buddyLock_nebAll":"{n} dołączy, gdy każdy etap Mgławicy będzie miał złoto. Na razie {have} z {all}."
+"buddyLock_nebAll":"{n} dołączy, gdy każdy etap Mgławicy będzie miał złoto. Na razie {have} z {all}.",
+"shopBuddyAsk":"{n} · {p} nasionek. Masz {have}.",
+"shopBuddyShort":"{n} · {p} nasionek. Masz {have}, brakuje jeszcze {m}.",
+"homeBtn":"Zabierz do domu"
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

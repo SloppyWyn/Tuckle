@@ -1,7 +1,6 @@
 /* de: the interface strings (t) and the peeking buddy's lines (s); loaded on demand, see LANG_FILES in src/i18n.js */
 (window.__tl=window.__tl||{}).de={t:{
 "shopTwice":"{n} Samen · zweimal tippen zum Kaufen",
-"shopBuddyTwice":"{n} · {p} Samen. Zweimal tippen und ab nach Hause! Du hast {have}.",
 "buyNo":"Jetzt nicht",
 "buyBtn":"Kaufen",
 "tagline":"Ein Kumpel pro Farbe, Zeile und Spalte, und keine zwei berühren sich.",
@@ -350,7 +349,6 @@
 "skinNames":{"cloud":"Wölkchen","teddy":"Teddyschnitt"},
 "skinsT":"Looks",
 "wordTodo":"{w}: {n} von {t} Buchstaben ({wn}, {d}). Belohnung: {h}.",
-"shopBuddy":"{n} · {p} Samen. Nochmal tippen, um {n} mitzunehmen! Du hast {have}.",
 "moodNames":{"great":"Super","okay":"Okay","tired":"Müde","low":"Nicht so gut"},
 "moodReply":{"great":"Juhu! Das freut mich auch.","okay":"Okay ist völlig in Ordnung. Schön, dass du da bist.","tired":"Lass es uns heute ruhig angehen. Ein kleines Rätsel, dann ausruhen?","low":"Tut mir leid, dass es heute schwer ist. Ich bin da, nimm dir alle Zeit, die du brauchst."},
 "petT":"Deinen Kumpel streicheln",
@@ -388,7 +386,10 @@
 "keepGoingSd":"Ohne Sternbonbons weiterspielen",
 "treatLock_stardrop":"Schaffe den mittleren Pfad im Sternennebel, um Sternbonbons freizuschalten.",
 "buddyLock_nebGold":"{n} kommt, wenn {all} Stufen im Sternennebel Gold haben. Bisher: {have}.",
-"buddyLock_nebAll":"{n} kommt, wenn jede Stufe im Sternennebel Gold hat. Bisher: {have} von {all}."
+"buddyLock_nebAll":"{n} kommt, wenn jede Stufe im Sternennebel Gold hat. Bisher: {have} von {all}.",
+"shopBuddyAsk":"{n} · {p} Samen. Du hast {have}.",
+"shopBuddyShort":"{n} · {p} Samen. Du hast {have}, es fehlen noch {m}.",
+"homeBtn":"Nach Hause holen"
 },
 s:{
 "owl":{"first":["Guter Anfang.","Ruhig. Gut.","Einer gefunden. Atme durch."],"row":["Schön gemacht.","Diese Zeile ist erledigt.","Ruhig und ordentlich."],"mistake":["Schon gut. Schau nochmal.","Sachte. Noch einmal.","Hm. Der nicht."],"two":["Noch zwei. Keine Eile.","Fast. Ganz ruhig.","Fast fertig, ganz entspannt."],"idle":["Lass dir Zeit.","Stilles Nachdenken ist gut.","Ich warte mit dir."],"win":["Wunderschön gelöst.","Wirklich gut gemacht.","Alle Nester sind voll."]},

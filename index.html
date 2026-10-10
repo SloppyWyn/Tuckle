@@ -1712,7 +1712,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=ae073d918d"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=f92ebe84e5"><\/script>')})();
 </script>
 <script>
 
@@ -2296,7 +2296,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='ae073d918d';let updateTo=null;
+const BUILD='f92ebe84e5';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5471,7 +5471,7 @@ function openPlay(m){if(isWorld(m)){WORLD=m;menuMode='jungle'}else menuMode=m;sh
 function openMenu(){
   menuSel={size:store.free.size||8,diff:store.free.diff||'medium'};
 
-  const j=store.jungleProgress,sel=(store.jungle.selW||{})[WORLD]||(worldOf(store.jungle.sel)===WORLD?store.jungle.sel:null),sp=sel&&stagePos(sel);
+  const j=store.jungleProgress,sel=(store.jungle.selW||{})[WORLD]||(worldOf(store.jungle.sel)===WORLD?store.jungle.sel:null),sp=sel&&(stagePos(sel)||letterPos(sel));
   menuStage=j&&!j.won&&hasProgress(j)&&worldOf(j.id)===WORLD?j.id:nextStageId(sp?sp.ti:0);
   $('step-play').dataset.world=WORLD;
   mapTier=-1;
@@ -6058,6 +6058,16 @@ $('m-diff').querySelectorAll('button').forEach(b=>b.onclick=()=>{
     if(!tierOpen(bt))return noteFlash(tierWhy(bt));
     if(bt!==menuTier()){menuStage=nextStageId(bt);renderMenu(true)}return}
   if(menuMode!=='free')return;menuSel.diff=b.dataset.d;renderMenu(false)});
+
+{const area=$('m-map').parentElement;let sw=null,swiped=0;area.style.touchAction='pan-y';
+  area.addEventListener('pointerdown',e=>{sw=menuMode==='jungle'?{x:e.clientX,y:e.clientY,t:performance.now(),id:e.pointerId}:null});
+  area.addEventListener('pointercancel',()=>{sw=null});
+  area.addEventListener('pointerup',e=>{if(!sw||e.pointerId!==sw.id)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y,dt=performance.now()-sw.t;sw=null;
+    if(Math.abs(dx)<45||Math.abs(dx)<1.6*Math.abs(dy)||dt>900)return;
+    swiped=performance.now();const bt=menuTier()+(dx<0?1:-1);if(bt<0||bt>=TIERS.length)return;
+    if(!tierOpen(bt))return noteFlash(tierWhy(bt));
+    menuStage=nextStageId(bt);renderMenu(true);Sound.play('ui')});
+  area.addEventListener('click',e=>{if(performance.now()-swiped<400){e.stopPropagation();e.preventDefault()}},true)}
 
 $('m-medals').addEventListener('click',e=>{const sp=e.target.closest('span[data-m]');if(!sp||!+sp.dataset.n)return;medalTap(sp,+sp.dataset.m)});
 

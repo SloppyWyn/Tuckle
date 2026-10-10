@@ -1779,7 +1779,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=d6c57e02ea"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=be9d2c52f5"><\/script>')})();
 </script>
 <script>
 
@@ -2426,7 +2426,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='d6c57e02ea';let updateTo=null;
+const BUILD='be9d2c52f5';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6228,7 +6228,7 @@ function nestBuddy(center){
   const keep=$('n-pick').scrollLeft;
   $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-disc').classList.remove('mystery');$('n-name').textContent=t('names')[S.piece];
 
-  const ks=Object.keys(PIECES).sort((a,b)=>buddyOwned(b)-buddyOwned(a));
+  const rank=k=>buddyOwned(k)?0:SHOP[k]?1:2,ks=Object.keys(PIECES).sort((a,b)=>rank(a)-rank(b));
   $('n-pick').innerHTML=ks.map(k=>buddyOwned(k)
     ?`<button data-p="${k}" aria-pressed="${k===S.piece}" aria-label="${t('names')[k]}">${buddySVG(k,wornHat())}</button>`
     :SHOP[k]?`<button class="locked forsale" data-p="${k}" aria-label="${t('names')[k]}">${buddySVG(k,wornHat())}${priceTag(k)}</button>`

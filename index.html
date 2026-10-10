@@ -1883,7 +1883,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=1edd6f02ec"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=54f27c1258"><\/script>')})();
 </script>
 <script>
 
@@ -2530,7 +2530,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='1edd6f02ec';let updateTo=null;
+const BUILD='54f27c1258';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5077,6 +5077,28 @@ HATS.kelpwreath={s:1.6,dy:1,top:-10,covers:false,vb:'-25 -19 50 25',
     [.12,.29,.71,.88].map(u=>{const[x,y]=hugAt(u);return`<circle cx="${x}" cy="${(y-.4).toFixed(2)}" r="1.25" fill="#F2D27A" stroke="#B48A3C" stroke-width=".5"/>`}).join('')+
     `<circle cx="-6.6" cy="-11" r="1.3" fill="#E8F8FA" fill-opacity=".6" stroke="#7FC6CC" stroke-width=".5"/><circle cx="8.6" cy="-12.6" r=".9" fill="#E8F8FA" fill-opacity=".6" stroke="#7FC6CC" stroke-width=".45"/>`,
   pom:`<circle cy="-10.6" r="2.4" fill="#E8F8FA" fill-opacity=".55" stroke="#7FC6CC" stroke-width=".7"/><path d="M-1.3 -11.2a1.4 1.4 0 0 1 1.2-1.1" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round"/>`};
+
+function circletSVG(k,over,deco,crown){const B=BAND_FIT[k],T=PIECES[k],a=hatAdjust(k);if(!B||!T)return'';const onTop=T.topFront&&T.top;
+  if(over&&!onTop)return'';const g=x=>`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})">${x}</g>`;
+  const[lx,ly]=B.l,[rx,ry]=B.r,i=(rx-lx)*.1,c=(B.top-.25*(ly+ry)/2)/.75,sc=(rx-lx)/42;
+  const at=u=>{const v=1-u;return[v*v*v*lx+3*v*u*(v*(lx+i)+u*(rx-i))+u*u*u*rx,v*v*v*ly+3*v*u*c+u*u*u*ry]};
+  const tan=u=>{const[x,y]=at(u),[x2,y2]=at(Math.min(1,u+.01));return Math.atan2(y2-y,x2-x)*180/Math.PI};
+  const d=`M${lx} ${ly}C${(lx+i).toFixed(1)} ${c.toFixed(1)} ${(rx-i).toFixed(1)} ${c.toFixed(1)} ${rx} ${ry}`,m=B.at??.5,[mx,my]=at(m);
+  const piece=(x,y,r,sz)=>`<g transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${r.toFixed(1)}) scale(${sz.toFixed(3)})">${crown}</g>`;
+  if(over)return g(piece(54.6,18,-16,sc*.8));
+  return g(deco(d,at,tan,sc,m)+(onTop?'':piece(mx,my,tan(m)*.55,sc)))}
+const shellDeco=(d,at,tan,sc,m)=>`<path d="${d}" fill="none" stroke="#C9B7CC" stroke-width="${(1.3*sc).toFixed(2)}" stroke-linecap="round"/>`+
+  [...Array(19).keys()].map(i=>{const u=i/18,[x,y]=at(u);return Math.abs(u-m)<.07?'':pearl(+x.toFixed(2),+y.toFixed(2),+(1.3*sc).toFixed(2))}).join('')+
+  [[.05,3.6,'#FFD3C2','#D08A78'],[.27,4.2,'#FFE6B8','#C99A52'],[.73,4.2,'#E7D6FA','#9C82C8'],[.95,3.6,'#FFD3C2','#D08A78']].filter(([u])=>Math.abs(u-m)>.12)
+    .map(([u,r,f,e])=>{const[x,y]=at(u);return scallopH(+x.toFixed(2),+y.toFixed(2),+(r*sc).toFixed(2),tan(u)*.85,f,e)}).join('');
+const kelpDeco=(d,at,tan,sc,m)=>`<path d="${d}" fill="none" stroke="#3F7F5A" stroke-width="${(3.4*sc).toFixed(2)}" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#74B98C" stroke-width="${(2*sc).toFixed(2)}" stroke-linecap="round"/>`+
+  [[.03,6.4,-16],[.19,8.6,10],[.37,9.6,-8],[.63,9.6,8],[.81,8.6,-10],[.97,6.4,16]].filter(([u])=>Math.abs(u-m)>.09).map(([u,l,tw],i)=>{const[x,y]=at(u);return kelpBlade(+x.toFixed(2),+y.toFixed(2),tan(u)*.62+tw*.6,+(l*sc).toFixed(2),i%2?'#86C79A':'#6AAE82')}).join('')+
+  [.11,.28,.72,.89].map(u=>{const[x,y]=at(u);return`<circle cx="${x.toFixed(2)}" cy="${(y-.4*sc).toFixed(2)}" r="${(1.3*sc).toFixed(2)}" fill="#F2D27A" stroke="#B48A3C" stroke-width="${(.5*sc).toFixed(2)}"/>`}).join('');
+const SHELL_CROWN=scallopH(0,-1.4,7.2,0,'#FFC7D6','#D2789A')+`<g class="pom">${pearl(0,-5,2)}</g>`;
+const KELP_CROWN=`<circle cx="-6.6" cy="-6" r="1.3" fill="#E8F8FA" fill-opacity=".6" stroke="#7FC6CC" stroke-width=".5"/><circle cx="7.4" cy="-7.4" r=".9" fill="#E8F8FA" fill-opacity=".6" stroke="#7FC6CC" stroke-width=".45"/>`+
+  `<g class="pom"><circle cy="-6.4" r="2.4" fill="#E8F8FA" fill-opacity=".55" stroke="#7FC6CC" stroke-width=".7"/><path d="M-1.3 -7a1.4 1.4 0 0 1 1.2-1.1" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round"/></g>`;
+Object.assign(HATS.shellcrown,{buddy:true,under:true,draw:k=>circletSVG(k,0,shellDeco,SHELL_CROWN),over:k=>circletSVG(k,1,shellDeco,SHELL_CROWN)});
+Object.assign(HATS.kelpwreath,{buddy:true,under:true,draw:k=>circletSVG(k,0,kelpDeco,KELP_CROWN),over:k=>circletSVG(k,1,kelpDeco,KELP_CROWN)});
 
 function snorkelSVG(k){const T=PIECES[k],B=BAND_FIT[k],a=hatAdjust(k);if(!T||!B)return'';const[[x1,y1],[x2,y2]]=T.eyes,rx=(T.ew||T.pw+3)+4.2,ry=(T.eh||T.ph+3)+3.4;
   const L=Math.min(x1,x2)-rx,R=Math.max(x1,x2)+rx,top=Math.min(y1,y2)-ry,bot=Math.max(y1,y2)+ry,mx=(L+R)/2,cr=Math.min(9,ry*.9),f=v=>v.toFixed(1);

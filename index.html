@@ -1761,7 +1761,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=13178d1cbe"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=8ab18e9dc2"><\/script>')})();
 </script>
 <script>
 
@@ -2408,7 +2408,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='13178d1cbe';let updateTo=null;
+const BUILD='8ab18e9dc2';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3127,8 +3127,10 @@ function drawCardDeco(c,w,grow){
 
     const tip=Math.max(e+R+4,H*.3);
     h+=kelpG(W-e+3,H-e-R*.3,7,Math.min(H*.62,58),160,.4,.75)+kelpG(W-e+3,H-e-R*.3,15,Math.min(H*.44,40),230,2.2,.75);
-    h+=bubblesAlong([[W-e,tip-4,1,0],[W-e-k,e+k,Math.SQRT1_2,-Math.SQRT1_2],...[...Array(4).keys()].map(i=>[xa-16-i*24,e,0,-1])],1,360,2.4,4.2);
-    h+=starfishG(e+k-1,H-e-k+1,8.2,-16,620)+coralG(e,by-12,-90,.62,720,'var(--reef2)')+shellG(e+R+20,H-e,180,.62,800);
+    h+=bubblesAlong([[W-e,tip-4,1,0],...[...Array(4).keys()].map(i=>[xa-38-i*24,e,0,-1])],1,360,2.4,4.2);
+
+    h+=coralG(W-e-k+1,e+k-1,45,.95,520)+coralG(W-e,e+R+12,80,.6,580,'color-mix(in srgb,var(--rr) 45%,var(--reef2))')+starfishG(W-e-k-2,e+k+1,9.4,14,640)+shellG(xa-18,e,0,.62,700);
+    h+=coralG(e,by-10,-90,.62,760,'var(--reef2)')+coralG(e+k,H-e-k,-135,.5,800,'color-mix(in srgb,var(--rr) 45%,var(--reef2))')+shellG(e+R+20,H-e,180,.62,860);
   }else{
   h=stem(`M${W-e} ${y0.toFixed(1)}`+wavy(W-e,y0,W-e,e+R)+`A${R} ${R} 0 0 0 ${xa} ${e}`+wavy(xa,e,xEnd,e),2);
   h+=leafG(W-e,y0-5,8,.85,100,.75)+leafG(W-e,(y0+e+R)/2,-8,1,170,.9)+leafG(W-e-k,e+k,-45,1.25,240)+leafG(W-e-k-2,e+k-1,-80,.95,310,.8)+leafG(W-e-k+1,e+k+2,-12,.95,350,.85);

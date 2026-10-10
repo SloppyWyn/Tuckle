@@ -1934,7 +1934,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=c4e956a1b2"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=f4de377a76"><\/script>')})();
 </script>
 <script>
 
@@ -2644,7 +2644,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='c4e956a1b2';let updateTo=null;
+const BUILD='f4de377a76';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3348,6 +3348,7 @@ const toadG=(x,y,s,d,a=0)=>`<g transform="translate(${+x.toFixed(1)} ${+y.toFixe
 
 const sparkG=(x,y,r,d,col)=>{const f=v=>v.toFixed(1);return`<g transform="translate(${f(x)} ${f(y)})"><g class="lf" style="--d:${Math.round(d)}ms"><g class="ffly" style="--td:${(-(d*.0031)%5.2).toFixed(2)}s;--fx:${(d%7)-3}px"><circle r="${f(r*2)}" fill="var(--ffly)" opacity=".36"/><circle r="${f(r*.8)}" fill="var(--ffly)"/><circle r="${f(r*.36)}" fill="#fff" opacity=".85"/></g></g></g>`};
 
+let tailN=0;
 function tailG(P,w0,w1,d){const n=P.length;if(n<3)return'';const f=v=>+v.toFixed(1),O=[],I=[],C=[];
   P.forEach(([x,y,nx,ny],i)=>{const t=i/(n-1),w=w0+(w1-w0)*Math.pow(t,1.2),cx=x+nx*(w*.5-.6),cy=y+ny*(w*.5-.6);C.push([cx,cy,nx,ny,w]);O.push([cx+nx*w/2,cy+ny*w/2]);I.push([cx-nx*w/2,cy-ny*w/2])});
   let sp='';for(let i=2;i<n-2;i+=3){const[cx,cy,nx,ny,w]=C[i],tx=-ny,ty=nx,b=w*.42,hgt=w*.62,ox=cx+nx*w/2,oy=cy+ny*w/2;
@@ -3355,7 +3356,10 @@ function tailG(P,w0,w1,d){const n=P.length;if(n<3)return'';const f=v=>+v.toFixed
   const belly=`M${I.slice(1,-1).map(([x,y],i)=>{const[,,nx,ny,w]=C[i+1];return f(x+nx*w*.2)+' '+f(y+ny*w*.2)}).join('L')}`;
   let sc='';for(let i=3;i<n-3;i+=2){const[cx,cy,nx,ny,w]=C[i],tx=-ny,ty=nx,r=w*.26;sc+=`M${f(cx-tx*r+nx*r*.2)} ${f(cy-ty*r+ny*r*.2)}Q${f(cx-nx*r*.6)} ${f(cy-ny*r*.6)} ${f(cx+tx*r+nx*r*.2)} ${f(cy+ty*r+ny*r*.2)}`}
   const[ex,ey]=C[n-1],[px,py]=C[n-2],ang=Math.atan2(ey-py,ex-px)*180/Math.PI,q=w1*1.25;
-  return`<g class="lf" style="--d:${Math.round(d)}ms">`+sp+`<path d="${softPath([...O,...I.slice().reverse()])}" fill="var(--tail)" stroke="var(--tail-edge)" stroke-width="1.2" stroke-linejoin="round"/>`+
+
+  const id='tm'+(++tailN),L=[...C.map(([x,y])=>[x,y]),[ex+Math.cos(ang*Math.PI/180)*q*3.2,ey+Math.sin(ang*Math.PI/180)*q*3.2]];
+  const mask=`<mask id="${id}" maskUnits="userSpaceOnUse" x="-9999" y="-9999" width="19999" height="19999"><path class="vine" pathLength="1" d="M${L.map(([x,y])=>f(x)+' '+f(y)).join('L')}" fill="none" stroke="#fff" stroke-width="${f(w0*2.6+q*2)}" stroke-linecap="round" stroke-linejoin="round"/></mask>`;
+  return`${mask}<g mask="url(#${id})">`+sp+`<path d="${softPath([...O,...I.slice().reverse()])}" fill="var(--tail)" stroke="var(--tail-edge)" stroke-width="1.2" stroke-linejoin="round"/>`+
     `<path d="${belly}" fill="none" stroke="var(--tail-belly)" stroke-width="${f(Math.max(1.2,w0*.18))}" stroke-linecap="round" opacity=".8"/><path d="${sc}" fill="none" stroke="var(--tail-edge)" stroke-width=".7" stroke-linecap="round" opacity=".5"/>`+
     `<g transform="translate(${f(ex)} ${f(ey)}) rotate(${f(ang)})"><g class="tswish"><path d="M-1 0C${f(q*.6)} ${f(-q*1.6)} ${f(q*2.6)} ${f(-q*1.4)} ${f(q*3)} 0C${f(q*2.6)} ${f(q*1.4)} ${f(q*.6)} ${f(q*1.6)} -1 0Z" fill="var(--crystal)" stroke="var(--tail-edge)" stroke-width="1" stroke-linejoin="round"/><path d="M${f(q*.8)} 0H${f(q*2.2)}" stroke="var(--tail-edge)" stroke-width=".7" stroke-linecap="round" opacity=".5"/></g></g></g>`}
 
@@ -5017,7 +5021,7 @@ const PIECES={
       <ellipse cx="28.6" cy="58" rx="4.6" ry="2.8" fill="${BLUSH}" opacity=".8"/><ellipse cx="71.4" cy="58" rx="4.6" ry="2.8" fill="${BLUSH}" opacity=".8"/>
       <path d="M30 45l-3.4-2.4M29.4 48.4l-3.8-1.2M70 45l3.4-2.4M70.6 48.4l3.8-1.2" stroke="#7A5A78" stroke-width="1.3" stroke-linecap="round"/>
       <path class="twk" d="M84 16l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z" fill="#FFE58A"/><path class="twk" style="--td:1.6s" d="M14 26l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6Z" fill="#B7A5F2"/>`,
-    eyes:[[37,50],[63,50]],pw:5.6,ph:6.6,lid:'#FBF1F8',cy:49},
+    eyes:[[37,50],[63,50]],pw:5.6,ph:6.6,lid:'#FBF1F8',cy:49,peekDy:9},
 
   griffin:{
     extra:`<g class="tail"><path d="M74 88C86 88 90 80 88 72" fill="none" stroke="#6B4320" stroke-width="5.4" stroke-linecap="round"/><path d="M74 88C86 88 90 80 88 72" fill="none" stroke="#D9A458" stroke-width="3.2" stroke-linecap="round"/><path d="M88 74Q83 70 85.6 64Q88 66 89 63Q93.4 67.4 88 74Z" fill="#8A5A2A" stroke="#6B4320" stroke-width="1.5" stroke-linejoin="round"/></g>`,
@@ -5091,9 +5095,8 @@ const zarLook=L=>{const o=L.line,m=s=>x=>s<0?(100-x).toFixed(1):x;
     <path d="M42.6 72.6q1.8-1.4 3.6.4M57.4 72.6q-1.8-1.4-3.6.4" fill="none" stroke="${L.nostril}" stroke-width="2" stroke-linecap="round"/>
     <path d="M39.6 85.4Q44 89.4 50 89.6Q56 89.4 60.4 85.4" fill="none" stroke="#3A2A2A" stroke-width="1.8" stroke-linecap="round"/>`+whisk(1)+whisk(-1)+
     `<ellipse cx="27.4" cy="56" rx="5" ry="2.8" fill="${BLUSH}" opacity=".7"/><ellipse cx="72.6" cy="56" rx="5" ry="2.8" fill="${BLUSH}" opacity=".7"/>${sparkles}`;
-
-  const extra=`<g class="tail"><path d="M74 90C86 90 92 84 90.6 75" fill="none" stroke="${o}" stroke-width="6.6" stroke-linecap="round"/><path d="M74 90C86 90 92 84 90.6 75" fill="none" stroke="${L.wing}" stroke-width="4.2" stroke-linecap="round"/><path d="M90.6 76.6Q85.6 72 88.6 66.4Q90 68 91.4 66.2Q95 70.6 90.6 76.6Z" fill="${L.crest}" stroke="${o}" stroke-width="1.5" stroke-linejoin="round"/></g>`;
-  return{body,top,topS:.9,extra,eyes:[[38,44],[62,44]],pw:6,ph:6.4,lid:L.lidc,cy:55.5,rest:{fill:`url(#l-zar-${L.id})`,line:o},
+  const extra='';
+  return{body,top,topS:.9,extra,eyes:[[38,44],[62,44]],pw:6,ph:6.4,lid:L.lidc,cy:55.5,peekDy:13,rest:{fill:`url(#l-zar-${L.id})`,line:o},
     iris:L.iris?`url(#i-zar-${L.id})`:undefined,core:L.core,irisLine:L.irisLine,glint:L.glint,
     fit:{hat:{x:50,y:30,r:-5,s:.95},ear:{acc:true,l:[29,31],r:[71,31],top:15,m:7},flap:[[0,48],[0,48]],mane:{x:50,y:58,s:1.06},band:{l:[16,42],r:[84,42],top:24,at:.26}}}};
 const ZAR={jade:{id:'jade',line:'#2F6B4C',hornLine:'#A07E3A',wing:'#7CCB98',wingRib:'#3F8A62',crest:'#F2D27A',scale:'#3F8A62',scaleOp:.45,
@@ -5102,7 +5105,7 @@ const ZAR={jade:{id:'jade',line:'#2F6B4C',hornLine:'#A07E3A',wing:'#7CCB98',wing
     snout:'#FBF9FE',snoutLine:'#DDD7EC',nostril:'#A79DC2',whisk:'#E3C77E',lidc:'#F3EFFA',
     iris:1,core:'#06492E',irisLine:'#0B5A39',glint:true,shimmer:true,sparkles:true}};
 SKINS.dragon={jade:zarLook(ZAR.jade),pearl:zarLook(ZAR.pearl)};
-const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint'];
+const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint','peekDy'];
 PIECES.poodle={};for(const f of SKIN_FIELDS)PIECES.poodle[f]=SKINS.poodle.cloud[f];
 
 {const K=Object.keys(PIECES);for(const k of K.slice(K.indexOf('stone')+1)){if(k==='poodle')continue;const v=PIECES[k];delete PIECES[k];PIECES[k]=v}}

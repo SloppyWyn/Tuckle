@@ -1811,7 +1811,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=1c660a7c04"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=ffcf4bad1e"><\/script>')})();
 </script>
 <script>
 
@@ -2458,7 +2458,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='1c660a7c04';let updateTo=null;
+const BUILD='ffcf4bad1e';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5859,16 +5859,22 @@ function switchTier(bt){const from=menuTier();if(bt===from)return;menuStage=next
   requestAnimationFrame(()=>ghost.classList.add('away'));setTimeout(()=>ghost.remove(),760);
   clearTimeout(switchTier.t);switchTier.t=setTimeout(()=>svg.querySelectorAll('.fresh').forEach(e=>e.classList.remove('fresh')),1000)}
 
-function mapDiff(a,b){const pool=[...a.children];
-  for(const c of [...b.children]){
+function mapDiff(a,b,deep){const all=[...a.children],pool=all.slice(),kids=[...b.children],left=[],twins=[];
+  const place=e=>['x','y','cx','cy','transform'].map(n=>e.getAttribute(n)).join(),kind=e=>e.tagName+'.'+(e.getAttribute('class')||'');
 
-    let i=c.classList&&c.classList.contains('node')&&c.dataset.sid?pool.findIndex(x=>x.classList&&x.classList.contains('node')&&x.dataset.sid&&x.dataset.k===c.dataset.k):-1;
-    if(i<0)i=pool.findIndex(x=>x.outerHTML===c.outerHTML);
+  for(const c of kids){const i=pool.findIndex(x=>x.outerHTML===c.outerHTML);if(i<0){left.push(c);continue}twins.push(pool.splice(i,1)[0])}
+  const firstChanged=Math.min(...pool.map(x=>all.indexOf(x)),Infinity);
+  for(const g of twins)if(!deep||all.indexOf(g)<firstChanged)g.style.visibility='hidden';
+  for(const c of left){
+
+    let i=c.classList.contains('node')&&c.dataset.sid?pool.findIndex(x=>x.classList.contains('node')&&x.dataset.sid&&x.dataset.k===c.dataset.k)
+      :c.classList.contains('node')?-1:pool.findIndex(x=>kind(x)===kind(c)&&place(x)===place(c));
     if(i<0){c.classList.add('fresh');continue}
     const g=pool.splice(i,1)[0];
-    if(g.outerHTML===c.outerHTML){g.style.visibility='hidden';continue}
-    if(c.tagName!==g.tagName||!c.children.length||c.getAttribute('opacity')!==g.getAttribute('opacity')||c.getAttribute('transform')!==g.getAttribute('transform')){c.classList.add('fresh');continue}
-    mapDiff(g,c)}}
+    if(c.classList.contains('node')){const o0=g.getAttribute('opacity'),o1=c.getAttribute('opacity');
+      if(o0!==o1){c.style.opacity=o0||1;requestAnimationFrame(()=>{c.style.transition='opacity .6s ease-in-out';c.style.opacity=o1||1});setTimeout(()=>{c.style.transition='';c.style.opacity=''},900)}}
+
+    if(c.children.length&&g.children.length)mapDiff(g,c,true)}}
 const menuTier=()=>{const p=stagePos(menuStage)||letterPos(menuStage);return p?p.ti:0};
 function renderMenu(anim){
   const daily=menuMode==='daily',jungle=menuMode==='jungle',ti=menuTier(),N=daily?8:menuSel.size,d=daily?'medium':jungle?TIERS[ti]:menuSel.diff,st=menuState();

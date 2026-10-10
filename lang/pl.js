@@ -412,8 +412,7 @@
 "soonMore":"Wkrótce będzie więcej",
 "holdTry":"Przytrzymaj: przymiarka",
 "holdPeek":"Przytrzymaj: podgląd",
-"noHat":"Bez czapki",
-"letGoWear":"Puść, żeby założyć"
+"noHat":"Bez czapki"
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

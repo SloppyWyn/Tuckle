@@ -412,8 +412,7 @@
 "soonMore":"Mais coisas em breve",
 "holdTry":"Segure para provar",
 "holdPeek":"Segure para ver",
-"noHat":"Sem chapéu",
-"letGoWear":"Solte para usar"
+"noHat":"Sem chapéu"
 },
 s:{
 "owl":{"first":["Bom começo.","Com calma. Bom.","Um encontrado. Respire."],"row":["Bem feito.","Essa linha está resolvida.","Calmo e arrumado."],"mistake":["Não tem problema. Olhe de novo.","Com calma. Mais uma vez.","Hm. Esse não."],"two":["Mais dois. Sem pressa.","Quase lá. Com calma.","Quase pronto, tranquilo."],"idle":["Leve o tempo que precisar.","Pensar em silêncio é bom.","Vou esperar com você."],"win":["Lindamente resolvido.","Muito bem, de verdade.","Todos os ninhos cheios."]},

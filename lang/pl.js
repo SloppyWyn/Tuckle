@@ -409,7 +409,9 @@
 "grpYours":"Twoje",
 "grpSeeds":"Za nasionka",
 "grpEarn":"Do zdobycia",
-"soonMore":"Wkrótce będzie więcej"
+"soonMore":"Wkrótce będzie więcej",
+"holdTry":"Przytrzymaj, by przymierzyć",
+"holdPeek":"Przytrzymaj, by podejrzeć"
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

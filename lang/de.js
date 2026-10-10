@@ -409,7 +409,9 @@
 "grpYours":"Deine",
 "grpSeeds":"Für Samen",
 "grpEarn":"Noch zu verdienen",
-"soonMore":"Bald kommt noch mehr"
+"soonMore":"Bald kommt noch mehr",
+"holdTry":"Halten zum Anprobieren",
+"holdPeek":"Halten für Vorschau"
 },
 s:{
 "owl":{"first":["Guter Anfang.","Ruhig. Gut.","Einer gefunden. Atme durch."],"row":["Schön gemacht.","Diese Zeile ist erledigt.","Ruhig und ordentlich."],"mistake":["Schon gut. Schau nochmal.","Sachte. Noch einmal.","Hm. Der nicht."],"two":["Noch zwei. Keine Eile.","Fast. Ganz ruhig.","Fast fertig, ganz entspannt."],"idle":["Lass dir Zeit.","Stilles Nachdenken ist gut.","Ich warte mit dir."],"win":["Wunderschön gelöst.","Wirklich gut gemacht.","Alle Nester sind voll."]},

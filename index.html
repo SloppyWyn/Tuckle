@@ -704,15 +704,19 @@ html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery
 .nest:not(.plated) .n-prev{display:none}
 .n-sheet-c{grid-column:3;justify-self:end;margin:0}
 
-.nest.plated .n-buddy{position:relative}.nest.plated .n-buddy>.n-wallet{position:absolute;right:0;bottom:-4px;margin:0}
-.nest.plated .n-sec:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto minmax(0,1fr);gap:6px 10px;align-items:center}
-.nest.plated .n-sec>.n-cap{grid-row:1;grid-column:1;margin:0 2px;text-align:left;display:flex;align-items:center}
-.nest.plated .n-sec[data-sec="words"]>.n-cap{grid-column:1/-1;justify-content:center;text-align:center}
-.nest.plated .n-sec>:is(.n-hats,.n-themes,.n-words){grid-row:2;grid-column:1/-1;align-self:stretch}
-.n-hold{display:none}.nest.plated .n-hold{grid-row:1;grid-column:2;display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;
+.nest.plated .n-buddy{position:relative}.n-buddy{z-index:3}.nest.plated .n-buddy>.n-wallet{position:absolute;right:0;bottom:-4px;margin:0}
+.nest.plated .n-sec:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto minmax(0,1fr);gap:2px 10px;align-items:center}
+.nest.plated .n-sec>.n-cap{display:none}
+.n-tname,.n-tstat{display:none;margin:0 2px;text-align:left}
+.nest.plated .n-tname{display:block;grid-row:1;grid-column:1/-1;font:700 17px/1.25 var(--display);color:var(--ink);min-height:1.25em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nest.plated .n-tstat{display:block;grid-row:2;grid-column:1/-1;font:600 12.5px/1.3 var(--body);color:var(--muted);min-height:2.6em;margin-bottom:4px}
+.n-tname.in,.n-tstat.in{animation:capIn .35s ease both}
+.nest.plated .n-sec>:is(.n-hats,.n-themes,.n-words){grid-row:3;grid-column:1/-1;align-self:stretch}
+.n-hold{display:none}.nest.plated .n-buddy>.n-hold{position:absolute;left:0;bottom:-2px;display:inline-flex;align-items:center;gap:5px;max-width:calc(50% - 64px);padding:4px 10px;border-radius:999px;
   border:1px solid color-mix(in srgb,var(--k) 40%,var(--line));background:color-mix(in srgb,var(--k) 12%,var(--surface));color:var(--muted);
-  font:800 10.5px var(--body);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
-.n-hold svg{width:13px;height:13px;flex:none}
+  font:700 11.5px/1.2 var(--body);text-align:left;box-sizing:border-box}
+.n-hold .h-peek,.nest.plated:is([data-sec="themes"],[data-sec="treats"]) .n-hold .h-try{display:none}.nest.plated:is([data-sec="themes"],[data-sec="treats"]) .n-hold .h-peek{display:inline}
+.n-hold svg{width:12px;height:12px;flex:none}
 
 .n-prev{display:flex;flex-direction:column;align-items:center;gap:8px}.n-prev[hidden]{display:none}
 .n-prev p{margin:0;padding:4px 13px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font:700 14px var(--display);color:var(--ink)}
@@ -725,7 +729,8 @@ html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery
 .n-sec .n-themes{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 8px;padding:4px 4px 10px;margin:0}
 .n-sec .n-hats>*,.n-sec .n-themes>*{margin:0!important}.n-sec .n-themes button{flex:none}
 .n-sec .n-hats button{height:auto;aspect-ratio:1}
-.n-sec .n-words{display:grid;grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(2,max-content);justify-content:center;gap:6px 24px;padding:6px 14px 10px;margin:0}
+.n-sec .n-words{display:grid;grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));justify-items:center;gap:6px 16px;padding:6px 10px 10px;margin:0}
+.n-sec .n-words .n-word{justify-self:center}
 .n-sec .n-hats,.n-sec .n-themes{touch-action:pan-y}.n-sec .n-hats button,.n-sec .n-themes button{touch-action:pan-y}
 .n-sec .more{-webkit-mask:linear-gradient(#000 calc(100% - 28px),transparent);mask:linear-gradient(#000 calc(100% - 28px),transparent)}
 .n-sec .more.end{-webkit-mask:none;mask:none}
@@ -1705,14 +1710,14 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
   </div>
   <div class="intro-inner step menu nest" id="step-nest" hidden>
     <div class="m-head"><button class="m-back" id="n-back" data-l10n-aria="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 class="rules-title" data-l10n="collectT">Collection</h2><h2 class="rules-title n-sheet-t" id="n-sheet-t" hidden></h2><span class="n-count n-sheet-c" id="n-sheet-c" hidden></span></div>
-    <div class="n-buddy"><div class="resume-disc" id="n-disc" role="button" data-l10n-aria="petT"></div><div class="n-ask" id="n-ask" role="dialog" aria-live="polite" hidden></div><div class="n-skins" id="n-skins" role="group" data-l10n-aria="skinsT" hidden></div><p class="n-name" id="n-name"></p><div class="n-prev" id="n-prev" aria-hidden="true" hidden></div>
+    <div class="n-buddy"><div class="resume-disc" id="n-disc" role="button" data-l10n-aria="petT"></div><div class="n-ask" id="n-ask" role="dialog" aria-live="polite" hidden></div><div class="n-skins" id="n-skins" role="group" data-l10n-aria="skinsT" hidden></div><p class="n-name" id="n-name"></p><div class="n-prev" id="n-prev" aria-hidden="true" hidden></div><span class="n-hold"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.6" fill="currentColor"/><circle cx="8" cy="8" r="5.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".45"/></svg><span class="h-try" data-l10n="holdTry"></span><span class="h-peek" data-l10n="holdPeek"></span></span>
       <div class="n-pick" role="group" data-l10n-aria="pieceT" id="n-pick"></div></div>
     <div class="n-shelf">
       <div class="n-wallet"><span class="n-wallet-n" id="n-wallet-n"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="n-seeds-n"></b></span><span class="n-wallet-s" data-l10n="seedsHint"></span></div>
       <div class="n-h"><p class="home-h" data-l10n="medalsT">Medals</p><span class="n-count" id="n-c-medals"></span></div><div class="n-medals" id="n-medals"></div>
-      <div class="n-plates" id="n-plates" role="group" data-l10n-aria="collectT"></div><section class="n-sec" data-sec="hats" hidden><div class="n-h"><p class="home-h" data-l10n="hatsT">Hats</p><span class="n-count" id="n-c-hats"></span></div><div class="n-hats" id="n-hats" role="group" data-l10n-aria="hatsT"></div><p class="n-cap" id="n-hat-cap" aria-live="polite"></p><span class="n-hold"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.6" fill="currentColor"/><circle cx="8" cy="8" r="5.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".45"/></svg><span data-l10n="holdTry"></span></span></section>
-      <section class="n-sec" data-sec="themes" hidden><div class="n-h"><p class="home-h" data-l10n="soonThemes">Board themes</p><span class="n-count" id="n-c-themes"></span></div><div class="n-themes" id="n-themes" role="group" data-l10n-aria="soonThemes"></div><p class="n-cap" id="n-theme-cap" aria-live="polite"></p><span class="n-hold"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.6" fill="currentColor"/><circle cx="8" cy="8" r="5.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".45"/></svg><span data-l10n="holdPeek"></span></span></section>
-      <section class="n-sec" data-sec="treats" hidden><div class="n-h"><p class="home-h" data-l10n="treatsT">Treats</p><span class="n-count" id="n-c-treats"></span></div><div class="n-themes n-treats" id="n-treats" role="group" data-l10n-aria="treatsT"></div><p class="n-cap" id="n-treat-cap" aria-live="polite"></p><span class="n-hold"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="2.6" fill="currentColor"/><circle cx="8" cy="8" r="5.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".45"/></svg><span data-l10n="holdPeek"></span></span></section>
+      <div class="n-plates" id="n-plates" role="group" data-l10n-aria="collectT"></div><section class="n-sec" data-sec="hats" hidden><div class="n-h"><p class="home-h" data-l10n="hatsT">Hats</p><span class="n-count" id="n-c-hats"></span></div><div class="n-hats" id="n-hats" role="group" data-l10n-aria="hatsT"></div><p class="n-cap" id="n-hat-cap" aria-live="polite"></p></section>
+      <section class="n-sec" data-sec="themes" hidden><div class="n-h"><p class="home-h" data-l10n="soonThemes">Board themes</p><span class="n-count" id="n-c-themes"></span></div><div class="n-themes" id="n-themes" role="group" data-l10n-aria="soonThemes"></div><p class="n-cap" id="n-theme-cap" aria-live="polite"></p></section>
+      <section class="n-sec" data-sec="treats" hidden><div class="n-h"><p class="home-h" data-l10n="treatsT">Treats</p><span class="n-count" id="n-c-treats"></span></div><div class="n-themes n-treats" id="n-treats" role="group" data-l10n-aria="treatsT"></div><p class="n-cap" id="n-treat-cap" aria-live="polite"></p></section>
       <section class="n-sec" data-sec="words" hidden><div class="n-h"><p class="home-h" data-l10n="wordsT">Words</p><span class="n-count" id="n-c-words"></span></div><div class="n-words" id="n-words" role="group" data-l10n-aria="wordsT"></div><p class="n-cap" id="n-word-cap" aria-live="polite"></p></section>
       <div class="n-soonwrap"><p class="n-soonline" data-l10n="soonMore">More is coming soon</p></div>
     </div>
@@ -1873,7 +1878,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=7c86cf458d"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=aca14ad793"><\/script>')})();
 </script>
 <script>
 
@@ -2520,7 +2525,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='7c86cf458d';let updateTo=null;
+const BUILD='aca14ad793';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5798,6 +5803,7 @@ function dropFloaters(){newsClose();document.querySelectorAll('.coach').forEach(
 function showStep(which){
   dropFloaters();
   for(const k of ['title','rules','menu','play','nest','name'])$('step-'+k).hidden=which!==k;
+  if(which!=='nest')nestOpen=null;
   if(which==='name'){$('name-disc').innerHTML=buddySVG(S.piece,wornHat());const ni=$('name-in');ni.value=S.name||'';if(!matchMedia('(pointer:coarse)').matches)setTimeout(()=>ni.focus({preventScroll:true}),350)}
 
   if(which==='menu'){renderHome();cardDeco(true)}else if(which==='play')openMenu();else if(which==='nest'){renderNest();$('n-ask').hidden=true;if((store.mood||{}).asked!==todayStr())setTimeout(askMood,calm()?300:1100)}
@@ -6217,7 +6223,7 @@ function wordLine(x){const LW=store.jungle.letters||{},n=x.L.filter(l=>LW[l.id])
   return(store.jungle.words||{})[x.w]?t('wordDone',{w:x.w,h}):t('wordTodo',{w:x.w,n,t:x.L.length,d:t(TIERS[ti]),wn:worldName(w),h})}
 function renderNest(){
   {const b=$('n-skins');b.hidden=true;b.classList.remove('in','out');skinFor=null}
-  nestBuddy(true);$('n-seeds-n').textContent=store.seeds;hatCap=wornHat()||'beanie';
+  nestBuddy(true);$('n-seeds-n').textContent=store.seeds;if(!nestOpen)hatCap=wornHat()||'beanie';
 
   $('n-wallet-n').onclick=()=>{if(calm())return;const i=$('n-wallet-n').querySelector('.seed-i');i.classList.remove('sway');void i.getBoundingClientRect();i.classList.add('sway')};
   const LW=store.jungle.letters||{},LS=store.jungle.lshine||{},W=store.jungle.words||{};
@@ -6235,7 +6241,7 @@ function renderNest(){
   requestAnimationFrame(()=>edgeFade($('n-words')));
   const M=store.jungle.medals,c=[0,0,0,0,0];for(const k in M)c[seedLevel(k)]++;
   $('n-medals').innerHTML=[1,2,3,4].map(m=>`<span title="${t('medals')[m-1]}" data-medal="${m}" role="button">${medalSVG(m,c[m]?'':'class="dim"',!!c[m])}<b>${c[m]}</b></span>`).join('');
-  drawPlates();const want=nestWant;nestWant=null;showPlate(want,true);
+  drawPlates();const want=nestWant||nestOpen;nestWant=null;showPlate(want,true);
 }
 
 let nestOpen=null,nestWant=null;
@@ -6282,7 +6288,8 @@ function showPlate(sec,quiet){const st=$('step-nest'),sh=st.querySelector('.n-sh
   if(nestOpen){st.style.setProperty('--k',p.tint);$('n-sheet-t').textContent=t(p.t);syncSheet()}
   box.scrollTop=nestOpen?0:was?nestScroll:box.scrollTop;
   if(!quiet&&!calm()){const k=nestOpen?'pl-in':'pl-back';
-    st.querySelectorAll('.m-head h2:not([hidden]),.n-buddy,.n-shelf').forEach(el=>{el.classList.remove('pl-in','pl-back');void el.offsetWidth;el.classList.add(k)})}
+    st.querySelectorAll('.m-head h2:not([hidden]),.n-buddy,.n-shelf').forEach(el=>{el.classList.remove('pl-in','pl-back');void el.offsetWidth;el.classList.add(k);
+      el.addEventListener('animationend',()=>el.classList.remove('pl-in','pl-back'),{once:true})})}
   if(nestOpen)requestAnimationFrame(()=>document.querySelectorAll(`.n-sec[data-sec="${nestOpen}"] :is(.n-hats,.n-themes,.n-words)`).forEach(plateFade));
   if(!nestOpen&&was)drawPlates()}
 
@@ -6294,7 +6301,24 @@ function syncSheet(){if(!nestOpen)return;const p=PLATES.find(x=>x.sec===nestOpen
     h=`<div class="tp-card"><div class="tp-row"><div class="hearts tp-hearts ${T}">${`<svg viewBox="0 0 24 24"><use href="#${Y}"/></svg>`.repeat(3)}</div>`+
       `<div class="tp-buddy">${buddySVG(S.piece,wornHat())}</div><div class="tp-time">1:24</div></div>`+
       `<div class="tp-edge">${[1,1,2,4,4,3].map(c=>`<i style="--rc:var(--r${c})"></i>`).join('')}</div></div><p>${esc(t('treatNames')[k])}</p>`}
-  if(pv._h!==h){pv._h=h;pv.innerHTML=h}pv.hidden=!h}
+  if(pv._h!==h){pv._h=h;pv.innerHTML=h}pv.hidden=!h;thingLine()}
+
+const plateCur={};
+['n-themes','n-treats'].forEach(id=>$(id).addEventListener('pointerdown',e=>{const b=e.target.closest('button');if(b)plateCur[id]=b.dataset.b||b.dataset.t},true));
+function thingLine(){const sec=document.querySelector(`.n-sec[data-sec="${nestOpen}"]`);if(!sec)return;
+  let nm=sec.querySelector('.n-tname'),ln=sec.querySelector('.n-tstat');
+  if(!nm){nm=document.createElement('p');nm.className='n-tname';ln=document.createElement('p');ln.className='n-tstat';sec.prepend(nm,ln)}
+  let cap=(sec.querySelector('.n-cap').textContent||'').trim(),name='';
+  if(nestOpen==='hats')name=t('hatNames')[hatCap]||'';
+  if(nestOpen==='themes'){const k=plateCur['n-themes']||boardTheme();name=t('boardNames')[k]||''}
+  if(nestOpen==='treats'){const k=plateCur['n-treats']||(treatOwned(store.treat||'auto')?store.treat||'auto':'auto');name=t('treatNames')[k]||''}
+  if(nestOpen==='words'){const m=cap.match(/^([^\s:：]+)\s*[:：]\s*/);if(m){name=m[1];cap=cap.slice(m[0].length)}}
+  if(name&&cap.startsWith(name))cap=cap.slice(name.length).replace(/^\s*[·:：]\s*/,'');
+  if(nestOpen==='hats')cap=cap.replace(/\s*[(（][^()（）]*[)）]\s*$/,'');
+  cap=cap.charAt(0).toUpperCase()+cap.slice(1);
+  const ease=el=>{if(calm())return;el.classList.remove('in');void el.offsetWidth;el.classList.add('in')};
+  if(nm.textContent!==name){nm.textContent=name;ease(nm)}if(ln.textContent!==cap){ln.textContent=cap;ease(ln)}}
+
 new MutationObserver(()=>{if(nestOpen)requestAnimationFrame(syncSheet)}).observe(document.querySelector('#step-nest .n-shelf'),{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed']});
 
 function plateFade(el){const f=()=>{el.classList.toggle('more',el.scrollHeight>el.clientHeight+2);el.classList.toggle('end',el.scrollTop+el.clientHeight>=el.scrollHeight-2)};
@@ -6347,7 +6371,7 @@ function rowMouse(el){
 }
 
 (function pageMouse(){
-  const SCROLLERS='.sheet,.overlay.full,.rw,.intro';
+  const SCROLLERS='.n-sec .n-hats,.n-sec .n-themes,.n-sec .n-words,.sheet,.overlay.full,.rw,.intro';
   let m=null,glide=0;
   const stop=()=>cancelAnimationFrame(glide);
   addEventListener('pointerdown',e=>{stop();
@@ -6481,7 +6505,7 @@ function drawHats(W){
     ?`<button data-h="${x.h}" aria-pressed="${wornHat()===x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}</button>`
     :x.shop?`<button class="forsale" data-h="${x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}${priceTag(x.h)}</button>`
     :`<button class="locked" data-h="${x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}${LOCK_ICON}</button>`).join('');
-  const cap=()=>{const c=$('n-hat-cap');c.textContent=hatLine(HAT_SHELF.find(x=>x.h===hatCap));c.classList.remove('in');void c.offsetWidth;c.classList.add('in')};
+  const cap=()=>{const c=$('n-hat-cap');c._say=null;c.textContent=hatLine(HAT_SHELF.find(x=>x.h===hatCap));c.classList.remove('in');void c.offsetWidth;c.classList.add('in')};
   box.querySelectorAll('button').forEach(b=>{const x=HAT_SHELF.find(y=>y.h===b.dataset.h);
     b.onclick=()=>{if(performance.now()-(b._held||0)<400)return;hatCap=x.h;
       if(!hatOwned(x.h)&&x.shop)return shopTap(x.h,b,$('n-hat-cap'),()=>{store.hat=x.h;save();Mascot.setHat(wornHat());nestBuddy();drawHats(W);bobNest();sayCap($('n-hat-cap'),()=>t('shopGot',{h:t('hatNames')[x.h]}))});

@@ -1811,7 +1811,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=7855146059"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=5d0acaa209"><\/script>')})();
 </script>
 <script>
 
@@ -2458,7 +2458,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='7855146059';let updateTo=null;
+const BUILD='5d0acaa209';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6325,9 +6325,9 @@ function previewBuddy(k){
   d.innerHTML=myst?pieceSVG(k):buddySVG(k,wornHat());d.classList.add('trying');d.classList.toggle('mystery',myst);$('n-name').textContent=t('names')[k];
 
   const p=SHOP[k]&&SHOP[k].price,can=p&&store.seeds>=p;buyChip(p?k:null);
-  if(p){const q=$('n-ask');clearTimeout(askMood.t);q.hidden=true;q.classList.remove('out');clearTimeout(buyChip.t);buyChip.t=setTimeout(endPreview,12000)}
-  else{const[have,all]=BUDDY_GOAL[BUDDY_LOCKS[k]]();a.innerHTML=`<p class="reply">${t('buddyLock_'+BUDDY_LOCKS[k],{n:t('names')[k],have,all})}</p>`;
-    a.classList.remove('out');a.hidden=false;clearTimeout(askMood.t);askMood.t=setTimeout(closeAsk,6000)}
+
+  if(!p)goalChip(k);
+  {const q=$('n-ask');clearTimeout(askMood.t);q.hidden=true;q.classList.remove('out');clearTimeout(buyChip.t);buyChip.t=setTimeout(endPreview,12000)}
   nestFace('happy',900);Sound.play('pet',0,k);
 }
 function buyChip(k){let c=$('n-buychip');if(!k){if(c)c.remove();return}
@@ -6336,6 +6336,10 @@ function buyChip(k){let c=$('n-buychip');if(!k){if(c)c.remove();return}
   c.innerHTML=`${SEED_ICON}<b>${p}</b><span>· ${can?t('homeBtn'):t('moreToGo',{m:p-store.seeds})}</span>`;
   c.setAttribute('aria-label',t(can?'shopBuddyAsk':'shopBuddyShort',{n:t('names')[k],p,have:store.seeds,m:p-store.seeds}));
   c.onclick=e=>{e.stopPropagation();if(can)buyBuddy(k)};c.classList.remove('pop');void c.offsetWidth;if(!calm())c.classList.add('pop')}
+function goalChip(k){buyChip(null);const L=BUDDY_LOCKS[k],[have,all]=BUDDY_GOAL[L](),w=L.replace(/(Gold|All)$/,'');
+  const c=document.createElement('button');c.id='n-buychip';c.className='n-buychip short goal';c.disabled=true;$('n-disc').after(c);
+  c.innerHTML=`<svg class="seed-i" viewBox="0 0 24 24" aria-hidden="true">${medalArt(3)}</svg><b>${have}/${all}</b><span>· ${worldName(w)}</span>`;
+  c.setAttribute('aria-label',t('buddyLock_'+L,{n:t('names')[k],have,all}));if(!calm())c.classList.add('pop')}
 function endPreview(){buyChip(null);if(!nestPreview)return;nestPreview=null;$('n-disc').classList.remove('trying','mystery');$('n-pick').querySelectorAll('.armed').forEach(x=>x.classList.remove('armed'));nestBuddy()}
 
 const shelfSort=(list,rank)=>list.map((x,i)=>[x,i]).sort((a,b)=>rank(a[0])-rank(b[0])||a[1]-b[1]).map(p=>p[0]);
@@ -6405,7 +6409,7 @@ function answerMood(m){
 function closeAsk(){const a=$('n-ask');if(a.hidden||a.classList.contains('out'))return;clearTimeout(askMood.t);endPreview();
   if(moodOpen&&performance.now()-askMood.at<4000){store.mood=Object.assign({},store.mood,{asked:askMood.prev});save()}moodOpen=false;if(calm()){a.hidden=true;return}a.classList.add('out');setTimeout(()=>{a.hidden=true;a.classList.remove('out')},340)}
 
-document.addEventListener('pointerdown',e=>{if(nestPreview&&SHOP[nestPreview]&&$('n-ask').hidden&&!e.target.closest('#n-buychip,#n-disc,#n-pick .locked,#buyask'))endPreview()});
+document.addEventListener('pointerdown',e=>{if(nestPreview&&$('n-ask').hidden&&!e.target.closest('#n-buychip,#n-disc,#n-pick .locked,#buyask'))endPreview()});
 document.addEventListener('pointerdown',e=>{if(!moodOpen&&!$('n-ask').hidden&&!e.target.closest('#n-ask,#n-disc,#n-pick .locked'))closeAsk()});
 
 document.addEventListener('click',e=>{if(moodOpen&&!$('n-ask').hidden&&performance.now()-askMood.at>=GRACE&&!e.target.closest('#n-ask,#n-disc'))closeAsk()});

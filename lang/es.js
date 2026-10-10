@@ -412,7 +412,8 @@
 "soonMore":"Pronto habrá más",
 "holdTry":"Mantén para probar",
 "holdPeek":"Mantén para ver",
-"noHat":"Sin sombrero"
+"noHat":"Sin sombrero",
+"letGoWear":"Suelta para ponértelo"
 },
 s:{
 "owl":{"first":["Buen comienzo.","Con calma. Bien.","Uno encontrado. Respira."],"row":["Muy pulcro.","Esa línea ya está.","Tranquilo y ordenado."],"mistake":["No importa. Mira otra vez.","Con calma. Otra vez.","Hm. Ese no."],"two":["Dos más. Sin prisa.","Casi. Con calma.","Ya casi, tranquilo."],"idle":["Tómate el tiempo que necesites.","Pensar en silencio está bien.","Esperaré contigo."],"win":["Precioso.","Muy bien hecho, de verdad.","Todos los nidos llenos."]},

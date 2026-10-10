@@ -873,6 +873,18 @@ html.calm .medal-wrap.shine::before,html.calm .medal-wrap.shine::after,html.calm
 .ba-buy{gap:5px}.ba-buy:disabled{opacity:.5;cursor:default}
 .rw-btns.two .btn{min-width:0;width:100%;justify-content:center;text-align:center;font-size:16px;padding-left:10px;padding-right:10px}
 
+#reward{transition:opacity .55s ease}
+#reward .rw-kick{opacity:0;transform:translateY(-8px);transition:opacity .45s ease .25s,transform .55s cubic-bezier(.3,1.2,.5,1) .25s}
+#reward .rw-rays{transform:scale(.35);transition:opacity .8s ease .4s,transform 1.2s cubic-bezier(.2,1,.4,1) .4s}
+#reward .rw-glow{opacity:0;transform:scale(.6);transition:opacity .7s ease .45s,transform 1s cubic-bezier(.3,1.2,.5,1) .45s}
+#reward .rw-art{transform:scale(.35) translateY(16px);transition:transform .8s cubic-bezier(.3,1.45,.45,1) .65s,opacity .35s ease .65s}
+#reward .rw-name{opacity:0;transform:translateY(8px);transition:opacity .45s ease 1.05s,transform .55s cubic-bezier(.3,1.2,.5,1) 1.05s}
+#reward .rw-sub{opacity:0;transition:opacity .5s ease 1.25s}
+#reward .rw-btns{transition-delay:1.5s}
+#reward.in .rw-kick,#reward.in .rw-name,#reward.in .rw-art{opacity:1;transform:none}#reward.in .rw-rays{opacity:.8;transform:none}#reward.in .rw-glow{opacity:1;transform:none}#reward.in .rw-sub{opacity:1}
+#reward.out .rw-kick,#reward.out .rw-name,#reward.out .rw-sub,#reward.out .rw-btns,#reward.out .rw-art,#reward.out .rw-rays,#reward.out .rw-glow{transition-delay:0s}
+html.calm #reward .rw-kick,html.calm #reward .rw-name,html.calm #reward .rw-glow{transform:none}html.calm #reward .rw-art{transform:none;transition:opacity .6s ease .45s}
+html.calm #reward .rw-rays{transform:none;transition:opacity .6s ease .3s}
 html.calm .rw{transition:opacity .5s ease}html.calm .rw.out{transition-duration:.3s}html.calm .rw-rays,html.calm .rw-art{transform:none;transition:opacity .6s ease .25s}html.calm .rw-rays::before,html.calm .rw-glow{animation:none}
 
 .rw-tease{animation:rwTease .62s cubic-bezier(.3,1.4,.5,1)}
@@ -1761,7 +1773,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=8ab18e9dc2"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e8540a724c"><\/script>')})();
 </script>
 <script>
 
@@ -2408,7 +2420,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='8ab18e9dc2';let updateTo=null;
+const BUILD='e8540a724c';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -4053,7 +4065,7 @@ $('res-back').onclick=()=>{$('res-back').hidden=true;if(won&&lastWin)showWin(las
 
 const Reward=(function(){
   let queue=[],done=null,el=null,shownAt=0,toNest=false,toWorld=null,cur=null;
-  const RW_READY=950;
+  const RW_READY=1750;
 
   function useOf(r){
     if(r.k==='hat'&&wornHat()!==r.id)return{label:t('rwWear'),act(){store.hat=r.id;save();Mascot.setHat(wornHat())}};
@@ -4119,7 +4131,7 @@ const Reward=(function(){
       queue=list.slice(1);done=then||null;toNest=false;toWorld=null;
       if(from&&!calm()){from.classList.remove('rw-tease');void from.offsetWidth;from.classList.add('rw-tease');setTimeout(()=>from.classList.remove('rw-tease'),700)}
       Sound.play('tease');
-      setTimeout(()=>{draw(list[0]);if(ting)Sound.play('medal',3)},calm()?650:780);
+      setTimeout(()=>{draw(list[0]);if(ting)setTimeout(()=>Sound.play('medal',3),calm()?450:700)},calm()?650:780);
     },
     view:r=>view(r),
     open:()=>!!el&&!el.hidden,

@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n} arrive quand toutes les étapes de la Nébuleuse sont en or. Pour l’instant : {have} sur {all}.",
 "shopBuddyAsk":"{n} · {p} graines. Vous en avez {have}.",
 "shopBuddyShort":"{n} · {p} graines. Vous en avez {have}, encore {m} à trouver.",
+"moreToGo":"encore {m}",
 "homeBtn":"Accueillir",
 "reefW":"Récif de corail",
 "reefShut":"S’ouvre après le sentier Facile de la Nébuleuse",

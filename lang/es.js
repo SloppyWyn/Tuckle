@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n} llega cuando todos los niveles de la Nebulosa tengan oro. Por ahora: {have} de {all}.",
 "shopBuddyAsk":"{n} · {p} semillas. Tienes {have}.",
 "shopBuddyShort":"{n} · {p} semillas. Tienes {have}; te faltan {m}.",
+"moreToGo":"faltan {m}",
 "homeBtn":"Llevar a casa",
 "reefW":"Arrecife de coral",
 "reefShut":"Se abre tras el camino Fácil de la Nebulosa",

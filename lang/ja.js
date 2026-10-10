@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"星雲の全ステージで金メダルを取ると{n}が来ます。いま{all}中{have}。",
 "shopBuddyAsk":"{n}・タネ{p}個。持っているタネ：{have}個",
 "shopBuddyShort":"{n}・タネ{p}個。持っているタネ：{have}個、あと{m}個！",
+"moreToGo":"あと{m}",
 "homeBtn":"おうちに迎える",
 "reefW":"サンゴ礁",
 "reefShut":"星雲の「かんたん」を終えると開きます",

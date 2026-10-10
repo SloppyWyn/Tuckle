@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n} chega quando todas as fases da Nebulosa tiverem ouro. Até agora: {have} de {all}.",
 "shopBuddyAsk":"{n} · {p} sementes. Você tem {have}.",
 "shopBuddyShort":"{n} · {p} sementes. Você tem {have}; faltam {m}.",
+"moreToGo":"faltam {m}",
 "homeBtn":"Levar para casa",
 "reefW":"Recife de coral",
 "reefShut":"Abre depois da trilha Fácil da Nebulosa",

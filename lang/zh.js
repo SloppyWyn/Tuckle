@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"星雲每一關都拿到金牌時，{n}就會加入。目前 {all} 關中的 {have} 關。",
 "shopBuddyAsk":"{n}・{p} 顆種子。你有 {have} 顆。",
 "shopBuddyShort":"{n}・{p} 顆種子。你有 {have} 顆，還差 {m} 顆。",
+"moreToGo":"還差 {m}",
 "homeBtn":"帶回家",
 "reefW":"珊瑚礁",
 "reefShut":"完成星雲的「簡單」路線後開啟",

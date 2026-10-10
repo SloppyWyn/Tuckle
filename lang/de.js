@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n} kommt, wenn jede Stufe im Sternennebel Gold hat. Bisher: {have} von {all}.",
 "shopBuddyAsk":"{n} · {p} Samen. Du hast {have}.",
 "shopBuddyShort":"{n} · {p} Samen. Du hast {have}, es fehlen noch {m}.",
+"moreToGo":"noch {m}",
 "homeBtn":"Nach Hause holen",
 "reefW":"Korallenriff",
 "reefShut":"Öffnet nach dem leichten Pfad im Sternennebel",

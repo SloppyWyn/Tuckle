@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n} dołączy, gdy każdy etap Mgławicy będzie miał złoto. Na razie {have} z {all}.",
 "shopBuddyAsk":"{n} · {p} nasionek. Masz {have}.",
 "shopBuddyShort":"{n} · {p} nasionek. Masz {have}, brakuje jeszcze {m}.",
+"moreToGo":"jeszcze {m}",
 "homeBtn":"Zabierz do domu",
 "reefW":"Rafa koralowa",
 "reefShut":"Otworzy się po łatwym szlaku Mgławicy",

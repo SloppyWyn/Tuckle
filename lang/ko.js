@@ -389,6 +389,7 @@
 "buddyLock_nebAll":"{n}: 성운의 모든 단계가 금메달이면 와요. 지금까지: {all}개 중 {have}.",
 "shopBuddyAsk":"{n} · 씨앗 {p}개. 가진 씨앗: {have}개",
 "shopBuddyShort":"{n} · 씨앗 {p}개. 가진 씨앗: {have}개, {m}개만 더 모아요!",
+"moreToGo":"{m}개 더",
 "homeBtn":"집으로 데려오기",
 "reefW":"산호초",
 "reefShut":"성운 쉬움 길을 끝내면 열려요",

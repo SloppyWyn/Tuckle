@@ -1934,7 +1934,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=914d6c0256"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=c4e956a1b2"><\/script>')})();
 </script>
 <script>
 
@@ -2612,7 +2612,7 @@ store.jungle=Object.assign({medals:{},shine:{},sel:'e1'},store.jungle);store.jun
 
 const HAT_WORD={explorer:'JUNGLE',crown:'KING',mane:'LION',earmuffs:'CHILLY',trapper:'POLE',fishhat:'FISH',bamboohat:'BAMBOO',momohat:'MOMO',yetihat:'YETI',mallowhat:'TOASTY',sunhat:'HEAT',volcanohat:'LAVA',spacehelmet:'COSMOS',moonband:'MOON',novacrown:'NOVA',shellcrown:'SHELLS',clamhat:'CLAM',kelpwreath:'KELP',hornhood:'DRAGON',wizardhat:'WAND',runecircle:'RUNE'};
 
-const SHOP={heart:{kind:'treat',price:180},flowercrown:{kind:'hat',price:180,w:'jungle'},icecrown:{kind:'hat',price:180,w:'ice'},leafy:{kind:'board',price:300,w:'jungle'},frost:{kind:'board',price:300,w:'ice'},toucan:{kind:'buddy',price:500,w:'jungle'},orca:{kind:'buddy',price:500,w:'ice'},blossomcrown:{kind:'hat',price:180,w:'shan'},blossom:{kind:'board',price:300,w:'shan'},yak:{kind:'buddy',price:500,w:'shan'},embercrown:{kind:'hat',price:180,w:'gala'},lava:{kind:'board',price:300,w:'gala'},iguana:{kind:'buddy',price:500,w:'gala'},planethalo:{kind:'hat',price:180,w:'neb'},starlight:{kind:'board',price:300,w:'neb'},cometfox:{kind:'buddy',price:500,w:'neb'},snorkel:{kind:'hat',price:180,w:'reef'},lagoon:{kind:'board',price:300,w:'reef'},seahorse:{kind:'buddy',price:500,w:'reef'},knighthelm:{kind:'hat',price:180,w:'vale'},spellbook:{kind:'board',price:300,w:'vale'},dragon:{kind:'buddy',price:500,w:'vale'}};
+const SHOP={heart:{kind:'treat',price:180},flowercrown:{kind:'hat',price:180,w:'jungle'},icecrown:{kind:'hat',price:180,w:'ice'},leafy:{kind:'board',price:300,w:'jungle'},frost:{kind:'board',price:300,w:'ice'},toucan:{kind:'buddy',price:500,w:'jungle'},orca:{kind:'buddy',price:500,w:'ice'},blossomcrown:{kind:'hat',price:180,w:'shan'},blossom:{kind:'board',price:300,w:'shan'},yak:{kind:'buddy',price:500,w:'shan'},embercrown:{kind:'hat',price:180,w:'gala'},lava:{kind:'board',price:300,w:'gala'},iguana:{kind:'buddy',price:500,w:'gala'},planethalo:{kind:'hat',price:180,w:'neb'},starlight:{kind:'board',price:300,w:'neb'},cometfox:{kind:'buddy',price:500,w:'neb'},snorkel:{kind:'hat',price:180,w:'reef'},lagoon:{kind:'board',price:300,w:'reef'},seahorse:{kind:'buddy',price:500,w:'reef'},knighthelm:{kind:'hat',price:180,w:'vale'},spellbook:{kind:'board',price:300,w:'vale'}};
 const bought=k=>!!(store.owned||{})[k];
 function buy(k){const it=SHOP[k];if(!it||bought(k)||store.seeds<it.price)return false;store.seeds-=it.price;store.owned=Object.assign({},store.owned,{[k]:1});save();return true}
 function hatOwned(h){return h==='beanie'||bought(h)||!!(HAT_WORD[h]&&(store.jungle.words||{})[HAT_WORD[h]])}
@@ -2644,7 +2644,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='914d6c0256';let updateTo=null;
+const BUILD='c4e956a1b2';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5093,7 +5093,7 @@ const zarLook=L=>{const o=L.line,m=s=>x=>s<0?(100-x).toFixed(1):x;
     `<ellipse cx="27.4" cy="56" rx="5" ry="2.8" fill="${BLUSH}" opacity=".7"/><ellipse cx="72.6" cy="56" rx="5" ry="2.8" fill="${BLUSH}" opacity=".7"/>${sparkles}`;
 
   const extra=`<g class="tail"><path d="M74 90C86 90 92 84 90.6 75" fill="none" stroke="${o}" stroke-width="6.6" stroke-linecap="round"/><path d="M74 90C86 90 92 84 90.6 75" fill="none" stroke="${L.wing}" stroke-width="4.2" stroke-linecap="round"/><path d="M90.6 76.6Q85.6 72 88.6 66.4Q90 68 91.4 66.2Q95 70.6 90.6 76.6Z" fill="${L.crest}" stroke="${o}" stroke-width="1.5" stroke-linejoin="round"/></g>`;
-  return{body,top,topS:.9,extra,eyes:[[38,44],[62,44]],pw:6,ph:6.4,lid:L.lidc,cy:52,rest:{fill:`url(#l-zar-${L.id})`,line:o},
+  return{body,top,topS:.9,extra,eyes:[[38,44],[62,44]],pw:6,ph:6.4,lid:L.lidc,cy:55.5,rest:{fill:`url(#l-zar-${L.id})`,line:o},
     iris:L.iris?`url(#i-zar-${L.id})`:undefined,core:L.core,irisLine:L.irisLine,glint:L.glint,
     fit:{hat:{x:50,y:30,r:-5,s:.95},ear:{acc:true,l:[29,31],r:[71,31],top:15,m:7},flap:[[0,48],[0,48]],mane:{x:50,y:58,s:1.06},band:{l:[16,42],r:[84,42],top:24,at:.26}}}};
 const ZAR={jade:{id:'jade',line:'#2F6B4C',hornLine:'#A07E3A',wing:'#7CCB98',wingRib:'#3F8A62',crest:'#F2D27A',scale:'#3F8A62',scaleOp:.45,
@@ -5129,8 +5129,9 @@ function eyeMarkup(T,x,y,live){
 }
 function pieceSymbols(){
   for(const[k,T]of Object.entries(PIECES)){
-    const s=document.getElementById('p-'+k);
-    if(!s)continue;
+    let s=document.getElementById('p-'+k);
+
+    if(!s){const ref=document.querySelector('symbol[id^="p-"]');if(!ref)continue;s=document.createElementNS('http://www.w3.org/2000/svg','symbol');s.id='p-'+k;ref.parentNode.appendChild(s)}
     s.innerHTML=T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,false)).join('');
     s.setAttribute('viewBox',pieceVB(k));
   }
@@ -6548,7 +6549,8 @@ function dailyCard(){
 }
 setInterval(()=>{if(!intro.hidden&&!$('step-menu').hidden)dailyCard()},30000);
 
-const GIFTS=['poodle'];
+const GIFTS=['poodle','dragon'];
+
 const LATE_WORLDS=['gala','neb','reef','vale'];
 const LATE_SKINS=['poodle:midnight'];
 function retroRewards(){

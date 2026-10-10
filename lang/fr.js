@@ -177,7 +177,7 @@
 "lockedTier":"S’ouvre après l’étape {n} en {d}",
 "lockedLetter":"La lettre {ch} s’ouvre après l’étape {n}",
 "newsT":"Nouveautés",
-"news":["Un nouveau monde : le Récif de corail, avec Pip, Inky et Marina","Minuit, un nouveau look étoilé pour Pudding. Merci, Alexandra, d’avoir terminé toutes les étapes et tous les mots de la Nébuleuse","Un nouveau monde : la Nébuleuse, avec Luna, Mira et Vega","Un nouveau monde : les Galápagos, avec Lola, Jorge et Iggy"],
+"news":["Un nouveau monde : le Récif de corail, avec Pip, Inky et Marina","Terminez toutes les étapes de la Nébuleuse pour gagner Minuit, un look étoilé pour Pudding. Merci, Alexandra, de les avoir toutes terminées, et chaque mot","Un nouveau monde : la Nébuleuse, avec Luna, Mira et Vega","Un nouveau monde : les Galápagos, avec Lola, Jorge et Iggy"],
 "jungleSub":"{n} étapes sur {t}",
 "stageLabel":"{w} · Étape {n}",
 "stageLabelT":"{w} · {d} · Étape {n}",
@@ -401,7 +401,10 @@
 "keepGoingMd":"Continuer sans madeleines",
 "treatLock_madeleine":"Finissez le sentier Moyen du Récif de corail pour débloquer les madeleines.",
 "buddyLock_reefGold":"{n} arrive quand {all} étapes du Récif de corail sont en or. Pour l’instant : {have}.",
-"buddyLock_reefAll":"{n} arrive quand toutes les étapes du Récif de corail sont en or. Pour l’instant : {have} sur {all}."
+"buddyLock_reefAll":"{n} arrive quand toutes les étapes du Récif de corail sont en or. Pour l’instant : {have} sur {all}.",
+"rwSkinT":"Nouveau look !",
+"rwSkinS":"Choisissez-le dans la Collection : touchez {n}, puis un look.",
+"skinLock_midnight":"Terminez toutes les étapes de la Nébuleuse pour débloquer Minuit."
 },
 s:{
 "owl":{"first":["Joli début.","Tranquillement. Bien.","Un de trouvé. Respirez."],"row":["Bien fait.","Cette ligne est réglée.","Calme et soigné."],"mistake":["Ce n’est rien. Regardez encore.","Doucement. Encore une fois.","Hm. Pas celui-là."],"two":["Plus que deux. Rien ne presse.","Presque. Tranquillement.","Presque fini, sans hâte."],"idle":["Prenez votre temps.","Réfléchir en silence, c’est bien.","J’attends avec vous."],"win":["Magnifiquement résolu.","Vraiment bien joué.","Tous les nids sont pleins."]},

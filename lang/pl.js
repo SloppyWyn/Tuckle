@@ -177,7 +177,7 @@
 "lockedTier":"Otworzy się po etapie {n} na poziomie „{d}”",
 "lockedLetter":"Litera {ch} otworzy się po etapie {n}",
 "newsT":"Co nowego",
-"news":["Nowy świat: Rafa koralowa z Pipem, Inky i Mariną","Północ — gwiaździsty nowy wygląd Puddinga. Dziękujemy, Aleksandro, za ukończenie wszystkich etapów i słów Mgławicy","Nowy świat: Mgławica z Luną, Mirą i Vegą","Nowy świat: Galapagos z Lolą, Jorge i Iggym"],
+"news":["Nowy świat: Rafa koralowa z Pipem, Inky i Mariną","Ukończ wszystkie etapy Mgławicy, a zdobędziesz Północ, gwiaździsty wygląd Puddinga. Dziękujemy, Aleksandro, za ukończenie ich wszystkich i każdego słowa","Nowy świat: Mgławica z Luną, Mirą i Vegą","Nowy świat: Galapagos z Lolą, Jorge i Iggym"],
 "jungleSub":"{n} z {t} etapów",
 "stageLabel":"{w} · etap {n}",
 "stageLabelT":"{w} · {d} · etap {n}",
@@ -401,7 +401,10 @@
 "keepGoingMd":"Graj bez magdalenek",
 "treatLock_madeleine":"Ukończ średni szlak Rafy koralowej, by odblokować magdalenki.",
 "buddyLock_reefGold":"{n} dołączy, gdy {all} etapów Rafy koralowej będzie miało złoto. Na razie {have}.",
-"buddyLock_reefAll":"{n} dołączy, gdy każdy etap Rafy koralowej będzie miał złoto. Na razie {have} z {all}."
+"buddyLock_reefAll":"{n} dołączy, gdy każdy etap Rafy koralowej będzie miał złoto. Na razie {have} z {all}.",
+"rwSkinT":"Nowy wygląd!",
+"rwSkinS":"Wybierz go w Kolekcji: dotknij {n} i wybierz wygląd.",
+"skinLock_midnight":"Ukończ wszystkie etapy Mgławicy, by odblokować Północ."
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

@@ -177,7 +177,7 @@
 "lockedTier":"Abre depois da fase {n} no {d}",
 "lockedLetter":"A letra {ch} abre depois da fase {n}",
 "newsT":"Novidades",
-"news":["Um mundo novo: o Recife de coral, com Pip, Inky e Marina","Meia-noite, um novo visual estrelado para o Pudding. Obrigado, Alexandra, por concluir todas as etapas e palavras da Nebulosa","Um mundo novo: a Nebulosa, com Luna, Mira e Vega","Um mundo novo: Galápagos, com Lola, Jorge e Iggy"],
+"news":["Um mundo novo: o Recife de coral, com Pip, Inky e Marina","Conclua todas as etapas da Nebulosa e ganhe a Meia-noite, um visual estrelado para o Pudding. Obrigado, Alexandra, por concluir todas, e cada palavra","Um mundo novo: a Nebulosa, com Luna, Mira e Vega","Um mundo novo: Galápagos, com Lola, Jorge e Iggy"],
 "jungleSub":"{n} de {t} fases",
 "stageLabel":"{w} · Fase {n}",
 "stageLabelT":"{w} · {d} · Fase {n}",
@@ -401,7 +401,10 @@
 "keepGoingMd":"Continuar sem madeleines",
 "treatLock_madeleine":"Termine a trilha Média do Recife de coral para liberar as madeleines.",
 "buddyLock_reefGold":"{n} chega quando {all} fases do Recife de coral tiverem ouro. Até agora: {have}.",
-"buddyLock_reefAll":"{n} chega quando todas as fases do Recife de coral tiverem ouro. Até agora: {have} de {all}."
+"buddyLock_reefAll":"{n} chega quando todas as fases do Recife de coral tiverem ouro. Até agora: {have} de {all}.",
+"rwSkinT":"Novo visual!",
+"rwSkinS":"Escolha na Coleção: toque em {n} e escolha um visual.",
+"skinLock_midnight":"Conclua todas as etapas da Nebulosa para liberar a Meia-noite."
 },
 s:{
 "owl":{"first":["Bom começo.","Com calma. Bom.","Um encontrado. Respire."],"row":["Bem feito.","Essa linha está resolvida.","Calmo e arrumado."],"mistake":["Não tem problema. Olhe de novo.","Com calma. Mais uma vez.","Hm. Esse não."],"two":["Mais dois. Sem pressa.","Quase lá. Com calma.","Quase pronto, tranquilo."],"idle":["Leve o tempo que precisar.","Pensar em silêncio é bom.","Vou esperar com você."],"win":["Lindamente resolvido.","Muito bem, de verdade.","Todos os ninhos cheios."]},

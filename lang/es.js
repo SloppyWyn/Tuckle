@@ -177,7 +177,7 @@
 "lockedTier":"Se abre tras el nivel {n} en {d}",
 "lockedLetter":"La letra {ch} se abre tras el nivel {n}",
 "newsT":"Novedades",
-"news":["Un mundo nuevo: el Arrecife de coral, con Pip, Inky y Marina","Medianoche, un nuevo look estrellado para Pudding. Gracias, Alexandra, por completar todas las etapas y palabras de la Nebulosa","Un mundo nuevo: la Nebulosa, con Luna, Mira y Vega","Un mundo nuevo: las Galápagos, con Lola, Jorge e Iggy"],
+"news":["Un mundo nuevo: el Arrecife de coral, con Pip, Inky y Marina","Completa todas las etapas de la Nebulosa y gana Medianoche, un look estrellado para Pudding. Gracias, Alexandra, por completarlas todas, y cada palabra","Un mundo nuevo: la Nebulosa, con Luna, Mira y Vega","Un mundo nuevo: las Galápagos, con Lola, Jorge e Iggy"],
 "jungleSub":"{n} de {t} niveles",
 "stageLabel":"{w} · Nivel {n}",
 "stageLabelT":"{w} · {d} · Nivel {n}",
@@ -401,7 +401,10 @@
 "keepGoingMd":"Seguir sin magdalenas",
 "treatLock_madeleine":"Termina el camino Medio del Arrecife de coral para desbloquear las magdalenas.",
 "buddyLock_reefGold":"{n} llega cuando {all} niveles del Arrecife de coral tengan oro. Por ahora: {have}.",
-"buddyLock_reefAll":"{n} llega cuando todos los niveles del Arrecife de coral tengan oro. Por ahora: {have} de {all}."
+"buddyLock_reefAll":"{n} llega cuando todos los niveles del Arrecife de coral tengan oro. Por ahora: {have} de {all}.",
+"rwSkinT":"¡Nuevo look!",
+"rwSkinS":"Elígelo en la Colección: toca a {n} y escoge un look.",
+"skinLock_midnight":"Completa todas las etapas de la Nebulosa para desbloquear Medianoche."
 },
 s:{
 "owl":{"first":["Buen comienzo.","Con calma. Bien.","Uno encontrado. Respira."],"row":["Muy pulcro.","Esa línea ya está.","Tranquilo y ordenado."],"mistake":["No importa. Mira otra vez.","Con calma. Otra vez.","Hm. Ese no."],"two":["Dos más. Sin prisa.","Casi. Con calma.","Ya casi, tranquilo."],"idle":["Tómate el tiempo que necesites.","Pensar en silencio está bien.","Esperaré contigo."],"win":["Precioso.","Muy bien hecho, de verdad.","Todos los nidos llenos."]},

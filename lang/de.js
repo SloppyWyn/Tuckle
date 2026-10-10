@@ -177,7 +177,7 @@
 "lockedTier":"Öffnet nach Stufe {n} auf {d}",
 "lockedLetter":"Buchstabe {ch} öffnet nach Stufe {n}",
 "newsT":"Neuigkeiten",
-"news":["Eine neue Welt: das Korallenriff mit Pip, Inky und Marina","Mitternacht, ein neuer Sternenlook für Pudding. Danke, Alexandra, dass du alle Etappen und Wörter im Sternennebel geschafft hast","Eine neue Welt: der Sternennebel mit Luna, Mira und Vega","Eine neue Welt: die Galápagos mit Lola, Jorge und Iggy"],
+"news":["Eine neue Welt: das Korallenriff mit Pip, Inky und Marina","Schaffe alle Etappen im Sternennebel und hol dir Mitternacht, einen Sternenlook für Pudding. Danke, Alexandra, dass du sie alle geschafft hast, und jedes Wort","Eine neue Welt: der Sternennebel mit Luna, Mira und Vega","Eine neue Welt: die Galápagos mit Lola, Jorge und Iggy"],
 "jungleSub":"{n} von {t} Stufen",
 "stageLabel":"{w} · Stufe {n}",
 "stageLabelT":"{w} · {d} · Stufe {n}",
@@ -401,7 +401,10 @@
 "keepGoingMd":"Ohne Madeleines weiterspielen",
 "treatLock_madeleine":"Schaffe den mittleren Pfad im Korallenriff, um Madeleines freizuschalten.",
 "buddyLock_reefGold":"{n} kommt, wenn {all} Stufen im Korallenriff Gold haben. Bisher: {have}.",
-"buddyLock_reefAll":"{n} kommt, wenn jede Stufe im Korallenriff Gold hat. Bisher: {have} von {all}."
+"buddyLock_reefAll":"{n} kommt, wenn jede Stufe im Korallenriff Gold hat. Bisher: {have} von {all}.",
+"rwSkinT":"Neuer Look!",
+"rwSkinS":"Wähl ihn in der Sammlung: tippe auf {n} und such dir einen Look aus.",
+"skinLock_midnight":"Schaffe alle Etappen im Sternennebel, um Mitternacht freizuschalten."
 },
 s:{
 "owl":{"first":["Guter Anfang.","Ruhig. Gut.","Einer gefunden. Atme durch."],"row":["Schön gemacht.","Diese Zeile ist erledigt.","Ruhig und ordentlich."],"mistake":["Schon gut. Schau nochmal.","Sachte. Noch einmal.","Hm. Der nicht."],"two":["Noch zwei. Keine Eile.","Fast. Ganz ruhig.","Fast fertig, ganz entspannt."],"idle":["Lass dir Zeit.","Stilles Nachdenken ist gut.","Ich warte mit dir."],"win":["Wunderschön gelöst.","Wirklich gut gemacht.","Alle Nester sind voll."]},

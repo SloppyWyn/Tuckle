@@ -1878,7 +1878,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=baf761e3b3"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=cd19ab88ad"><\/script>')})();
 </script>
 <script>
 
@@ -2525,7 +2525,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='baf761e3b3';let updateTo=null;
+const BUILD='cd19ab88ad';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6381,7 +6381,7 @@ function rowMouse(el){
     if(!el||el.scrollHeight<=el.clientHeight+1||e.target.closest('input,textarea,select,[contenteditable],#n-disc,.board'))return;
     m={el,tgt:e.target,x:e.clientX,y:e.clientY,st:el.scrollTop,on:false,v:0,t:performance.now(),ly:e.clientY}},true);
   addEventListener('pointermove',e=>{if(!m)return;
-    for(let n=m.tgt;n&&n!==m.el;n=n.parentNode)if(n._holding){m=null;return}
+    for(let n=m.tgt;n;n=n.parentNode){if(n._holding){m=null;return}if(n===m.el)break}
     const dx=e.clientX-m.x,dy=e.clientY-m.y;
     if(!m.on){if(Math.hypot(dx,dy)<=6)return;
       let row=false;for(let n=m.tgt;n&&n!==m.el;n=n.parentNode)if(n._row){row=true;break}

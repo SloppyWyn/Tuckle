@@ -405,7 +405,11 @@
 "buddyLock_reefAll":"{n} arrive quand toutes les étapes du Récif de corail sont en or. Pour l’instant : {have} sur {all}.",
 "rwSkinT":"Nouveau look !",
 "rwSkinS":"Choisissez-le dans la Collection : touchez {n}, puis un look.",
-"skinLock_midnight":"Terminez toutes les étapes de la Nébuleuse pour débloquer Minuit."
+"skinLock_midnight":"Terminez toutes les étapes de la Nébuleuse pour débloquer Minuit.",
+"grpYours":"À toi",
+"grpSeeds":"Contre des graines",
+"grpEarn":"À gagner",
+"soonMore":"D’autres surprises arrivent bientôt"
 },
 s:{
 "owl":{"first":["Joli début.","Tranquillement. Bien.","Un de trouvé. Respirez."],"row":["Bien fait.","Cette ligne est réglée.","Calme et soigné."],"mistake":["Ce n’est rien. Regardez encore.","Doucement. Encore une fois.","Hm. Pas celui-là."],"two":["Plus que deux. Rien ne presse.","Presque. Tranquillement.","Presque fini, sans hâte."],"idle":["Prenez votre temps.","Réfléchir en silence, c’est bien.","J’attends avec vous."],"win":["Magnifiquement résolu.","Vraiment bien joué.","Tous les nids sont pleins."]},

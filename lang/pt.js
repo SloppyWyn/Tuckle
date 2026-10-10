@@ -405,7 +405,11 @@
 "buddyLock_reefAll":"{n} chega quando todas as fases do Recife de coral tiverem ouro. Até agora: {have} de {all}.",
 "rwSkinT":"Novo visual!",
 "rwSkinS":"Escolha na Coleção: toque em {n} e escolha um visual.",
-"skinLock_midnight":"Conclua todas as etapas da Nebulosa para liberar a Meia-noite."
+"skinLock_midnight":"Conclua todas as etapas da Nebulosa para liberar a Meia-noite.",
+"grpYours":"Seus",
+"grpSeeds":"Por sementes",
+"grpEarn":"Por conquistar",
+"soonMore":"Mais coisas em breve"
 },
 s:{
 "owl":{"first":["Bom começo.","Com calma. Bom.","Um encontrado. Respire."],"row":["Bem feito.","Essa linha está resolvida.","Calmo e arrumado."],"mistake":["Não tem problema. Olhe de novo.","Com calma. Mais uma vez.","Hm. Esse não."],"two":["Mais dois. Sem pressa.","Quase lá. Com calma.","Quase pronto, tranquilo."],"idle":["Leve o tempo que precisar.","Pensar em silêncio é bom.","Vou esperar com você."],"win":["Lindamente resolvido.","Muito bem, de verdade.","Todos os ninhos cheios."]},

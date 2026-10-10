@@ -405,7 +405,11 @@
 "buddyLock_reefAll":"{n} kommt, wenn jede Stufe im Korallenriff Gold hat. Bisher: {have} von {all}.",
 "rwSkinT":"Neuer Look!",
 "rwSkinS":"Wähl ihn in der Sammlung: tippe auf {n} und such dir einen Look aus.",
-"skinLock_midnight":"Schaffe alle Etappen im Sternennebel, um Mitternacht freizuschalten."
+"skinLock_midnight":"Schaffe alle Etappen im Sternennebel, um Mitternacht freizuschalten.",
+"grpYours":"Deine",
+"grpSeeds":"Für Samen",
+"grpEarn":"Noch zu verdienen",
+"soonMore":"Bald kommt noch mehr"
 },
 s:{
 "owl":{"first":["Guter Anfang.","Ruhig. Gut.","Einer gefunden. Atme durch."],"row":["Schön gemacht.","Diese Zeile ist erledigt.","Ruhig und ordentlich."],"mistake":["Schon gut. Schau nochmal.","Sachte. Noch einmal.","Hm. Der nicht."],"two":["Noch zwei. Keine Eile.","Fast. Ganz ruhig.","Fast fertig, ganz entspannt."],"idle":["Lass dir Zeit.","Stilles Nachdenken ist gut.","Ich warte mit dir."],"win":["Wunderschön gelöst.","Wirklich gut gemacht.","Alle Nester sind voll."]},

@@ -405,7 +405,11 @@
 "buddyLock_reefAll":"{n} dołączy, gdy każdy etap Rafy koralowej będzie miał złoto. Na razie {have} z {all}.",
 "rwSkinT":"Nowy wygląd!",
 "rwSkinS":"Wybierz go w Kolekcji: dotknij {n} i wybierz wygląd.",
-"skinLock_midnight":"Ukończ wszystkie etapy Mgławicy, by odblokować Północ."
+"skinLock_midnight":"Ukończ wszystkie etapy Mgławicy, by odblokować Północ.",
+"grpYours":"Twoje",
+"grpSeeds":"Za nasionka",
+"grpEarn":"Do zdobycia",
+"soonMore":"Wkrótce będzie więcej"
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

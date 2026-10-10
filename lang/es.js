@@ -405,7 +405,11 @@
 "buddyLock_reefAll":"{n} llega cuando todos los niveles del Arrecife de coral tengan oro. Por ahora: {have} de {all}.",
 "rwSkinT":"¡Nuevo look!",
 "rwSkinS":"Elígelo en la Colección: toca a {n} y escoge un look.",
-"skinLock_midnight":"Completa todas las etapas de la Nebulosa para desbloquear Medianoche."
+"skinLock_midnight":"Completa todas las etapas de la Nebulosa para desbloquear Medianoche.",
+"grpYours":"Tuyos",
+"grpSeeds":"Por semillas",
+"grpEarn":"Por ganar",
+"soonMore":"Pronto habrá más"
 },
 s:{
 "owl":{"first":["Buen comienzo.","Con calma. Bien.","Uno encontrado. Respira."],"row":["Muy pulcro.","Esa línea ya está.","Tranquilo y ordenado."],"mistake":["No importa. Mira otra vez.","Con calma. Otra vez.","Hm. Ese no."],"two":["Dos más. Sin prisa.","Casi. Con calma.","Ya casi, tranquilo."],"idle":["Tómate el tiempo que necesites.","Pensar en silencio está bien.","Esperaré contigo."],"win":["Precioso.","Muy bien hecho, de verdad.","Todos los nidos llenos."]},

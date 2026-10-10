@@ -1811,7 +1811,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=ffcf4bad1e"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=7855146059"><\/script>')})();
 </script>
 <script>
 
@@ -2458,7 +2458,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='ffcf4bad1e';let updateTo=null;
+const BUILD='7855146059';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6302,7 +6302,7 @@ function nestBuddy(center){
   const keep=$('n-pick').scrollLeft;
   $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-disc').classList.remove('mystery');buyChip(null);$('n-name').textContent=t('names')[S.piece];
 
-  const rank=k=>buddyOwned(k)?0:SHOP[k]?1:2,ks=Object.keys(PIECES).sort((a,b)=>rank(a)-rank(b));
+  const ks=shelfSort(Object.keys(PIECES),k=>buddyOwned(k)?0:SHOP[k]?1:2);
   $('n-pick').innerHTML=ks.map(k=>buddyOwned(k)
     ?`<button data-p="${k}" aria-pressed="${k===S.piece}" aria-label="${t('names')[k]}">${buddySVG(k,wornHat())}</button>`
     :SHOP[k]?`<button class="locked forsale" data-p="${k}" aria-label="${t('names')[k]}">${buddySVG(k,wornHat())}${priceTag(k)}</button>`
@@ -6337,9 +6337,11 @@ function buyChip(k){let c=$('n-buychip');if(!k){if(c)c.remove();return}
   c.setAttribute('aria-label',t(can?'shopBuddyAsk':'shopBuddyShort',{n:t('names')[k],p,have:store.seeds,m:p-store.seeds}));
   c.onclick=e=>{e.stopPropagation();if(can)buyBuddy(k)};c.classList.remove('pop');void c.offsetWidth;if(!calm())c.classList.add('pop')}
 function endPreview(){buyChip(null);if(!nestPreview)return;nestPreview=null;$('n-disc').classList.remove('trying','mystery');$('n-pick').querySelectorAll('.armed').forEach(x=>x.classList.remove('armed'));nestBuddy()}
+
+const shelfSort=(list,rank)=>list.map((x,i)=>[x,i]).sort((a,b)=>rank(a[0])-rank(b[0])||a[1]-b[1]).map(p=>p[0]);
 function drawHats(W){
   const box=$('n-hats');
-  box.innerHTML=HAT_SHELF.map(x=>hatOwned(x.h)
+  box.innerHTML=shelfSort(HAT_SHELF,x=>hatOwned(x.h)?0:x.shop?1:2).map(x=>hatOwned(x.h)
     ?`<button data-h="${x.h}" aria-pressed="${wornHat()===x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}</button>`
     :x.shop?`<button class="forsale" data-h="${x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}${priceTag(x.h)}</button>`
     :`<button class="locked" data-h="${x.h}" aria-label="${t('hatNames')[x.h]}">${hatIcon(x.h)}${LOCK_ICON}</button>`).join('');
@@ -6426,7 +6428,7 @@ function hatSet(){save();setHatAdj(store.hatAdj);Mascot.refresh();nestBuddy();bo
 
 function drawThemes(){
   const box=$('n-themes'),cols=[1,1,4,2,3,4,2,3,3],cur=boardTheme();$('n-c-themes').textContent=BOARDS.filter(boardOwned).length+'/'+BOARDS.length;requestAnimationFrame(()=>edgeFade($('n-themes')));
-  box.innerHTML=BOARDS.map(b=>`<button data-b="${b}" aria-pressed="${b===cur}"${boardOwned(b)?'':' class="forsale"'}><span class="bt-prev" data-board="${b}" aria-hidden="true">${cols.map(c=>`<i style="--rc:var(--r${c})"></i>`).join('')}</span>${t('boardNames')[b]}${boardOwned(b)?'':priceTag(b)}</button>`).join('');
+  box.innerHTML=shelfSort(BOARDS,b=>boardOwned(b)?0:1).map(b=>`<button data-b="${b}" aria-pressed="${b===cur}"${boardOwned(b)?'':' class="forsale"'}><span class="bt-prev" data-board="${b}" aria-hidden="true">${cols.map(c=>`<i style="--rc:var(--r${c})"></i>`).join('')}</span>${t('boardNames')[b]}${boardOwned(b)?'':priceTag(b)}</button>`).join('');
   box.querySelectorAll('button').forEach(x=>{x.onclick=()=>{if(performance.now()-(x._held||0)<400)return;
       if(!boardOwned(x.dataset.b))return shopTap(x.dataset.b,x,$('n-theme-cap'),()=>{store.board=x.dataset.b;save();applyBoard();drawThemes();sayCap($('n-theme-cap'),()=>t('shopGot',{h:t('boardNames')[x.dataset.b]}))});
       store.board=x.dataset.b;save();applyBoard();box.querySelectorAll('button').forEach(y=>y.setAttribute('aria-pressed',y===x))};
@@ -6449,7 +6451,7 @@ function drawTreats(){
   $('n-c-treats').textContent=TREATS.filter(k=>k!=='auto'&&treatOwned(k)).length+'/'+(TREATS.length-1);
   const icon=k=>k==='auto'?'<svg viewBox="0 0 40 24" aria-hidden="true"><use href="#cookie" x="0" y="5" width="16" height="16"/><use href="#banana" x="12" y="1" width="16" height="16"/><use href="#fish" x="23" y="6" width="17" height="17"/></svg>'
     :`<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#${treatSym(k)}"/></svg>`;
-  box.innerHTML=TREATS.map(k=>{const own=treatOwned(k),sale=!own&&SHOP[k];
+  box.innerHTML=shelfSort(TREATS,k=>treatOwned(k)?0:SHOP[k]?1:2).map(k=>{const own=treatOwned(k),sale=!own&&SHOP[k];
     return`<button data-t="${k}" aria-pressed="${k===cur}" class="${own?'':sale?'forsale':'locked'}"><span class="tr-ic">${icon(k)}</span>${N[k]}${sale?priceTag(k):own?'':LOCK_ICON}</button>`}).join('');
   box.querySelectorAll('button').forEach(b=>holdToPeek(b,box,()=>peekTreat(b.dataset.t)));
   box.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(performance.now()-(b._held||0)<400)return;const k=b.dataset.t;

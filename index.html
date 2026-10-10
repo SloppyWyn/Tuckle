@@ -795,7 +795,7 @@ html.calm .seg.pilled .seg-pill{transition:none}
 
 #m-map-box{position:relative}.map-ghost{position:absolute;pointer-events:none;transition:opacity .6s ease-in-out}.map-ghost.away{opacity:0}
 
-#m-map.arrive .node{animation:stopArrive .65s ease-in-out .08s both}
+#m-map .fresh{animation:stopArrive .65s ease-in-out .06s both}
 @keyframes stopArrive{from{opacity:0}}
 .m-medals b{font:inherit}.m-medals b.renum{animation:renum .6s ease-in-out both}
 @keyframes renum{from{opacity:0}}
@@ -1811,7 +1811,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=335876402f"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=1c660a7c04"><\/script>')})();
 </script>
 <script>
 
@@ -2458,7 +2458,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='335876402f';let updateTo=null;
+const BUILD='1c660a7c04';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5851,12 +5851,24 @@ function switchTier(bt){const from=menuTier();if(bt===from)return;menuStage=next
   if(calm()){renderMenu(false);return}
 
   const svg=$('m-map'),box=svg.parentElement;box.querySelectorAll('.map-ghost').forEach(g=>g.remove());
-  const ghost=svg.cloneNode(true);ghost.removeAttribute('id');ghost.classList.remove('grow','arrive');ghost.classList.add('map-ghost');ghost.setAttribute('aria-hidden','true');
-  ghost.style.cssText=`left:${svg.offsetLeft}px;top:${svg.offsetTop}px;width:${svg.offsetWidth}px;height:${svg.offsetHeight}px`;box.appendChild(ghost);
-  renderMenu(false);
-  svg.classList.remove('arrive');void svg.getBBox();svg.classList.add('arrive');
-  requestAnimationFrame(()=>ghost.classList.add('away'));setTimeout(()=>ghost.remove(),700);
-  clearTimeout(switchTier.t);switchTier.t=setTimeout(()=>svg.classList.remove('arrive'),1200)}
+  const ghost=svg.cloneNode(true);ghost.removeAttribute('id');ghost.classList.remove('grow');ghost.classList.add('map-ghost');ghost.setAttribute('aria-hidden','true');
+
+  const r=svg.getBoundingClientRect(),br=box.getBoundingClientRect();
+  ghost.style.cssText=`left:${r.left-br.left-box.clientLeft}px;top:${r.top-br.top-box.clientTop}px;width:${r.width}px;height:${r.height}px`;
+  renderMenu(false);mapDiff(ghost,svg);box.appendChild(ghost);
+  requestAnimationFrame(()=>ghost.classList.add('away'));setTimeout(()=>ghost.remove(),760);
+  clearTimeout(switchTier.t);switchTier.t=setTimeout(()=>svg.querySelectorAll('.fresh').forEach(e=>e.classList.remove('fresh')),1000)}
+
+function mapDiff(a,b){const pool=[...a.children];
+  for(const c of [...b.children]){
+
+    let i=c.classList&&c.classList.contains('node')&&c.dataset.sid?pool.findIndex(x=>x.classList&&x.classList.contains('node')&&x.dataset.sid&&x.dataset.k===c.dataset.k):-1;
+    if(i<0)i=pool.findIndex(x=>x.outerHTML===c.outerHTML);
+    if(i<0){c.classList.add('fresh');continue}
+    const g=pool.splice(i,1)[0];
+    if(g.outerHTML===c.outerHTML){g.style.visibility='hidden';continue}
+    if(c.tagName!==g.tagName||!c.children.length||c.getAttribute('opacity')!==g.getAttribute('opacity')||c.getAttribute('transform')!==g.getAttribute('transform')){c.classList.add('fresh');continue}
+    mapDiff(g,c)}}
 const menuTier=()=>{const p=stagePos(menuStage)||letterPos(menuStage);return p?p.ti:0};
 function renderMenu(anim){
   const daily=menuMode==='daily',jungle=menuMode==='jungle',ti=menuTier(),N=daily?8:menuSel.size,d=daily?'medium':jungle?TIERS[ti]:menuSel.diff,st=menuState();

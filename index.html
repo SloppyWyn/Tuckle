@@ -1883,7 +1883,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=ca42b3860b"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e3a24e5750"><\/script>')})();
 </script>
 <script>
 
@@ -2530,7 +2530,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='ca42b3860b';let updateTo=null;
+const BUILD='e3a24e5750';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5009,7 +5009,7 @@ HATS.embercrown={s:1.45,dy:0,top:-14,covers:false,vb:'-18 -24 36 27',
     <path d="M-11.5 -8.5l2.6 1.8" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".55"/>`,
   pom:emberFlame(0,-11,1.2,.18)};
 
-function helmetSVG(k){const a=hatAdjust(k);return`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})"><path d="M63.4 13.6L68 4.8" stroke="#9AA6BC" stroke-width="1.8" stroke-linecap="round"/>
+function helmetSVG(k){const a=hatAdjust(k);return`<g transform="${arcT(k)}"><path d="M63.4 13.6L68 4.8" stroke="#9AA6BC" stroke-width="1.8" stroke-linecap="round"/>
   <circle cx="50" cy="53" r="45.5" fill="#DDEBFF" fill-opacity=".16" stroke="#A9C6EA" stroke-width="2.6"/><circle cx="50" cy="53" r="43" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.2"/>
   <path d="M19 33A38 38 0 0 1 41 14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/><circle cx="21.6" cy="41.6" r="2" fill="#fff" opacity=".7"/>
   <path d="M15 84Q50 104 85 84" fill="none" stroke="#8E98AE" stroke-width="7.6" stroke-linecap="round"/><path d="M15 84Q50 104 85 84" fill="none" stroke="#DCE2EC" stroke-width="4.8" stroke-linecap="round"/>
@@ -5020,7 +5020,7 @@ HATS.spacehelmet={covers:false,buddy:true,inside:true,draw:helmetSVG,vb:'-24 -26
 
 const BAND_STAR=(x,y)=>`<path d="M${x.toFixed(2)} ${(y-2.6).toFixed(2)}l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6Z" fill="#FFE58A"/>`;
 function bandSVG(k,over){const B=BAND_FIT[k],T=PIECES[k],a=hatAdjust(k);if(!B)return'';const H=HATS.moonband,onTop=T.topFront&&T.top;
-  if(over&&!onTop)return'';const g=x=>`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})">${x}</g>`;
+  if(over&&!onTop)return'';const g=x=>`<g transform="${arcT(k)}">${x}</g>`;
   if(over)return g(`<g transform="translate(54.6 16.6) rotate(-16) scale(.8)">${H.crest}<g class="pom">${H.pom}</g></g>`);
   const[lx,ly]=B.l,[rx,ry]=B.r,i=(rx-lx)*.1,c=(B.top-.25*(ly+ry)/2)/.75,d=`M${lx} ${ly}C${(lx+i).toFixed(1)} ${c.toFixed(1)} ${(rx-i).toFixed(1)} ${c.toFixed(1)} ${rx} ${ry}`;
   const at=u=>{const v=1-u;return[v*v*v*lx+3*v*u*(v*(lx+i)+u*(rx-i))+u*u*u*rx,v*v*v*ly+3*v*u*c+u*u*u*ry]};
@@ -5079,7 +5079,7 @@ HATS.kelpwreath={s:1.6,dy:1,top:-10,covers:false,vb:'-25 -19 50 25',
   pom:`<circle cy="-10.6" r="2.4" fill="#E8F8FA" fill-opacity=".55" stroke="#7FC6CC" stroke-width=".7"/><path d="M-1.3 -11.2a1.4 1.4 0 0 1 1.2-1.1" fill="none" stroke="#fff" stroke-width=".6" stroke-linecap="round"/>`};
 
 function circletSVG(k,over,deco,crown){const B=BAND_FIT[k],T=PIECES[k],a=hatAdjust(k);if(!B||!T)return'';const onTop=T.topFront&&T.top;
-  if(over&&!onTop)return'';const g=x=>`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})">${x}</g>`;
+  if(over&&!onTop)return'';const g=x=>`<g transform="${arcT(k)}">${x}</g>`;
   const[lx,ly]=B.l,[rx,ry]=B.r,i=(rx-lx)*.1,c=(B.top-.25*(ly+ry)/2)/.75,sc=(rx-lx)/42;
   const at=u=>{const v=1-u;return[v*v*v*lx+3*v*u*(v*(lx+i)+u*(rx-i))+u*u*u*rx,v*v*v*ly+3*v*u*c+u*u*u*ry]};
   const tan=u=>{const[x,y]=at(u),[x2,y2]=at(Math.min(1,u+.01));return Math.atan2(y2-y,x2-x)*180/Math.PI};
@@ -5105,7 +5105,7 @@ function snorkelSVG(k){const T=PIECES[k],B=BAND_FIT[k],a=hatAdjust(k);if(!T||!B)
   const glass=`M${f(L+cr)} ${f(top)}H${f(mx-3)}Q${f(mx)} ${f(top+2.6)} ${f(mx+3)} ${f(top)}H${f(R-cr)}Q${f(R)} ${f(top)} ${f(R)} ${f(top+cr)}V${f(bot-cr)}Q${f(R)} ${f(bot)} ${f(R-cr)} ${f(bot)}H${f(mx+5)}Q${f(mx)} ${f(bot-5)} ${f(mx-5)} ${f(bot)}H${f(L+cr)}Q${f(L)} ${f(bot)} ${f(L)} ${f(bot-cr)}V${f(top+cr)}Q${f(L)} ${f(top)} ${f(L+cr)} ${f(top)}Z`;
   const[lx,ly]=B.l,[sx,sy]=B.r,ym=(top+bot)/2,strap=`M${f(L)} ${f(ym)}L${f(Math.min(lx,L-2))} ${f(Math.max(ly,ym-6))}M${f(R)} ${f(ym)}L${f(Math.max(sx,R+2))} ${f(Math.max(sy,ym-6))}`;
   const tx=Math.max(sx,R+2)+1.6,ty0=ym+4,tt=Math.min(B.top-4,top-12),tube=`M${f(R-2)} ${f(bot-2)}Q${f(tx+2)} ${f(bot+2)} ${f(tx+1)} ${f(ty0)}L${f(tx+.6)} ${f(tt+4)}Q${f(tx+.4)} ${f(tt)} ${f(tx-3.4)} ${f(tt-1)}`;
-  return`<g transform="translate(${f(a.x)} ${f(a.y)})"><path d="${strap}" stroke="#2E7A77" stroke-width="5" stroke-linecap="round"/><path d="${strap}" stroke="#5FB7B3" stroke-width="3" stroke-linecap="round"/>
+  return`<g transform="${arcT(k)}"><path d="${strap}" stroke="#2E7A77" stroke-width="5" stroke-linecap="round"/><path d="${strap}" stroke="#5FB7B3" stroke-width="3" stroke-linecap="round"/>
     <path d="${tube}" fill="none" stroke="#B5431A" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/><path d="${tube}" fill="none" stroke="#FF8A4C" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M${f(tx+1.1)} ${f(ty0-6)}V${f(tt+8)}" stroke="#FFC9A6" stroke-width="1" stroke-linecap="round"/><path d="M${f(tx-4.6)} ${f(tt-3)}l2.6 4.4" stroke="#2E7A77" stroke-width="3.4" stroke-linecap="round"/>
     <path d="${glass}" fill="#CFF2F4" fill-opacity=".28" stroke="#2E7A77" stroke-width="4.4" stroke-linejoin="round"/><path d="${glass}" fill="none" stroke="#5FB7B3" stroke-width="2.4" stroke-linejoin="round"/>
@@ -5139,16 +5139,20 @@ function applySkin(k,id){const L=SKINS[k];if(!L)return;const d=L[id]||Object.val
 let HAT_ADJ={};
 function hatAdjust(k){const a=HAT_ADJ[k]||{};return{x:Math.max(-7,Math.min(7,+a.x||0)),y:Math.max(-5,Math.min(3,+a.y||0))}}
 
-function hatTransform(k,h){const f=HAT_FIT[k],H=HATS[h]||{},a=hatAdjust(k),cf=H.covers===false&&(PIECES[k]||{}).crownFit&&(H.crownFit||PIECES[k].crownFit)||{s:1,dy:0};if(H.buddy)return'';const y=f.y+(H.dy||0)+cf.dy+a.y+(a.x/7)**2*2;
-  return`translate(${(f.x+a.x).toFixed(2)} ${y.toFixed(2)}) rotate(${(f.r+a.x*1.5).toFixed(2)}) scale(${(f.s*(H.s||1)*cf.s).toFixed(3)})`}
+function hatTransform(k,h){const f=HAT_FIT[k],H=HATS[h]||{},cf=H.covers===false&&(PIECES[k]||{}).crownFit&&(H.crownFit||PIECES[k].crownFit)||{s:1,dy:0};if(H.buddy)return'';const y=f.y+(H.dy||0)+cf.dy;
+  return`${arcT(k)} translate(${f.x.toFixed(2)} ${y.toFixed(2)}) rotate(${f.r.toFixed(2)}) scale(${(f.s*(H.s||1)*cf.s).toFixed(3)})`}
+
+function hatArc(k){const a=hatAdjust(k),B=BAND_FIT[k],R=B?(B.r[0]-B.l[0])/2:34;return{t:a.x*1.5,cx:B?(B.l[0]+B.r[0])/2:50,cy:B?B.top+R:58,y:a.y}}
+function arcT(k){const A=hatArc(k);return`rotate(${A.t.toFixed(2)} ${A.cx.toFixed(2)} ${A.cy.toFixed(2)}) translate(0 ${A.y.toFixed(2)})`}
 function setHatAdj(o){HAT_ADJ=o||{};for(const k in _bdCache)delete _bdCache[k]}
 
-function hatPoint(k,h,x,y){const f=HAT_FIT[k],H=HATS[h]||{},a=hatAdjust(k),sc=f.s*(H.s||1),r=(f.r+a.x*1.5)*Math.PI/180,tx=f.x+a.x,ty=f.y+(H.dy||0)+a.y+(a.x/7)**2*2;
-  return[tx+sc*(x*Math.cos(r)-y*Math.sin(r)),ty+sc*(x*Math.sin(r)+y*Math.cos(r))]}
+function hatPoint(k,h,x,y){const f=HAT_FIT[k],H=HATS[h]||{},A=hatArc(k),sc=f.s*(H.s||1),r=f.r*Math.PI/180,t=A.t*Math.PI/180;
+  const px=f.x+sc*(x*Math.cos(r)-y*Math.sin(r)),py=f.y+(H.dy||0)+A.y+sc*(x*Math.sin(r)+y*Math.cos(r)),dx=px-A.cx,dy=py-A.cy;
+  return[A.cx+dx*Math.cos(t)-dy*Math.sin(t),A.cy+dx*Math.sin(t)+dy*Math.cos(t)]}
 
 function earmuffSVG(k){const E=EAR_FIT[k],a=hatAdjust(k);if(!E)return'';const[lx,ly]=E.l,[rx,ry]=E.r,cy=((E.top-.25*(ly+ry)/2)/.75).toFixed(1);
   const band=`M${lx} ${ly}C${lx} ${cy} ${rx} ${cy} ${rx} ${ry}`;
-  return`<g transform="translate(${a.x.toFixed(2)} ${a.y.toFixed(2)})"><path d="${band}" fill="none" stroke="#B7566F" stroke-width="7" stroke-linecap="round"/><path d="${band}" fill="none" stroke="#E58BA3" stroke-width="4.4" stroke-linecap="round"/>${muff(lx,ly,E.m)}${muff(rx,ry,E.m)}</g>`}
+  return`<g transform="${arcT(k)}"><path d="${band}" fill="none" stroke="#B7566F" stroke-width="7" stroke-linecap="round"/><path d="${band}" fill="none" stroke="#E58BA3" stroke-width="4.4" stroke-linecap="round"/>${muff(lx,ly,E.m)}${muff(rx,ry,E.m)}</g>`}
 function trapperFlaps(k){const F=FLAP_FIT[k];if(!F||(EAR_FIT[k]||{}).acc)return'';return F.map(([,y],i)=>{const[bx,by]=hatPoint(k,'trapper',i?19:-19,-1),tx=bx+(i?3:-3),ty=Math.max(by+11,Math.min(by+17,y)),
   d=`M${bx.toFixed(1)} ${by.toFixed(1)}Q${((bx+tx)/2+(i?2:-2)).toFixed(1)} ${((by+ty)/2).toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)}`;
   return`<path d="${d}" fill="none" stroke="#BCA88C" stroke-width="12" stroke-linecap="round"/><path d="${d}" fill="none" stroke="#F4E9D8" stroke-width="9" stroke-linecap="round"/>`}).join('')}

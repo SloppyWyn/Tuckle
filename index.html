@@ -1883,7 +1883,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=102835c3c0"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=9051f92ecd"><\/script>')})();
 </script>
 <script>
 
@@ -2530,7 +2530,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='102835c3c0';let updateTo=null;
+const BUILD='9051f92ecd';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6309,12 +6309,16 @@ function plateMirror(el){let down=null;
     el.style.setProperty('--mx',((px+.5)*100).toFixed(1)+'%');el.style.setProperty('--my',((py+.5)*100).toFixed(1)+'%');
     if(calm())return;const k=press?1:.35;el.style.setProperty('--ry',(px*12*k).toFixed(2)+'deg');el.style.setProperty('--rx',(-py*14*k).toFixed(2)+'deg');el.style.setProperty('--lift',press?-6:0)};
   const settle=()=>{el.classList.remove('live','pressed');el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');el.style.setProperty('--lift',0)};
-  el.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};el.classList.add('live','pressed');tilt(e,true)});
-  el.addEventListener('pointermove',e=>{if(down)tilt(e,true);else if(e.pointerType==='mouse'){el.classList.add('live');tilt(e,false)}});
 
-  el.addEventListener('pointerup',e=>{const d=down;down=null;settle();el._tapOk=!!d&&Math.hypot(e.clientX-d.x,e.clientY-d.y)<12});
+  const letGo=()=>{if(!down)return;down=null;el._tapOk=false;settle();removeEventListener('pointerup',letGo);removeEventListener('pointercancel',letGo)};
+  el.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};el.classList.add('live','pressed');tilt(e,true);
+    addEventListener('pointerup',letGo);addEventListener('pointercancel',letGo)});
+  el.addEventListener('pointermove',e=>{if(down){const dx=e.clientX-down.x,dy=e.clientY-down.y;if(Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx))return letGo();tilt(e,true)}
+    else if(e.pointerType==='mouse'){el.classList.add('live');tilt(e,false)}});
+
+  el.addEventListener('pointerup',e=>{const d=down,ok=!!d&&Math.hypot(e.clientX-d.x,e.clientY-d.y)<12;letGo();el._tapOk=ok});
   el.addEventListener('click',()=>{if(el._tapOk){el._tapOk=false;showPlate(el.dataset.sec)}});
-  el.addEventListener('pointercancel',()=>{down=null;settle()});el.addEventListener('pointerleave',()=>{if(!down)settle()});
+  el.addEventListener('pointercancel',letGo);el.addEventListener('pointerleave',()=>{if(down)letGo();else settle()});
   el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showPlate(el.dataset.sec)}})}
 
 let nestScroll=0;

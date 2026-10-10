@@ -1883,7 +1883,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=c97b5c46d6"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=102835c3c0"><\/script>')})();
 </script>
 <script>
 
@@ -2530,7 +2530,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='c97b5c46d6';let updateTo=null;
+const BUILD='102835c3c0';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5875,6 +5875,9 @@ function closeIntro(action){
 
 const GRACE=900;
 function pointAt(el,text,ms=5000,onDone){
+
+  const same=[...document.querySelectorAll('.coach:not(.leaving)')].find(x=>x.textContent===text&&x._done);
+  if(same){clearTimeout(same._t);same._t=setTimeout(same._done,ms);return}
   const r=el.getBoundingClientRect(),c=document.createElement('div');
   c.className='coach';c.setAttribute('role','status');c.textContent=text;
   document.body.appendChild(c);
@@ -5882,10 +5885,11 @@ function pointAt(el,text,ms=5000,onDone){
   c.style.left=(left+scrollX)+'px';c.style.top=(r.bottom+scrollY+12)+'px';c.style.setProperty('--ax',(r.left+r.width/2-left-8)+'px');
   let gone=false;
 
-  const done=now=>{if(gone)return;gone=true;document.removeEventListener('pointerdown',done);if(now===true||calm())c.remove();else{c.classList.add('leaving');setTimeout(()=>c.remove(),300)}if(onDone)onDone()};
+  const onDown=e=>{if(el.isConnected&&e.target&&el.contains(e.target))return;done()};
+  const done=now=>{if(gone)return;gone=true;document.removeEventListener('pointerdown',onDown);if(now===true||calm())c.remove();else{c.classList.add('leaving');setTimeout(()=>c.remove(),300)}if(onDone)onDone()};
   c._done=done;
 
-  setTimeout(()=>document.addEventListener('pointerdown',done),GRACE);setTimeout(done,ms);
+  setTimeout(()=>{if(!gone)document.addEventListener('pointerdown',onDown)},GRACE);c._t=setTimeout(done,ms);
 }
 
 function coachWhenQuiet(){const t0=performance.now(),wait=calm()?600:(pz?2*pz.N*42+pz.N*14+1600:1600);
@@ -6531,6 +6535,8 @@ let nestPreview=null;
 
 function buyBuddy(k){BuyAsk.open(k,()=>{$('n-seeds-n').textContent=store.seeds;closeAsk();S.piece=k;save();syncPieces();Mascot.setType(S.piece);if(pz)render();nestBuddy();bobNest();nestHeart();Reward.show([rewardOf(k)],null,false,$('n-disc'))})}
 function previewBuddy(k){
+
+  if(nestPreview===k&&$('n-buychip')){clearTimeout(buyChip.t);buyChip.t=setTimeout(endPreview,12000);nestFace('happy',900);Sound.play('pet',0,k);return}
   const d=$('n-disc'),a=$('n-ask');nestPreview=k;moodOpen=false;
   const myst=!SHOP[k]&&!buddyOwned(k);
   d.innerHTML=myst?pieceSVG(k):buddySVG(k,wornHat());d.classList.add('trying');d.classList.toggle('mystery',myst);$('n-name').textContent=t('names')[k];

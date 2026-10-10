@@ -132,6 +132,7 @@ h1{font-family:var(--display);font-weight:700;font-size:42px;letter-spacing:-.01
 .tabs button[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
 html.kbd button:focus-visible,html.kbd .cell:focus-visible,html.kbd select:focus-visible,html.kbd input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 select:focus,input:focus,.cell:focus{outline:none}
+html:not(.kbd) :focus-visible{outline:none}
 
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
 @media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}}
@@ -823,6 +824,7 @@ html.calm #bt-peek,html.calm #bt-peek .bt-big{transition:none}
 .n-hats .locked>svg:first-child{opacity:.45;filter:grayscale(1)}
 .n-hats button{-webkit-touch-callout:none;touch-action:pan-x pan-y}
 
+:is(.n-hats,.n-themes) button.trying{border-style:dashed;border-color:var(--accent)}
 #n-disc{outline:2px dashed transparent;outline-offset:5px;transition:outline-color .25s}#n-disc.trying{outline-color:var(--accent)}
 .n-hats .hl{position:absolute;right:5px;top:5px;width:12px;height:12px;opacity:.6}
 .n-hats button.nudge{animation:nudge .5s ease}
@@ -1878,7 +1880,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=cd19ab88ad"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=bb1eada107"><\/script>')})();
 </script>
 <script>
 
@@ -2525,7 +2527,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='cd19ab88ad';let updateTo=null;
+const BUILD='bb1eada107';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6519,7 +6521,7 @@ function drawHats(W){
     const undo=()=>{setHatAdj(store.hatAdj);$('n-disc').classList.remove('trying');nestBuddy()};
     b.addEventListener('pointerdown',e=>{clearTimeout(tm);hold={pid:e.pointerId,on:false,x0:e.clientX,y0:e.clientY,a0:hatAdjust(S.piece),moved:false};
       tm=setTimeout(()=>{if(!hold)return;hold.on=true;box._holding=true;try{b.setPointerCapture(hold.pid)}catch(_){}
-        hold.x0=hold.x1??hold.x0;hold.y0=hold.y1??hold.y0;hatCap=x.h;cap();$('n-disc').innerHTML=buddySVG(S.piece,x.h);$('n-disc').classList.add('trying');stillBuddy();bobNest();
+        hold.x0=hold.x1??hold.x0;hold.y0=hold.y1??hold.y0;b.classList.add('trying');$('n-disc').innerHTML=buddySVG(S.piece,x.h);$('n-disc').classList.add('trying');stillBuddy();bobNest();
         const dr=$('n-disc').getBoundingClientRect(),seen=(Math.min(dr.bottom,innerHeight)-Math.max(dr.top,0))/dr.height;
         if(seen<.6){peekFrom=b;peekHat(x.h)}},320)});
     b.addEventListener('pointermove',e=>{if(!hold||e.pointerId!==hold.pid)return;
@@ -6530,10 +6532,11 @@ function drawHats(W){
 
     b.addEventListener('touchmove',e=>{if(hold&&hold.on)e.preventDefault()},{passive:false});
     const end=e=>{clearTimeout(tm);if(!hold||e.pointerId!==hold.pid)return;const h0=hold;hold=null;box._holding=false;if(!h0.on)return;
-      b._held=performance.now();peekBoard(null);
+      b._held=performance.now();b.classList.remove('trying');peekBoard(null);
+
       if(e.type==='pointercancel'||!hatOwned(x.h))return undo();
       if(h0.moved){const a=hatAdjust(S.piece);store.hatAdj=Object.assign({},store.hatAdj,{[S.piece]:{x:+a.x.toFixed(1),y:+a.y.toFixed(1)}})}
-      $('n-disc').classList.remove('trying');store.hat=x.h;save();setHatAdj(store.hatAdj);Mascot.setHat(wornHat());Mascot.refresh();nestBuddy();drawHats(W);bobNest()};
+      $('n-disc').classList.remove('trying');store.hat=x.h;hatCap=x.h;save();setHatAdj(store.hatAdj);Mascot.setHat(wornHat());Mascot.refresh();nestBuddy();drawHats(W);bobNest()};
     b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end);b.addEventListener('contextmenu',e=>e.preventDefault())});
   groupShelf(box);edgeFade(box);cap();$('n-c-hats').textContent=HAT_SHELF.filter(x=>hatOwned(x.h)).length+'/'+HAT_SHELF.length;
 }
@@ -6601,9 +6604,9 @@ function drawThemes(){
 }
 
 function holdToPeek(x,box,show){
-  let tm=0,on=false,d=null;const off=e=>{clearTimeout(tm);if(e&&d&&e.pointerId!==d.pid)return;d=null;box._holding=false;if(on){on=false;x._held=performance.now();peekBoard(null)}};
+  let tm=0,on=false,d=null;const off=e=>{clearTimeout(tm);if(e&&d&&e.pointerId!==d.pid)return;d=null;box._holding=false;if(on){on=false;x._held=performance.now();x.classList.remove('trying');peekBoard(null)}};
   x.addEventListener('pointerdown',e=>{clearTimeout(tm);d={pid:e.pointerId,x:e.clientX,y:e.clientY};
-    tm=setTimeout(()=>{if(!d)return;on=true;box._holding=true;try{x.setPointerCapture(d.pid)}catch(_){}peekFrom=x;show()},220)});
+    tm=setTimeout(()=>{if(!d)return;on=true;box._holding=true;try{x.setPointerCapture(d.pid)}catch(_){}x.classList.add('trying');peekFrom=x;show()},220)});
   x.addEventListener('pointermove',e=>{if(!d||on||e.pointerId!==d.pid)return;if(Math.hypot(e.clientX-d.x,e.clientY-d.y)>6){clearTimeout(tm);d=null}});
   x.addEventListener('touchmove',e=>{if(on)e.preventDefault()},{passive:false});
   ['pointerup','pointercancel'].forEach(ev=>x.addEventListener(ev,off));x.addEventListener('pointerleave',e=>{if(!on)off(e)});x.addEventListener('contextmenu',e=>e.preventDefault());

@@ -424,7 +424,10 @@
 "keepGoingDf":"Seguir sin pitayas",
 "treatLock_dragonfruit":"Termina el camino Medio del Valle del Dragón para desbloquear las pitayas.",
 "buddyLock_valeGold":"{n} llega cuando {all} niveles del Valle del Dragón tengan oro. Por ahora: {have}.",
-"buddyLock_valeAll":"{n} llega cuando todos los niveles del Valle del Dragón tengan oro. Por ahora: {have} de {all}."
+"buddyLock_valeAll":"{n} llega cuando todos los niveles del Valle del Dragón tengan oro. Por ahora: {have} de {all}.",
+"tipT":"Apoya a Tuckle",
+"tipS":"Tuckle es gratis y sin anuncios, y lo hace una sola persona. Si te alegra el día, un café ayuda a que siga creciendo.",
+"tipGo":"Invítame a un café"
 },
 s:{
 "owl":{"first":["Buen comienzo.","Con calma. Bien.","Uno encontrado. Respira."],"row":["Muy pulcro.","Esa línea ya está.","Tranquilo y ordenado."],"mistake":["No importa. Mira otra vez.","Con calma. Otra vez.","Hm. Ese no."],"two":["Dos más. Sin prisa.","Casi. Con calma.","Ya casi, tranquilo."],"idle":["Tómate el tiempo que necesites.","Pensar en silencio está bien.","Esperaré contigo."],"win":["Precioso.","Muy bien hecho, de verdad.","Todos los nidos llenos."]},

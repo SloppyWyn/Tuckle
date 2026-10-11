@@ -424,7 +424,10 @@
 "keepGoingDf":"Continuer sans fruits du dragon",
 "treatLock_dragonfruit":"Finissez le sentier Moyen de la Vallée du Dragon pour débloquer les fruits du dragon.",
 "buddyLock_valeGold":"{n} arrive quand {all} étapes de la Vallée du Dragon sont en or. Pour l’instant : {have}.",
-"buddyLock_valeAll":"{n} arrive quand toutes les étapes de la Vallée du Dragon sont en or. Pour l’instant : {have} sur {all}."
+"buddyLock_valeAll":"{n} arrive quand toutes les étapes de la Vallée du Dragon sont en or. Pour l’instant : {have} sur {all}.",
+"tipT":"Soutenir Tuckle",
+"tipS":"Tuckle est gratuit et sans pub, fait par une seule personne. S’il égaie ta journée, un café l’aide à grandir.",
+"tipGo":"Offrir un café"
 },
 s:{
 "owl":{"first":["Joli début.","Tranquillement. Bien.","Un de trouvé. Respirez."],"row":["Bien fait.","Cette ligne est réglée.","Calme et soigné."],"mistake":["Ce n’est rien. Regardez encore.","Doucement. Encore une fois.","Hm. Pas celui-là."],"two":["Plus que deux. Rien ne presse.","Presque. Tranquillement.","Presque fini, sans hâte."],"idle":["Prenez votre temps.","Réfléchir en silence, c’est bien.","J’attends avec vous."],"win":["Magnifiquement résolu.","Vraiment bien joué.","Tous les nids sont pleins."]},

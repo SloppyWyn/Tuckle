@@ -424,7 +424,10 @@
 "keepGoingDf":"Continuar sem pitayas",
 "treatLock_dragonfruit":"Termine a trilha Média do Vale do Dragão para liberar as pitayas.",
 "buddyLock_valeGold":"{n} chega quando {all} fases do Vale do Dragão tiverem ouro. Até agora: {have}.",
-"buddyLock_valeAll":"{n} chega quando todas as fases do Vale do Dragão tiverem ouro. Até agora: {have} de {all}."
+"buddyLock_valeAll":"{n} chega quando todas as fases do Vale do Dragão tiverem ouro. Até agora: {have} de {all}.",
+"tipT":"Apoie o Tuckle",
+"tipS":"Tuckle é grátis e sem anúncios, feito por uma só pessoa. Se ele alegra o seu dia, um café ajuda a mantê-lo crescendo.",
+"tipGo":"Pague um café"
 },
 s:{
 "owl":{"first":["Bom começo.","Com calma. Bom.","Um encontrado. Respire."],"row":["Bem feito.","Essa linha está resolvida.","Calmo e arrumado."],"mistake":["Não tem problema. Olhe de novo.","Com calma. Mais uma vez.","Hm. Esse não."],"two":["Mais dois. Sem pressa.","Quase lá. Com calma.","Quase pronto, tranquilo."],"idle":["Leve o tempo que precisar.","Pensar em silêncio é bom.","Vou esperar com você."],"win":["Lindamente resolvido.","Muito bem, de verdade.","Todos os ninhos cheios."]},

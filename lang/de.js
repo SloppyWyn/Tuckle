@@ -424,7 +424,10 @@
 "keepGoingDf":"Ohne Drachenfrüchte weiterspielen",
 "treatLock_dragonfruit":"Schaffe den mittleren Pfad im Drachental, um Drachenfrüchte freizuschalten.",
 "buddyLock_valeGold":"{n} kommt, wenn {all} Stufen im Drachental Gold haben. Bisher: {have}.",
-"buddyLock_valeAll":"{n} kommt, wenn jede Stufe im Drachental Gold hat. Bisher: {have} von {all}."
+"buddyLock_valeAll":"{n} kommt, wenn jede Stufe im Drachental Gold hat. Bisher: {have} von {all}.",
+"tipT":"Tuckle unterstützen",
+"tipS":"Tuckle ist kostenlos und werbefrei, gemacht von einer einzigen Person. Wenn es dir den Tag verschönert, hilft ein Kaffee, dass es weiterwächst.",
+"tipGo":"Einen Kaffee spendieren"
 },
 s:{
 "owl":{"first":["Guter Anfang.","Ruhig. Gut.","Einer gefunden. Atme durch."],"row":["Schön gemacht.","Diese Zeile ist erledigt.","Ruhig und ordentlich."],"mistake":["Schon gut. Schau nochmal.","Sachte. Noch einmal.","Hm. Der nicht."],"two":["Noch zwei. Keine Eile.","Fast. Ganz ruhig.","Fast fertig, ganz entspannt."],"idle":["Lass dir Zeit.","Stilles Nachdenken ist gut.","Ich warte mit dir."],"win":["Wunderschön gelöst.","Wirklich gut gemacht.","Alle Nester sind voll."]},

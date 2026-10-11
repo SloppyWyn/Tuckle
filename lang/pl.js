@@ -424,7 +424,10 @@
 "keepGoingDf":"Graj bez smoczych owoców",
 "treatLock_dragonfruit":"Ukończ średni szlak Smoczej Doliny, by odblokować smocze owoce.",
 "buddyLock_valeGold":"{n} dołączy, gdy {all} etapów Smoczej Doliny będzie miało złoto. Na razie {have}.",
-"buddyLock_valeAll":"{n} dołączy, gdy każdy etap Smoczej Doliny będzie miał złoto. Na razie {have} z {all}."
+"buddyLock_valeAll":"{n} dołączy, gdy każdy etap Smoczej Doliny będzie miał złoto. Na razie {have} z {all}.",
+"tipT":"Wesprzyj Tuckle",
+"tipS":"Tuckle jest darmowy i bez reklam, tworzy go jedna osoba. Jeśli umila ci dzień, kawa pomoże mu rosnąć.",
+"tipGo":"Postaw kawę"
 },
 s:{
 "owl":{"first":["Dobry początek.","Spokojnie. Dobrze.","Jeden jest. Oddychaj."],"row":["Porządnie.","Ta linia gotowa.","Spokojnie i czysto."],"mistake":["Nic nie szkodzi.","Spokojnie. Jeszcze raz.","Hm. Nie tutaj."],"two":["Jeszcze dwa. Bez pośpiechu.","Prawie. Spokojnie.","Już niedługo."],"idle":["Myśl, ile potrzebujesz.","Cisza pomaga.","Poczekam z tobą."],"win":["Pięknie rozwiązane.","Świetna robota.","Wszystkie gniazdka zajęte."]},

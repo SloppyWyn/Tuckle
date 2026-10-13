@@ -1938,7 +1938,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=59870c11d3"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3ce2365022"><\/script>')})();
 </script>
 <script>
 
@@ -2648,7 +2648,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='59870c11d3';let updateTo=null;
+const BUILD='3ce2365022';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3647,7 +3647,7 @@ function render(){
     const el=cellEls[i],v=cells[i];
     const isAuto=v===0&&att.has(i);
     let html='',label;
-    if(v===2){html=pieceSVG(S.piece,true);label=pieceWord()}
+    if(v===2){html=pieceSVG(S.piece);label=pieceWord()}
     else if(v===1||isAuto){html='<svg class="mk" viewBox="0 0 20 20"><g class="sh"><path class="s1" d="M4 5.3l12 12"/><path class="s2" d="M16 5.3 4 17.3"/></g><path class="s1" d="M4 4l12 12"/><path class="s2" d="M16 4 4 16"/></svg>';label=v===1?t('stMarked'):t('stBlocked')}
     else label=t('stEmpty');
     const key=v+'|'+isAuto+'|'+S.piece+skinOf(S.piece);
@@ -4685,8 +4685,6 @@ const EYE='#FFFFFF',PUP='#2B211C',BLUSH='#FF9DB1',LINE='#7A4E3A';
     <linearGradient id="g-gbeak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE07A"/><stop offset="1" stop-color="#F2A93B"/></linearGradient>
     <clipPath id="c-clownfish"><path d="M50 24C72 24 88 36 89 56C90 76 74 89 50 89S10 76 11 56C12 36 28 24 50 24Z"/></clipPath>
     <radialGradient id="g-lantern" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#FFC2A0"/><stop offset=".55" stop-color="#FF946F"/><stop offset="1" stop-color="#E4604A"/></radialGradient>
-    <radialGradient id="g-face"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
-    <mask id="m-face" maskUnits="userSpaceOnUse" x="-50" y="-50" width="200" height="200"><ellipse cx="50" cy="54" rx="44" ry="46" fill="url(#g-face)"/></mask>
     <clipPath id="hat-dome"><path d="${BEANIE_DOME}"/></clipPath>`);
 })();
 const PIECES={
@@ -5097,21 +5095,22 @@ const zarG=L=>{const id=L.id,o=L.line,mf=x=>+(100-x).toFixed(1),F=(s,x)=>s<0?mf(
   const P=(pts,s)=>'M'+pts.map(([x,y])=>`${F(s,x)} ${y}`).join('L')+'Z';
   const fin=s=>`<path d="${P([[34.6,61],[26.6,58],[30.6,63.4],[25.4,66.6],[31.6,67.4],[28.6,71.6],[35.2,70]],s)}" fill="${L.fin}" stroke="${o}" stroke-width="1.4" stroke-linejoin="round"/>`;
   const brow=s=>`<path d="M${F(s,32)} 39.6Q${F(s,39)} 33.6 ${F(s,46.4)} 39" fill="none" stroke="${o}" stroke-width="2.2" stroke-linecap="round"/>`;
-  const body=tip(1)+tip(-1)+horn(1)+horn(-1)+memb(1)+memb(-1)+
+  const head=
     `<path d="M50 26C64 26 74.6 32.4 76 42.4C77.4 50.6 73.4 56.4 68.6 60C65.6 62.6 64.8 67.6 65.8 73.6C67 82.6 63.6 92.6 50 94.4C36.4 92.6 33 82.6 34.2 73.6C35.2 67.6 34.4 62.6 31.4 60C26.6 56.4 22.6 50.6 24 42.4C25.4 32.4 36 26 50 26Z" fill="url(#g-zar-${id})" stroke="${o}" stroke-width="2.6" stroke-linejoin="round"/>`+
     `<g fill="none" stroke="${L.scale}" stroke-width="1.1" stroke-linecap="round" opacity=".55"><path d="M45 31q2.5 2.2 5 0q2.5 2.2 5 0M41.4 56q2.2 2 4.4 0M54.2 56q2.2 2 4.4 0M38.6 66q2.2 2 4.4 0M57 66q2.2 2 4.4 0M47.8 62q2.2 2 4.4 0"/></g>`+fin(1)+fin(-1)+
     `<ellipse cx="40" cy="31.6" rx="7.6" ry="3" fill="#fff" opacity=".35" transform="rotate(-14 40 31.6)"/>`+
     `<path d="M37.4 80.4Q50 89.6 62.6 80.4Q61.4 91.4 50 92.8Q38.6 91.4 37.4 80.4Z" fill="${L.jaw}" stroke="${L.jawLine}" stroke-width="1.2" stroke-linejoin="round"/>`+
     `<path d="M37.4 80.4Q50 89.6 62.6 80.4" fill="none" stroke="${o}" stroke-width="1.8" stroke-linecap="round"/><circle cx="45.4" cy="75.6" r="1.25" fill="${o}"/><circle cx="54.6" cy="75.6" r="1.25" fill="${o}"/>`+brow(1)+brow(-1);
+  const body=tip(1)+tip(-1)+horn(1)+horn(-1)+memb(1)+memb(-1)+head,faceBody=[1,-1].map(s=>`<g transform="translate(${F(s,24)} 42) scale(.74) translate(${-F(s,24)} -42)">${tip(s)}</g>`).join('')+horn(1)+horn(-1)+head;
   const paw=cx=>{const Q=(x,y)=>`${(cx+x*1.35).toFixed(1)} ${(97+y*1.35).toFixed(1)}`;return`<g class="paw"><path d="M${Q(-8.6,4.5)}C${Q(-9.4,-3)} ${Q(-5.6,-7.6)} ${Q(0,-7.6)}S${Q(9.4,-3)} ${Q(8.6,4.5)}Q${Q(0,6.4)} ${Q(-8.6,4.5)}Z" fill="url(#g-zar-${id})" stroke="${o}" stroke-width="2.4" stroke-linejoin="round"/><path d="M${Q(-2.8,-.6)}V${(97+3.6*1.35).toFixed(1)}M${Q(2.8,-.6)}V${(97+3.6*1.35).toFixed(1)}" stroke="${o}" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>`+[-5.6,0,5.6].map(dx=>`<path d="M${Q(dx-1.7,4.6)}Q${Q(dx,9.4)} ${Q(dx+1.7,4.6)}Z" fill="url(#h-zar-${id})" stroke="#9E8A64" stroke-width="1" stroke-linejoin="round"/>`).join('')+`</g>`};
-  return{body,top:undefined,extra:'',paws:paw(26)+paw(74),eyes:[[39.4,45.6],[60.6,45.6]],pw:7,ph:3.4,almond:13,lid:L.top,cy:48,peekDy:13,
+  return{body,faceBody,top:undefined,extra:'',paws:paw(26)+paw(74),eyes:[[39.4,45.6],[60.6,45.6]],pw:7,ph:3.4,almond:13,lid:L.top,cy:48,peekDy:13,
     iris:`url(#i-zar-${id})`,core:L.iris[3],irisLine:o,glint:L.glint,
-    face:'6 9 88 88',peekVB:'5.4 22 89.3 89.3',
+    face:'1.5 -1.5 97 97',peekVB:'5.4 22 89.3 89.3',
     fit:{hat:{x:50,y:31.5,r:-5,s:.86},ear:{acc:true,l:[31,33],r:[69,33],top:18,m:6.6},flap:[[0,48],[0,48]],mane:{x:50,y:57,s:.94},band:{l:[24.5,45],r:[75.5,45],top:27.5,at:.5}}}};
 const ZAR={jade:{id:'jade',top:'#9BE0AE',bot:'#4FA978',line:'#245A40',memb:['#E4F7EA','#9ED9B0','#5DB784'],wingLine:'#2F6B4C',fin:'#F2D27A',jaw:'#E6F6E2',jawLine:'#9ACCA8',scale:'#2F6B4C',iris:['#FFF1A6','#F6B43A','#B9661A','#2A1606']},
   pearl:{id:'pearl',top:'#FFFFFF',bot:'#E3E6EC',line:'#565D6E',memb:['#FFFFFF','#E2F5EC','#F6E0EC'],wingLine:'#7A8494',fin:'#E6F3EE',jaw:'#F6F1E6',jawLine:'#D8CDB6',scale:'#B6BCCA',iris:['#B8FAD6','#28BC78','#0B6E45','#05301C'],glint:true}};
 SKINS.dragon={jade:zarG(ZAR.jade),pearl:zarG(ZAR.pearl)};
-const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint','peekDy','paws','almond','face','peekVB'];
+const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint','peekDy','paws','almond','face','peekVB','faceBody'];
 PIECES.poodle={};for(const f of SKIN_FIELDS)PIECES.poodle[f]=SKINS.poodle.cloud[f];
 
 {const K=Object.keys(PIECES);for(const k of K.slice(K.indexOf('stone')+1)){if(k==='poodle')continue;const v=PIECES[k];delete PIECES[k];PIECES[k]=v}}
@@ -5142,16 +5141,16 @@ function pieceSymbols(){
     let s=document.getElementById('p-'+k);
 
     if(!s){const ref=document.querySelector('symbol[id^="p-"]');if(!ref)continue;s=document.createElementNS('http://www.w3.org/2000/svg','symbol');s.id='p-'+k;ref.parentNode.appendChild(s)}
-    s.innerHTML=faceWrap(k,T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,false)).join(''));
+    s.innerHTML=faceOf(k)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,false)).join('');
     s.setAttribute('viewBox',pieceVB(k));
   }
 }
 
-const faceWrap=(k,x,field)=>!field&&PIECES[k].face?`<g mask="url(#m-face)">${x}</g>`:x;
+const faceOf=(k,field)=>{const T=PIECES[k];return!field&&T.faceBody?T.faceBody:T.body};
 function pieceVB(k,field){const T=PIECES[k];return!field&&T.face?T.face:`0 ${(T.cy-50+1.5).toFixed(1)} 100 100`}
 const _pcCache={};
 function pieceSVG(k,field){const c=field?k+'/field':k;
-  if(!_pcCache[c]){const T=PIECES[k];_pcCache[c]=`<svg class="pc" data-t="${k}" viewBox="${pieceVB(k,field)}">${faceWrap(k,T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join(''),field)}</svg>`}
+  if(!_pcCache[c]){const T=PIECES[k];_pcCache[c]=`<svg class="pc" data-t="${k}" viewBox="${pieceVB(k,field)}">${faceOf(k,field)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')}</svg>`}
   return _pcCache[c];
 }
 pieceSymbols();
@@ -5535,7 +5534,7 @@ function hatFaceVB(k,h){const T=PIECES[k],[x0,y0,w]=T.face.split(' ').map(Number
 function buddySVG(k,h){
   if(!h||!HATS[h])return pieceSVG(k);
   const id=k+'/'+h;
-  if(!_bdCache[id]){const T=PIECES[k];_bdCache[id]=`<svg class="pc hatted" data-t="${k}" viewBox="${T.face?hatFaceVB(k,h):pieceVB(k)}">${T.face?hatBack(k,h)+faceWrap(k,hatBody(k,h)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join(''))+hatSVG(k,h):hatBack(k,h)+hatBody(k,h)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')+hatSVG(k,h)}</svg>`}
+  if(!_bdCache[id]){const T=PIECES[k];_bdCache[id]=`<svg class="pc hatted" data-t="${k}" viewBox="${T.face?hatFaceVB(k,h):pieceVB(k)}">${T.face?hatBack(k,h)+faceOf(k)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')+hatSVG(k,h):hatBack(k,h)+hatBody(k,h)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')+hatSVG(k,h)}</svg>`}
   return _bdCache[id];
 }
 
@@ -6850,7 +6849,7 @@ let skinFor=null,skinT=0,skinHover=false;
 const SKIN_DOT={cloud:'#F2DFC4',teddy:'#9C6B4E',midnight:'#3A3550',jade:'#7CCB98',pearl:'#F1EDF8'};
 
 const skinLater=ms=>{clearTimeout(skinT);skinT=setTimeout(()=>{if(!skinHover)closeSkins()},ms)};
-const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="${d.face||`0 ${(d.cy-48.5).toFixed(1)} 100 100`}" aria-hidden="true">${d.face?`<g mask="url(#m-face)">`:''}${d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}${d.face?'</g>':''}</svg>`};
+const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="${d.face||`0 ${(d.cy-48.5).toFixed(1)} 100 100`}" aria-hidden="true">${d.faceBody||d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}</svg>`};
 
 function placeSkins(){const box=$('n-skins'),k=skinFor,b=k&&$('n-pick').querySelector(`[data-p="${k}"]`);if(!b||box.hidden)return;
   const wr=box.parentNode.getBoundingClientRect(),br=b.getBoundingClientRect(),w=box.offsetWidth,cx=br.left+br.width/2-wr.left,x=Math.max(w/2+4,Math.min(wr.width-w/2-4,cx));

@@ -1938,7 +1938,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=8d1b3ef084"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=b9bf300080"><\/script>')})();
 </script>
 <script>
 
@@ -2648,7 +2648,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='8d1b3ef084';let updateTo=null;
+const BUILD='b9bf300080';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -4044,7 +4044,9 @@ const Sound=(function(){
   },_play(kind,n,who){
     const j=J();
     switch(kind){
-      case'mark':if(n>1)stroke({d:.05,g:.035,f:2400*j*(1+Math.min(n,14)*.02)});else{stroke({d:.075,g:.05,f:2500*j});stroke({t:.15,d:.075,g:.045,f:2800*j})}break;
+
+      case'mark':if(n>1){const t=performance.now(),fast=t-(this._mk||0)<60;this._mk=t;stroke({d:.075,g:fast?.04:.048,f:2500*j*(1+Math.min(n,14)*.02)})}
+        else{stroke({d:.075,g:.05,f:2500*j});stroke({t:.15,d:.075,g:.045,f:2800*j})}break;
       case'area':[1047,1319,1568].forEach((f,k)=>tone(f*j,{t:k*.08,d:.45,g:.032,a:.004}));break;
       case'row':tone(1047*j,{d:.35,g:.035,a:.004});tone(1568*j,{t:.07,d:.4,g:.03,a:.004});break;
       case'unmark':bloop({pitch:j*(1+(Math.random()-.5)*.08)*(1+Math.min(n,14)*.03),g:.11});break;

@@ -1938,7 +1938,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=b9bf300080"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=303928b9ff"><\/script>')})();
 </script>
 <script>
 
@@ -2648,7 +2648,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='b9bf300080';let updateTo=null;
+const BUILD='303928b9ff';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3647,7 +3647,7 @@ function render(){
     const el=cellEls[i],v=cells[i];
     const isAuto=v===0&&att.has(i);
     let html='',label;
-    if(v===2){html=pieceSVG(S.piece);label=pieceWord()}
+    if(v===2){html=pieceSVG(S.piece,true);label=pieceWord()}
     else if(v===1||isAuto){html='<svg class="mk" viewBox="0 0 20 20"><g class="sh"><path class="s1" d="M4 5.3l12 12"/><path class="s2" d="M16 5.3 4 17.3"/></g><path class="s1" d="M4 4l12 12"/><path class="s2" d="M16 4 4 16"/></svg>';label=v===1?t('stMarked'):t('stBlocked')}
     else label=t('stEmpty');
     const key=v+'|'+isAuto+'|'+S.piece+skinOf(S.piece);
@@ -4685,6 +4685,8 @@ const EYE='#FFFFFF',PUP='#2B211C',BLUSH='#FF9DB1',LINE='#7A4E3A';
     <linearGradient id="g-gbeak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE07A"/><stop offset="1" stop-color="#F2A93B"/></linearGradient>
     <clipPath id="c-clownfish"><path d="M50 24C72 24 88 36 89 56C90 76 74 89 50 89S10 76 11 56C12 36 28 24 50 24Z"/></clipPath>
     <radialGradient id="g-lantern" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#FFC2A0"/><stop offset=".55" stop-color="#FF946F"/><stop offset="1" stop-color="#E4604A"/></radialGradient>
+    <radialGradient id="g-face"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <mask id="m-face" maskUnits="userSpaceOnUse" x="-50" y="-50" width="200" height="200"><ellipse cx="50" cy="54" rx="44" ry="46" fill="url(#g-face)"/></mask>
     <clipPath id="hat-dome"><path d="${BEANIE_DOME}"/></clipPath>`);
 })();
 const PIECES={
@@ -5104,11 +5106,12 @@ const zarG=L=>{const id=L.id,o=L.line,mf=x=>+(100-x).toFixed(1),F=(s,x)=>s<0?mf(
   const paw=cx=>{const Q=(x,y)=>`${(cx+x*1.35).toFixed(1)} ${(97+y*1.35).toFixed(1)}`;return`<g class="paw"><path d="M${Q(-8.6,4.5)}C${Q(-9.4,-3)} ${Q(-5.6,-7.6)} ${Q(0,-7.6)}S${Q(9.4,-3)} ${Q(8.6,4.5)}Q${Q(0,6.4)} ${Q(-8.6,4.5)}Z" fill="url(#g-zar-${id})" stroke="${o}" stroke-width="2.4" stroke-linejoin="round"/><path d="M${Q(-2.8,-.6)}V${(97+3.6*1.35).toFixed(1)}M${Q(2.8,-.6)}V${(97+3.6*1.35).toFixed(1)}" stroke="${o}" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>`+[-5.6,0,5.6].map(dx=>`<path d="M${Q(dx-1.7,4.6)}Q${Q(dx,9.4)} ${Q(dx+1.7,4.6)}Z" fill="url(#h-zar-${id})" stroke="#9E8A64" stroke-width="1" stroke-linejoin="round"/>`).join('')+`</g>`};
   return{body,top:undefined,extra:'',paws:paw(26)+paw(74),eyes:[[39.4,45.6],[60.6,45.6]],pw:7,ph:3.4,almond:13,lid:L.top,cy:48,peekDy:13,
     iris:`url(#i-zar-${id})`,core:L.iris[3],irisLine:o,glint:L.glint,
+    face:'6 9 88 88',peekVB:'5.4 22 89.3 89.3',
     fit:{hat:{x:50,y:31.5,r:-5,s:.86},ear:{acc:true,l:[31,33],r:[69,33],top:18,m:6.6},flap:[[0,48],[0,48]],mane:{x:50,y:57,s:.94},band:{l:[24.5,45],r:[75.5,45],top:27.5,at:.5}}}};
 const ZAR={jade:{id:'jade',top:'#9BE0AE',bot:'#4FA978',line:'#245A40',memb:['#E4F7EA','#9ED9B0','#5DB784'],wingLine:'#2F6B4C',fin:'#F2D27A',jaw:'#E6F6E2',jawLine:'#9ACCA8',scale:'#2F6B4C',iris:['#FFF1A6','#F6B43A','#B9661A','#2A1606']},
   pearl:{id:'pearl',top:'#FFFFFF',bot:'#E3E6EC',line:'#565D6E',memb:['#FFFFFF','#E2F5EC','#F6E0EC'],wingLine:'#7A8494',fin:'#E6F3EE',jaw:'#F6F1E6',jawLine:'#D8CDB6',scale:'#B6BCCA',iris:['#B8FAD6','#28BC78','#0B6E45','#05301C'],glint:true}};
 SKINS.dragon={jade:zarG(ZAR.jade),pearl:zarG(ZAR.pearl)};
-const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint','peekDy','paws','almond'];
+const SKIN_FIELDS=['body','top','topS','topFront','crownFit','extra','eyes','pw','ph','ew','eh','lid','cy','rest','iris','core','irisLine','glint','peekDy','paws','almond','face','peekVB'];
 PIECES.poodle={};for(const f of SKIN_FIELDS)PIECES.poodle[f]=SKINS.poodle.cloud[f];
 
 {const K=Object.keys(PIECES);for(const k of K.slice(K.indexOf('stone')+1)){if(k==='poodle')continue;const v=PIECES[k];delete PIECES[k];PIECES[k]=v}}
@@ -5139,16 +5142,17 @@ function pieceSymbols(){
     let s=document.getElementById('p-'+k);
 
     if(!s){const ref=document.querySelector('symbol[id^="p-"]');if(!ref)continue;s=document.createElementNS('http://www.w3.org/2000/svg','symbol');s.id='p-'+k;ref.parentNode.appendChild(s)}
-    s.innerHTML=T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,false)).join('');
+    s.innerHTML=faceWrap(k,T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,false)).join(''));
     s.setAttribute('viewBox',pieceVB(k));
   }
 }
 
-function pieceVB(k){return`0 ${(PIECES[k].cy-50+1.5).toFixed(1)} 100 100`}
+const faceWrap=(k,x,field)=>!field&&PIECES[k].face?`<g mask="url(#m-face)">${x}</g>`:x;
+function pieceVB(k,field){const T=PIECES[k];return!field&&T.face?T.face:`0 ${(T.cy-50+1.5).toFixed(1)} 100 100`}
 const _pcCache={};
-function pieceSVG(k){
-  if(!_pcCache[k]){const T=PIECES[k];_pcCache[k]=`<svg class="pc" data-t="${k}" viewBox="${pieceVB(k)}">${T.body}${T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')}</svg>`}
-  return _pcCache[k];
+function pieceSVG(k,field){const c=field?k+'/field':k;
+  if(!_pcCache[c]){const T=PIECES[k];_pcCache[c]=`<svg class="pc" data-t="${k}" viewBox="${pieceVB(k,field)}">${faceWrap(k,T.body+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join(''),field)}</svg>`}
+  return _pcCache[c];
 }
 pieceSymbols();
 
@@ -5467,7 +5471,7 @@ const HAT_FIT={unicorn:{x:50,y:28.5,r:-5,s:.9},griffin:{x:50,y:30.5,r:-5,s:.95},
 
 for(const k in SKINS){const f=Object.values(SKINS[k])[0].fit;HAT_FIT[k]=HAT_FIT[k]||f.hat;EAR_FIT[k]=EAR_FIT[k]||f.ear;BAND_FIT[k]=BAND_FIT[k]||f.band;FLAP_FIT[k]=FLAP_FIT[k]||f.flap;MANE_FIT[k]=MANE_FIT[k]||f.mane}
 function applySkin(k,id){const L=SKINS[k];if(!L)return;const d=L[id]||Object.values(L)[0],P=PIECES[k];for(const f of SKIN_FIELDS)P[f]=d[f];
-  HAT_FIT[k]=d.fit.hat;EAR_FIT[k]=d.fit.ear;BAND_FIT[k]=d.fit.band;FLAP_FIT[k]=d.fit.flap;MANE_FIT[k]=d.fit.mane;delete _pcCache[k];for(const x in _bdCache)if(x.startsWith(k+'/'))delete _bdCache[x];pieceSymbols()}
+  HAT_FIT[k]=d.fit.hat;EAR_FIT[k]=d.fit.ear;BAND_FIT[k]=d.fit.band;FLAP_FIT[k]=d.fit.flap;MANE_FIT[k]=d.fit.mane;delete _pcCache[k];delete _pcCache[k+'/field'];for(const x in _bdCache)if(x.startsWith(k+'/'))delete _bdCache[x];pieceSymbols()}
 
 let HAT_ADJ={};
 
@@ -5527,7 +5531,7 @@ const _bdCache={};
 function buddySVG(k,h){
   if(!h||!HATS[h])return pieceSVG(k);
   const id=k+'/'+h;
-  if(!_bdCache[id]){const T=PIECES[k];_bdCache[id]=`<svg class="pc hatted" data-t="${k}" viewBox="${pieceVB(k)}">${hatBack(k,h)}${hatBody(k,h)}${T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')}${hatSVG(k,h)}</svg>`}
+  if(!_bdCache[id]){const T=PIECES[k];_bdCache[id]=`<svg class="pc hatted" data-t="${k}" viewBox="${pieceVB(k)}">${faceWrap(k,hatBack(k,h)+hatBody(k,h)+T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('')+hatSVG(k,h))}</svg>`}
   return _bdCache[id];
 }
 
@@ -5624,10 +5628,10 @@ const Mascot=(function(){
   function build(t){
     type=t;T=PIECES[t];
     const eyes=T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('');
-    el.innerHTML=`<svg viewBox="0 ${T.peekDy||0} 100 100" aria-hidden="true"><g class="m-breathe"><g class="m-head">${hatBack(t,hat)}${T.extra}${hatBody(t,hat)}${eyes}${hat?hatSVG(t,hat):''}</g></g></svg>`;
+    el.innerHTML=`<svg viewBox="${T.peekVB||`0 ${T.peekDy||0} 100 100`}" aria-hidden="true"><g class="m-breathe"><g class="m-head">${hatBack(t,hat)}${T.extra}${hatBody(t,hat)}${eyes}${hat?hatSVG(t,hat):''}</g></g></svg>`;
     svg=el.firstChild;head=svg.querySelector('.m-head');pupils=[...svg.querySelectorAll('.pupil')];
     if(!paws){paws=document.createElement('div');paws.className='m-paws';paws.setAttribute('aria-hidden','true');el.after(paws)}
-    paws.innerHTML=T.paws?`<svg viewBox="0 ${T.peekDy||0} 100 100">${T.paws}</svg>`:'';paws.hidden=el.hidden||!T.paws;
+    paws.innerHTML=T.paws?`<svg viewBox="${T.peekVB||`0 ${T.peekDy||0} 100 100`}">${T.paws}</svg>`:'';paws.hidden=el.hidden||!T.paws;
   }
   function center(){const r=el.getBoundingClientRect();return{x:r.left+r.width*.5,y:r.top+r.height*.47,s:r.width/100}}
   function lookAtPoint(x,y,strength=1){
@@ -6842,7 +6846,7 @@ let skinFor=null,skinT=0,skinHover=false;
 const SKIN_DOT={cloud:'#F2DFC4',teddy:'#9C6B4E',midnight:'#3A3550',jade:'#7CCB98',pearl:'#F1EDF8'};
 
 const skinLater=ms=>{clearTimeout(skinT);skinT=setTimeout(()=>{if(!skinHover)closeSkins()},ms)};
-const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="0 ${(d.cy-48.5).toFixed(1)} 100 100" aria-hidden="true">${d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}</svg>`};
+const skinArt=(k,id)=>{const d=SKINS[k][id];return`<svg viewBox="${d.face||`0 ${(d.cy-48.5).toFixed(1)} 100 100`}" aria-hidden="true">${d.face?`<g mask="url(#m-face)">`:''}${d.body}${d.eyes.map(([x,y])=>eyeMarkup(d,x,y,false)).join('')}${d.face?'</g>':''}</svg>`};
 
 function placeSkins(){const box=$('n-skins'),k=skinFor,b=k&&$('n-pick').querySelector(`[data-p="${k}"]`);if(!b||box.hidden)return;
   const wr=box.parentNode.getBoundingClientRect(),br=b.getBoundingClientRect(),w=box.offsetWidth,cx=br.left+br.width/2-wr.left,x=Math.max(w/2+4,Math.min(wr.width-w/2-4,cx));

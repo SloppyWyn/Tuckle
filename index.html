@@ -461,6 +461,9 @@ html.calm .dd-list{animation:none}
 .btn.help::after,.langpick .dd-btn::after,.dn::after{content:"";position:absolute;inset:-6px -4px}
 .langpick .dd-btn::after{inset:-9px -4px}
 
+.intro-inner.stepaway{position:fixed;margin:0;z-index:-1;pointer-events:none;transform:none;animation:stepAway .24s cubic-bezier(.2,.7,.3,1) forwards!important}
+@keyframes stepAway{to{opacity:0}}
+
 :root{--side:236px;--gapx:28px;--bw:max(220px,min(640px,calc(100vw - 32px),calc(100vh - 346px)))}
 @supports (height:100dvh){:root{--bw:max(220px,min(640px,calc(100vw - 32px),calc(100dvh - 346px)))}}
 .wrap{max-width:calc(var(--bw) + 32px);padding-block:14px 24px;container-type:inline-size}
@@ -1075,6 +1078,7 @@ html.calm #bt-peek .hp-disc{transition:none}
 .n-words .n-word span.hop{animation:wordHop .55s cubic-bezier(.3,1.4,.5,1) calc(var(--k,0) * 55ms) both,wordBreathe 3.6s ease-in-out calc(var(--k,0) * 220ms + .6s) infinite}
 @keyframes wordHop{40%{transform:translateY(-7px) rotate(-7deg)}}
 html.grabbing,html.grabbing *{cursor:grabbing!important}
+html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery .pc,html.calm .mc-rw i:not(.hat):not(.got) svg,html.calm .n-skins button.lock svg{animation:none}
 
 .jdeco,.m-map,.cdeco{--jstem:color-mix(in srgb,var(--rj) 72%,#16301f);--jvein:color-mix(in srgb,#fff 38%,var(--rj))}
 .board.jungle{background:color-mix(in srgb,var(--rj) 12%,var(--b-bg,var(--board-bg)));border-color:color-mix(in srgb,var(--rj) 32%,var(--b-edge,var(--tray-edge)))}
@@ -1373,7 +1377,8 @@ html.calm .m-say{transition:none;transform:none}
 html.calm .m-say.lesson{animation:none;box-shadow:0 10px 22px -12px rgba(0,0,0,.35),0 0 0 1px color-mix(in srgb,#F7D56A 30%,transparent)}
 
 @media (max-width:640px){
-  .m-say{left:0;right:0;margin-inline:auto;width:fit-content;max-width:100%;bottom:calc(100% + 76px);font-size:16px;line-height:1.28;padding:8px 13px;
+
+  .m-say{pointer-events:none;left:0;right:0;margin-inline:auto;width:fit-content;max-width:100%;bottom:calc(100% + 76px);font-size:16px;line-height:1.28;padding:8px 13px;
     text-align:center;transform:translateY(5px) scale(.96);transform-origin:50% 100%}
   .m-say::before{left:50%;bottom:-6px;margin-left:-5px;transform:rotate(-45deg)}
 }
@@ -1819,7 +1824,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
   </div>
 </div>
 
-<div class="wrap">
+<div class="wrap" role="main">
   <header class="top">
     <div class="brand">
       <svg viewBox="0 0 100 100" aria-hidden="true"><use href="#p-owl"/></svg>
@@ -1963,7 +1968,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3f9471f6ff"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=f08362ac79"><\/script>')})();
 </script>
 <script>
 
@@ -2673,7 +2678,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='3f9471f6ff';let updateTo=null;
+const BUILD='f08362ac79';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5856,6 +5861,8 @@ const Chat=(function(){
     if(at){const b=bw.getBoundingClientRect(),a=at.getBoundingClientRect();el.style.left=(a.right-b.left+12)+'px';el.style.top=(a.top-b.top+a.height/2)+'px'}
     else el.style.left=el.style.top='';
     clearTimeout(hide.t);el.classList.remove('out');el.hidden=false;void el.offsetWidth;el.classList.add('in');
+
+    if(stay!==Infinity){const w=String(s).trim().split(/\s+/).length;stay=Math.max(stay,Math.min(9000,1500+300*w))}
     lastShown=performance.now();clearTimeout(hideT);el._sticky=stay===Infinity;if(!el._sticky)hideT=setTimeout(hide,stay);
   }
 
@@ -6205,9 +6212,16 @@ function drawMinis(){
 }
 
 function dropFloaters(){newsClose();document.querySelectorAll('.coach').forEach(c=>{if(c._done)c._done(true);c.remove()});Chat.hide(true)}
+
+let ghostStep=null,ghostT=0;
+function endGhost(){clearTimeout(ghostT);if(ghostStep){const g=ghostStep;ghostStep=null;g.classList.remove('stepaway');g.removeAttribute('inert');g.removeAttribute('aria-hidden');g.style.cssText='';if(!g._keep)g.hidden=true}}
 function showStep(which){
   dropFloaters();
-  for(const k of ['title','rules','menu','play','nest','name'])$('step-'+k).hidden=which!==k;
+  endGhost();
+  const prev=['title','rules','menu','play','nest','name'].map(k=>$('step-'+k)).find(e=>!e.hidden&&e.id!=='step-'+which);
+  const cross=prev&&!intro.hidden&&!calm()&&!document.documentElement.classList.contains('ingame');
+  if(cross){const r=prev.getBoundingClientRect();prev.style.cssText='left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px';prev.classList.add('stepaway');prev.setAttribute('inert','');prev.setAttribute('aria-hidden','true');ghostStep=prev;ghostT=setTimeout(endGhost,300)}
+  for(const k of ['title','rules','menu','play','nest','name'])if(!(cross&&$('step-'+k)===prev))$('step-'+k).hidden=which!==k;
   if(which!=='nest')nestOpen=null;
   if(which==='name'){$('name-disc').innerHTML=buddySVG(S.piece,wornHat());const ni=$('name-in');ni.value=S.name||'';if(!matchMedia('(pointer:coarse)').matches)setTimeout(()=>ni.focus({preventScroll:true}),350)}
 
@@ -7208,6 +7222,8 @@ if(new URLSearchParams(location.search).has('test'))window.tuckle={
   state:()=>({mode,stage:pz&&pz.stage,letter:pz&&pz.ch,letters:store.jungle.letters||{},lshine:store.jungle.lshine||{},medals:store.jungle.medals,N:pz&&pz.N,diff:pz&&pz.diff,won,lost,hearts,crosses:G.crosses,tap:S.tap}),
   sol:()=>[...pz.solSet],
   solve(){for(const i of pz.solSet)cells[i]=2;render();checkWin()},
+  ids:()=>[...WORLD_IDS.flatMap(worldStages),...LETTERS].map(s=>s.id),
+  play:id=>newStage(id),
   almost(){const s=[...pz.solSet];s.slice(0,-1).forEach(i=>cells[i]=2);render()},
   sound:(kind,n,who)=>Sound.play(kind,n,who),
   say:m=>Chat.show(m),

@@ -140,7 +140,7 @@
 "outTM":"Keine Momos mehr",
 "outPM":"Drei falsche Kumpel, und die Momos sind alle.",
 "keepGoingM":"Ohne Momos weiterspielen",
-"noHintsLeft":"Keine Tipps mehr für diese Stufe",
+"noHintsLeft":"Keine Tipps mehr für diese Stufe","hintsSpent":"Keine Tipps mehr auf dieser Stufe. Morgen wieder.",
 "g1":"Diese Farbe hat nur ein Feld, also gehört ihr Kumpel genau hierher. Tippe zweimal, schnell.",
 "dm1":"Ein Kumpel pro Farbe: der Rest seiner Farbe fällt weg.",
 "dm2":"Einer pro Zeile: der Rest seiner Zeile auch.",

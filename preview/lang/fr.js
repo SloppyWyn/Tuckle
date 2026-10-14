@@ -140,7 +140,7 @@
 "outTM":"Plus de momos",
 "outPM":"Trois mauvais copains, et les momos sont finis.",
 "keepGoingM":"Continuer sans momos",
-"noHintsLeft":"Plus d’indices pour cette étape",
+"noHintsLeft":"Plus d’indices pour cette étape","hintsSpent":"Plus d’indices sur cette étape. Retour demain.",
 "g1":"Cette couleur n’a qu’une case, donc son copain va juste ici. Touchez deux fois, vite.",
 "dm1":"Un copain par couleur : le reste de sa couleur est exclu.",
 "dm2":"Un par ligne : le reste de sa ligne aussi.",

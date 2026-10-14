@@ -140,7 +140,7 @@
 "outTM":"Acabaram os momos",
 "outPM":"Três amiguinhos errados e os momos acabaram.",
 "keepGoingM":"Continuar sem momos",
-"noHintsLeft":"Acabaram as dicas desta fase",
+"noHintsLeft":"Acabaram as dicas desta fase","hintsSpent":"Sem dicas nesta fase. Voltam amanhã.",
 "g1":"Esta cor tem uma casa só, então o amiguinho dela vai bem aqui. Toque duas vezes, rápido.",
 "dm1":"Um amiguinho por cor: o resto da cor dele fica de fora.",
 "dm2":"Um por linha: o resto da linha também.",

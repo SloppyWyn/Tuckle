@@ -140,7 +140,7 @@
 "outTM":"Koniec momo",
 "outPM":"Trzy błędy i momo zjedzone.",
 "keepGoingM":"Graj bez momo",
-"noHintsLeft":"Brak podpowiedzi na tym etapie",
+"noHintsLeft":"Brak podpowiedzi na tym etapie","hintsSpent":"Na tym poziomie nie ma już podpowiedzi. Jutro wrócą.",
 "g1":"Ten kolor ma tylko jedno pole, więc kumpel jest właśnie tu. Dotknij go dwa razy, szybko.",
 "dm1":"Jeden kumpel na kolor: reszta koloru odpada.",
 "dm2":"Jeden na wiersz: reszta wiersza też odpada.",

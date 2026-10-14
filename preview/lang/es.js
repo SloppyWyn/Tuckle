@@ -140,7 +140,7 @@
 "outTM":"Sin momos",
 "outPM":"Tres amiguitos equivocados y se acabaron los momos.",
 "keepGoingM":"Seguir sin momos",
-"noHintsLeft":"No quedan pistas en este nivel",
+"noHintsLeft":"No quedan pistas en este nivel","hintsSpent":"Sin pistas en esta etapa. Vuelven mañana.",
 "g1":"Este color tiene una sola casilla, así que su amiguito va justo aquí. Tócala dos veces, rápido.",
 "dm1":"Un amiguito por color: el resto de su color queda fuera.",
 "dm2":"Uno por fila: el resto de su fila también.",

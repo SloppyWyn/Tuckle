@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:99999;pointer-events:none;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.08em;padding:4px 10px;border-radius:0 0 8px 8px">PREVIEW BUILD 3</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:99999;pointer-events:none;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.08em;padding:4px 10px;border-radius:0 0 8px 8px">PREVIEW BUILD 4</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1888,14 +1888,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
       <div class="panel">
         <div class="sheet-head"><h3 data-l10n="settings" id="sheet-title">Settings</h3><button class="btn ghost iconbtn" id="sheet-close" data-l10n-aria="close">✕</button></div>
-                <div class="opt"><span data-l10n="tapDoes" id="tm-l">Tap does</span>
-          <div class="seg" role="group" aria-labelledby="tm-l" id="tapseg">
-            <button data-t="double" aria-pressed="true" data-l10n="double">Double-tap</button>
-            <button data-t="cycle" aria-pressed="false" data-l10n="cycle">Cycle</button>
-            <button data-t="mark" aria-pressed="false" data-l10n="markBtn">Mark</button>
-            <button data-t="place" aria-pressed="false" id="tm-place" data-l10n="placeBtn">Place</button>
-          </div></div>
-        <div class="opt"><label for="name-set" data-l10n="yourName">Your name</label><input id="name-set" class="nameset" maxlength="16" autocomplete="nickname" spellcheck="false" data-l10n-ph="namePh"></div>
+                <div class="opt"><label for="name-set" data-l10n="yourName">Your name</label><input id="name-set" class="nameset" maxlength="16" autocomplete="nickname" spellcheck="false" data-l10n-ph="namePh"></div>
         <div class="opt"><label for="lang-set" data-l10n="langT">Language</label>
           <select id="lang-set" class="langsel"><option value="en">English</option><option value="ru">Русский</option><option value="uk">Українська</option><option value="pl">Polski</option><option value="de">Deutsch</option><option value="es">Español</option><option value="pt">Português (Brasil)</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="zh">繁體中文</option></select></div>
         <div class="opt"><span id="th-l"><span data-l10n="theme">Theme</span><span class="sub" id="th-sub"></span></span><button class="dn" role="switch" aria-checked="false" data-l10n-aria="darkT"><span class="dn-stars" aria-hidden="true"></span><span class="dn-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><mask id="dn-m2" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><circle class="dn-bite" cx="12" cy="12" r="6.4" fill="#000"/></mask><g class="dn-rays" stroke="#F0A92E" stroke-width="2" stroke-linecap="round"><path d="M12 2.2v2.3" transform="rotate(0 12 12)"/><path d="M12 2.2v2.3" transform="rotate(45 12 12)"/><path d="M12 2.2v2.3" transform="rotate(90 12 12)"/><path d="M12 2.2v2.3" transform="rotate(135 12 12)"/><path d="M12 2.2v2.3" transform="rotate(180 12 12)"/><path d="M12 2.2v2.3" transform="rotate(225 12 12)"/><path d="M12 2.2v2.3" transform="rotate(270 12 12)"/><path d="M12 2.2v2.3" transform="rotate(315 12 12)"/></g><g mask="url(#dn-m2)"><circle class="dn-core" cx="12" cy="12" r="5"/></g></svg></span></button></div>
@@ -1904,38 +1897,10 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
         <div class="opt"><label for="o-auto"><span data-l10n="autoT"></span><span class="sub" data-l10n="autoS"></span></label><input type="checkbox" role="switch" id="o-auto"></div>
         <div class="opt"><label for="o-conf"><span data-l10n="confT"></span><span class="sub" data-l10n="confS"></span></label><input type="checkbox" role="switch" id="o-conf" checked></div>
         <div class="opt"><label for="o-music"><span data-l10n="musicT"></span><span class="sub" data-l10n="musicS"></span></label><input type="checkbox" role="switch" id="o-music"></div>
-        <div class="opt"><label for="o-applause"><span data-l10n="applauseT">Applause</span><span class="sub" data-l10n="applauseS"></span></label><input type="checkbox" role="switch" id="o-applause"></div>
         <div class="opt"><label for="o-sound"><span data-l10n="soundT"></span><span class="sub" data-l10n="soundS"></span></label><input type="checkbox" role="switch" id="o-sound"></div>
         <div class="opt"><label for="o-mascot"><span data-l10n="mascotT"></span><span class="sub" data-l10n="mascotS"></span></label><input type="checkbox" role="switch" id="o-mascot"></div>
         <div class="opt"><label for="o-cb"><span data-l10n="cbT"></span><span class="sub" data-l10n="cbS"></span></label><input type="checkbox" role="switch" id="o-cb"></div>
         <div class="opt"><label for="o-hearts"><span data-l10n="heartsT"></span><span class="sub" data-l10n="heartsS"></span><span class="sub note" id="hearts-note" data-l10n="heartsNext" hidden></span></label><input type="checkbox" role="switch" id="o-hearts"></div>
-        <div class="opt" style="display:block"><span data-l10n="pieceT">Buddy</span>
-          <div class="pieces" role="group" data-l10n-aria="pieceT">
-            <button data-p="owl"><svg viewBox="0 0 100 100"><use href="#p-owl"/></svg></button>
-            <button data-p="cat"><svg viewBox="0 0 100 100"><use href="#p-cat"/></svg></button>
-            <button data-p="lantern"><svg viewBox="0 0 100 100"><use href="#p-lantern"/></svg></button>
-            <button data-p="stone"><svg viewBox="0 0 100 100"><use href="#p-stone"/></svg></button>
-            <button data-p="poodle"><svg viewBox="0 0 100 100"><use href="#p-poodle"/></svg></button>
-            <button data-p="monkey" hidden><svg viewBox="0 0 100 100"><use href="#p-monkey"/></svg></button>
-            <button data-p="lion" hidden><svg viewBox="0 0 100 100"><use href="#p-lion"/></svg></button>
-            <button data-p="toucan" hidden><svg viewBox="0 0 100 100"><use href="#p-toucan"/></svg></button>
-            <button data-p="seal" hidden><svg viewBox="0 0 100 100"><use href="#p-seal"/></svg></button>
-            <button data-p="emperor" hidden><svg viewBox="0 0 100 100"><use href="#p-emperor"/></svg></button>
-            <button data-p="orca" hidden><svg viewBox="0 0 100 100"><use href="#p-orca"/></svg></button>
-            <button data-p="redpanda" hidden><svg viewBox="0 0 100 100"><use href="#p-redpanda"/></svg></button>
-            <button data-p="snowleo" hidden><svg viewBox="0 0 100 100"><use href="#p-snowleo"/></svg></button>
-            <button data-p="yak" hidden><svg viewBox="0 0 100 100"><use href="#p-yak"/></svg></button>
-            <button data-p="booby" hidden><svg viewBox="0 0 100 100"><use href="#p-booby"/></svg></button>
-            <button data-p="tortoise" hidden><svg viewBox="0 0 100 100"><use href="#p-tortoise"/></svg></button>
-            <button data-p="iguana" hidden><svg viewBox="0 0 100 100"><use href="#p-iguana"/></svg></button>
-            <button data-p="moonbun" hidden><svg viewBox="0 0 100 100"><use href="#p-moonbun"/></svg></button>
-            <button data-p="starwhale" hidden><svg viewBox="0 0 100 100"><use href="#p-starwhale"/></svg></button>
-            <button data-p="cometfox" hidden><svg viewBox="0 0 100 100"><use href="#p-cometfox"/></svg></button>
-            <button data-p="clownfish" hidden><svg viewBox="0 0 100 100"><use href="#p-clownfish"/></svg></button>
-            <button data-p="octopus" hidden><svg viewBox="0 0 100 100"><use href="#p-octopus"/></svg></button>
-            <button data-p="seahorse" hidden><svg viewBox="0 0 100 100"><use href="#p-seahorse"/></svg></button>
-          </div>
-        </div>
       </div>
 
       <div class="panel">
@@ -1968,7 +1933,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=6b3691e21b"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=cf0d25d2f9"><\/script>')})();
 </script>
 <script>
 
@@ -2678,7 +2643,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='6b3691e21b';let updateTo=null;
+const BUILD='cf0d25d2f9';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -2695,7 +2660,7 @@ en:{
   tapDoes:'Tap does',double:'Double-tap',cycle:'Cycle',markBtn:'Mark',placeBtn:'{Pc}',
   undo:'Undo',hint:'Hint',clear:'Clear board',clearNote:'Removes all pieces and marks. Undo brings them back.',
   controlsT:'Controls',
-  helpSmall:'Tap a cell to toggle <b>×</b>; double-tap quickly to place {aP}, tap {aP} to remove it (with three cookies on, a found {P} stays put — tapping it gives it a pet). <b>Tap does</b> also offers Cycle (empty → × → {P}), Mark only, or Place only. Drag across cells to mark many at once (drag from a marked cell to erase). Right-click marks on desktop. Keyboard: arrows move, <kbd>Space</kbd> cycles, <kbd>X</kbd> marks, <kbd>O</kbd> places, <kbd>Z</kbd> undoes. Every puzzle has one solution you can reach without guessing.',
+  helpSmall:'Tap a cell to toggle <b>×</b>; double-tap quickly to place {aP}, tap {aP} to remove it (with three cookies on, a found {P} stays put — tapping it gives it a pet). Drag across cells to mark many at once (drag from a marked cell to erase). Right-click marks on desktop. Keyboard: arrows move, <kbd>Space</kbd> cycles, <kbd>X</kbd> marks, <kbd>O</kbd> places, <kbd>Z</kbd> undoes. Every puzzle has one solution you can reach without guessing.',
   langT:'Language',theme:'Theme',themeSub:'Auto follows your device or app',followDevice:'Match my device',followDeviceS:'Light or dark, as your phone or computer is set',darkT:'Dark theme',auto:'Auto',light:'Light',dark:'Dark',
   anim:'Animations',on:'On',off:'Off',animAuto:'Auto follows your system setting',animAutoRM:'Auto: your system asks for reduced motion, so most are off',animOn:'All animations on',animOff:'Only essential movement',
   autoT:'Auto-mark blocked cells',autoS:'Faint × wherever {aP} rules a cell out',confT:'Show clashes',confS:'Highlight pieces that break a rule',
@@ -3815,7 +3780,7 @@ const Sound=(function(){
 
   const clapBufs=[],clapRaw=[];let clapFetch=null,clapLoad=null;
   function preClaps(){
-    if(clapFetch||S.applause===false)return clapFetch;
+    if(clapFetch)return clapFetch;
     clapFetch=Promise.all([1,2,3].map(k=>fetch('applause-'+k+'.mp3').then(r=>r.ok?r.arrayBuffer():null).then(b=>{clapRaw[k]=b}).catch(()=>{})));
     return clapFetch;
   }
@@ -4269,7 +4234,7 @@ function checkWin(){
   if(rw.length){setTimeout(()=>{if(pz===P&&won&&intro.hidden)Reward.show(rw,()=>{if(won&&pz===P)showWin(false,prevBest)},true,$('board').closest('.boardwrap')||$('board'));else if(pz===P&&won)showWin(false,prevBest)},calm()?200:1050)}
   else setTimeout(()=>{if(pz===P&&won)showWin(false,prevBest)},WIN_BEAT);updateStats();
 
-  if(S.applause!==false){const lvl=pz.ch?(G.hints||G.mistakes?1:!G.crosses&&scoreBreakdown().rows.find(r=>r.k==='swift').on?3:2):medalFor(scoreBreakdown());setTimeout(()=>{if(won)Sound.play('applause',lvl)},800)}
+  {const lvl=pz.ch?(G.hints||G.mistakes?1:!G.crosses&&scoreBreakdown().rows.find(r=>r.k==='swift').on?3:2):medalFor(scoreBreakdown());setTimeout(()=>{if(won)Sound.play('applause',lvl)},800)}
 }
 
 function treatKey(base){const T=currentTreat();
@@ -4640,7 +4605,7 @@ function doubleTap(i){
   lastTap={i,t:now,toggled};
   render();if(cells[i]===1){Mascot.react('mark',cellEls[i]);countMark()}
 }
-function endDrag(){if(!drag)return;const d=drag;drag=null;if(d.moved)return;if(S.tap==='double')doubleTap(d.start);else if(S.tap==='mark')setDirect(d.start,1);else if(S.tap==='place')setDirect(d.start,2);else cycle(d.start)}
+function endDrag(){if(!drag)return;const d=drag;drag=null;if(d.moved)return;doubleTap(d.start)}
 board.addEventListener('pointerup',endDrag);
 board.addEventListener('pointercancel',()=>{drag=null});
 board.addEventListener('keydown',e=>{Chat.tapped();
@@ -5820,7 +5785,7 @@ function applyAnim(){
   document.documentElement.classList.toggle('calm',calm());
   const a=S.anim;
   $('o-anim').checked=!calm();
-  $('an-sub').textContent=calm()?t('animOff'):t('animOn');
+  $('an-sub').textContent=calm()?t(S.anim!=='off'&&!S.animSet&&RM.matches?'animAutoRM':'animOff'):t('animOn');
 }
 $('o-anim').onchange=()=>{S.anim=$('o-anim').checked?'on':'off';S.animSet=true;save();applyAnim()};
 try{RM.addEventListener('change',applyAnim)}catch(e){}
@@ -6027,8 +5992,6 @@ $('music-btn').onclick=e=>{S.music=!S.music;save();syncMusicBtn();
 $('o-music').checked=S.music;if(S.music)introMusic();else Sound.musicStop()};
 const om2=$('o-music');om2.checked=S.music;om2.onchange=()=>{S.music=om2.checked;save();syncMusicBtn();if(!S.music)Sound.musicStop();else introMusic()};
 syncMusicBtn();
-if(S.applause===undefined)S.applause=true;
-{const oa=$('o-applause');oa.checked=S.applause;oa.onchange=()=>{S.applause=oa.checked;save();if(S.applause)Sound.play('applause',1)}}
 const os=$('o-sound');os.checked=S.sound;os.onchange=()=>{S.sound=os.checked;save();if(S.sound)Sound.play('mark')};
 if(S.mascot===undefined)S.mascot=true;
 const om=$('o-mascot');om.checked=S.mascot;Mascot.setEnabled(S.mascot);
@@ -6063,7 +6026,6 @@ function applyLang(){
   $('news-list').innerHTML=t('news').map((x,i)=>`<li style="--nc:var(--r${i})">${x}</li>`).join('');
   $('news-btn').classList.toggle('fresh',store.newsSeen!==L10N.en.news[0]);
   const names=t('names');
-  document.querySelectorAll('.pieces button').forEach(b=>b.setAttribute('aria-label',names[b.dataset.p]));
   if($('rules-go'))$('rules-go').textContent=pz?t('backToGame'):t('letsPlay');
   document.querySelectorAll('#cast .buddy').forEach(b=>{b.querySelector('.nm').textContent=names[b.dataset.p];b.querySelector('.tag').textContent=t('you')});
   if(pz){drawLabel();syncRestart();render()}
@@ -6141,20 +6103,15 @@ function keepSaveSafe(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSettings()});
 function syncPieces(){
-  document.querySelectorAll('.pieces button').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.p===S.piece);b.hidden=!buddyOwned(b.dataset.p)});
   document.querySelector('.brand use').setAttribute('href','#p-'+S.piece);
   applyLang();
 }
-document.querySelectorAll('.pieces button').forEach(b=>b.onclick=()=>{if(!buddyOwned(b.dataset.p))return;S.piece=b.dataset.p;save();syncPieces();Mascot.setType(S.piece);pz&&render()});
-if(!S.tap||!store.tapV2){S.tap='double';store.tapV2=1;save()}
-document.querySelectorAll('#tapseg button').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.t===S.tap);b.onclick=()=>{S.tap=b.dataset.t;save();document.querySelectorAll('#tapseg button').forEach(x=>x.setAttribute('aria-pressed',x===b))}});
 
 function segPill(g){if(!g||g._pill)return;const p=document.createElement('span');p.className='seg-pill';p.setAttribute('aria-hidden','true');g.prepend(p);g._pill=p;g.classList.add('pilled');
   const place=()=>{const b=g.querySelector('button[aria-pressed="true"]');if(!b||!g.offsetWidth)return;
     p.style.cssText=`width:${b.offsetWidth}px;height:${b.offsetHeight}px;top:${b.offsetTop}px;transform:translateX(${b.offsetLeft}px)`;
     if(!g.classList.contains('ready'))requestAnimationFrame(()=>g.classList.add('ready'))};
   new MutationObserver(place).observe(g,{subtree:true,attributes:true,attributeFilter:['aria-pressed']});new ResizeObserver(place).observe(g);place()}
-segPill($('tapseg'));
 syncPieces();updateStats();
 
 const FEEDBACK={url:'https://docs.google.com/forms/d/e/1FAIpQLSdUAklA_FsqtQjBrHc7glADT4YP-TU4GuFJG5v2W3BLkr3fiQ/viewform',v:'entry.1240073651',lang:'entry.16490751',dev:'entry.1645156688'};

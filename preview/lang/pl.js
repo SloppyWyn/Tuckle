@@ -31,7 +31,7 @@
 "clear":"Wyczyść",
 "clearNote":"Usuwa wszystkich kumpli i znaki. „Cofnij” je przywróci.",
 "controlsT":"Sterowanie",
-"helpSmall":"Dotknij pola, by postawić lub zdjąć <b>×</b>; dotknij dwa razy szybko, by posadzić kumpla; dotknij kumpla, by go zdjąć (przy trzech ciasteczkach znaleziony kumpel zostaje na miejscu — dotknięcie go pogłaszcze). W opcji <b>Dotknięcie</b> są też inne tryby: po kolei (puste → × → kumpel), tylko znak albo tylko kumpel. Przeciągnij po polach, by zaznaczyć wiele naraz (zacznij od zaznaczonego, by ścierać). Prawy przycisk myszy stawia znak. Klawiatura: strzałki, <kbd>Spacja</kbd> po kolei, <kbd>X</kbd> znak, <kbd>O</kbd> kumpel, <kbd>Z</kbd> cofnij. Każda zagadka ma jedno rozwiązanie, do którego dojdziesz bez zgadywania.",
+"helpSmall":"Dotknij pola, by postawić lub zdjąć <b>×</b>; dotknij dwa razy szybko, by posadzić kumpla; dotknij kumpla, by go zdjąć (przy trzech ciasteczkach znaleziony kumpel zostaje na miejscu — dotknięcie go pogłaszcze). Przeciągnij po polach, by zaznaczyć wiele naraz (zacznij od zaznaczonego, by ścierać). Prawy przycisk myszy stawia znak. Klawiatura: strzałki, <kbd>Spacja</kbd> po kolei, <kbd>X</kbd> znak, <kbd>O</kbd> kumpel, <kbd>Z</kbd> cofnij. Każda zagadka ma jedno rozwiązanie, do którego dojdziesz bez zgadywania.",
 "langT":"Język",
 "theme":"Motyw",
 "themeSub":"„Auto” — jak na urządzeniu",

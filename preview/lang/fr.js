@@ -31,7 +31,7 @@
 "clear":"Vider la grille",
 "clearNote":"Retire tous les copains et toutes les marques. Annuler les remet.",
 "controlsT":"Commandes",
-"helpSmall":"Touchez une case pour mettre ou enlever un <b>×</b> ; touchez deux fois vite pour placer un copain, et touchez-le pour le retirer (avec les trois friandises, un bon copain reste en place et le toucher devient une caresse). <b>Un appui</b> propose aussi Alterner (vide → × → copain), seulement Marquer ou seulement Placer. Glissez sur les cases pour en marquer plusieurs d’un coup (partez d’une case marquée pour effacer). Sur ordinateur, le clic droit marque. Clavier : les flèches déplacent, <kbd>Espace</kbd> alterne, <kbd>X</kbd> marque, <kbd>O</kbd> place, <kbd>Z</kbd> annule. Chaque grille a une seule solution, trouvable sans deviner.",
+"helpSmall":"Touchez une case pour mettre ou enlever un <b>×</b> ; touchez deux fois vite pour placer un copain, et touchez-le pour le retirer (avec les trois friandises, un bon copain reste en place et le toucher devient une caresse). Glissez sur les cases pour en marquer plusieurs d’un coup (partez d’une case marquée pour effacer). Sur ordinateur, le clic droit marque. Clavier : les flèches déplacent, <kbd>Espace</kbd> alterne, <kbd>X</kbd> marque, <kbd>O</kbd> place, <kbd>Z</kbd> annule. Chaque grille a une seule solution, trouvable sans deviner.",
 "langT":"Langue",
 "theme":"Thème",
 "themeSub":"Auto suit votre appareil ou votre appli",

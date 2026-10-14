@@ -31,7 +31,7 @@
 "clear":"Vaciar tablero",
 "clearNote":"Quita todos los amiguitos y las marcas. Deshacer los devuelve.",
 "controlsT":"Controles",
-"helpSmall":"Toca una casilla para poner o quitar una <b>×</b>; toca dos veces rápido para colocar un amiguito, y tócalo para quitarlo (con las tres golosinas activadas, un amiguito acertado se queda en su sitio y al tocarlo lo acaricias). <b>Al tocar</b> también ofrece Alternar (vacía → × → amiguito), solo Marcar o solo Colocar. Arrastra sobre las casillas para marcar muchas a la vez (empieza en una casilla marcada para borrar). En el ordenador, el clic derecho marca. Teclado: flechas para moverte, <kbd>Espacio</kbd> alterna, <kbd>X</kbd> marca, <kbd>O</kbd> coloca, <kbd>Z</kbd> deshace. Cada puzle tiene una sola solución y se resuelve sin adivinar.",
+"helpSmall":"Toca una casilla para poner o quitar una <b>×</b>; toca dos veces rápido para colocar un amiguito, y tócalo para quitarlo (con las tres golosinas activadas, un amiguito acertado se queda en su sitio y al tocarlo lo acaricias). Arrastra sobre las casillas para marcar muchas a la vez (empieza en una casilla marcada para borrar). En el ordenador, el clic derecho marca. Teclado: flechas para moverte, <kbd>Espacio</kbd> alterna, <kbd>X</kbd> marca, <kbd>O</kbd> coloca, <kbd>Z</kbd> deshace. Cada puzle tiene una sola solución y se resuelve sin adivinar.",
 "langT":"Idioma",
 "theme":"Tema",
 "themeSub":"Automático sigue tu dispositivo o app",

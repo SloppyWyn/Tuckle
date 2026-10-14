@@ -31,7 +31,7 @@
 "clear":"Feld leeren",
 "clearNote":"Entfernt alle Kumpel und Markierungen. Zurück holt sie wieder.",
 "controlsT":"Steuerung",
-"helpSmall":"Tippe auf ein Feld, um ein <b>×</b> zu setzen oder zu entfernen; tippe zweimal schnell, um einen Kumpel zu setzen, und tippe ihn an, um ihn wegzunehmen (mit den drei Leckereien bleibt ein richtiger Kumpel stehen, und Antippen wird zum Streicheln). Unter <b>Tippen</b> gibt es auch Wechseln (leer → × → Kumpel), nur Markieren oder nur Setzen. Wische über Felder, um viele auf einmal zu markieren (beginne auf einem markierten Feld, um zu löschen). Am Computer markiert die rechte Maustaste. Tastatur: Pfeile bewegen, <kbd>Leertaste</kbd> wechselt, <kbd>X</kbd> markiert, <kbd>O</kbd> setzt, <kbd>Z</kbd> nimmt zurück. Jedes Rätsel hat genau eine Lösung, und sie ist ohne Raten zu finden.",
+"helpSmall":"Tippe auf ein Feld, um ein <b>×</b> zu setzen oder zu entfernen; tippe zweimal schnell, um einen Kumpel zu setzen, und tippe ihn an, um ihn wegzunehmen (mit den drei Leckereien bleibt ein richtiger Kumpel stehen, und Antippen wird zum Streicheln). Wische über Felder, um viele auf einmal zu markieren (beginne auf einem markierten Feld, um zu löschen). Am Computer markiert die rechte Maustaste. Tastatur: Pfeile bewegen, <kbd>Leertaste</kbd> wechselt, <kbd>X</kbd> markiert, <kbd>O</kbd> setzt, <kbd>Z</kbd> nimmt zurück. Jedes Rätsel hat genau eine Lösung, und sie ist ohne Raten zu finden.",
 "langT":"Sprache",
 "theme":"Design",
 "themeSub":"Automatisch folgt deinem Gerät oder deiner App",

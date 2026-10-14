@@ -2,7 +2,7 @@
 <html lang="en" data-roost="light">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -385,13 +385,13 @@ html.calm .step,html.calm .help.pulse .qbtn{animation:none}
 .iconbtn{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%}
 .iconbtn svg{width:20px;height:20px}
 
-html,button,label,input,select,a,[role=option]{touch-action:pan-x pan-y}
+html,button,label,input,select,a,[role=option]{touch-action:pan-x pan-y pinch-zoom}
 
 html{-webkit-tap-highlight-color:transparent}
 
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 .sheet-back{position:fixed;inset:0;z-index:45;overscroll-behavior:none;background:rgba(40,28,36,.32);backdrop-filter:blur(2px);display:flex;justify-content:flex-end;animation:fadeIn .2s}
-.sheet{width:min(400px,100%);height:100%;overflow-y:auto;overscroll-behavior:none;touch-action:pan-y;background:var(--ground);padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;box-shadow:-20px 0 40px -20px rgba(0,0,0,.35);animation:sheetIn .38s cubic-bezier(.3,1.1,.5,1)}
+.sheet{width:min(400px,100%);height:100%;overflow-y:auto;overscroll-behavior:none;touch-action:pan-y pinch-zoom;background:var(--ground);padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;box-shadow:-20px 0 40px -20px rgba(0,0,0,.35);animation:sheetIn .38s cubic-bezier(.3,1.1,.5,1)}
 .sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
 .sheet-head h3{margin:0}
 .reset-btn{margin-top:12px;font-size:13px;padding:7px 12px;color:var(--muted);transition:background-color .25s,color .25s,border-color .25s}
@@ -402,7 +402,7 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,
 @media (hover:hover){.small-btn:hover{color:var(--ink)}}
 .backup-note{margin:6px 0 0;color:var(--accent-text);font-weight:700}.backup-note:empty{display:none}
 .backup-box{display:grid;gap:8px;margin-top:8px;animation:fadeIn .3s ease}
-.backup-box textarea{width:100%;box-sizing:border-box;resize:none;font:12px/1.35 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;
+.backup-box textarea{width:100%;box-sizing:border-box;resize:none;font:16px/1.3 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;
   color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:8px 10px;outline:none}
 .backup-box textarea:focus{border-color:var(--accent)}
 .backup-box[data-mode="copy"] #backup-go{display:none}
@@ -1300,7 +1300,7 @@ html.calm .ts-hint,html.calm .tapstart.leaving{animation:none}
 .nameask{display:flex;flex-direction:column;align-items:center;gap:6px}
 .nameask label{font:600 14px var(--display);color:var(--muted)}
 .namein,.nameset{font:600 16px var(--display);text-align:center;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;width:250px;max-width:100%;outline:none;transition:border-color .15s}
-.nameset{font-size:14px;padding:6px 12px;width:160px}
+.nameset{font-size:16px;padding:5px 12px;width:160px}
 .namein:focus,.nameset:focus{border-color:var(--accent)}
 .intro .namein{user-select:text;-webkit-user-select:text;font-size:18px;padding:11px 18px}
 
@@ -1968,7 +1968,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=f08362ac79"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=6b3691e21b"><\/script>')})();
 </script>
 <script>
 
@@ -2678,7 +2678,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='f08362ac79';let updateTo=null;
+const BUILD='6b3691e21b';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5769,8 +5769,8 @@ const Mascot=(function(){
 
 applySkins();
 
-['touchstart','touchmove'].forEach(ev=>document.addEventListener(ev,e=>{if(e.touches.length>1)e.preventDefault()},{passive:false,capture:true}));
-['gesturestart','gesturechange'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
+['touchstart','touchmove'].forEach(ev=>document.addEventListener(ev,e=>{if(pinchOff&&e.touches.length>1)e.preventDefault()},{passive:false,capture:true}));
+['gesturestart','gesturechange'].forEach(ev=>document.addEventListener(ev,e=>{if(pinchOff)e.preventDefault()},{passive:false}));
 
 function pinTop(){const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA)$/.test(a.tagName))return;
   if(scrollX||scrollY||document.documentElement.scrollTop||document.body.scrollTop){scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}}
@@ -6213,6 +6213,9 @@ function drawMinis(){
 
 function dropFloaters(){newsClose();document.querySelectorAll('.coach').forEach(c=>{if(c._done)c._done(true);c.remove()});Chat.hide(true)}
 
+const VIEW_FREE='width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover,interactive-widget=resizes-content';
+let pinchOff=true;
+function viewLock(on){pinchOff=on;const m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',on?VIEW_FREE+',maximum-scale=1,user-scalable=no':VIEW_FREE)}
 let ghostStep=null,ghostT=0;
 function endGhost(){clearTimeout(ghostT);if(ghostStep){const g=ghostStep;ghostStep=null;g.classList.remove('stepaway');g.removeAttribute('inert');g.removeAttribute('aria-hidden');g.style.cssText='';if(!g._keep)g.hidden=true}}
 function showStep(which){
@@ -6232,7 +6235,7 @@ function showStep(which){
 }
 function openIntro(step){
   if(pz){timerWas=timerOn;timerOn=false}
-  intro.hidden=false;intro.classList.remove('leaving');showStep(step);document.documentElement.classList.remove('ingame');
+  viewLock(false);intro.hidden=false;intro.classList.remove('leaving');showStep(step);document.documentElement.classList.remove('ingame');
   kbFocus(step==='title'?$('start-game'):step==='menu'?($('h-cont').hidden?document.querySelector('#step-menu .mode-card'):$('h-cont')):step==='play'?$('m-play'):step==='nest'?$('n-back'):$('rules-go'));
 }
 function closeIntro(action){
@@ -6248,7 +6251,7 @@ function closeIntro(action){
 
   const firstRun=!pz,coachAfter=!store.coached&&store.seenRules;
   setTimeout(()=>{
-    intro.hidden=true;intro.classList.remove('leaving');
+    intro.hidden=true;intro.classList.remove('leaving');viewLock(true);
     document.documentElement.classList.add('ingame');pinTop();
     if(action)setMode(action.mode,action.resume?{resume:true}:{fresh:true});
     else if(firstRun)setMode('daily',{fresh:true});

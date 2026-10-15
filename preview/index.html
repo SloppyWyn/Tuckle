@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 17</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 18</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -667,20 +667,18 @@ html.calm .chip-seed{transition:none}
 #w-stage>.mode-card.on{opacity:1;visibility:visible;z-index:1;transition:opacity .34s ease}
 #w-stage>.mode-card.soon.on{opacity:.8}
 
-.w-tiles{--g:8px;position:relative;display:flex;gap:var(--g);width:calc(100% + 16px);margin:-8px -8px -6px;padding:8px 10px;box-sizing:border-box;
-  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;
-  -webkit-mask:linear-gradient(90deg,transparent 0,#000 var(--fl,0px),#000 calc(100% - var(--fr,0px)),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 var(--fl,0px),#000 calc(100% - var(--fr,0px)),transparent 100%)}
+.w-tiles{--g:12px;position:relative;display:flex;gap:var(--g);width:calc(100% + 16px);margin:-8px -8px -6px;padding:9px calc(50% - 14px);box-sizing:border-box;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;touch-action:pan-x pan-y pinch-zoom;
+  -webkit-mask:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
 .w-tiles::-webkit-scrollbar{display:none}
-.w-tiles>.w-tile:first-child{margin-left:auto}.w-tiles>.w-tile:last-child{margin-right:auto}
-.w-tile{--wc:var(--rj);position:relative;flex:none;width:clamp(36px,calc((100% - (var(--n,7) - 1) * var(--g)) / var(--n,7)),44px);aspect-ratio:1;padding:0;border:0;border-radius:50%;box-sizing:border-box;
+.w-tile{--wc:var(--rj);position:relative;flex:none;width:44px;aspect-ratio:1;padding:0;border:0;border-radius:50%;box-sizing:border-box;scroll-snap-align:center;
   display:grid;place-items:center;background:color-mix(in srgb,var(--wc) 16%,var(--surface));cursor:pointer;
-  box-shadow:0 0 0 0 transparent;transition:box-shadow .3s ease,transform .3s cubic-bezier(.3,1.3,.5,1),background .3s ease}
-.w-tile::after{content:"";position:absolute;inset:-5px}
+  transform:scale(var(--ds,1));opacity:var(--do,1);box-shadow:0 0 0 0 transparent;transition:box-shadow .3s ease,background .3s ease}
 .w-tile>svg:not(.wt-ring){width:52%;height:52%;display:block;color:color-mix(in srgb,var(--wc) 85%,var(--ink))}
 .wt-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
 .wt-ring circle{fill:none;stroke-width:2.6;stroke-linecap:round}
 .wt-ring .bg{stroke:color-mix(in srgb,var(--wc) 22%,transparent)}.wt-ring .fg{stroke:color-mix(in srgb,var(--wc) 85%,var(--ink))}
-.w-tile.on{transform:scale(1.1);box-shadow:0 0 0 3px var(--ground),0 0 0 5px color-mix(in srgb,var(--wc) 75%,var(--ink))}
+.w-tile.on{box-shadow:0 0 0 3px var(--ground),0 0 0 5px color-mix(in srgb,var(--wc) 75%,var(--ink))}
 
 .w-tile.shut{background:color-mix(in srgb,var(--wc) 9%,transparent);outline:1.5px dashed color-mix(in srgb,var(--wc) 80%,transparent);outline-offset:-1.5px}
 .w-tile.shut>svg:not(.wt-ring){filter:saturate(.6);opacity:.6}
@@ -688,7 +686,7 @@ html.calm .chip-seed{transition:none}
 .w-tile .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .w-tile[data-w="ice"]{--wc:var(--ri)}.w-tile[data-w="shan"]{--wc:var(--rs)}.w-tile[data-w="gala"]{--wc:var(--rg)}
 .w-tile[data-w="neb"]{--wc:var(--rn)}.w-tile[data-w="reef"]{--wc:var(--rr)}.w-tile[data-w="vale"]{--wc:var(--rv)}
-@media (hover:hover){.w-tile:not(.on):hover{transform:scale(1.06)}}
+@media (hover:hover){.w-tile:not(.on):hover{transform:scale(calc(var(--ds,1) * 1.06))}}
 html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 #w-stage{touch-action:pan-y pinch-zoom}
 
@@ -1769,6 +1767,7 @@ html.kbd .dn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 .dn-corner{position:absolute;top:calc(18px + env(safe-area-inset-top,0px));left:66px;z-index:5}
 
+::view-transition-old(root),::view-transition-new(root){animation-duration:.55s;animation-timing-function:cubic-bezier(.4,0,.2,1)}
 html.theme-fade *,html.theme-fade *::before,html.theme-fade *::after{transition:background-color .45s ease,border-color .45s ease,color .45s ease,fill .45s ease,stroke .45s ease,box-shadow .45s ease,transform .4s cubic-bezier(.3,1.35,.5,1),opacity .35s!important}
 .pieces{display:flex;gap:6px;margin-top:4px}
 .pieces button{flex:1;border:1px solid var(--line);background:var(--ground);border-radius:10px;padding:6px;cursor:pointer;color:var(--ink)}
@@ -2148,7 +2147,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=1e81fb9c9c"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=5facf0d740"><\/script>')})();
 </script>
 <script>
 
@@ -2858,7 +2857,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='1e81fb9c9c';let updateTo=null;
+const BUILD='5facf0d740';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6055,8 +6054,13 @@ function applyTheme(){
   $('th-sub').textContent=t(isDark()?'dark':'light')+(th==='auto'?' · '+t('followDevice'):'');
 }
 function themeFade(){const h=document.documentElement;if(calm())return;h.classList.add('theme-fade');clearTimeout(themeFade.t);themeFade.t=setTimeout(()=>h.classList.remove('theme-fade'),500)}
-document.querySelectorAll('.dn').forEach(b=>b.onclick=()=>{themeFade();S.theme=isDark()?'light':'dark';save();applyTheme()});
-$('o-follow').onchange=()=>{themeFade();S.theme=$('o-follow').checked?'auto':isDark()?'dark':'light';save();applyTheme()};
+
+function switchTheme(){const dark=isDark();document.querySelectorAll('.dn').forEach(b=>b.setAttribute('aria-checked',dark));
+  if(calm())return applyTheme();
+  if(!document.startViewTransition){themeFade();return applyTheme()}
+  clearTimeout(switchTheme.t);switchTheme.t=setTimeout(()=>{try{document.startViewTransition(applyTheme)}catch(e){applyTheme()}},200)}
+document.querySelectorAll('.dn').forEach(b=>b.onclick=()=>{S.theme=isDark()?'light':'dark';save();switchTheme()});
+$('o-follow').onchange=()=>{S.theme=$('o-follow').checked?'auto':isDark()?'dark':'light';save();switchTheme()};
 try{DARKQ.addEventListener('change',()=>{if(S.theme==='auto')applyTheme()})}catch(e){}
 applyTheme();
 setHatAdj(store.hatAdj);Mascot.init($('mascot'),S.piece,wornHat());
@@ -7006,7 +7010,8 @@ function pickWorld(w,keep){
   for(const id of WORLD_IDS){const c=document.querySelector(CARD_W[id]);if(c)c.classList.toggle('on',id===w)}
   document.querySelectorAll('#w-tiles .w-tile[data-w]').forEach(b=>{const on=b.dataset.w===w;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
 
-  const box=$('w-tiles'),b=box.querySelector('.w-tile.on');if(b&&box.scrollWidth>box.clientWidth+1)box.scrollTo({left:b.offsetLeft-(box.clientWidth-b.offsetWidth)/2,behavior:keep||calm()?'auto':'smooth'});
+  const box=$('w-tiles'),b=box.querySelector('.w-tile.on');if(b){const x=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;
+    if(Math.abs(box.scrollLeft-x)>2){box._aim=w;box.scrollTo({left:x,behavior:keep||calm()?'auto':'smooth'})}dialLook()}
   if(!keep&&store.hubW!==w){store.hubW=w;save()}
 }
 function worldTiles(){
@@ -7018,8 +7023,26 @@ function worldTiles(){
     const nm=t(key)+(open?' · '+n+'/'+L.length:'');
     return`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
   box.querySelectorAll('.w-tile[data-w]').forEach(b=>b.onclick=()=>{const w=b.dataset.w;if(b.classList.contains('on'))return document.querySelector(CARD_W[w]).click();pickWorld(w)});
-  box.style.setProperty('--n',WORLD_IDS.length);edgeFade(box);
+  worldDial(box);
   pickWorld(hubWorld(),true);
+}
+
+function dialLook(){const box=$('w-tiles');if(!box||!box.clientWidth)return;const mid=box.scrollLeft+box.clientWidth/2;
+  let near=null,nd=1e9;
+  for(const b of box.children){const d=Math.abs(b.offsetLeft+b.offsetWidth/2-mid)/(b.offsetWidth+12);
+    b.style.setProperty('--ds',Math.max(.7,1.08-.16*d).toFixed(3));b.style.setProperty('--do',Math.max(.35,1-.22*Math.max(0,d-1)).toFixed(3));
+    if(d<nd){nd=d;near=b}}
+  return near}
+function worldDial(box){if(box._dial)return;box._dial=1;rowMouse(box);
+  let raf=0,settle=0,last=null,tick=0;
+  const settled=()=>{const near=dialLook();if(!near||!near.dataset.w)return;
+    if(box._aim){if(near.dataset.w!==box._aim)return;box._aim=null}
+    if(!near.classList.contains('on'))pickWorld(near.dataset.w)};
+  box.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;const near=dialLook();
+
+      if(near&&near!==last){if(last&&!box._aim&&performance.now()-tick>70){tick=performance.now();Sound.play('ui')}last=near}});
+    clearTimeout(settle);settle=setTimeout(settled,140)},{passive:true});
+  addEventListener('resize',()=>{if(!$('step-menu').hidden){const b=box.querySelector('.w-tile.on');if(b)box.scrollLeft=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;dialLook()}});
 }
 
 {const st=$('w-stage');let sw=null,swiped=0;

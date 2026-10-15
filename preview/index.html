@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 22</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 23</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -698,6 +698,15 @@ html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 .duo .mc-gift{background:color-mix(in srgb,var(--r1) 18%,var(--surface))}.duo .mc-gift svg{width:28px;height:28px}
 .duo .mc-buddy{background:color-mix(in srgb,#F5C333 18%,var(--surface))}
 .duo .mc-txt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.mc-fr i{display:block;width:26px;height:26px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 2px color-mix(in srgb,var(--r5) 18%,var(--surface))}
+.mc-fr i svg{width:26px;height:26px;display:block;overflow:visible}.mc-fr i+i{margin-left:-9px}
+.mc-fr .fr-plus{display:grid;place-items:center;font:700 16px/1 var(--display);color:var(--muted);border:1.5px dashed var(--line);box-sizing:border-box}
+.duo .mc-fr{width:auto;display:flex;align-items:center;border-radius:999px}
+
+.duo.trio{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.duo.trio .mode-card{flex-direction:column;justify-content:flex-start;gap:5px;padding:10px 4px 8px;text-align:center;min-height:84px}
+.duo.trio .mode-card .mc-t{font-size:15px;line-height:1.15}
+.duo.trio .mc-txt{align-items:center}
 .duo .mc-seeds{position:static;margin:0;padding:2px 8px 2px 5px;font-size:12px}.duo .mc-seeds .seed-i{width:12px;height:14px}
 .mc-go{position:absolute;right:16px;top:50%;margin-top:-13px;font:700 22px/1 var(--display);color:var(--muted)}
 .mode-card.soon{background:var(--surface);border-style:dashed;opacity:.6;cursor:default}
@@ -1950,8 +1959,9 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
     </div>
     <div class="w-tiles" id="w-tiles" role="group" data-l10n-aria="worldsT"></div>
     
-    <div class="modes duo">
+    <div class="modes duo" id="h-duo">
       <button class="mode-card nest-card" id="h-nest"><span class="mc-ic mc-buddy" id="h-nest-buddy" aria-hidden="true"></span><span class="mc-txt"><span class="mc-t" data-l10n="collectT">Collection</span><span class="mc-seeds" id="h-seeds"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="h-seeds-n"></b></span></span></button>
+      <button class="mode-card fr-mcard" id="h-friends" hidden><span class="mc-ic mc-fr" id="h-fr-ic" aria-hidden="true"></span><span class="mc-t" data-l10n="friendsT">Friends</span></button>
       <button class="mode-card gift-card" data-m="gift"><span class="mc-ic mc-gift" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6" y="14" width="20" height="13" rx="3" fill="var(--r1)"/><rect x="4.5" y="10" width="23" height="6" rx="2.4" fill="var(--r4)"/><path d="M16 10v17" stroke="var(--r0)" stroke-width="3"/><path d="M16 10C13.6 5.2 9 5.6 9.8 8.4 10.4 10 13.4 10 16 10ZM16 10c2.4-4.8 7-4.4 6.2-1.6C21.6 10 18.6 10 16 10Z" fill="none" stroke="var(--r0)" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="mc-t" data-l10n="giftT">Gift a puzzle</span><span class="mc-gn" id="m-gift-n" hidden></span></button>
     </div>
   </div>
@@ -2180,7 +2190,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=856af3ed70"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=b052d51f57"><\/script>')})();
 </script>
 <script>
 
@@ -2890,7 +2900,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='856af3ed70';let updateTo=null;
+const BUILD='b052d51f57';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6684,7 +6694,7 @@ $('fr-list').addEventListener('click',e=>{const x=e.target.closest('.fr-x,.fr-su
   setTimeout(()=>{if(c.isConnected)c.classList.remove('arm')},3000)});
 
 function friendFromLink(){if(!friendLink)return false;const c=friendLink;friendLink=null;if(!friendsOn())return false;
-  nestWant='friends';showStep('nest');$('fr-in').value=c;frAdd(c);return true}
+  plateFromMenu=true;nestWant='friends';showStep('nest');$('fr-in').value=c;frAdd(c);return true}
 
 let menuMode='daily',menuSel={size:8,diff:'medium'},menuStage='e1',mapTier=-1;
 const hasProgress=pr=>pr&&(pr.cells.some(v=>v)||pr.elapsed>3);
@@ -7005,7 +7015,7 @@ function retroRewards(){
   clearTimeout(retroRewards.t);retroRewards.t=setTimeout(()=>{if(intro.hidden||$('step-menu').hidden||Reward.open())return;store.rwSeen=1;save();Reward.show(list,null,true)},900);
 }
 function renderHome(){
-  dailyCard();gInbox();if(friendsOn())giftsLoad();
+  dailyCard();gInbox();friendsCard();if(friendsOn())giftsLoad();
   $('h-seeds-n').textContent=store.seeds;
 
   {const sk=streak();$('m-streak').hidden=sk<2;$('m-streak-n').textContent=sk;$('m-streak').title=t('streakN',{n:sk})}
@@ -7107,7 +7117,13 @@ $('h-gala').onclick=()=>{const c=$('h-gala');if(galaOpen())return openPlay('gala
 $('h-reef').onclick=()=>{const c=$('h-reef');if(reefOpen())return openPlay('reef');if(calm())return;c.classList.remove('nudge');void c.offsetWidth;c.classList.add('nudge')};
 $('h-vale').onclick=()=>{const c=$('h-vale');if(valeOpen())return openPlay('vale');if(calm())return;c.classList.remove('nudge');void c.offsetWidth;c.classList.add('nudge')};
 $('h-neb').onclick=()=>{const c=$('h-neb');if(nebOpen())return openPlay('neb');if(calm())return;c.classList.remove('nudge');void c.offsetWidth;c.classList.add('nudge')};
-$('h-nest').onclick=()=>showStep('nest');
+$('h-nest').onclick=()=>{plateFromMenu=false;showStep('nest')};
+
+let plateFromMenu=false;
+$('h-friends').onclick=()=>{plateFromMenu=true;nestWant='friends';showStep('nest')};
+function friendsCard(){const on=friendsOn();$('h-friends').hidden=!on;$('h-duo').classList.toggle('trio',on);if(!on)return;
+  const L=store.frList||[],a=L[0]?frBuddy(L[0].look):pieceSVG(S.piece),b=L[1]?frBuddy(L[1].look):L[0]?pieceSVG(S.piece):'';
+  const h=`<i>${a}</i>`+(b?`<i>${b}</i>`:'<i class="fr-plus">+</i>');const ic=$('h-fr-ic');if(ic._h!==h){ic._h=h;ic.innerHTML=h}}
 $('m-back').onclick=()=>showStep('menu');
 $('n-back').onclick=()=>{if(nestOpen)return closePlate();showStep('menu')};
 
@@ -7151,7 +7167,7 @@ function plateBits(sec){const W=store.jungle.words||{};if(sec==='friends')return
   return{sub:wip?wip.w:done.length?done[done.length-1].w:'',mini:done.slice(-3).reverse().map(x=>`<span class="ltile" data-world="${x.L[0]?worldOf(x.L[0].id):'jungle'}">${x.w[0]}</span>`)}}
 const plateHave=sec=>parseInt($(PLATES.find(p=>p.sec===sec).c).textContent)||0;
 function drawPlates(){const box=$('n-plates'),seen=store.plateSeen=store.plateSeen||{};
-  const shown=PLATES.filter(p=>p.sec!=='friends'||friendsOn());
+  const shown=PLATES.filter(p=>p.sec!=='friends');
   for(const p of shown)if(seen[p.sec]==null)seen[p.sec]=plateHave(p.sec);
   box.innerHTML=shown.map(p=>{const[n,of]=$(p.c).textContent.split('/').map(Number),b=plateBits(p.sec),fresh=n>seen[p.sec],cnt=of>=0?n+'/'+of:n||0;
     return`<div class="n-plate${fresh?' fresh':''}" role="button" tabindex="0" data-sec="${p.sec}" style="--k:${p.tint}" aria-label="${t(p.t)} ${cnt}">
@@ -7252,7 +7268,7 @@ function plateFade(el){const f=()=>{el.classList.toggle('more',el.scrollHeight>e
 function groupShelf(box){box.querySelectorAll('.grp').forEach(g=>g.remove());let last=-1;
   for(const b of [...box.querySelectorAll('button')]){const g=b.classList.contains('forsale')?1:b.classList.contains('locked')?2:0;
     if(g!==last){const l=document.createElement('p');l.className='grp';l.textContent=t(['grpYours','grpSeeds','grpEarn'][g]);box.insertBefore(l,b);last=g}}}
-const closePlate=()=>showPlate(null);
+const closePlate=()=>plateFromMenu&&nestOpen==='friends'?showStep('menu'):showPlate(null);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nestOpen&&!$('step-nest').hidden&&!Reward.open()&&$('sheet').hidden)closePlate()});
 
 const HAT_SHELF=[{h:'beanie'},{h:'explorer',w:'JUNGLE'},{h:'crown',w:'KING'},{h:'mane',w:'LION'},{h:'flowercrown',shop:1},{h:'earmuffs',w:'CHILLY'},{h:'trapper',w:'POLE'},{h:'fishhat',w:'FISH'},{h:'icecrown',shop:1},{h:'bamboohat',w:'BAMBOO'},{h:'momohat',w:'MOMO'},{h:'yetihat',w:'YETI'},{h:'blossomcrown',shop:1},{h:'mallowhat',w:'TOASTY'},{h:'sunhat',w:'HEAT'},{h:'volcanohat',w:'LAVA'},{h:'embercrown',shop:1},{h:'spacehelmet',w:'COSMOS'},{h:'moonband',w:'MOON'},{h:'novacrown',w:'NOVA'},{h:'planethalo',shop:1},{h:'shellcrown',w:'SHELLS'},{h:'clamhat',w:'CLAM'},{h:'kelpwreath',w:'KELP'},{h:'snorkel',shop:1},{h:'hornhood',w:'DRAGON'},{h:'wizardhat',w:'WAND'},{h:'runecircle',w:'RUNE'},{h:'knighthelm',shop:1}];

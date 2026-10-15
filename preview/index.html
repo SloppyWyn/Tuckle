@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 18</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 19</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2147,7 +2147,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=5facf0d740"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3640369107"><\/script>')})();
 </script>
 <script>
 
@@ -2857,7 +2857,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='5facf0d740';let updateTo=null;
+const BUILD='3640369107';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -7006,23 +7006,27 @@ function renderHome(){
 }
 
 const hubWorld=()=>{const w=store.hubW;return WORLD_IDS.includes(w)?w:store.jungle.sel?worldOf(store.jungle.sel):'jungle'};
-function pickWorld(w,keep){
+function pickWorld(w,keep,el){
   for(const id of WORLD_IDS){const c=document.querySelector(CARD_W[id]);if(c)c.classList.toggle('on',id===w)}
-  document.querySelectorAll('#w-tiles .w-tile[data-w]').forEach(b=>{const on=b.dataset.w===w;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+  document.querySelectorAll('#w-tiles .w-tile[data-w]').forEach(b=>{const on=b.dataset.w===w;b.classList.toggle('on',on);if(!b.classList.contains('clone'))b.setAttribute('aria-pressed',on)});
 
-  const box=$('w-tiles'),b=box.querySelector('.w-tile.on');if(b){const x=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;
-    if(Math.abs(box.scrollLeft-x)>2){box._aim=w;box.scrollTo({left:x,behavior:keep||calm()?'auto':'smooth'})}dialLook()}
+  const box=$('w-tiles');if(box.clientWidth){const mid=box.scrollLeft+box.clientWidth/2,all=[...box.querySelectorAll(`.w-tile[data-w="${w}"]`)];
+    const b=el||(keep?box.querySelector(`.w-tile[data-w="${w}"]:not(.clone)`):all.sort((p,q)=>Math.abs(p.offsetLeft-mid)-Math.abs(q.offsetLeft-mid))[0]);
+    if(b){const x=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;if(Math.abs(box.scrollLeft-x)>2){box._aim=w;box.scrollTo({left:x,behavior:keep||calm()?'auto':'smooth'})}dialLook()}}
   if(!keep&&store.hubW!==w){store.hubW=w;save()}
 }
 function worldTiles(){
   const box=$('w-tiles'),M=store.jungle.medals;
-  box.innerHTML=WORLD_IDS.map(w=>{const c=document.querySelector(CARD_W[w]),open=worldOpen(w),L=worldStages(w),
+  const set=clone=>WORLD_IDS.map(w=>{const c=document.querySelector(CARD_W[w]),open=worldOpen(w),L=worldStages(w),
       ic=c&&c.querySelector('.mc-leaf:not(.mc-lock) svg'),key=c&&c.querySelector('.mc-t').dataset.l10n;
 
     const n=L.filter(s=>M[s.id]).length,ring=open?`<svg class="wt-ring" viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="20"/>${n?`<circle class="fg" cx="22" cy="22" r="20" stroke-dasharray="${(125.7*n/L.length).toFixed(1)} 200"/>`:''}</svg>`:'';
     const nm=t(key)+(open?' · '+n+'/'+L.length:'');
-    return`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
-  box.querySelectorAll('.w-tile[data-w]').forEach(b=>b.onclick=()=>{const w=b.dataset.w;if(b.classList.contains('on'))return document.querySelector(CARD_W[w]).click();pickWorld(w)});
+    return clone?`<button class="w-tile clone${open?'':' shut'}" data-w="${w}" tabindex="-1" aria-hidden="true">${ring}${ic?ic.outerHTML:''}</button>`
+      :`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
+
+  box.innerHTML=set(true)+set(false)+set(true);
+  box.querySelectorAll('.w-tile[data-w]').forEach(b=>b.onclick=()=>{const w=b.dataset.w;if(b.classList.contains('on')&&Math.abs(b.offsetLeft+b.offsetWidth/2-box.scrollLeft-box.clientWidth/2)<b.offsetWidth)return document.querySelector(CARD_W[w]).click();pickWorld(w,false,b)});
   worldDial(box);
   pickWorld(hubWorld(),true);
 }
@@ -7035,14 +7039,18 @@ function dialLook(){const box=$('w-tiles');if(!box||!box.clientWidth)return;cons
   return near}
 function worldDial(box){if(box._dial)return;box._dial=1;rowMouse(box);
   let raf=0,settle=0,last=null,tick=0;
-  const settled=()=>{const near=dialLook();if(!near||!near.dataset.w)return;
+  const recentre=near=>{if(!near.classList.contains('clone'))return;const n=WORLD_IDS.length,step=box.children[n].offsetLeft-box.children[0].offsetLeft;
+    box.scrollLeft+=near.offsetLeft<box.children[n].offsetLeft?step:-step;dialLook()};
+  const settled=()=>{if(box._dragging)return;const near=dialLook();if(!near||!near.dataset.w)return;
     if(box._aim){if(near.dataset.w!==box._aim)return;box._aim=null}
-    if(!near.classList.contains('on'))pickWorld(near.dataset.w)};
+    recentre(near);if(!near.classList.contains('on'))pickWorld(near.dataset.w,false,dialLook())};
   box.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;const near=dialLook();
 
-      if(near&&near!==last){if(last&&!box._aim&&performance.now()-tick>70){tick=performance.now();Sound.play('ui')}last=near}});
-    clearTimeout(settle);settle=setTimeout(settled,140)},{passive:true});
-  addEventListener('resize',()=>{if(!$('step-menu').hidden){const b=box.querySelector('.w-tile.on');if(b)box.scrollLeft=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;dialLook()}});
+      const w=near&&near.dataset.w;if(w&&w!==last){if(last&&!box._aim&&performance.now()-tick>70){tick=performance.now();Sound.play('ui')}last=w}});
+    clearTimeout(settle);settle=setTimeout(settled,160)},{passive:true});
+  box.addEventListener('pointerdown',()=>{box._dragging=1});addEventListener('pointerup',()=>{if(box._dragging){box._dragging=0;clearTimeout(settle);settle=setTimeout(settled,160)}});
+  addEventListener('pointercancel',()=>{box._dragging=0});
+  addEventListener('resize',()=>{if(!$('step-menu').hidden){const b=box.querySelector('.w-tile.on:not(.clone)');if(b)box.scrollLeft=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;dialLook()}});
 }
 
 {const st=$('w-stage');let sw=null,swiped=0;
@@ -7050,7 +7058,7 @@ function worldDial(box){if(box._dial)return;box._dial=1;rowMouse(box);
   st.addEventListener('pointercancel',()=>{sw=null});
   st.addEventListener('pointerup',e=>{if(!sw)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y;sw=null;
     if(Math.abs(dx)<45||Math.abs(dx)<Math.abs(dy)*1.5)return;swiped=Date.now();
-    const j=WORLD_IDS.indexOf(hubWorld())+(dx<0?1:-1);if(j>=0&&j<WORLD_IDS.length){pickWorld(WORLD_IDS[j]);Sound.play('ui')}});
+    const n=WORLD_IDS.length,j=(WORLD_IDS.indexOf(hubWorld())+(dx<0?1:-1)+n)%n;pickWorld(WORLD_IDS[j]);Sound.play('ui')});
   st.addEventListener('click',e=>{if(Date.now()-swiped<500){e.stopPropagation();e.preventDefault()}},true)}
 $('h-cont').onclick=()=>{const c=contChoice();if(!c)return;if(c.here)return closeIntro();
   menuMode=c.mode;if(c.mode==='jungle'){menuStage=c.id;store.jungle.sel=c.id;save()}closeIntro({mode:c.mode,resume:true})};

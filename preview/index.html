@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 9</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 10</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -646,9 +646,10 @@ html.calm .chip-seed{transition:none}
 .home-h{margin:6px 4px -3px;align-self:flex-start;font:700 12px/1.25 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
 .w-stage{display:grid;width:100%}
-.w-stage>.mode-card{grid-area:1/1;width:100%;box-sizing:border-box;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s}
-.w-stage>.mode-card.on{opacity:1;visibility:visible;transition:opacity .3s ease}
-.w-stage>.mode-card.soon.on{opacity:.75}
+
+#w-stage>.mode-card{grid-area:1/1;width:100%;box-sizing:border-box;opacity:0;visibility:hidden;transition:opacity .26s ease .14s,visibility 0s linear .4s}
+#w-stage>.mode-card.on{opacity:1;visibility:visible;z-index:1;transition:opacity .34s ease}
+#w-stage>.mode-card.soon.on{opacity:.8}
 .w-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
 .w-tile{--wc:var(--rj);display:flex;align-items:center;gap:8px;min-height:46px;padding:7px 10px;border-radius:14px;box-sizing:border-box;
   border:2px solid color-mix(in srgb,var(--wc) 30%,var(--line));background:color-mix(in srgb,var(--wc) 10%,var(--surface));
@@ -663,7 +664,7 @@ html.calm .chip-seed{transition:none}
 .w-tile[data-w="ice"]{--wc:var(--ri)}.w-tile[data-w="shan"]{--wc:var(--rs)}.w-tile[data-w="gala"]{--wc:var(--rg)}
 .w-tile[data-w="neb"]{--wc:var(--rn)}.w-tile[data-w="reef"]{--wc:var(--rr)}.w-tile[data-w="vale"]{--wc:var(--rv)}
 @media (hover:hover){.w-tile:not(.more):not(.on):hover{border-color:color-mix(in srgb,var(--wc) 60%,var(--line))}}
-html.calm .w-stage>.mode-card,html.calm .w-tile{transition:none}
+html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 
 @media (max-width:380px){.w-tile:not(.more){display:grid;grid-template-columns:auto 1fr;column-gap:7px;row-gap:1px;padding:6px 9px}.w-tile:not(.more) svg{grid-row:1/3}.w-tile .wt-c{justify-self:start}.w-tile:not(.wt2) .wt-n:only-of-type{grid-row:1/3}}
 .mc-go{position:absolute;right:16px;top:50%;margin-top:-13px;font:700 22px/1 var(--display);color:var(--muted)}
@@ -2040,7 +2041,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=680b71afdf"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=0140b99a50"><\/script>')})();
 </script>
 <script>
 
@@ -2750,7 +2751,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='680b71afdf';let updateTo=null;
+const BUILD='0140b99a50';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3907,19 +3908,20 @@ const Sound=(function(){
       src.connect(g);g.connect(sink||master);src.start(c.currentTime+.02)};
     if(clapBufs[k])go();else loadClaps(c).then(go);
   }
-  let noise=null;
-  function noiseBuf(c){if(!noise){noise=c.createBuffer(1,c.sampleRate*.5,c.sampleRate);const d=noise.getChannelData(0);let b=0;for(let i=0;i<d.length;i++){b=b*.55+(Math.random()*2-1)*.45;d[i]=b}}return noise}
 
-  function stroke(o={}){
+  function pluck(f,o={}){
     const c=ac();if(!c)return;
-    const t0=now(c)+(o.t||0),d=o.d||.07,g=o.g||.05;
-    const src=c.createBufferSource();src.buffer=noiseBuf(c);
-    const bp=c.createBiquadFilter();bp.type='bandpass';bp.Q.value=.9;
-    bp.frequency.setValueAtTime((o.f||2600)*.8,t0);bp.frequency.linearRampToValueAtTime(o.f||2600,t0+d);
-    const hp=c.createBiquadFilter();hp.type='highpass';hp.frequency.value=900;
-    const v=c.createGain();v.gain.setValueAtTime(0,t0);v.gain.linearRampToValueAtTime(g,t0+.012);v.gain.setValueAtTime(g*.8,t0+d*.6);v.gain.exponentialRampToValueAtTime(.0001,t0+d);
-    src.connect(bp);bp.connect(hp);hp.connect(v);v.connect(master);src.start(t0,Math.random()*.3);src.stop(t0+d+.02);
+    const t0=now(c)+(o.t||0),d=o.d||.28,g=o.g||.02;
+    const v=c.createGain();v.gain.setValueAtTime(0,t0);v.gain.linearRampToValueAtTime(g,t0+.005);v.gain.exponentialRampToValueAtTime(.0001,t0+d);
+    const lp=c.createBiquadFilter();lp.type='lowpass';lp.Q.value=.5;lp.frequency.setValueAtTime(f*4,t0);lp.frequency.exponentialRampToValueAtTime(f*1.2,t0+d*.5);
+    const o1=c.createOscillator();o1.type='triangle';o1.frequency.setValueAtTime(f*1.012,t0);o1.frequency.exponentialRampToValueAtTime(f,t0+.03);
+    const o2=c.createOscillator(),g2=c.createGain();o2.frequency.value=f*2.01;g2.gain.setValueAtTime(.35,t0);g2.gain.exponentialRampToValueAtTime(.001,t0+d*.35);
+    o1.connect(lp);o2.connect(g2);g2.connect(lp);lp.connect(v);v.connect(master);o1.start(t0);o2.start(t0);o1.stop(t0+d+.03);o2.stop(t0+d+.03);
   }
+
+  const PENTA=[523.25,587.33,659.26,783.99,880,1046.5,1174.66,1318.51,1567.98];
+
+  const MARK_PAIRS=[[3,5],[4,6],[2,4],[5,7]];
 
   function meow(k,o={}){
     const c=ac();if(!c)return;
@@ -4150,8 +4152,9 @@ const Sound=(function(){
     const j=J();
     switch(kind){
 
-      case'mark':if(n>1){const t=performance.now(),fast=t-(this._mk||0)<60;this._mk=t;stroke({d:.075,g:fast?.04:.048,f:2500*j*(1+Math.min(n,14)*.02)})}
-        else{stroke({d:.075,g:.05,f:2500*j});stroke({t:.15,d:.075,g:.045,f:2800*j})}break;
+      case'mark':if(n>1){const t=performance.now(),gap=t-(this._mk||0);if(gap<35)break;this._mk=t;
+          const k=(n-2)%16,i=k<=8?k:16-k;pluck(PENTA[i],{g:gap<80?.012:.016,d:gap<80?.2:.26})}
+        else{const P=MARK_PAIRS[Math.floor(Math.random()*MARK_PAIRS.length)];pluck(PENTA[P[0]],{g:.02});pluck(PENTA[P[1]],{t:.075,g:.016})}break;
       case'area':[1047,1319,1568].forEach((f,k)=>tone(f*j,{t:k*.08,d:.45,g:.032,a:.004}));break;
       case'row':tone(1047*j,{d:.35,g:.035,a:.004});tone(1568*j,{t:.07,d:.4,g:.03,a:.004});break;
       case'unmark':bloop({pitch:j*(1+(Math.random()-.5)*.08)*(1+Math.min(n,14)*.03),g:.11});break;
@@ -7474,9 +7477,9 @@ function gSave(){save()}
 
 {const b=$('g-board');let stroke=null;
   const at=e=>{const el=document.elementFromPoint(e.clientX,e.clientY),c=el&&el.closest('#g-board i');return c?+c.dataset.i:-1};
-  const put=i=>{const d=gDraft();if(i<0||d.reg[i]===stroke)return;d.reg[i]=stroke;gCell(i);gCheck();Sound.play('mark',0)};
+  let n=0;const put=i=>{const d=gDraft();if(i<0||d.reg[i]===stroke)return;d.reg[i]=stroke;gCell(i);gCheck();Sound.play(stroke<0?'unmark':'mark',++n)};
   b.addEventListener('pointerdown',e=>{const i=at(e);if(i<0)return;e.preventDefault();const d=gDraft();
-    stroke=gPen>=0&&d.reg[i]===gPen?-1:gPen;try{b.setPointerCapture(e.pointerId)}catch(x){}put(i)});
+    stroke=gPen>=0&&d.reg[i]===gPen?-1:gPen;n=0;try{b.setPointerCapture(e.pointerId)}catch(x){}put(i)});
   b.addEventListener('pointermove',e=>{if(stroke!==null)put(at(e))});
   for(const k of['pointerup','pointercancel','lostpointercapture'])b.addEventListener(k,()=>{if(stroke!==null){stroke=null;gSave()}})}
 $('g-pal').onclick=e=>{const s=e.target.closest('.g-sw');if(!s)return;gPen=+s.dataset.g;$('g-pal').querySelectorAll('.g-sw').forEach(x=>x.setAttribute('aria-pressed',x===s))};

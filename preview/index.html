@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 25</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 26</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -777,7 +777,7 @@ html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery
 @media (max-width:360px){.pl-mini>span:nth-child(3){display:none}}
 
 .n-sec{display:flex;flex-direction:column;gap:8px;min-height:0}.n-sec[hidden]{display:none}.n-sec>.n-h{display:none}
-.intro:has(> .nest.plated:not([hidden])){align-items:stretch;overflow:hidden}
+.intro:has(> .nest.plated:not([hidden]):not(.stepaway)){align-items:stretch;overflow:hidden}
 .nest.plated{height:100%;min-height:0}
 .nest.plated .n-pick,.nest.plated .n-medals,.nest.plated .n-h:has(#n-c-medals),.nest.plated .n-wallet-s{display:none}
 .nest.plated .n-shelf{flex:0 1 auto;min-height:0;background:linear-gradient(170deg,color-mix(in srgb,var(--k) 9%,var(--surface)),var(--surface) 46%)}
@@ -2186,7 +2186,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=76d78aba60"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e2b459bd74"><\/script>')})();
 </script>
 <script>
 
@@ -2896,7 +2896,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='76d78aba60';let updateTo=null;
+const BUILD='e2b459bd74';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

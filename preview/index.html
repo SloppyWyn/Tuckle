@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 13</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 14</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1160,6 +1160,33 @@ html.calm .g-out{animation:none}
 .gift-tag p{margin:0;font:600 16px/1.35 var(--display);font-style:italic;overflow-wrap:anywhere}
 .gift-tag span{display:block;margin-top:6px;text-align:right;font-weight:700;font-size:13px;color:var(--muted)}
 
+.nest.plated[data-sec="friends"] :is(.n-buddy,.n-wallet){display:none}
+.nest.plated .n-sec[data-sec="friends"]:not([hidden]){display:flex;flex-direction:column;gap:10px;flex:1 1 auto}
+.fr-me{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:8px;padding:2px 0 0}
+.fr-lead{margin:0;font:600 13px/1.35 var(--body);color:var(--muted);text-align:center;max-width:340px}
+.fr-coderow{display:flex;align-items:center;justify-content:space-between;gap:12px;width:min(100%,340px)}
+.fr-codel{display:flex;flex-direction:column;text-align:left}.fr-codel small{font:700 12px var(--body);color:var(--muted)}
+.fr-codel b{font:700 25px/1.15 var(--display);letter-spacing:.1em;color:var(--ink);user-select:text;-webkit-user-select:text}
+.fr-me .g-inrow{width:min(100%,340px)}.fr-msg{min-height:1.3em;font-size:13.5px}
+.fr-list{align-self:stretch;width:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;overflow:auto;min-height:0;flex:1 1 auto;padding:2px 2px 12px;overscroll-behavior:contain}
+.fr-card{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;padding:8px 10px;border-radius:16px;background:var(--surface);border:1px solid var(--line);text-align:left}
+.fr-card.you{border-color:color-mix(in srgb,var(--k) 45%,var(--line));background:color-mix(in srgb,var(--k) 7%,var(--surface))}
+.fr-disc{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--k) 14%,var(--surface))}
+.fr-disc svg{width:44px;height:44px;overflow:visible}
+.fr-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fr-name{font:700 15.5px/1.2 var(--display);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fr-day{font:600 13px/1.3 var(--body);color:var(--muted)}.fr-card.done .fr-day{color:var(--ink)}
+.fr-more{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:18px}
+.fr-streak{font:700 11.5px var(--body);color:var(--accent-text)}
+.fr-meds{display:inline-flex;gap:6px}.fr-meds span{display:inline-flex;align-items:center;gap:2px;font:700 12px var(--body);color:var(--muted)}.fr-meds svg{width:16px;height:16px}
+.fr-x{position:relative;z-index:1;min-width:32px;height:32px;padding:0 8px;border:0;border-radius:999px;background:none;color:var(--muted);font:700 18px/1 var(--body);cursor:pointer;transition:background .25s,color .25s}
+.fr-x::after{content:"";position:absolute;inset:-6px}
+.fr-card{position:relative}.fr-sure{position:absolute;right:46px;top:50%;transform:translateY(-50%) scale(.92);opacity:0;pointer-events:none;padding:7px 12px;border:0;border-radius:999px;
+  background:color-mix(in srgb,var(--bad) 14%,var(--surface));color:var(--bad);font:700 12.5px/1 var(--body);box-shadow:0 0 0 6px var(--surface);transition:opacity .25s,transform .25s;cursor:pointer}
+.fr-card.arm .fr-sure{opacity:1;transform:translateY(-50%);pointer-events:auto}.fr-card.arm .fr-x{color:var(--bad)}
+.fr-list>*{width:100%;box-sizing:border-box}.fr-msg.ok{color:var(--ink)}
+.fr-empty{margin:6px 0;font:600 14px/1.4 var(--body);color:var(--muted);text-align:center}
+
 .jdeco,.m-map,.cdeco{--jstem:color-mix(in srgb,var(--rj) 72%,#16301f);--jvein:color-mix(in srgb,#fff 38%,var(--rj))}
 .board.jungle{background:color-mix(in srgb,var(--rj) 12%,var(--b-bg,var(--board-bg)));border-color:color-mix(in srgb,var(--rj) 32%,var(--b-edge,var(--tray-edge)))}
 .jdeco{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -1923,6 +1950,12 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
       <section class="n-sec" data-sec="themes" hidden><div class="n-h"><p class="home-h" data-l10n="soonThemes">Board themes</p><span class="n-count" id="n-c-themes"></span></div><div class="n-themes" id="n-themes" role="group" data-l10n-aria="soonThemes"></div><p class="n-cap" id="n-theme-cap" aria-live="polite"></p></section>
       <section class="n-sec" data-sec="treats" hidden><div class="n-h"><p class="home-h" data-l10n="treatsT">Treats</p><span class="n-count" id="n-c-treats"></span></div><div class="n-themes n-treats" id="n-treats" role="group" data-l10n-aria="treatsT"></div><p class="n-cap" id="n-treat-cap" aria-live="polite"></p></section>
       <section class="n-sec" data-sec="words" hidden><div class="n-h"><p class="home-h" data-l10n="wordsT">Words</p><span class="n-count" id="n-c-words"></span></div><div class="n-words" id="n-words" role="group" data-l10n-aria="wordsT"></div><p class="n-cap" id="n-word-cap" aria-live="polite"></p></section>
+      <section class="n-sec" data-sec="friends" hidden><div class="n-h"><p class="home-h" data-l10n="friendsT">Friends</p><span class="n-count" id="n-c-friends"></span></div>
+        <div class="fr-me"><p class="fr-lead" data-l10n="frLead"></p>
+          <div class="fr-coderow"><span class="fr-codel"><small data-l10n="frCode">Your code</small><b id="fr-code">··· ···</b></span><button class="btn primary" id="fr-send" data-l10n="frSend">Send my link</button></div>
+          <div class="g-inrow"><input class="namein" id="fr-in" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="80" data-l10n-ph="frInPh" placeholder="Friend’s code"><button class="btn" id="fr-add" data-l10n="frAdd">Add</button></div>
+          <p class="g-err fr-msg" id="fr-msg" aria-live="polite"></p></div>
+        <div class="fr-list" id="fr-list"></div></section>
       <div class="n-soonwrap"><p class="n-soonline" data-l10n="soonMore">More is coming soon</p></div>
     </div>
   </div>
@@ -2048,7 +2081,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=04ce9986e7"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=694b094773"><\/script>')})();
 </script>
 <script>
 
@@ -2758,7 +2791,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='04ce9986e7';let updateTo=null;
+const BUILD='694b094773';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -2810,7 +2843,7 @@ en:{
   letsPlay:"Let's play",backToGame:'Back to my game',coach:'The rules live here whenever you need them.',hmph:'hmph!',
   r1:'Each colour area gets exactly one {P}.',r2:'One {P} per row and one per column.',r3:"{Psc} can't touch, not even corner to corner.",
 resumeT:'Welcome back!',resumeQ:'Pick up where you left off?',resumeSum:'{what} · {time} · {n} placed',continueBtn:'Continue',newGame:'New game',
-  hatsT:'Hats',grpYours:'Yours',grpSeeds:'For seeds',grpEarn:'Still to earn',seedsT:'Seeds',playAgain:'Play again',rwBuddyT:'New buddy!',rwHatT:'New hat!',rwBoardT:'New board!',rwWorldT:'A new world!',rwBuddyS:'{n} is with you now. Say hi in the Collection.',rwThingS:'It’s waiting for you in the Collection.',rwWorldS:'New stages are waiting on the map.',rwWear:'Wear it',rwPlay:'Play with {n}',rwUse:'Use it',rwGo:'Take a look',worldHere:'New world open: {w}',fbT:'Feedback',fbS:'Ideas, bugs, a wrong word in any language: anything helps.',fbGo:'Send feedback',tipT:'Support Tuckle',tipS:'Tuckle is free and has no ads, made by one person. If it brightens your day, a coffee helps it keep growing.',tipGo:'Buy me a coffee',rwOk:'Lovely!',keepGoingP:'or keep going, just for practice',tourSkip:'I know how to play',treatsT:'Treats',treatNames:{auto:'Auto',cookie:'Cookies',banana:'Bananas',fish:'Fish',heart:'Hearts',momo:'Momos',mallow:'Marshmallows',stardrop:'Star candies',madeleine:'Madeleines',dragonfruit:'Dragon fruit'},treatAutoS:'Auto: each world brings its own treat, and cookies at home.',treatPickS:'{t} everywhere you play.',treatLock_banana:'Finish the Jungle’s Medium trail to unlock bananas.',treatLock_fish:'Finish Antarctica’s Medium trail to unlock fish.',treatLock_momo:'Finish Shangri-La’s Medium trail to unlock momos.',rwTreatT:'New treat!',rwTreatS:'Pick it in the Collection, under Treats.',rwTreatOn:'On now, everywhere you play.',lastHeart:'Last heart. Take it slow.',tipHeart:'That cost a heart. You get three per stage, and a wrong {P} cracks one.',outTH:'Out of hearts',outPH:'Three wrong {Ps} and the hearts are gone.',keepGoingH:'Keep going without hearts',gSingleA:'This colour has only one open square left, so its {P} goes there. Tap it twice.',gSingleR:'This row has only one open square left, so its {P} goes there. Tap it twice.',gSingleC:'This column has only one open square left, so its {P} goes there. Tap it twice.',gMarkYou:'Your turn to mark: tap each glowing square once. Your new {P} rules them out.',gMarkMore:'And mark what this one rules out, too.',gLast:'One {P} left. Your turn: find its square.',freePays1:'Each new puzzle at this size brings 1 seed.',freePays2:'Each new puzzle at this size brings 2 seeds.',freePays3:'Each new puzzle at this size brings 3 seeds.',dm1b:'One {P} per colour, and this colour has no other squares.',dmX:'Each × means “no {P} here”.',freeRestart:'Same puzzle again: no seeds for this one now. A new puzzle brings them.',freeNoSeeds:'Seeds come from new puzzles, not from starting over.',practiceT:'Finished',practiceP:'Out of treats, so it doesn’t count: no medal, no seeds.',practicePD:'Out of treats, so today’s doesn’t count yet: no seeds, no streak.',practicePF:'Out of treats, so it doesn’t count: no seeds.',giftT:"Gift a puzzle",giftSub:"Draw one for someone, or open yours",giftMake:"Make one",giftOpen:"Open one",giftLead:"Paint an area for every colour. Tuckle checks it has one answer.",giftPalA:"Colours",giftColA:"Colour {n}",giftErase:"Eraser",giftEmpty:"{n} squares still empty. Paint them, or tap Finish it for me.",giftMissing:"Use all {all} colours: {n} still missing.",giftBroken:"A colour is in two pieces. Join it up.",giftNone:"No answer fits yet. Reshape an area, or erase a few squares and tap Finish it for me.",giftMany:"More than one answer fits. Reshape an area, or erase a few squares and tap Finish it for me.",giftGuess:"One answer, but it takes guessing to find. Reshape an area a little.",giftOk:"One answer, found by logic alone. Ready to send!",giftCant:"Tuckle couldn’t finish this one. Try erasing a few more squares around your drawing.",giftFinish:"Finish it for me",giftAgain:"Another way",giftNoFit:"No answer can fit around this drawing. Try making it a little smaller, or leave a gap at the edges.",giftFinishing:"Finishing…",giftClear:"Clear",giftFromPh:"Your name",giftNotePh:"A note (optional)",giftGo:"Make the gift",giftReady:"Ready! Send the link, or this code:",giftCopy:"Copy link",giftShare:"Share",giftTry:"Try it",giftCopied:"Link copied. Paste it in a message.",giftCopyHand:"Copy the code above and send it.",giftShareText:"I made you a Tuckle puzzle!",giftShareFrom:"{name} made you a Tuckle puzzle!",giftOpenLead:"Got a puzzle from someone? Paste its link or code.",giftInPh:"Link or code",giftOpenGo:"Open",giftBad:"That doesn’t open a puzzle. Check it was copied whole.",giftFromH:"A puzzle from {name}",giftForYou:"A puzzle for you",giftLabel:"Gift from {name}",giftLabelA:"Gift puzzle",giftSign:"from {name}",giftBack:"Make one back",practicePG:"Out of treats, so it doesn’t count this time.",keptNo:'Not there: that square can’t hold a {P}. Nothing more to lose now, so take your time.',seedsHint:'Earn seeds by solving; spend them on things with a price tag.',shopHat:'{h} · {n} seeds (hold to try it on)',shopAsk:'Buy for {n} seeds? Tap again. You have {have}.',shopShort:'Not yet: {n} more seeds to go.',buyNo:'Not now',buyBtn:'Buy',shopTwice:'{n} seeds · tap twice to buy',shopBuddyAsk:'{n} · {p} seeds. You have {have}.',shopBuddyShort:'{n} · {p} seeds. You have {have}, so {m} more to go.',homeBtn:'Bring home',moreToGo:'{m} more to go',shopGot:'{h} is yours!',seedsToGet:'Seeds for today’s Daily',seedsGot:'Today’s Daily seeds are yours',dailyNext:'New one in {t}',streakN:'{n} days in a row',streakWin:'That’s {n} days in a row. Lovely.',moodWin_tired:['Well done. Now maybe a little rest?','Nicely done. Maybe a cup of tea next?','Solved! Your eyes have earned a break.','All tucked in. Maybe you could be too, soon.','Good job. No rush for the next one.','Lovely. Remember to look after yourself.'],moodWin_low:['You did it. I hope that helped a little.','Solved. It’s good to have you here.','One small thing done. It counts.','Well done. Go gently today.','You did it. I’m right here with you.','Nice. One step at a time is plenty.'],applauseT:'Applause',applauseS:'The crowd claps when you solve: a few claps for bronze, a full room for gold',moodAsk:{cat:'Hey you. How are you feeling today?',owl:'Hoo. How is your day going, friend?',stone:'Hi hi! How are you feeling today?',lantern:'Um… how are you doing today?',monkey:'Ooh-ooh! How are you feeling today?',seal:'Arf! Hi hi! How are you today?',lion:'Hey there, friend. How’s your day going?',emperor:'Good day to you. And how are we feeling today?',toucan:'Kek! Hello, hello! How are you feeling?',orca:'Wheee, hi! How are you doing today?',redpanda:'Eep! Hi! How are you feeling today?',snowleo:'Hello, friend. How is your heart today?',yak:'Mmrh. Hello. How are you doing today?',poodle:'Woof! Hi hi! How are you feeling today?',booby:'Ha-honk! Hi, hi! How are you feeling today?',tortoise:'Hello… friend. How… is your day?',iguana:'Pff. Hey. How are you today?',moonbun:'Pon! Hello there. How are you feeling today?',starwhale:'Ooooh… hello, friend. How is your day?',cometfox:'Hey hey! How are you today?',clownfish:'Blub! Hey there! How are you feeling today?',octopus:'Ooh, hello! How are you feeling today?',seahorse:'Oh… hello, friend. How is your day?',dragon:'Hm. Hello, friend. How is your heart today?',unicorn:'Oh… hi. How are you feeling today?',griffin:'Ha! Greetings! How fares my friend today?'},buddyJoined:'{n} joins you! Say hi in the Collection.',buddyLock_jungleGold:'{n} joins you when {all} Jungle stages have gold. {have} so far.',buddyLock_iceGold:'{n} joins you when {all} Antarctica stages have gold. {have} so far.',buddyLock_jungleAll:'{n} joins you when every Jungle stage has gold. {have} of {all} so far.',buddyLock_iceAll:'{n} joins you when every Antarctica stage has gold. {have} of {all} so far.',buddyLock_shanGold:'{n} joins you when {all} Shangri-La stages have gold. {have} so far.',buddyLock_shanAll:'{n} joins you when every Shangri-La stage has gold. {have} of {all} so far.',skinNames:{cloud:'Little cloud',teddy:'Teddy cut',midnight:'Midnight',jade:'Jade',pearl:'Pearl'},skinsT:'Looks',rwSkinT:'New look!',rwSkinS:'Pick it in the Collection: tap {n} and choose a look.',skinLock_midnight:'Finish every Nebula stage to unlock Midnight.',wordDone:'{w}: spelled! Reward: {h}.',wordTodo:'{w}: {n} of {t} letters ({wn}, {d}). Reward: {h}.',moodNames:{great:'Great',okay:'Okay',tired:'Tired',low:'Not great'},moodReply:{great:'Yay! That makes me happy too.',okay:'Okay is perfectly fine. I’m glad you’re here.',tired:'Let’s keep it gentle today. One little puzzle, then rest?',low:'I’m sorry it’s a hard day. I’m right here, so take all the time you need.'},petT:'Pet your buddy',hatNames:{beanie:'Beanie',flowercrown:'Flower crown',icecrown:'Ice crown',earmuffs:'Earmuffs',trapper:'Explorer’s fur hat',fishhat:'Fish hat',explorer:'Explorer hat',crown:'Tiny crown',mane:'Lion mane',bamboohat:'Bamboo hat',momohat:'Momo hat',yetihat:'Yeti hat',blossomcrown:'Blossom crown',mallowhat:'Marshmallow hat',sunhat:'Sun hat',volcanohat:'Volcano hat',embercrown:'Ember crown',spacehelmet:'Space helmet',moonband:'Moon headband',novacrown:'Nova crown',planethalo:'Planet halo',shellcrown:'Shell crown',clamhat:'Clam hat',kelpwreath:'Kelp wreath',snorkel:'Snorkel mask',hornhood:'Dragon-horn hood',wizardhat:'Wizard hat',runecircle:'Rune circlet',knighthelm:'Knight’s helmet'},hatWorn:'{h} · hold and slide (or drag it on your buddy) to adjust; tap to take it off',boardNames:{classic:'Classic',city:'City',cloud:'Cloud',leafy:'Leafy',frost:'Frost',blossom:'Blossom',lava:'Lava',starlight:'Starlight',lagoon:'Lagoon',spellbook:'Spellbook'},hatOff:'{h} · tap to put it on',hatLocked:'{h} · spell {w} to earn it (hold to try it on)',hatEarned:'New in your Collection: {h}!',hatSoon:'{h} · you spelled {w}! It’s on its way',names:{owl:'Hoot',cat:'Miso',lantern:'Lumi',stone:'Mochi',monkey:'Kiki',seal:'Nori',lion:'Leo',emperor:'Monty',toucan:'Tiko',orca:'Oli',redpanda:'Pema',snowleo:'Tashi',yak:'Norbu',poodle:'Pudding',booby:'Lola',tortoise:'Jorge',iguana:'Iggy',moonbun:'Luna',starwhale:'Mira',cometfox:'Vega',clownfish:'Pip',octopus:'Inky',seahorse:'Marina',dragon:'Zar',unicorn:'Tilly',griffin:'Arlo'}
+  hatsT:'Hats',grpYours:'Yours',grpSeeds:'For seeds',grpEarn:'Still to earn',seedsT:'Seeds',playAgain:'Play again',rwBuddyT:'New buddy!',rwHatT:'New hat!',rwBoardT:'New board!',rwWorldT:'A new world!',rwBuddyS:'{n} is with you now. Say hi in the Collection.',rwThingS:'It’s waiting for you in the Collection.',rwWorldS:'New stages are waiting on the map.',rwWear:'Wear it',rwPlay:'Play with {n}',rwUse:'Use it',rwGo:'Take a look',worldHere:'New world open: {w}',fbT:'Feedback',fbS:'Ideas, bugs, a wrong word in any language: anything helps.',fbGo:'Send feedback',tipT:'Support Tuckle',tipS:'Tuckle is free and has no ads, made by one person. If it brightens your day, a coffee helps it keep growing.',tipGo:'Buy me a coffee',rwOk:'Lovely!',keepGoingP:'or keep going, just for practice',tourSkip:'I know how to play',treatsT:'Treats',treatNames:{auto:'Auto',cookie:'Cookies',banana:'Bananas',fish:'Fish',heart:'Hearts',momo:'Momos',mallow:'Marshmallows',stardrop:'Star candies',madeleine:'Madeleines',dragonfruit:'Dragon fruit'},treatAutoS:'Auto: each world brings its own treat, and cookies at home.',treatPickS:'{t} everywhere you play.',treatLock_banana:'Finish the Jungle’s Medium trail to unlock bananas.',treatLock_fish:'Finish Antarctica’s Medium trail to unlock fish.',treatLock_momo:'Finish Shangri-La’s Medium trail to unlock momos.',rwTreatT:'New treat!',rwTreatS:'Pick it in the Collection, under Treats.',rwTreatOn:'On now, everywhere you play.',lastHeart:'Last heart. Take it slow.',tipHeart:'That cost a heart. You get three per stage, and a wrong {P} cracks one.',outTH:'Out of hearts',outPH:'Three wrong {Ps} and the hearts are gone.',keepGoingH:'Keep going without hearts',gSingleA:'This colour has only one open square left, so its {P} goes there. Tap it twice.',gSingleR:'This row has only one open square left, so its {P} goes there. Tap it twice.',gSingleC:'This column has only one open square left, so its {P} goes there. Tap it twice.',gMarkYou:'Your turn to mark: tap each glowing square once. Your new {P} rules them out.',gMarkMore:'And mark what this one rules out, too.',gLast:'One {P} left. Your turn: find its square.',freePays1:'Each new puzzle at this size brings 1 seed.',freePays2:'Each new puzzle at this size brings 2 seeds.',freePays3:'Each new puzzle at this size brings 3 seeds.',dm1b:'One {P} per colour, and this colour has no other squares.',dmX:'Each × means “no {P} here”.',freeRestart:'Same puzzle again: no seeds for this one now. A new puzzle brings them.',freeNoSeeds:'Seeds come from new puzzles, not from starting over.',practiceT:'Finished',practiceP:'Out of treats, so it doesn’t count: no medal, no seeds.',practicePD:'Out of treats, so today’s doesn’t count yet: no seeds, no streak.',practicePF:'Out of treats, so it doesn’t count: no seeds.',giftT:"Gift a puzzle",giftSub:"Draw one for someone, or open yours",giftMake:"Make one",giftOpen:"Open one",giftLead:"Paint an area for every colour. Tuckle checks it has one answer.",giftPalA:"Colours",giftColA:"Colour {n}",giftErase:"Eraser",giftEmpty:"{n} squares still empty. Paint them, or tap Finish it for me.",giftMissing:"Use all {all} colours: {n} still missing.",giftBroken:"A colour is in two pieces. Join it up.",giftNone:"No answer fits yet. Reshape an area, or erase a few squares and tap Finish it for me.",giftMany:"More than one answer fits. Reshape an area, or erase a few squares and tap Finish it for me.",giftGuess:"One answer, but it takes guessing to find. Reshape an area a little.",giftOk:"One answer, found by logic alone. Ready to send!",giftCant:"Tuckle couldn’t finish this one. Try erasing a few more squares around your drawing.",giftFinish:"Finish it for me",giftAgain:"Another way",giftNoFit:"No answer can fit around this drawing. Try making it a little smaller, or leave a gap at the edges.",giftFinishing:"Finishing…",giftClear:"Clear",giftFromPh:"Your name",giftNotePh:"A note (optional)",giftGo:"Make the gift",giftReady:"Ready! Send the link, or this code:",giftCopy:"Copy link",giftShare:"Share",giftTry:"Try it",giftCopied:"Link copied. Paste it in a message.",giftCopyHand:"Copy the code above and send it.",giftShareText:"I made you a Tuckle puzzle!",giftShareFrom:"{name} made you a Tuckle puzzle!",giftOpenLead:"Got a puzzle from someone? Paste its link or code.",giftInPh:"Link or code",giftOpenGo:"Open",giftBad:"That doesn’t open a puzzle. Check it was copied whole.",giftFromH:"A puzzle from {name}",giftForYou:"A puzzle for you",giftLabel:"Gift from {name}",giftLabelA:"Gift puzzle",giftSign:"from {name}",giftBack:"Make one back",friendsT:"Friends",frLead:"Friends see each other’s buddy, today’s Daily and medals. Nothing else.",frCode:"Your code",frSend:"Send my link",frInPh:"Friend’s code",frAdd:"Add",frAdded:"{n} is your friend now!",frNoCode:"No one has that code. Check it and try again.",frSelf:"That’s your own code.",frOff:"Can’t reach Friends right now. Try again in a bit.",frWait:"Just a moment…",frEmpty:"No friends here yet. Send your link to someone you’d like to play with.",frYou:"You",frNoName:"A friend",frDaily:"Today’s Daily: {t}",frHints:"{n} hints",frNoHints:"no hints",frNotYet:"No Daily yet today",frRemove:"Remove friend",frSure:"Tap again",frShareText:"Be my friend on Tuckle! — {name}",frCopied:"Link copied. Paste it in a message.",frSub0:"Send your link to a friend",frSubN:"{n} of {all} solved today’s Daily",practicePG:"Out of treats, so it doesn’t count this time.",keptNo:'Not there: that square can’t hold a {P}. Nothing more to lose now, so take your time.',seedsHint:'Earn seeds by solving; spend them on things with a price tag.',shopHat:'{h} · {n} seeds (hold to try it on)',shopAsk:'Buy for {n} seeds? Tap again. You have {have}.',shopShort:'Not yet: {n} more seeds to go.',buyNo:'Not now',buyBtn:'Buy',shopTwice:'{n} seeds · tap twice to buy',shopBuddyAsk:'{n} · {p} seeds. You have {have}.',shopBuddyShort:'{n} · {p} seeds. You have {have}, so {m} more to go.',homeBtn:'Bring home',moreToGo:'{m} more to go',shopGot:'{h} is yours!',seedsToGet:'Seeds for today’s Daily',seedsGot:'Today’s Daily seeds are yours',dailyNext:'New one in {t}',streakN:'{n} days in a row',streakWin:'That’s {n} days in a row. Lovely.',moodWin_tired:['Well done. Now maybe a little rest?','Nicely done. Maybe a cup of tea next?','Solved! Your eyes have earned a break.','All tucked in. Maybe you could be too, soon.','Good job. No rush for the next one.','Lovely. Remember to look after yourself.'],moodWin_low:['You did it. I hope that helped a little.','Solved. It’s good to have you here.','One small thing done. It counts.','Well done. Go gently today.','You did it. I’m right here with you.','Nice. One step at a time is plenty.'],applauseT:'Applause',applauseS:'The crowd claps when you solve: a few claps for bronze, a full room for gold',moodAsk:{cat:'Hey you. How are you feeling today?',owl:'Hoo. How is your day going, friend?',stone:'Hi hi! How are you feeling today?',lantern:'Um… how are you doing today?',monkey:'Ooh-ooh! How are you feeling today?',seal:'Arf! Hi hi! How are you today?',lion:'Hey there, friend. How’s your day going?',emperor:'Good day to you. And how are we feeling today?',toucan:'Kek! Hello, hello! How are you feeling?',orca:'Wheee, hi! How are you doing today?',redpanda:'Eep! Hi! How are you feeling today?',snowleo:'Hello, friend. How is your heart today?',yak:'Mmrh. Hello. How are you doing today?',poodle:'Woof! Hi hi! How are you feeling today?',booby:'Ha-honk! Hi, hi! How are you feeling today?',tortoise:'Hello… friend. How… is your day?',iguana:'Pff. Hey. How are you today?',moonbun:'Pon! Hello there. How are you feeling today?',starwhale:'Ooooh… hello, friend. How is your day?',cometfox:'Hey hey! How are you today?',clownfish:'Blub! Hey there! How are you feeling today?',octopus:'Ooh, hello! How are you feeling today?',seahorse:'Oh… hello, friend. How is your day?',dragon:'Hm. Hello, friend. How is your heart today?',unicorn:'Oh… hi. How are you feeling today?',griffin:'Ha! Greetings! How fares my friend today?'},buddyJoined:'{n} joins you! Say hi in the Collection.',buddyLock_jungleGold:'{n} joins you when {all} Jungle stages have gold. {have} so far.',buddyLock_iceGold:'{n} joins you when {all} Antarctica stages have gold. {have} so far.',buddyLock_jungleAll:'{n} joins you when every Jungle stage has gold. {have} of {all} so far.',buddyLock_iceAll:'{n} joins you when every Antarctica stage has gold. {have} of {all} so far.',buddyLock_shanGold:'{n} joins you when {all} Shangri-La stages have gold. {have} so far.',buddyLock_shanAll:'{n} joins you when every Shangri-La stage has gold. {have} of {all} so far.',skinNames:{cloud:'Little cloud',teddy:'Teddy cut',midnight:'Midnight',jade:'Jade',pearl:'Pearl'},skinsT:'Looks',rwSkinT:'New look!',rwSkinS:'Pick it in the Collection: tap {n} and choose a look.',skinLock_midnight:'Finish every Nebula stage to unlock Midnight.',wordDone:'{w}: spelled! Reward: {h}.',wordTodo:'{w}: {n} of {t} letters ({wn}, {d}). Reward: {h}.',moodNames:{great:'Great',okay:'Okay',tired:'Tired',low:'Not great'},moodReply:{great:'Yay! That makes me happy too.',okay:'Okay is perfectly fine. I’m glad you’re here.',tired:'Let’s keep it gentle today. One little puzzle, then rest?',low:'I’m sorry it’s a hard day. I’m right here, so take all the time you need.'},petT:'Pet your buddy',hatNames:{beanie:'Beanie',flowercrown:'Flower crown',icecrown:'Ice crown',earmuffs:'Earmuffs',trapper:'Explorer’s fur hat',fishhat:'Fish hat',explorer:'Explorer hat',crown:'Tiny crown',mane:'Lion mane',bamboohat:'Bamboo hat',momohat:'Momo hat',yetihat:'Yeti hat',blossomcrown:'Blossom crown',mallowhat:'Marshmallow hat',sunhat:'Sun hat',volcanohat:'Volcano hat',embercrown:'Ember crown',spacehelmet:'Space helmet',moonband:'Moon headband',novacrown:'Nova crown',planethalo:'Planet halo',shellcrown:'Shell crown',clamhat:'Clam hat',kelpwreath:'Kelp wreath',snorkel:'Snorkel mask',hornhood:'Dragon-horn hood',wizardhat:'Wizard hat',runecircle:'Rune circlet',knighthelm:'Knight’s helmet'},hatWorn:'{h} · hold and slide (or drag it on your buddy) to adjust; tap to take it off',boardNames:{classic:'Classic',city:'City',cloud:'Cloud',leafy:'Leafy',frost:'Frost',blossom:'Blossom',lava:'Lava',starlight:'Starlight',lagoon:'Lagoon',spellbook:'Spellbook'},hatOff:'{h} · tap to put it on',hatLocked:'{h} · spell {w} to earn it (hold to try it on)',hatEarned:'New in your Collection: {h}!',hatSoon:'{h} · you spelled {w}! It’s on its way',names:{owl:'Hoot',cat:'Miso',lantern:'Lumi',stone:'Mochi',monkey:'Kiki',seal:'Nori',lion:'Leo',emperor:'Monty',toucan:'Tiko',orca:'Oli',redpanda:'Pema',snowleo:'Tashi',yak:'Norbu',poodle:'Pudding',booby:'Lola',tortoise:'Jorge',iguana:'Iggy',moonbun:'Luna',starwhale:'Mira',cometfox:'Vega',clownfish:'Pip',octopus:'Inky',seahorse:'Marina',dragon:'Zar',unicorn:'Tilly',griffin:'Arlo'}
 ,galaW:'Galápagos',galaShut:'Opens when you finish Shangri-La’s Easy trail',jg1:'Welcome to the Galápagos. Warm rocks, gentle waves, and toasted marshmallows to keep you going.',ideas_gala:['Black sand','Tide pools','Lava fields','Sea lion beach','Prickly pear','Mangroves','Tortoise trail','Booby colony','Crater lake','Misty highlands','Steam vents','Sunset summit'],lastMallow:'Last marshmallow. Take it slow.',tipMallow:'That cost a marshmallow. You get three per stage, and a wrong {P} takes a bite.',outTMl:'Out of marshmallows',outPMl:'Three wrong {Ps} and the marshmallows are gone.',keepGoingMl:'Keep going without marshmallows',treatLock_mallow:'Finish the Galápagos’ Medium trail to unlock marshmallows.',buddyLock_galaGold:'{n} joins you when {all} Galápagos stages have gold. {have} so far.',buddyLock_galaAll:'{n} joins you when every Galápagos stage has gold. {have} of {all} so far.',nebW:'Nebula',nebShut:'Opens when you finish the Galápagos’ Easy trail',reefW:'Coral Reef',reefShut:'Opens when you finish the Nebula’s Easy trail',valeW:'Dragon Vale',valeShut:'Opens when you finish the Coral Reef’s Easy trail',jv1:'Welcome to Dragon Vale. Old stones, glowing crystals, and sweet dragon fruit for the road.',lastDragonfruit:'Last dragon fruit. Take it slow.',tipDragonfruit:'That cost a dragon fruit. You get three per stage, and a wrong {P} takes a bite.',outTDf:'Out of dragon fruit',outPDf:'Three wrong {Ps} and the dragon fruit is gone.',keepGoingDf:'Keep going without dragon fruit',treatLock_dragonfruit:'Finish Dragon Vale’s Medium trail to unlock dragon fruit.',buddyLock_valeGold:'{n} joins you when {all} Dragon Vale stages have gold. {have} so far.',buddyLock_valeAll:'{n} joins you when every Dragon Vale stage has gold. {have} of {all} so far.',ideas_vale:['Mossy gate','Crystal path','Toadstool ring','Old bridge','Castle steps','Rune stone','Wishing well','Dragon’s lookout','Moonlit tower','Spellbook library','Cave mouth','Zar’s nest'],jr1:'Welcome to the Coral Reef. Warm shallows, swaying kelp, and golden madeleines to keep you going.',lastMadeleine:'Last madeleine. Take it slow.',tipMadeleine:'That cost a madeleine. You get three per stage, and a wrong {P} takes a bite.',outTMd:'Out of madeleines',outPMd:'Three wrong {Ps} and the madeleines are gone.',keepGoingMd:'Keep going without madeleines',treatLock_madeleine:'Finish the Coral Reef’s Medium trail to unlock madeleines.',buddyLock_reefGold:'{n} joins you when {all} Coral Reef stages have gold. {have} so far.',buddyLock_reefAll:'{n} joins you when every Coral Reef stage has gold. {have} of {all} so far.',ideas_reef:['Sunny shallows','Sea glass','Bubble trail','Clownfish home','Kelp forest','Starfish cove','Tide pool','Pearl bed','Coral garden','Turtle crossing','Lagoon light','Sunset reef'],jn1:'Welcome to the Nebula. Soft stars, a sleepy moon, and sweet star candies to keep you going.',ideas_neb:['Stardust','First light','Moon garden','Planet rings','Comet trail','Twin stars','Quiet orbit','Milky Way','Star nursery','Aurora drift','Moonrise','Starfall'],lastStardrop:'Last star candy. Take it slow.',tipStardrop:'That cost a star candy. You get three per stage, and a wrong {P} takes a bite.',outTSd:'Out of star candies',outPSd:'Three wrong {Ps} and the star candies are gone.',keepGoingSd:'Keep going without star candies',treatLock_stardrop:'Finish the Nebula’s Medium trail to unlock star candies.',buddyLock_nebGold:'{n} joins you when {all} Nebula stages have gold. {have} so far.',buddyLock_nebAll:'{n} joins you when every Nebula stage has gold. {have} of {all} so far.'},
 };
 
@@ -4310,7 +4343,7 @@ function checkWin(){
   const prevBest=store.best[key];
   if(!prevBest||elapsed<prevBest)store.best[key]=Math.floor(elapsed);
 
-  if(mode==='daily'){const d=todayStr(),had=store.daily[d];dailyReplay=had!=null;store.daily[d]=dailyReplay?Math.min(had,Math.floor(elapsed)):Math.floor(elapsed)}
+  if(mode==='daily'){const d=todayStr(),had=store.daily[d];dailyReplay=had!=null;store.daily[d]=dailyReplay?Math.min(had,Math.floor(elapsed)):Math.floor(elapsed);if(store.fr)frPush()}
 
   if(pz.ch){const J=store.jungle;J.letters=J.letters||{};J.lshine=J.lshine||{};const newL=!J.letters[pz.stage];J.letters[pz.stage]=1;
     const perfect=scoreBreakdown().rows.every(r=>r.on),had=!!J.lshine[pz.stage];if(perfect)J.lshine[pz.stage]=1;
@@ -6325,7 +6358,7 @@ function showStep(which){
   if(which!=='nest')nestOpen=null;
   if(which==='name'){$('name-disc').innerHTML=buddySVG(S.piece,wornHat());const ni=$('name-in');ni.value=S.name||'';if(!matchMedia('(pointer:coarse)').matches)setTimeout(()=>ni.focus({preventScroll:true}),350)}
 
-  if(which==='menu'){renderHome();cardDeco(true)}else if(which==='play')openMenu();else if(which==='gift')giftShow();else if(which==='nest'){renderNest();$('n-ask').hidden=true;if((store.mood||{}).asked!==todayStr())setTimeout(askMood,calm()?300:1100)}
+  if(which==='menu'){renderHome();cardDeco(true)}else if(which==='play')openMenu();else if(which==='gift')giftShow();else if(which==='nest'){renderNest();$('n-ask').hidden=true;if((store.mood||{}).asked!==todayStr()&&nestOpen!=='friends')setTimeout(askMood,calm()?300:1100)}
   if(updateTo)setTimeout(applyUpdate,400);
   $('rules-go').textContent=pz?t('backToGame'):t('letsPlay');
   intro.scrollTop=0;
@@ -6390,6 +6423,7 @@ function coach(){
 
 function afterIntro(){showStep('menu');
   if(giftFromLink())return;
+  if(friendFromLink())return;
   if(store.lastMode||store.tips.all||store.tips.start)return;
   setTimeout(()=>{const c=document.querySelector('#step-menu .mode-card[data-m="jungle"]');if(intro.hidden||$('step-menu').hidden||!c)return;
     store.tips.start=1;save();c.classList.add('tip-glow');pointAt(c,t('startHere'),7000,()=>c.classList.remove('tip-glow'));
@@ -6412,6 +6446,104 @@ $('rules-go').onclick=()=>{store.seenRules=1;save();if(rulesThen){const f=rulesT
     s.addEventListener('pointerdown',()=>wob(s))});
 
   title.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')return;const el=document.elementFromPoint(e.clientX,e.clientY),s=el&&el.closest('#intro-title span');if(s)wob(s)})}
+
+const FRIENDS={url:'',key:''};
+const friendsOn=()=>!!(FRIENDS.url&&FRIENDS.key)&&!wiped;
+let friendLink=null;{const m=location.hash.match(/friend=([A-Za-z0-9]{6})/);if(m){friendLink=m[1].toUpperCase();
+  try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}}}
+const FR_SITE='https://sloppywyn.github.io/Tuckle/';
+const frLinkOf=code=>{const own=/^https?:$/.test(location.protocol)&&!FRAMED;return(own?location.origin+location.pathname:FR_SITE)+'#friend='+code};
+
+let frAuthP=null;
+function frAuth(){if(frAuthP)return frAuthP;
+  const s=store.fr;if(s&&s.at&&s.exp>Date.now()/1000+60)return Promise.resolve(s);
+  const body=s&&s.rt?{refresh_token:s.rt}:{},path=s&&s.rt?'/auth/v1/token?grant_type=refresh_token':'/auth/v1/signup';
+  frAuthP=fetch(FRIENDS.url+path,{method:'POST',headers:{apikey:FRIENDS.key,'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(r=>r.ok?r.json():r.status>=400&&r.status<500&&s&&s.rt?{again:1}:Promise.reject(r.status))
+    .then(j=>{if(j.again){delete store.fr.rt;delete store.fr.at;save();frAuthP=null;return frAuth()}
+      const u=j.user||{};store.fr=Object.assign(store.fr||{},{id:u.id||store.fr&&store.fr.id,at:j.access_token,rt:j.refresh_token,exp:j.expires_at||Math.floor(Date.now()/1000)+(j.expires_in||3600)});
+      if(s&&s.id&&u.id&&s.id!==u.id)store.fr.code=null;
+      save();return store.fr})
+    .finally(()=>{frAuthP=null});
+  return frAuthP}
+async function frApi(path,opt={}){const s=await frAuth();
+  const r=await fetch(FRIENDS.url+path,Object.assign({},opt,{headers:Object.assign({apikey:FRIENDS.key,Authorization:'Bearer '+s.at,'Content-Type':'application/json'},opt.headers||{})}));
+  if(r.status===401&&!opt._again){store.fr.exp=0;return frApi(path,Object.assign({},opt,{_again:1}))}
+  if(!r.ok)throw r.status;const tx=await r.text();return tx?JSON.parse(tx):null}
+
+function frMe(){const M=store.jungle.medals||{},c=[0,0,0,0,0];for(const k in M)c[seedLevel(k)]++;
+  const d=store.daily[todayStr()],k=S.piece;
+  return{name:cleanName(S.name||'').slice(0,24),look:{k,h:wornHat()||'',s:SKINS[k]?skinOf(k):undefined},
+    stats:{streak:streak(),medals:c.slice(1),words:Object.keys(store.jungle.words||{}).length},
+    daily_day:d!=null?todayStr():null,daily_secs:d!=null?d:null,daily_hints:d!=null?dailyHintsUsed():null,updated_at:new Date().toISOString()}}
+let frPushT=0,frPushed='';
+function frPush(now){if(!friendsOn())return Promise.resolve();clearTimeout(frPushT);
+  return new Promise(res=>{frPushT=setTimeout(()=>{const me=frMe(),key=JSON.stringify({...me,updated_at:0});
+    if(key===frPushed&&store.fr&&store.fr.code)return res();
+    frAuth().then(()=>frApi('/rest/v1/players?on_conflict=id',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=representation'},body:JSON.stringify({id:store.fr.id,...me})}))
+      .then(r=>{frPushed=key;const row=r&&r[0];if(row&&row.code&&row.code!==store.fr.code){store.fr.code=row.code;save();frDraw()}})
+      .catch(()=>{}).finally(res)},now?0:800)})}
+
+let frBusy=false,frErr='';
+async function frLoad(){if(!friendsOn())return;frBusy=true;frErr='';frDraw();
+  try{if(!store.fr||!store.fr.code)await frPush(true);
+    const rows=await frApi('/rest/v1/players?select=id,code,name,look,stats,daily_day,daily_secs,daily_hints,updated_at');
+    const me=store.fr.id;store.frList=(rows||[]).filter(r=>r.id!==me).map(r=>({id:r.id,name:r.name,look:r.look,stats:r.stats,dd:r.daily_day,ds:r.daily_secs,dh:r.daily_hints}));
+    const mine=(rows||[]).find(r=>r.id===me);if(mine&&mine.code&&mine.code!==store.fr.code)store.fr.code=mine.code;save()}
+  catch(e){frErr=t('frOff')}
+  frBusy=false;frDraw();if(!nestOpen&&!$('step-nest').hidden)drawPlates()}
+async function frAdd(code){code=String(code||'').trim().toUpperCase().replace(/^.*FRIEND=/,'').replace(/O/g,'0').replace(/[^0-9A-Z]/g,'');
+  const msg=$('fr-msg');msg.classList.remove('ok');if(code.length!==6){msg.textContent=t('frNoCode');return}
+  if(store.fr&&code===store.fr.code){msg.textContent=t('frSelf');return}
+  msg.textContent=t('frWait');
+  try{if(!store.fr||!store.fr.code)await frPush(true);const id=await frApi('/rest/v1/rpc/add_friend',{method:'POST',body:JSON.stringify({friend_code:code})});
+    if(!id){msg.textContent=t('frNoCode');return}
+    $('fr-in').value='';await frLoad();const f=(store.frList||[]).find(x=>x.id===id);
+    msg.textContent=t('frAdded',{n:f&&f.name||t('frNoName')});msg.classList.add('ok');Sound.play('ui',1)}
+  catch(e){msg.textContent=t('frOff')}}
+async function frRemove(id){try{await frApi('/rest/v1/rpc/remove_friend',{method:'POST',body:JSON.stringify({friend:id})});
+  store.frList=(store.frList||[]).filter(x=>x.id!==id);save();frDraw()}catch(e){$('fr-msg').textContent=t('frOff')}}
+
+function frBuddy(L){L=L||{};const k=PIECES[L.k]?L.k:'owl',h=HATS[L.h]?L.h:'',mine=SKINS[k]&&skinOf(k);
+  if(!mine||!L.s||L.s===mine||!SKINS[k][L.s])return buddySVG(k,h);
+  applySkin(k,L.s);const svg=buddySVG(k,h);applySkin(k,mine);return svg}
+
+function frCard(f,you){const today=f.dd===todayStr();
+  const day=today&&f.ds!=null?t('frDaily',{t:fmt(f.ds)})+' · '+(f.dh?t('frHints',{n:f.dh}):t('frNoHints')):t('frNotYet');
+  const st=f.stats||{},md=st.medals||[];
+  const meds=[1,2,3,4].map(m=>md[m-1]?`<span>${medalSVG(m,'')}<b>${md[m-1]}</b></span>`:'').join('');
+  return`<div class="fr-card${you?' you':''}${today?' done':''}" data-id="${esc(f.id||'')}"><span class="fr-disc">${frBuddy(f.look)}</span>`+
+    `<span class="fr-main"><b class="fr-name">${esc(you?t('frYou'):f.name||t('frNoName'))}</b><span class="fr-day">${esc(day)}</span>`+
+    `<span class="fr-more">${st.streak>1?`<span class="fr-streak">${esc(t('streakN',{n:st.streak}))}</span>`:''}<span class="fr-meds">${meds}</span></span></span>`+
+    (you?'':`<button class="fr-sure" tabindex="-1">${esc(t('frSure'))}</button><button class="fr-x" aria-label="${esc(t('frRemove'))}">×</button>`)+`</div>`}
+function frDraw(){if(!friendsOn())return;const L=store.frList||[],code=store.fr&&store.fr.code;
+  $('n-c-friends').textContent=L.length;
+  $('fr-code').textContent=code?code.slice(0,3)+' '+code.slice(3):'··· ···';$('fr-send').disabled=!code;
+  if(nestOpen==='friends')$('n-sheet-c').textContent=L.length;
+  const d=store.daily[todayStr()],me={...frMe(),dd:d!=null?todayStr():null,ds:d,dh:dailyHintsUsed()};me.look=frMe().look;me.dd=me.daily_day;me.ds=me.daily_secs;me.dh=me.daily_hints;
+
+  const sorted=[...L].sort((a,b)=>{const A=a.dd===todayStr(),B=b.dd===todayStr();return A!==B?B-A:A?a.ds-b.ds:(a.name||'').localeCompare(b.name||'')});
+  const box=$('fr-list'),h=frCard(me,true)+(sorted.length?sorted.map(f=>frCard(f)).join(''):`<p class="fr-empty">${esc(frErr||t('frEmpty'))}</p>`);
+  if(box._h!==h){box._h=h;box.innerHTML=h}
+  if(frErr&&sorted.length)$('fr-msg').textContent=frErr}
+
+function frPlate(){const L=store.frList||[],n=L.filter(f=>f.dd===todayStr()).length;
+  return{sub:!L.length?t('frSub0'):t('frSubN',{n,all:L.length}),mini:L.slice(0,3).map(f=>frBuddy(f.look))}}
+$('fr-send').onclick=()=>{const code=store.fr&&store.fr.code;if(!code)return;const link=frLinkOf(code),msg=$('fr-msg');
+  const text=t('frShareText',{name:cleanName(S.name||'')||'Tuckle'});
+  if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({title:'Tuckle',text,url:link}).catch(()=>{});return}
+  const ok=()=>{msg.textContent=t('frCopied');msg.classList.add('ok')};msg.classList.remove('ok');
+  if(navigator.clipboard)navigator.clipboard.writeText(text+' '+link).then(ok,()=>{msg.textContent=link});else msg.textContent=link};
+$('fr-add').onclick=()=>frAdd($('fr-in').value);
+$('fr-in').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();frAdd($('fr-in').value)}});
+
+$('fr-list').addEventListener('click',e=>{const x=e.target.closest('.fr-x,.fr-sure');if(!x)return;const c=x.closest('.fr-card');
+  if(c.classList.contains('arm')){frRemove(c.dataset.id);return}
+  document.querySelectorAll('.fr-card.arm').forEach(o=>o.classList.remove('arm'));c.classList.add('arm');
+  setTimeout(()=>{if(c.isConnected)c.classList.remove('arm')},3000)});
+
+function friendFromLink(){if(!friendLink)return false;const c=friendLink;friendLink=null;if(!friendsOn())return false;
+  nestWant='friends';showStep('nest');$('fr-in').value=c;frAdd(c);return true}
 
 let menuMode='daily',menuSel={size:8,diff:'medium'},menuStage='e1',mapTier=-1;
 const hasProgress=pr=>pr&&(pr.cells.some(v=>v)||pr.elapsed>3);
@@ -6819,13 +6951,14 @@ function renderNest(){
   requestAnimationFrame(()=>edgeFade($('n-words')));
   const M=store.jungle.medals,c=[0,0,0,0,0];for(const k in M)c[seedLevel(k)]++;
   $('n-medals').innerHTML=[1,2,3,4].map(m=>`<span title="${t('medals')[m-1]}" data-medal="${m}" role="button">${medalSVG(m,c[m]?'':'class="dim"',!!c[m])}<b>${c[m]}</b></span>`).join('');
+  if(friendsOn()){frDraw();frLoad()}
   drawPlates();const want=nestWant||nestOpen;nestWant=null;showPlate(want,true);
 }
 
 let nestOpen=null,nestWant=null;
-const PLATES=[{sec:'hats',t:'hatsT',c:'n-c-hats',tint:'var(--r6)'},{sec:'themes',t:'soonThemes',c:'n-c-themes',tint:'var(--r1)'},
+const PLATES=[{sec:'friends',t:'friendsT',c:'n-c-friends',tint:'var(--r5)'},{sec:'hats',t:'hatsT',c:'n-c-hats',tint:'var(--r6)'},{sec:'themes',t:'soonThemes',c:'n-c-themes',tint:'var(--r1)'},
   {sec:'treats',t:'treatsT',c:'n-c-treats',tint:'var(--r3)'},{sec:'words',t:'wordsT',c:'n-c-words',tint:'var(--rj)'}];
-function plateBits(sec){const W=store.jungle.words||{};
+function plateBits(sec){const W=store.jungle.words||{};if(sec==='friends')return frPlate();
   if(sec==='hats'){const own=HAT_SHELF.filter(x=>hatOwned(x.h)).map(x=>x.h),w=wornHat();
     return{sub:w?t('hatNames')[w]:'',mini:[w,...own.filter(h=>h!==w).reverse()].filter(Boolean).slice(0,3).map(h=>hatIcon(h))}}
   if(sec==='themes'){const cur=boardTheme(),own=BOARDS.filter(boardOwned),cols=[1,4,2,3,4,2,3,1,4];
@@ -6836,10 +6969,11 @@ function plateBits(sec){const W=store.jungle.words||{};
   return{sub:wip?wip.w:done.length?done[done.length-1].w:'',mini:done.slice(-3).reverse().map(x=>`<span class="ltile" data-world="${x.L[0]?worldOf(x.L[0].id):'jungle'}">${x.w[0]}</span>`)}}
 const plateHave=sec=>parseInt($(PLATES.find(p=>p.sec===sec).c).textContent)||0;
 function drawPlates(){const box=$('n-plates'),seen=store.plateSeen=store.plateSeen||{};
-  for(const p of PLATES)if(seen[p.sec]==null)seen[p.sec]=plateHave(p.sec);
-  box.innerHTML=PLATES.map(p=>{const[n,of]=$(p.c).textContent.split('/').map(Number),b=plateBits(p.sec),fresh=n>seen[p.sec];
-    return`<div class="n-plate${fresh?' fresh':''}" role="button" tabindex="0" data-sec="${p.sec}" style="--k:${p.tint}" aria-label="${t(p.t)} ${n}/${of}">
-      <span class="pl-main"><span class="pl-t">${t(p.t)}<small>${n}/${of}</small></span><span class="pl-s">${esc(b.sub)}</span><span class="pl-bar"><i style="width:${of?Math.round(n/of*100):0}%"></i></span></span>
+  const shown=PLATES.filter(p=>p.sec!=='friends'||friendsOn());
+  for(const p of shown)if(seen[p.sec]==null)seen[p.sec]=plateHave(p.sec);
+  box.innerHTML=shown.map(p=>{const[n,of]=$(p.c).textContent.split('/').map(Number),b=plateBits(p.sec),fresh=n>seen[p.sec],cnt=of>=0?n+'/'+of:n||0;
+    return`<div class="n-plate${fresh?' fresh':''}" role="button" tabindex="0" data-sec="${p.sec}" style="--k:${p.tint}" aria-label="${t(p.t)} ${cnt}">
+      <span class="pl-main"><span class="pl-t">${t(p.t)}<small>${cnt}</small></span><span class="pl-s">${esc(b.sub)}</span>${of>=0?`<span class="pl-bar"><i style="width:${of?Math.round(n/of*100):0}%"></i></span>`:''}</span>
       <span class="pl-mini" aria-hidden="true">${b.mini.map(m=>`<span>${m}</span>`).join('')}</span><span class="pl-go" aria-hidden="true">›</span></div>`}).join('');
   box.querySelectorAll('.n-plate').forEach(plateMirror)}
 
@@ -6886,6 +7020,7 @@ function showPlate(sec,quiet){const st=$('step-nest'),sh=st.querySelector('.n-sh
   if(!nestOpen&&was)drawPlates()}
 
 function syncSheet(){if(!nestOpen)return;const p=PLATES.find(x=>x.sec===nestOpen),pv=$('n-prev');$('n-sheet-c').textContent=$(p.c).textContent;
+  if(nestOpen==='friends'){pv.hidden=true;return}
   let h='';
   if(nestOpen==='themes'){const b=boardTheme(),reg=[1,1,1,4,4,4,2,1,3,3,4,5,2,2,3,6,5,5,2,7,3,6,6,5,7,7,3,8,6,5,7,8,8,8,8,5];
     h=`<div class="bt-prev bt-big" data-board="${b}">${reg.map(c=>`<i style="--rc:var(--r${c})"></i>`).join('')}</div><p>${esc(t('boardNames')[b])}</p>`}
@@ -7343,6 +7478,7 @@ buildCast();drawMinis();openIntro('title');
 
 if(new URLSearchParams(location.search).has('test'))window.tuckle={
   ready:()=>!!pz,
+  friends:(u,k)=>{FRIENDS.url=u;FRIENDS.key=k},
   state:()=>({mode,stage:pz&&pz.stage,letter:pz&&pz.ch,letters:store.jungle.letters||{},lshine:store.jungle.lshine||{},medals:store.jungle.medals,N:pz&&pz.N,diff:pz&&pz.diff,won,lost,hearts,crosses:G.crosses,tap:S.tap}),
   sol:()=>[...pz.solSet],
   solve(){for(const i of pz.solSet)cells[i]=2;render();checkWin()},

@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 24</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 25</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -667,13 +667,13 @@ html.calm .chip-seed{transition:none}
 #w-stage>.mode-card.on{opacity:1;visibility:visible;z-index:1;transition:opacity .34s ease}
 #w-stage>.mode-card.soon.on{opacity:.8}
 
-.w-tiles{--g:12px;position:relative;display:flex;gap:var(--g);width:calc(100% + 16px);margin:-8px -8px -6px;padding:9px calc(50% - 14px);box-sizing:border-box;
-  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;touch-action:pan-x pan-y pinch-zoom;
+.w-tiles{position:relative;display:block;width:calc(100% + 16px);height:62px;margin:-8px -8px -6px;overflow:hidden;cursor:grab;
+  touch-action:pan-y pinch-zoom;
   -webkit-mask:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
-.w-tiles::-webkit-scrollbar{display:none}
-.w-tile{--wc:var(--rj);position:relative;flex:none;width:44px;aspect-ratio:1;padding:0;border:0;border-radius:50%;box-sizing:border-box;scroll-snap-align:center;
+.w-tiles.grab{cursor:grabbing}
+.w-tile{--wc:var(--rj);position:absolute;left:50%;top:9px;margin-left:-22px;width:44px;height:44px;padding:0;border:0;border-radius:50%;box-sizing:border-box;
   display:grid;place-items:center;background:color-mix(in srgb,var(--wc) 16%,var(--surface));cursor:pointer;
-  transform:scale(var(--ds,1));opacity:var(--do,1);box-shadow:0 0 0 0 transparent;transition:box-shadow .3s ease,background .3s ease}
+  transform:translateX(var(--dx,0)) scale(var(--ds,1));opacity:var(--do,1);box-shadow:0 0 0 0 transparent;transition:box-shadow .3s ease,background .3s ease}
 .w-tile>svg:not(.wt-ring){width:52%;height:52%;display:block;color:color-mix(in srgb,var(--wc) 85%,var(--ink))}
 .wt-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
 .wt-ring circle{fill:none;stroke-width:2.6;stroke-linecap:round}
@@ -686,7 +686,7 @@ html.calm .chip-seed{transition:none}
 .w-tile .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .w-tile[data-w="ice"]{--wc:var(--ri)}.w-tile[data-w="shan"]{--wc:var(--rs)}.w-tile[data-w="gala"]{--wc:var(--rg)}
 .w-tile[data-w="neb"]{--wc:var(--rn)}.w-tile[data-w="reef"]{--wc:var(--rr)}.w-tile[data-w="vale"]{--wc:var(--rv)}
-@media (hover:hover){.w-tile:not(.on):hover{transform:scale(calc(var(--ds,1) * 1.06))}}
+@media (hover:hover){.w-tile:not(.on):hover{transform:translateX(var(--dx,0)) scale(calc(var(--ds,1) * 1.06))}}
 html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 #w-stage{touch-action:pan-y pinch-zoom}
 
@@ -2186,7 +2186,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3a490f7f4f"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=76d78aba60"><\/script>')})();
 </script>
 <script>
 
@@ -2896,7 +2896,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='3a490f7f4f';let updateTo=null;
+const BUILD='76d78aba60';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -7049,51 +7049,68 @@ function renderHome(){
 }
 
 const hubWorld=()=>{const w=store.hubW;return WORLD_IDS.includes(w)?w:store.jungle.sel?worldOf(store.jungle.sel):'jungle'};
-function pickWorld(w,keep,el){
+function pickWorld(w,keep){
   for(const id of WORLD_IDS){const c=document.querySelector(CARD_W[id]);if(c)c.classList.toggle('on',id===w)}
-  document.querySelectorAll('#w-tiles .w-tile[data-w]').forEach(b=>{const on=b.dataset.w===w;b.classList.toggle('on',on);if(!b.classList.contains('clone'))b.setAttribute('aria-pressed',on)});
+  document.querySelectorAll('#w-tiles .w-tile[data-w]').forEach(b=>{const on=b.dataset.w===w;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
 
-  const box=$('w-tiles');if(box.clientWidth){const mid=box.scrollLeft+box.clientWidth/2,all=[...box.querySelectorAll(`.w-tile[data-w="${w}"]`)];
-    const b=el||(keep?box.querySelector(`.w-tile[data-w="${w}"]:not(.clone)`):all.sort((p,q)=>Math.abs(p.offsetLeft-mid)-Math.abs(q.offsetLeft-mid))[0]);
-    if(b){const x=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;if(Math.abs(box.scrollLeft-x)>2){box._aim=w;box.scrollTo({left:x,behavior:keep||calm()?'auto':'smooth'})}dialLook()}}
+  const box=$('w-tiles'),k=WORLD_IDS.indexOf(w);if(box._dial&&k>=0)box._dial.to(k,keep||calm());
   if(!keep&&store.hubW!==w){store.hubW=w;save()}
 }
 function worldTiles(){
   const box=$('w-tiles'),M=store.jungle.medals;
-  const set=clone=>WORLD_IDS.map(w=>{const c=document.querySelector(CARD_W[w]),open=worldOpen(w),L=worldStages(w),
+  box.innerHTML=WORLD_IDS.map(w=>{const c=document.querySelector(CARD_W[w]),open=worldOpen(w),L=worldStages(w),
       ic=c&&c.querySelector('.mc-leaf:not(.mc-lock) svg'),key=c&&c.querySelector('.mc-t').dataset.l10n;
 
     const n=L.filter(s=>M[s.id]).length,ring=open?`<svg class="wt-ring" viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="20"/>${n?`<circle class="fg" cx="22" cy="22" r="20" stroke-dasharray="${(125.7*n/L.length).toFixed(1)} 200"/>`:''}</svg>`:'';
     const nm=t(key)+(open?' · '+n+'/'+L.length:'');
-    return clone?`<button class="w-tile clone${open?'':' shut'}" data-w="${w}" tabindex="-1" aria-hidden="true">${ring}${ic?ic.outerHTML:''}</button>`
-      :`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
-
-  box.innerHTML=set(true)+set(false)+set(true);
-  box.querySelectorAll('.w-tile[data-w]').forEach(b=>b.onclick=()=>{const w=b.dataset.w;if(b.classList.contains('on')&&Math.abs(b.offsetLeft+b.offsetWidth/2-box.scrollLeft-box.clientWidth/2)<b.offsetWidth)return document.querySelector(CARD_W[w]).click();pickWorld(w,false,b)});
+    return `<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
   worldDial(box);
+  box.querySelectorAll('.w-tile[data-w]').forEach((b,i)=>b.onclick=()=>{const w=b.dataset.w;
+    if(b.classList.contains('on')&&Math.abs(box._dial.off(i))<.5)return document.querySelector(CARD_W[w]).click();pickWorld(w)});
+  box._dial.draw();
   pickWorld(hubWorld(),true);
 }
 
-function dialLook(){const box=$('w-tiles');if(!box||!box.clientWidth)return;const mid=box.scrollLeft+box.clientWidth/2;
-  let near=null,nd=1e9;
-  for(const b of box.children){const d=Math.abs(b.offsetLeft+b.offsetWidth/2-mid)/(b.offsetWidth+12);
-    b.style.setProperty('--ds',Math.max(.7,1.08-.16*d).toFixed(3));b.style.setProperty('--do',Math.max(.35,1-.22*Math.max(0,d-1)).toFixed(3));
-    if(d<nd){nd=d;near=b}}
-  return near}
-function worldDial(box){if(box._dial)return;box._dial=1;rowMouse(box);
-  let raf=0,settle=0,last=null,tick=0;
-  const recentre=near=>{if(!near.classList.contains('clone'))return;const n=WORLD_IDS.length,step=box.children[n].offsetLeft-box.children[0].offsetLeft;
-    box.scrollLeft+=near.offsetLeft<box.children[n].offsetLeft?step:-step;dialLook()};
-  const settled=()=>{if(box._dragging)return;const near=dialLook();if(!near||!near.dataset.w)return;
-    if(box._aim){if(near.dataset.w!==box._aim)return;box._aim=null}
-    recentre(near);if(!near.classList.contains('on'))pickWorld(near.dataset.w,false,dialLook())};
-  box.addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;const near=dialLook();
+function worldDial(box){if(box._dial)return;
+  const n=()=>WORLD_IDS.length,STEP=56;
+  const wrap=d=>{const m=n();d=((d%m)+m)%m;return d>=m/2?d-m:d};
+  let pos=0,anim=0,user=false,last=null,tick=0,wheelT=0;
+  const draw=()=>{const m=n(),half=m/2,ts=box.children;
+    for(let i=0;i<ts.length;i++){const d=wrap(i-pos),a=Math.abs(d),b=ts[i];
+      b.style.setProperty('--dx',(d*STEP).toFixed(1)+'px');
+      b.style.setProperty('--ds',Math.max(.7,1.08-.16*a).toFixed(3));
 
-      const w=near&&near.dataset.w;if(w&&w!==last){if(last&&!box._aim&&performance.now()-tick>70){tick=performance.now();Sound.play('ui')}last=w}});
-    clearTimeout(settle);settle=setTimeout(settled,160)},{passive:true});
-  box.addEventListener('pointerdown',()=>{box._dragging=1});addEventListener('pointerup',()=>{if(box._dragging){box._dragging=0;clearTimeout(settle);settle=setTimeout(settled,160)}});
-  addEventListener('pointercancel',()=>{box._dragging=0});
-  addEventListener('resize',()=>{if(!$('step-menu').hidden){const b=box.querySelector('.w-tile.on:not(.clone)');if(b)box.scrollLeft=b.offsetLeft-(box.clientWidth-b.offsetWidth)/2;dialLook()}});
+      b.style.setProperty('--do',Math.max(0,Math.min(1-.22*Math.max(0,a-1),(half-a)/1.1)).toFixed(3))}
+    const k=((Math.round(pos)%m)+m)%m;
+    if(k!==last){if(last!==null&&user&&performance.now()-tick>70){tick=performance.now();Sound.play('ui')}last=k}};
+  const settle=()=>{user=false;const m=n();pos=((Math.round(pos)%m)+m)%m;draw();
+    const w=WORLD_IDS[pos];if(!box.querySelector(`.w-tile.on[data-w="${w}"]`))pickWorld(w)};
+
+  const glide=(target,v0)=>{cancelAnimationFrame(anim);const from=pos,dist=target-from;
+    if(Math.abs(dist)<1e-3||calm()){pos=target;draw();return settle()}
+
+    let dur=v0?Math.abs(3*dist/v0):230+Math.abs(dist)*70;dur=Math.max(220,Math.min(1100,dur));
+    const t0=performance.now();const step=now=>{const p=Math.min(1,(now-t0)/dur);pos=from+dist*(1-Math.pow(1-p,3));draw();
+      if(p<1)anim=requestAnimationFrame(step);else settle()};anim=requestAnimationFrame(step)};
+
+  let g=null;
+  box.addEventListener('pointerdown',e=>{if(e.button>0)return;g={id:e.pointerId,x:e.clientX,y:e.clientY,p:pos,on:false,v:0,t:performance.now(),lx:e.clientX}});
+  box.addEventListener('pointermove',e=>{if(!g||e.pointerId!==g.id)return;const dx=e.clientX-g.x,dy=e.clientY-g.y;
+    if(!g.on){if(Math.hypot(dx,dy)<=6)return;if(Math.abs(dy)>Math.abs(dx)){g=null;return}
+      g.on=true;user=true;cancelAnimationFrame(anim);g.p=pos+(dx>0?6:-6)/STEP;try{box.setPointerCapture(e.pointerId)}catch(_){}box.classList.add('grab')}
+    const now=performance.now(),dt=Math.max(1,now-g.t);g.v=.7*((e.clientX-g.lx)/dt)+.3*g.v;g.t=now;g.lx=e.clientX;
+    pos=g.p-dx/STEP;draw();box._dragged=now});
+  const up=e=>{if(!g||e.pointerId!==g.id)return;const d=g;g=null;if(!d.on)return;box.classList.remove('grab');
+    const v=performance.now()-d.t>80?0:-d.v/STEP;
+    glide(Math.round(pos+v*260),Math.abs(v)>.0005?v:0)};
+  box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
+  box.addEventListener('click',e=>{if(performance.now()-(box._dragged||0)<250){e.stopPropagation();e.preventDefault()}},true);
+  box.addEventListener('wheel',e=>{const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;if(!d)return;e.preventDefault();
+    cancelAnimationFrame(anim);user=true;pos+=(e.deltaMode===1?d*16:d)/STEP/1.6;draw();
+    clearTimeout(wheelT);wheelT=setTimeout(()=>glide(Math.round(pos)),140)},{passive:false});
+  box._row=true;
+  box._dial={draw,off:i=>wrap(i-pos),to:(k,now)=>{if(g&&g.on)return;user=false;const t=pos+wrap(k-pos);
+    if(now){cancelAnimationFrame(anim);pos=t;draw();const m=n();pos=((Math.round(pos)%m)+m)%m;return}glide(t)}};
 }
 
 {const st=$('w-stage');let sw=null,swiped=0;

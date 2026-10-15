@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 23</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 24</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -698,15 +698,6 @@ html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 .duo .mc-gift{background:color-mix(in srgb,var(--r1) 18%,var(--surface))}.duo .mc-gift svg{width:28px;height:28px}
 .duo .mc-buddy{background:color-mix(in srgb,#F5C333 18%,var(--surface))}
 .duo .mc-txt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
-.mc-fr i{display:block;width:26px;height:26px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 2px color-mix(in srgb,var(--r5) 18%,var(--surface))}
-.mc-fr i svg{width:26px;height:26px;display:block;overflow:visible}.mc-fr i+i{margin-left:-9px}
-.mc-fr .fr-plus{display:grid;place-items:center;font:700 16px/1 var(--display);color:var(--muted);border:1.5px dashed var(--line);box-sizing:border-box}
-.duo .mc-fr{width:auto;display:flex;align-items:center;border-radius:999px}
-
-.duo.trio{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.duo.trio .mode-card{flex-direction:column;justify-content:flex-start;gap:5px;padding:10px 4px 8px;text-align:center;min-height:84px}
-.duo.trio .mode-card .mc-t{font-size:15px;line-height:1.15}
-.duo.trio .mc-txt{align-items:center}
 .duo .mc-seeds{position:static;margin:0;padding:2px 8px 2px 5px;font-size:12px}.duo .mc-seeds .seed-i{width:12px;height:14px}
 .mc-go{position:absolute;right:16px;top:50%;margin-top:-13px;font:700 22px/1 var(--display);color:var(--muted)}
 .mode-card.soon{background:var(--surface);border-style:dashed;opacity:.6;cursor:default}
@@ -1436,6 +1427,11 @@ html.kb-open .intro .musicbtn,html.kb-open .intro .langpick,html.kb-open .intro 
 .musicbtn svg{width:20px;height:20px}.musicbtn .slash{opacity:0}.musicbtn.off{color:var(--muted)}.musicbtn.off .slash{opacity:1}
 
 .intro .musicbtn#music-btn,.intro .dn-corner{display:none}
+.frbtn{left:auto;right:16px;transition:opacity .25s,box-shadow .15s}.frbtn::after{content:"";position:absolute;inset:-3px;border-radius:50%}
+.intro:not([data-step="menu"]) .frbtn{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,visibility 0s linear .25s}
+.fr-dot{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;box-sizing:border-box;border-radius:999px;display:grid;place-items:center;font:700 11.5px/1 var(--display);background:var(--accent);color:var(--accent-ink);box-shadow:0 0 0 2px var(--ground);transform-origin:50% 100%;animation:frDot 6s ease-in-out 1.2s infinite}
+@keyframes frDot{0%,86%,100%{transform:none}89%{transform:translateY(-3px) rotate(-8deg)}92%{transform:translateY(0) rotate(6deg)}95%{transform:rotate(-2deg)}}
+html.calm .fr-dot{animation:none}
 .gearbtn::after{content:"";position:absolute;inset:-3px;border-radius:50%}
 
 .gearbtn{transition:opacity .25s,box-shadow .15s}
@@ -1910,6 +1906,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title">
   
   <button class="musicbtn gearbtn" id="intro-gear" data-l10n-aria="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
+  <button class="musicbtn frbtn" id="intro-fr" data-l10n-aria="friendsT" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.6-3.4 2.8-5.2 5.5-5.2s4.9 1.8 5.5 5.2"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M16.2 14.2c2.4 0 3.9 1.6 4.4 4.3"/></svg><span class="fr-dot" id="intro-fr-n" hidden></span></button>
   <button class="dn dn-corner" role="switch" aria-checked="false" data-l10n-aria="darkT"><span class="dn-stars" aria-hidden="true"></span><span class="dn-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><mask id="dn-m1" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><circle class="dn-bite" cx="12" cy="12" r="6.4" fill="#000"/></mask><g class="dn-rays" stroke="#F0A92E" stroke-width="2" stroke-linecap="round"><path d="M12 2.2v2.3" transform="rotate(0 12 12)"/><path d="M12 2.2v2.3" transform="rotate(45 12 12)"/><path d="M12 2.2v2.3" transform="rotate(90 12 12)"/><path d="M12 2.2v2.3" transform="rotate(135 12 12)"/><path d="M12 2.2v2.3" transform="rotate(180 12 12)"/><path d="M12 2.2v2.3" transform="rotate(225 12 12)"/><path d="M12 2.2v2.3" transform="rotate(270 12 12)"/><path d="M12 2.2v2.3" transform="rotate(315 12 12)"/></g><g mask="url(#dn-m1)"><circle class="dn-core" cx="12" cy="12" r="5"/></g></svg></span></button>
   <button class="musicbtn" id="music-btn" data-l10n-aria="musicT" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/><path class="slash" d="M4 4l16 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
   <div class="langpick"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
@@ -1959,9 +1956,8 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
     </div>
     <div class="w-tiles" id="w-tiles" role="group" data-l10n-aria="worldsT"></div>
     
-    <div class="modes duo" id="h-duo">
+    <div class="modes duo">
       <button class="mode-card nest-card" id="h-nest"><span class="mc-ic mc-buddy" id="h-nest-buddy" aria-hidden="true"></span><span class="mc-txt"><span class="mc-t" data-l10n="collectT">Collection</span><span class="mc-seeds" id="h-seeds"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="h-seeds-n"></b></span></span></button>
-      <button class="mode-card fr-mcard" id="h-friends" hidden><span class="mc-ic mc-fr" id="h-fr-ic" aria-hidden="true"></span><span class="mc-t" data-l10n="friendsT">Friends</span></button>
       <button class="mode-card gift-card" data-m="gift"><span class="mc-ic mc-gift" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6" y="14" width="20" height="13" rx="3" fill="var(--r1)"/><rect x="4.5" y="10" width="23" height="6" rx="2.4" fill="var(--r4)"/><path d="M16 10v17" stroke="var(--r0)" stroke-width="3"/><path d="M16 10C13.6 5.2 9 5.6 9.8 8.4 10.4 10 13.4 10 16 10ZM16 10c2.4-4.8 7-4.4 6.2-1.6C21.6 10 18.6 10 16 10Z" fill="none" stroke="var(--r0)" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="mc-t" data-l10n="giftT">Gift a puzzle</span><span class="mc-gn" id="m-gift-n" hidden></span></button>
     </div>
   </div>
@@ -2190,7 +2186,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=b052d51f57"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3a490f7f4f"><\/script>')})();
 </script>
 <script>
 
@@ -2900,7 +2896,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='b052d51f57';let updateTo=null;
+const BUILD='3a490f7f4f';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6642,7 +6638,7 @@ async function frLoad(){if(!friendsOn())return;frBusy=true;frErr='';frDraw();
     const me=store.fr.id;store.frList=(rows||[]).filter(r=>r.id!==me).map(r=>({id:r.id,name:r.name,look:r.look,stats:r.stats,dd:r.daily_day,ds:r.daily_secs,dh:r.daily_hints}));
     const mine=(rows||[]).find(r=>r.id===me);if(mine&&mine.code&&mine.code!==store.fr.code)store.fr.code=mine.code;save()}
   catch(e){frErr=t('frOff')}
-  frBusy=false;frDraw();if(!nestOpen&&!$('step-nest').hidden)drawPlates()}
+  frBusy=false;frDraw();if(!nestOpen&&!$('step-nest').hidden)drawPlates();if(!$('step-menu').hidden)friendsCorner()}
 async function frAdd(code){code=String(code||'').trim().toUpperCase().replace(/^.*FRIEND=/,'').replace(/O/g,'0').replace(/[^0-9A-Z]/g,'');
   const msg=$('fr-msg');msg.classList.remove('ok');if(code.length!==6){msg.textContent=t('frNoCode');return}
   if(store.fr&&code===store.fr.code){msg.textContent=t('frSelf');return}
@@ -6676,7 +6672,8 @@ function frDraw(){if(!friendsOn())return;const L=store.frList||[],code=store.fr&
   const sorted=[...L].sort((a,b)=>{const A=a.dd===todayStr(),B=b.dd===todayStr();return A!==B?B-A:A?a.ds-b.ds:(a.name||'').localeCompare(b.name||'')});
   const box=$('fr-list'),h=frCard(me,true)+(sorted.length?sorted.map(f=>frCard(f)).join(''):`<p class="fr-empty">${esc(frErr||t('frEmpty'))}</p>`);
   if(box._h!==h){box._h=h;box.innerHTML=h}
-  if(frErr&&sorted.length)$('fr-msg').textContent=frErr}
+  if(frErr&&sorted.length)$('fr-msg').textContent=frErr
+  if(nestOpen==='friends'&&!$('step-nest').hidden){const ids=L.map(f=>f.id);if(String(ids)!==String(store.frSeen)){store.frSeen=ids;save()}}}
 
 function frPlate(){const L=store.frList||[],n=L.filter(f=>f.dd===todayStr()).length;
   return{sub:!L.length?t('frSub0'):t('frSubN',{n,all:L.length}),mini:L.slice(0,3).map(f=>frBuddy(f.look))}}
@@ -7015,7 +7012,7 @@ function retroRewards(){
   clearTimeout(retroRewards.t);retroRewards.t=setTimeout(()=>{if(intro.hidden||$('step-menu').hidden||Reward.open())return;store.rwSeen=1;save();Reward.show(list,null,true)},900);
 }
 function renderHome(){
-  dailyCard();gInbox();friendsCard();if(friendsOn())giftsLoad();
+  dailyCard();gInbox();friendsCorner();if(friendsOn())giftsLoad();
   $('h-seeds-n').textContent=store.seeds;
 
   {const sk=streak();$('m-streak').hidden=sk<2;$('m-streak-n').textContent=sk;$('m-streak').title=t('streakN',{n:sk})}
@@ -7119,11 +7116,13 @@ $('h-vale').onclick=()=>{const c=$('h-vale');if(valeOpen())return openPlay('vale
 $('h-neb').onclick=()=>{const c=$('h-neb');if(nebOpen())return openPlay('neb');if(calm())return;c.classList.remove('nudge');void c.offsetWidth;c.classList.add('nudge')};
 $('h-nest').onclick=()=>{plateFromMenu=false;showStep('nest')};
 
-let plateFromMenu=false;
-$('h-friends').onclick=()=>{plateFromMenu=true;nestWant='friends';showStep('nest')};
-function friendsCard(){const on=friendsOn();$('h-friends').hidden=!on;$('h-duo').classList.toggle('trio',on);if(!on)return;
-  const L=store.frList||[],a=L[0]?frBuddy(L[0].look):pieceSVG(S.piece),b=L[1]?frBuddy(L[1].look):L[0]?pieceSVG(S.piece):'';
-  const h=`<i>${a}</i>`+(b?`<i>${b}</i>`:'<i class="fr-plus">+</i>');const ic=$('h-fr-ic');if(ic._h!==h){ic._h=h;ic.innerHTML=h}}
+let plateFromMenu=false,frHomeT=0;
+$('intro-fr').onclick=()=>{plateFromMenu=true;nestWant='friends';showStep('nest')};
+function friendsCorner(){const on=friendsOn();$('intro-fr').hidden=!on;if(!on)return;
+  const ids=(store.frList||[]).map(f=>f.id);if(!store.frSeen){store.frSeen=ids;save()}
+  const n=ids.filter(id=>!store.frSeen.includes(id)).length,d=$('intro-fr-n');d.hidden=!n;d.textContent=n;
+  $('intro-fr').setAttribute('aria-label',t('friendsT')+(n?' · '+n:''));
+  if(Date.now()-frHomeT>5000){frHomeT=Date.now();frLoad().then(friendsCorner)}}
 $('m-back').onclick=()=>showStep('menu');
 $('n-back').onclick=()=>{if(nestOpen)return closePlate();showStep('menu')};
 

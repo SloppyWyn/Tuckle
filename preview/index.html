@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 12</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 13</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1518,6 +1518,8 @@ html.calm .m-say.solo.anchored{transform:translateY(-50%)}
 .mascot.sigh svg{animation:sigh 1s ease-in-out}
 @keyframes sigh{35%{transform:translateY(4px) scale(1.03,.95)}70%{transform:translateY(5px) scale(1.01,.98)}}
 .m-note{position:absolute;top:-6%;z-index:3;color:var(--nc,var(--accent-text));width:26px;height:26px;margin-left:-13px;pointer-events:none;opacity:0;animation:mNote 1.7s cubic-bezier(.2,.7,.4,1) forwards}
+html.calm .m-note{transform:translateY(-22px);animation:mNoteCalm 1.4s ease forwards}
+@keyframes mNoteCalm{30%{opacity:.95}65%{opacity:.95}to{opacity:0}}
 .m-note svg{width:100%;height:100%;display:block;overflow:visible}
 .m-note svg>g{fill:currentColor}.m-note svg>g.o{fill:var(--surface);stroke:var(--surface);stroke-width:3.2px;stroke-linejoin:round}
 @keyframes mNote{from{transform:translate(0,6px) scale(.5) rotate(-10deg);opacity:0}15%{transform:translate(calc(var(--nx)*.15),-6px) scale(1.12) rotate(-4deg);opacity:1}
@@ -2046,7 +2048,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=c1b093973d"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=04ce9986e7"><\/script>')})();
 </script>
 <script>
 
@@ -2756,7 +2758,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='c1b093973d';let updateTo=null;
+const BUILD='04ce9986e7';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5846,7 +5848,10 @@ const Mascot=(function(){
     setEnabled(v){enabled=v;el.hidden=!v;if(paws)paws.hidden=!v||!(T&&T.paws)},
 
     vibe(n){
-      if(!enabled||!svg||mood==='shut'||calm())return;const now=performance.now(),run=now-(st.vibeLast||0)<700?(st.vibeRun||0)+1:0;
+      if(!enabled||!svg||mood==='shut')return;const now=performance.now();
+
+      if(calm()){if(now-(st.lastNote||0)>700){st.lastNote=now;note()}return}
+      const run=now-(st.vibeLast||0)<700?(st.vibeRun||0)+1:0;
       st.vibeLast=now;st.vibeRun=run;const a=Math.min(1,.35+run*.07+(n>1?.15:0));
       st.vibeAmp=Math.max(a,now<(st.vibeUntil||0)?(st.vibeAmp||0)*.97:0);st.vibeUntil=now+700+a*500;
       if(now-(st.lastNote||0)>620-a*340&&Math.random()<.4+a*.5){st.lastNote=now;note()}

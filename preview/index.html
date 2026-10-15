@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 15</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 16</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -602,7 +602,6 @@ html.calm .resume-disc{animation:none}
 .chips button.pays:nth-child(5) .chip-seed .seed-i{--sd:3.3s}.chips button.pays:nth-child(6) .chip-seed .seed-i{--sd:5.6s}
 html.calm .chip-seed .seed-i{animation:none}
 html.calm .mc-dseed{animation:none}.mc-dseed.got{background:color-mix(in srgb,#7CC47F 26%,var(--surface))}
-.mc-seeds{right:40px;top:50%;margin-top:-11px}
 .seeds-won{display:inline-flex;align-items:center;gap:4px;margin:6px auto 2px;padding:4px 12px 4px 8px;border-radius:999px;background:color-mix(in srgb,#7CC47F 16%,var(--surface));font:700 16px var(--display);color:color-mix(in srgb,#4E8A45 85%,var(--ink));animation:doneIn .5s cubic-bezier(.3,1.4,.5,1) .5s both}
 .seeds-won .seed-i{width:22px;height:22px}.seeds-won b{color:color-mix(in srgb,#3F7A37 85%,var(--ink))}html.calm .seeds-won{animation:none}
 .n-wallet{display:flex;align-items:center;gap:10px;margin:2px 0 4px}
@@ -667,23 +666,36 @@ html.calm .chip-seed{transition:none}
 #w-stage>.mode-card{grid-area:1/1;width:100%;box-sizing:border-box;opacity:0;visibility:hidden;transition:opacity .26s ease .14s,visibility 0s linear .4s}
 #w-stage>.mode-card.on{opacity:1;visibility:visible;z-index:1;transition:opacity .34s ease}
 #w-stage>.mode-card.soon.on{opacity:.8}
-.w-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
-.w-tile{--wc:var(--rj);display:flex;align-items:center;gap:8px;min-height:46px;padding:7px 10px;border-radius:14px;box-sizing:border-box;
-  border:2px solid color-mix(in srgb,var(--wc) 30%,var(--line));background:color-mix(in srgb,var(--wc) 10%,var(--surface));
-  font:600 14.5px/1.15 var(--display);color:var(--ink);text-align:left;cursor:pointer;transition:border-color .25s ease,box-shadow .25s ease}
-.w-tile svg{width:20px;height:20px;flex:none;display:block;color:color-mix(in srgb,var(--wc) 85%,var(--ink))}
-.w-tile .wt-n{flex:1;min-width:0;overflow-wrap:normal}
-.w-tile .wt-c{flex:none;font:800 11.5px/1 var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
-.w-tile.on{border-color:color-mix(in srgb,var(--wc) 80%,var(--ink));box-shadow:0 0 0 3px color-mix(in srgb,var(--wc) 22%,transparent)}
-.w-tile.shut{background:transparent;border-style:dashed}
-.w-tile.shut .wt-n{color:var(--muted)}
-.w-tile.more{cursor:default;justify-content:center;text-align:center;background:transparent;border:2px dashed var(--line);color:var(--muted);font:700 12.5px/1.2 var(--body)}
+
+.w-tiles{display:flex;justify-content:center;gap:clamp(4px,2vw,10px);width:100%;margin-top:-2px}
+.w-tile{--wc:var(--rj);position:relative;flex:0 1 44px;aspect-ratio:1;max-width:44px;min-width:34px;padding:0;border:0;border-radius:50%;box-sizing:border-box;
+  display:grid;place-items:center;background:color-mix(in srgb,var(--wc) 16%,var(--surface));cursor:pointer;
+  box-shadow:0 0 0 0 transparent;transition:box-shadow .3s ease,transform .3s cubic-bezier(.3,1.3,.5,1),background .3s ease}
+.w-tile::after{content:"";position:absolute;inset:-5px}
+.w-tile>svg:not(.wt-ring){width:52%;height:52%;display:block;color:color-mix(in srgb,var(--wc) 85%,var(--ink))}
+.wt-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);pointer-events:none}
+.wt-ring circle{fill:none;stroke-width:2.6;stroke-linecap:round}
+.wt-ring .bg{stroke:color-mix(in srgb,var(--wc) 22%,transparent)}.wt-ring .fg{stroke:color-mix(in srgb,var(--wc) 85%,var(--ink))}
+.w-tile.on{transform:scale(1.1);box-shadow:0 0 0 3px var(--ground),0 0 0 5px color-mix(in srgb,var(--wc) 75%,var(--ink))}
+.w-tile.shut{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+.w-tile.shut>svg:not(.wt-ring){filter:grayscale(1);opacity:.4}
+.w-tile.shut.on>svg:not(.wt-ring){opacity:.7}
+.w-tile .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .w-tile[data-w="ice"]{--wc:var(--ri)}.w-tile[data-w="shan"]{--wc:var(--rs)}.w-tile[data-w="gala"]{--wc:var(--rg)}
 .w-tile[data-w="neb"]{--wc:var(--rn)}.w-tile[data-w="reef"]{--wc:var(--rr)}.w-tile[data-w="vale"]{--wc:var(--rv)}
-@media (hover:hover){.w-tile:not(.more):not(.on):hover{border-color:color-mix(in srgb,var(--wc) 60%,var(--line))}}
+@media (hover:hover){.w-tile:not(.on):hover{transform:scale(1.06)}}
 html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
+#w-stage{touch-action:pan-y pinch-zoom}
 
-@media (max-width:380px){.w-tile:not(.more){display:grid;grid-template-columns:auto 1fr;column-gap:7px;row-gap:1px;padding:6px 9px}.w-tile:not(.more) svg{grid-row:1/3}.w-tile .wt-c{justify-self:start}.w-tile:not(.wt2) .wt-n:only-of-type{grid-row:1/3}}
+.modes.duo{margin-top:4px}
+.duo .mode-card{flex-direction:row;align-items:center;gap:10px;padding:10px 12px;min-height:62px}
+.duo .mode-card .mc-t{font-size:17px}
+.duo .mc-ic{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.duo .mc-ic svg{width:34px;height:34px;display:block;overflow:visible}
+.duo .mc-gift{background:color-mix(in srgb,var(--r1) 18%,var(--surface))}.duo .mc-gift svg{width:28px;height:28px}
+.duo .mc-buddy{background:color-mix(in srgb,#F5C333 18%,var(--surface))}
+.duo .mc-txt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.duo .mc-seeds{position:static;margin:0;padding:2px 8px 2px 5px;font-size:12px}.duo .mc-seeds .seed-i{width:12px;height:14px}
 .mc-go{position:absolute;right:16px;top:50%;margin-top:-13px;font:700 22px/1 var(--display);color:var(--muted)}
 .mode-card.soon{background:var(--surface);border-style:dashed;opacity:.6;cursor:default}
 .mc-lock{color:var(--muted)}
@@ -695,7 +707,6 @@ html.calm #w-stage>.mode-card,html.calm .w-tile{transition:none}
 .flake{position:absolute;left:var(--fx);top:0;width:7px;height:7px;opacity:0;transform:scale(var(--fs));animation:flake 7.8s linear var(--fd) infinite}
 @keyframes flake{0%{opacity:0;transform:translate(0,4px) scale(var(--fs)) rotate(0)}15%{opacity:.85}50%{transform:translate(4px,30px) scale(var(--fs)) rotate(90deg)}80%{opacity:.7}100%{opacity:0;transform:translate(-2px,56px) scale(var(--fs)) rotate(180deg)}}
 html.calm .flake{animation:none;opacity:.7;top:calc(12px + var(--fd) * 6px)}
-.mode-card.nest-card{background:color-mix(in srgb,#F5C333 12%,var(--surface))}
 .mc-buddy{color:var(--ink)}.mc-buddy svg{width:100%;height:100%;display:block}
 .mode-card.cont{padding-left:52px;border-color:color-mix(in srgb,var(--accent) 45%,var(--line));animation:stepIn .35s both}
 .mc-play{position:absolute;left:14px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center}
@@ -1119,10 +1130,6 @@ html.calm #bt-peek .hp-disc{transition:none}
 @keyframes wordHop{40%{transform:translateY(-7px) rotate(-7deg)}}
 html.grabbing,html.grabbing *{cursor:grabbing!important}
 html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery .pc,html.calm .mc-rw i:not(.hat):not(.got) svg,html.calm .n-skins button.lock svg{animation:none}
-
-.mode-card.gift-card{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;padding:9px 14px}
-.gift-card .mc-gift{grid-row:1/3;width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:color-mix(in srgb,var(--r1) 18%,var(--surface))}
-.gift-card .mc-gift svg{width:30px;height:30px}
 @media (hover:hover){.gift-card:hover .mc-gift svg{transform:rotate(-6deg) scale(1.06)}}
 .gift-card .mc-gift svg{transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
 
@@ -1896,9 +1903,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
     <div class="modes" role="group" data-l10n-aria="modeAria">
       <button class="mode-card" data-m="daily"><span class="mc-t" data-l10n="daily">Daily</span><span class="mc-s" id="m-date"></span><span class="mc-pills"><span class="mc-streak" id="m-streak" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.6" fill="#F4B638"/><path d="M12 3.2v2.4M12 18.4v2.4M3.2 12h2.4M18.4 12h2.4M5.8 5.8l1.7 1.7M16.5 16.5l1.7 1.7M5.8 18.2l1.7-1.7M16.5 7.5l1.7-1.7" stroke="#F0A92E" stroke-width="1.8" stroke-linecap="round"/></svg><b id="m-streak-n"></b></span></span><span class="mc-dseed" id="m-daily-seed" aria-hidden="true"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="m-daily-seed-n"></b></span></span></button>
       <button class="mode-card free-card" data-m="free"><span class="mc-t" data-l10n="free">Free play</span><span class="mc-s" data-l10n="freeSub">Any size, any time</span></button>
-      <button class="mode-card gift-card" data-m="gift"><span class="mc-gift" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6" y="14" width="20" height="13" rx="3" fill="var(--r1)"/><rect x="4.5" y="10" width="23" height="6" rx="2.4" fill="var(--r4)"/><path d="M16 10v17" stroke="var(--r0)" stroke-width="3"/><path d="M16 10C13.6 5.2 9 5.6 9.8 8.4 10.4 10 13.4 10 16 10ZM16 10c2.4-4.8 7-4.4 6.2-1.6C21.6 10 18.6 10 16 10Z" fill="none" stroke="var(--r0)" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="mc-t" data-l10n="giftT">Gift a puzzle</span><span class="mc-s" data-l10n="giftSub">Draw one for someone, or open yours</span></button>
     </div>
-    <p class="home-h" data-l10n="worldsT">Worlds</p>
     
     <div class="w-stage" id="w-stage">
     <button class="mode-card world" data-m="jungle"><span class="nw-flakes" aria-hidden="true"><svg class="flake" viewBox="-6 -6 12 12" style="--fx:16px;--fd:1.8s;--fs:1"><path d="M-4.4 3.4C-4.4-1.6-.6-5 4.4-4.4C4.4.6.6 3.8-4.4 3.4Z" fill="var(--rj)" opacity=".8"/><path d="M-4 3 3.4-3.8" stroke="color-mix(in srgb,#fff 45%,var(--rj))" stroke-width=".7"/></svg><svg class="flake" viewBox="-6 -6 12 12" style="--fx:34px;--fd:5.6s;--fs:0.8"><path d="M-4.4 3.4C-4.4-1.6-.6-5 4.4-4.4C4.4.6.6 3.8-4.4 3.4Z" fill="var(--rj)" opacity=".8"/><path d="M-4 3 3.4-3.8" stroke="color-mix(in srgb,#fff 45%,var(--rj))" stroke-width=".7"/></svg></span><span class="mc-leaf" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15Z" fill="currentColor"/><path d="M5 19 14 10" stroke="var(--surface)" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mc-t" data-l10n="jungle">Jungle</span><span class="mc-s" id="m-jsub"></span><span class="mc-rw" id="h-rw-jungle" aria-hidden="true"></span><span class="mc-medals" id="h-md-jungle"></span><span class="mc-go" aria-hidden="true">›</span></button>
@@ -1910,7 +1915,11 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
     <button class="mode-card world soon" id="h-vale" data-m="vale" aria-disabled="true"><span class="mc-leaf mc-lock" aria-hidden="true"><svg viewBox="3.5 2.5 17 18.5"><path d="M9 11V8.5a3 3 0 0 1 6 0V11" fill="none" stroke="var(--rv)" stroke-width="2"/><rect x="6" y="11" width="12" height="9" rx="2" fill="var(--rv)"/><path d="M12 12.6L13.6 15.4L12 19L10.4 15.4Z" fill="var(--crystal)" stroke="var(--crystal-edge)" stroke-width=".5" stroke-linejoin="round"/><path d="M11.4 14.2L11 16" stroke="#fff" stroke-width=".5" stroke-linecap="round"/><circle cx="17.6" cy="5.2" r="1.9" fill="var(--ffly)" opacity=".3"/><circle cx="17.6" cy="5.2" r=".8" fill="var(--ffly)"/><circle cx="19.8" cy="9" r="1.3" fill="var(--ffly)" opacity=".3"/><circle cx="19.8" cy="9" r=".55" fill="var(--ffly)"/></svg></span><span class="nw-branch" aria-hidden="true"><svg viewBox="0 0 90 14" overflow="visible"><g class="nw-fish"><path d="M60.6 5.4Q56.8 -1.6 51.6 -.4Q54.6 2.2 55 4.4Q52 3.6 50 5.4Q55 6.6 60.6 7.4Z" fill="var(--tail)" stroke="var(--tail-edge)" stroke-width=".6" stroke-linejoin="round"/><path d="M54 8.2Q58 6.2 63.6 6.6Q67.6 6.8 69.2 8.4Q67.6 10 63.6 10.2Q58 10.4 54 8.2Z" fill="var(--tail)" stroke="var(--tail-edge)" stroke-width=".7" stroke-linejoin="round"/><path d="M54.2 8.2Q49.4 7.4 47 10.4Q50.4 9.6 52.6 10.4Q50 11 49.6 12.6Q52.6 11 54.4 9.4Z" fill="var(--tail)" stroke="var(--tail-edge)" stroke-width=".6" stroke-linejoin="round"/><path d="M66.6 6.6L68 4.2L68.6 6.8" fill="#F2D27A" stroke="var(--tail-edge)" stroke-width=".4" stroke-linejoin="round"/><circle cx="67" cy="8" r=".65" fill="#3B3240"/><path d="M57 8.6q3 1.4 7 .4" fill="none" stroke="var(--tail-belly)" stroke-width=".8" stroke-linecap="round"/></g><circle cx="80" cy="3.3" r="2.6" fill="var(--ffly)" opacity=".3"/><circle cx="80" cy="3.3" r="1.1" fill="var(--ffly)"/></svg></span><span class="nw-flakes rise" aria-hidden="true"><svg class="flake" viewBox="-5 -5 10 10" style="--fx:14px;--fd:0.5s;--fs:1"><circle r="3.6" fill="var(--ffly)" opacity=".3"/><circle r="1.5" fill="var(--ffly)"/><circle r=".7" fill="#fff" opacity=".85"/></svg><svg class="flake" viewBox="-5 -5 10 10" style="--fx:34px;--fd:3.2s;--fs:0.7"><circle r="3.6" fill="var(--ffly)" opacity=".3"/><circle r="1.5" fill="var(--ffly)"/><circle r=".7" fill="#fff" opacity=".85"/></svg><svg class="flake" viewBox="-5 -5 10 10" style="--fx:24px;--fd:6s;--fs:0.85"><circle r="3.6" fill="var(--ffly)" opacity=".3"/><circle r="1.5" fill="var(--ffly)"/><circle r=".7" fill="#fff" opacity=".85"/></svg></span><span class="mc-leaf mc-flake" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21.4V10.6H17V21.4Z" fill="currentColor"/><path d="M6.2 10.8V8H8.6V9.6H10.8V8H13.2V9.6H15.4V8H17.8V10.8Z" fill="currentColor"/><path d="M10.4 21.4V18.4A1.6 1.6 0 0 1 13.6 18.4V21.4Z" fill="#fff" opacity=".85"/><rect x="11.2" y="12.6" width="1.6" height="2.4" rx=".8" fill="#fff" opacity=".85"/><path d="M12 8V2.6L16.4 4.2L12 5.8" fill="currentColor"/></svg></span><span class="mc-t" data-l10n="valeW">Dragon Vale</span><span class="mc-s" id="m-vsub"></span><span class="mc-rw" id="h-rw-vale" aria-hidden="true"></span><span class="mc-medals" id="h-md-vale"></span><span class="mc-go" aria-hidden="true">›</span></button>
     </div>
     <div class="w-tiles" id="w-tiles" role="group" data-l10n-aria="worldsT"></div>
-    <button class="mode-card world nest-card" id="h-nest"><span class="mc-leaf mc-buddy" id="h-nest-buddy" aria-hidden="true"></span><span class="mc-t" data-l10n="collectT">Collection</span><span class="mc-s" data-l10n="collectS">Your buddy, words and medals</span><span class="mc-seeds" id="h-seeds"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="h-seeds-n"></b></span><span class="mc-go" aria-hidden="true">›</span></button>
+    
+    <div class="modes duo">
+      <button class="mode-card nest-card" id="h-nest"><span class="mc-ic mc-buddy" id="h-nest-buddy" aria-hidden="true"></span><span class="mc-txt"><span class="mc-t" data-l10n="collectT">Collection</span><span class="mc-seeds" id="h-seeds"><svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg><b id="h-seeds-n"></b></span></span></button>
+      <button class="mode-card gift-card" data-m="gift"><span class="mc-ic mc-gift" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="6" y="14" width="20" height="13" rx="3" fill="var(--r1)"/><rect x="4.5" y="10" width="23" height="6" rx="2.4" fill="var(--r4)"/><path d="M16 10v17" stroke="var(--r0)" stroke-width="3"/><path d="M16 10C13.6 5.2 9 5.6 9.8 8.4 10.4 10 13.4 10 16 10ZM16 10c2.4-4.8 7-4.4 6.2-1.6C21.6 10 18.6 10 16 10Z" fill="none" stroke="var(--r0)" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="mc-t" data-l10n="giftT">Gift a puzzle</span></button>
+    </div>
   </div>
   <div class="intro-inner step menu" id="step-play" hidden>
     <div class="m-head"><button class="m-back" id="m-back" data-l10n-aria="back"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><h2 class="rules-title" id="m-title"></h2></div>
@@ -2128,7 +2137,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=cf9377ac6f"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e3383f4876"><\/script>')})();
 </script>
 <script>
 
@@ -2838,7 +2847,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='cf9377ac6f';let updateTo=null;
+const BUILD='e3383f4876';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6989,12 +6998,22 @@ function pickWorld(w,keep){
 function worldTiles(){
   const box=$('w-tiles'),M=store.jungle.medals;
   box.innerHTML=WORLD_IDS.map(w=>{const c=document.querySelector(CARD_W[w]),open=worldOpen(w),L=worldStages(w),
-      ic=c&&c.querySelector(open?'.mc-leaf:not(.mc-lock) svg':'.mc-lock svg'),key=c&&c.querySelector('.mc-t').dataset.l10n;
-    return`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false">${ic?ic.outerHTML:''}<span class="wt-n" data-l10n="${key}">${esc(t(key))}</span>${open?`<span class="wt-c">${L.filter(s=>M[s.id]).length}/${L.length}</span>`:''}</button>`}).join('')
-    +`<span class="w-tile more" data-l10n="soonMore">${esc(t('soonMore'))}</span>`;
+      ic=c&&c.querySelector('.mc-leaf:not(.mc-lock) svg'),key=c&&c.querySelector('.mc-t').dataset.l10n;
+
+    const n=L.filter(s=>M[s.id]).length,ring=open?`<svg class="wt-ring" viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="20"/>${n?`<circle class="fg" cx="22" cy="22" r="20" stroke-dasharray="${(125.7*n/L.length).toFixed(1)} 200"/>`:''}</svg>`:'';
+    const nm=t(key)+(open?' · '+n+'/'+L.length:'');
+    return`<button class="w-tile${open?'':' shut'}" data-w="${w}" aria-pressed="false" title="${esc(nm)}">${ring}${ic?ic.outerHTML:''}<span class="vh">${esc(nm)}</span></button>`}).join('');
   box.querySelectorAll('.w-tile[data-w]').forEach(b=>b.onclick=()=>{const w=b.dataset.w;if(b.classList.contains('on'))return document.querySelector(CARD_W[w]).click();pickWorld(w)});
   pickWorld(hubWorld(),true);
 }
+
+{const st=$('w-stage');let sw=null,swiped=0;
+  st.addEventListener('pointerdown',e=>{sw={x:e.clientX,y:e.clientY}});
+  st.addEventListener('pointercancel',()=>{sw=null});
+  st.addEventListener('pointerup',e=>{if(!sw)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y;sw=null;
+    if(Math.abs(dx)<45||Math.abs(dx)<Math.abs(dy)*1.5)return;swiped=Date.now();
+    const j=WORLD_IDS.indexOf(hubWorld())+(dx<0?1:-1);if(j>=0&&j<WORLD_IDS.length){pickWorld(WORLD_IDS[j]);Sound.play('ui')}});
+  st.addEventListener('click',e=>{if(Date.now()-swiped<500){e.stopPropagation();e.preventDefault()}},true)}
 $('h-cont').onclick=()=>{const c=contChoice();if(!c)return;if(c.here)return closeIntro();
   menuMode=c.mode;if(c.mode==='jungle'){menuStage=c.id;store.jungle.sel=c.id;save()}closeIntro({mode:c.mode,resume:true})};
 document.querySelector('#step-menu .mode-card[data-m="daily"]').onclick=()=>{menuMode='daily';$('m-play').click()};

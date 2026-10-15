@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 11</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 12</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@ html,body{overscroll-behavior:none}
   :root:not([data-theme="light"]){
     --slot-mix:16%; --slot-op:.5; --face-op:.4; --face-dim:.45; --tint-show:block;
     color-scheme:dark;
-    --accent-text:#E3A640; --ground:#101613; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
+    --accent-text:#E3A640; --ground:#101613; --coach-bg:#2A3530; --coach-fg:#EEF2EA; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
     --wall:#050807; --cbwall:#050807; --cbw:1; --grid:#3A4640; --accent:#E3A640; --accent-ink:#1B1406; --eye-ring:#F1DFB4;
     --bad:#FF7B6E; --bad-soft:rgba(255,123,110,.22); --hl:#F3E3B8; --hint-bg:#2A2416;
     --r0:#4E9A62; --r1:#4A84BE; --r2:#7D6FC2; --r3:#C9733A; --r4:#C4537B;
@@ -61,7 +61,7 @@ html,body{overscroll-behavior:none}
 :root[data-theme="dark"]{
     --slot-mix:16%; --slot-op:.5; --face-op:.4; --face-dim:.45; --tint-show:block;
     color-scheme:dark;
-    --accent-text:#E3A640; --ground:#101613; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
+    --accent-text:#E3A640; --ground:#101613; --coach-bg:#2A3530; --coach-fg:#EEF2EA; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
     --wall:#050807; --cbwall:#050807; --cbw:1; --grid:#3A4640; --accent:#E3A640; --accent-ink:#1B1406; --eye-ring:#F1DFB4;
     --bad:#FF7B6E; --bad-soft:rgba(255,123,110,.22); --hl:#F3E3B8; --hint-bg:#2A2416;
     --r0:#4E9A62; --r1:#4A84BE; --r2:#7D6FC2; --r3:#C9733A; --r4:#C4537B;
@@ -88,7 +88,7 @@ html,body{overscroll-behavior:none}
 :root[data-roost="dark"]{
     --slot-mix:16%; --slot-op:.5; --face-op:.4; --face-dim:.45; --tint-show:block;
   color-scheme:dark;
-    --accent-text:#E3A640; --ground:#101613; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
+    --accent-text:#E3A640; --ground:#101613; --coach-bg:#2A3530; --coach-fg:#EEF2EA; --surface:#18201C; --ink:#E6EBE3; --muted:#9AA89F; --line:#2C3832;
     --wall:#050807; --cbwall:#050807; --cbw:1; --grid:#3A4640; --accent:#E3A640; --accent-ink:#1B1406; --eye-ring:#F1DFB4;
     --bad:#FF7B6E; --bad-soft:rgba(255,123,110,.22); --hl:#F3E3B8; --hint-bg:#2A2416;
     --r0:#4E9A62; --r1:#4A84BE; --r2:#7D6FC2; --r3:#C9733A; --r4:#C4537B;
@@ -370,10 +370,10 @@ html.calm .buddy .disc,html.calm .intro-title span{animation:none}
 #step-title{animation-name:stepFade}#step-title>:not(.news-wrap):not(.news){animation:stepRise .6s cubic-bezier(.3,1.2,.5,1)}
 @keyframes stepFade{from{opacity:0}}@keyframes stepRise{from{transform:translateY(14px)}}
 html.calm #step-title,html.calm #step-title>*{animation:none}
-.coach{position:absolute;z-index:60;transition:opacity .3s ease;background:var(--ink);color:var(--ground);font:600 15px/1.3 var(--display);padding:10px 14px;border-radius:14px;max-width:240px;box-shadow:0 10px 24px -10px rgba(0,0,0,.4);animation:stepIn .4s both}
+.coach{position:absolute;z-index:60;transition:opacity .3s ease;background:var(--coach-bg,var(--ink));color:var(--coach-fg,var(--ground));font:600 15px/1.3 var(--display);padding:10px 14px;border-radius:14px;max-width:240px;box-shadow:0 10px 24px -10px rgba(0,0,0,.4);animation:stepIn .4s both}
 
 .coach.leaving{transform-origin:calc(var(--ax,24px) + 8px) -7px;animation:sayBack .28s cubic-bezier(.55,0,.9,.4) both}
-.coach::before{content:"";position:absolute;top:-7px;left:var(--ax,24px);border:8px solid transparent;border-top:0;border-bottom-color:var(--ink)}
+.coach::before{content:"";position:absolute;top:-7px;left:var(--ax,24px);border:8px solid transparent;border-top:0;border-bottom-color:var(--coach-bg,var(--ink))}
 .help.pulse .qbtn{animation:qpulse 1.2s ease-in-out 3}
 @keyframes qpulse{50%{transform:scale(1.25);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 35%,transparent)}}
 html.calm .step,html.calm .help.pulse .qbtn{animation:none}
@@ -1517,8 +1517,11 @@ html.calm .m-say.solo.anchored{transform:translateY(-50%)}
 @keyframes sadHeart{from{transform:translateY(0) scale(.6);opacity:0}25%{transform:translateY(-16px) scale(.95) rotate(-6deg);opacity:.9}60%{transform:translateY(-18px) scale(.9) rotate(14deg);opacity:.8}to{transform:translateY(-4px) scale(.8) rotate(24deg);opacity:0}}
 .mascot.sigh svg{animation:sigh 1s ease-in-out}
 @keyframes sigh{35%{transform:translateY(4px) scale(1.03,.95)}70%{transform:translateY(5px) scale(1.01,.98)}}
-.m-note{position:absolute;top:4%;color:var(--accent-text);font:700 17px/1 system-ui,sans-serif;pointer-events:none;user-select:none;-webkit-user-select:none;opacity:0;animation:mNote 1.5s ease-out forwards}
-@keyframes mNote{from{transform:translate(0,0) scale(.6) rotate(-8deg);opacity:0}20%{opacity:.85}to{transform:translate(var(--nx),-44px) scale(1) rotate(10deg);opacity:0}}
+.m-note{position:absolute;top:-6%;z-index:3;color:var(--nc,var(--accent-text));width:26px;height:26px;margin-left:-13px;pointer-events:none;opacity:0;animation:mNote 1.7s cubic-bezier(.2,.7,.4,1) forwards}
+.m-note svg{width:100%;height:100%;display:block;overflow:visible}
+.m-note svg>g{fill:currentColor}.m-note svg>g.o{fill:var(--surface);stroke:var(--surface);stroke-width:3.2px;stroke-linejoin:round}
+@keyframes mNote{from{transform:translate(0,6px) scale(.5) rotate(-10deg);opacity:0}15%{transform:translate(calc(var(--nx)*.15),-6px) scale(1.12) rotate(-4deg);opacity:1}
+  45%{transform:translate(calc(var(--nx)*.5),-26px) scale(1) rotate(8deg);opacity:1}to{transform:translate(var(--nx),-62px) scale(.92) rotate(-6deg);opacity:0}}
 @keyframes heart{from{transform:translateY(0) scale(.6);opacity:0}20%{opacity:1}to{transform:translateY(-46px) scale(1.1);opacity:0}}
 .cell .pc.wig{animation:wig .85s ease-in-out}
 html.calm .cell .pc.perk,html.calm .cell .pc.hmph,html.calm .cell .pc.startle{animation:none}
@@ -2043,7 +2046,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=d3bdc32fb3"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=c1b093973d"><\/script>')})();
 </script>
 <script>
 
@@ -2753,7 +2756,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='d3bdc32fb3';let updateTo=null;
+const BUILD='c1b093973d';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5804,11 +5807,17 @@ const Mascot=(function(){
     let vr=0,vy=0;if(st.vb>.002){st.vph=((st.vph||0)+dt*Math.PI*2*76/60)%(Math.PI*2);const sn=Math.sin(st.vph);vr=sn*5*st.vb;vy=-Math.abs(sn)*1.6*st.vb}else st.vb=0;
     setTr(head,`translate(${(st.lx*5).toFixed(2)} ${(st.ly*3+vy).toFixed(2)}) rotate(${(st.tilt+st.lx*6+vr).toFixed(2)} 50 70)`);
   }
+  const NOTE_INK=['var(--accent-text)','var(--rs)','var(--rv)','var(--ri)','var(--rj)','var(--rg)'];
 
   function note(){
-    const h=document.createElement('span');h.className='m-note';h.textContent=Math.random()<.5?'♪':'♫';
-    h.style.left=(30+Math.random()*40)+'%';h.style.setProperty('--nx',((Math.random()<.5?-1:1)*(8+Math.random()*12)).toFixed(0)+'px');
-    el.appendChild(h);setTimeout(()=>h.remove(),1500);
+    const h=document.createElement('span');h.className='m-note';
+
+    const one='<ellipse cx="9" cy="21.5" rx="5.2" ry="4" transform="rotate(-22 9 21.5)"/><rect x="12" y="3" width="2.6" height="19" rx="1"/><path d="M12.6 3c.6 3.8 6.8 4.6 6.4 11 2.4-4 1.7-8-3-10.3L12.6 3z"/>',
+      two='<ellipse cx="7" cy="22" rx="4.7" ry="3.7" transform="rotate(-22 7 22)"/><ellipse cx="21" cy="19" rx="4.7" ry="3.7" transform="rotate(-22 21 19)"/><rect x="9.6" y="6" width="2.4" height="16.5" rx="1"/><rect x="23.6" y="3" width="2.4" height="16.5" rx="1"/><path d="M9.6 5.6L26 2v4.2L9.6 9.8z"/>',
+      g=Math.random()<.55?one:two;
+    h.innerHTML=`<svg viewBox="0 0 ${g===one?24:30} 28"><g class="o">${g}</g><g>${g}</g></svg>`;
+    h.style.left=(25+Math.random()*50)+'%';h.style.setProperty('--nc',NOTE_INK[(note.k=((note.k||0)+1+(Math.random()*2|0))%NOTE_INK.length)]);h.style.setProperty('--nx',((Math.random()<.5?-1:1)*(8+Math.random()*12)).toFixed(0)+'px');
+    el.appendChild(h);setTimeout(()=>h.remove(),1750);
   }
 
   function glanceAt(cellEl,ms){

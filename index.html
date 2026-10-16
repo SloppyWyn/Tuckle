@@ -2215,7 +2215,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=615ae339d4"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=6bbbecce44"><\/script>')})();
 </script>
 <script>
 
@@ -2928,7 +2928,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='615ae339d4';let updateTo=null;
+const BUILD='6bbbecce44';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6469,8 +6469,10 @@ sheet.addEventListener('click',e=>{if(e.target===sheet)closeSettings()});
 const BACKUP='TUCKLE1:';
 const backupCode=()=>BACKUP+btoa(unescape(encodeURIComponent(JSON.stringify(store))));
 function readBackup(txt){
-  try{const s=String(txt).replace(/\s+/g,'');if(!s.startsWith(BACKUP))return null;
-    const o=JSON.parse(decodeURIComponent(escape(atob(s.slice(BACKUP.length)))));
+
+  try{const s=String(txt),at=s.toUpperCase().indexOf(BACKUP);if(at<0)return null;
+    const b=s.slice(at+BACKUP.length).replace(/[^A-Za-z0-9+/=]/g,'').replace(/=+.*$/,m=>m.match(/^=+/)[0]);
+    const o=JSON.parse(decodeURIComponent(escape(atob(b))));
     return o&&typeof o==='object'&&o.settings&&typeof o.settings==='object'?o:null}catch(e){return null}
 }
 let resetBackupUI=()=>{};

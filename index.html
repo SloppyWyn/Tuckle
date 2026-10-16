@@ -725,6 +725,7 @@ html.calm .flake{animation:none;opacity:.7;top:calc(12px + var(--fd) * 6px)}
 
 .mode-card.cont{margin-top:18px}
 .mc-sit{position:absolute;right:18px;bottom:calc(100% - 14px);width:44px;height:44px;pointer-events:none;animation:float 3.6s ease-in-out infinite}
+@media (min-width:900px){.mc-sit{right:64px}}
 .mc-sit svg{width:100%;height:100%;display:block;overflow:visible}
 html.calm .mc-sit{animation:none}
 
@@ -1536,6 +1537,9 @@ html.calm .res-chip{animation:none}
 @keyframes mtGlint{0%,45%{background-position:100% 0}80%,100%{background-position:0% 0}}
 html.calm .mt{animation:none;background-position:100% 0}
 
+@media (min-width:900px){.intro .gearbtn{left:max(16px,calc(50% - 250px))}.intro .frbtn{right:max(16px,calc(50% - 250px))}
+  .intro[data-step="menu"] .gearbtn,.intro[data-step="menu"] .frbtn{top:calc(36px + env(safe-area-inset-top,0px))}}
+
 .boardwrap{margin-top:80px}
 .board{position:relative;z-index:1}
 .overlay{z-index:3}
@@ -1604,6 +1608,9 @@ html.calm .m-say.solo.anchored{transform:translateY(-50%)}
 @keyframes pcperk{35%{transform:translateY(-7%) scale(1.04,.97)}}
 .mascot.perk svg{animation:perk .6s cubic-bezier(.3,1.35,.5,1)}
 @keyframes perk{30%{transform:translateY(-9px) scaleY(1.04)}}
+
+.mascot.lookin svg{animation:lookin .9s ease-in-out}
+@keyframes lookin{45%{transform:translateY(-3px)}}
 .mascot.hop svg,.mascot.cheer svg{animation:hop .72s ease-out}
 .mascot.cheer svg{animation-iteration-count:3}
 @keyframes hop{20%{transform:scale(1.06,.9)}45%{transform:translateY(-14px) scale(.96,1.06)}75%{transform:translateY(0) scale(1.04,.95)}}
@@ -2208,7 +2215,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=9927df63f9"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=615ae339d4"><\/script>')})();
 </script>
 <script>
 
@@ -2921,7 +2928,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='9927df63f9';let updateTo=null;
+const BUILD='615ae339d4';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -5437,7 +5444,10 @@ function eyeMarkup(T,x,y,live){
     `<circle cx="${(-T.pw*.32).toFixed(2)}" cy="${(-T.ph*.38).toFixed(2)}" r="${(T.pw*.36).toFixed(2)}" fill="#fff"/><circle cx="${(T.pw*.35).toFixed(2)}" cy="${(T.ph*.35).toFixed(2)}" r="${(T.pw*.16).toFixed(2)}" fill="#fff" opacity=".85"/>`;
   const ball=T.almond?`<path d="M${-T.pw} 0Q0 ${(-T.ph*1.9).toFixed(2)} ${T.pw} 0Q0 ${(T.ph*1.5).toFixed(2)} ${-T.pw} 0Z" fill="${T.iris}" stroke="${T.irisLine}" stroke-width="1.6" stroke-linejoin="round"/><ellipse rx="1.1" ry="${(T.ph*1.06).toFixed(2)}" fill="${T.core}"/>`:T.iris?`<ellipse rx="${T.pw}" ry="${T.ph}" fill="${T.iris}" stroke="${T.irisLine}" stroke-width="1"/><ellipse rx="${(T.pw*.48).toFixed(2)}" ry="${(T.ph*.52).toFixed(2)}" cy="1" fill="${T.core}"/>`:`<ellipse rx="${T.pw}" ry="${T.ph}" fill="${PUP}"/>`;
   const glint=T.glint&&T.almond?`<path d="M2.4 -2.4l.4 1.1 1.1.4-1.1.4-.4 1.1-.4-1.1-1.1-.4 1.1-.4Z" fill="#fff"/>`:T.glint?`<path d="M${(T.pw*.3).toFixed(2)} -.6l.55 1.6 1.6.55-1.6.55-.55 1.6-.55-1.6-1.6-.55 1.6-.55Z" fill="#fff"/>`:'';
-  const pupil=`<g class="pupil">${ball}${hl}${glint}</g>`;
+
+  const ar=T.almond?(x<50?T.almond:-T.almond):0,core=`<ellipse rx="1.1" ry="${(T.ph*1.06).toFixed(2)}" fill="${T.core}"/>`;
+  const pupil=T.almond?ball.replace(core,'')+`<g transform="rotate(${-ar}) scale(.5 .25)"><g class="pupil"><g transform="scale(2 4) rotate(${ar})">${core}${hl}${glint}</g></g></g>`
+    :`<g class="pupil">${ball}${hl}${glint}</g>`;
   const s=x<50?1:-1,rest=T.rest?`<g class="rlid"><path d="M-7.2 -1.4A7.2 7.6 0 0 1 7.2 -1.4Q0 -3.6 -7.2 -1.4Z" fill="${T.rest.fill}"/><path d="M${-7.6*s} -1.2Q0 -3.8 ${7.6*s} -2.4" fill="none" stroke="${T.rest.line}" stroke-width="2.2" stroke-linecap="round"/></g>`:'';
   const rot=T.almond?` rotate(${x<50?T.almond:-T.almond})`:'';
   if(!live)return`<g transform="translate(${x} ${y})${rot}">${white}${pupil}${rest}</g>`;
@@ -6077,7 +6087,7 @@ const Mascot=(function(){
         case'mark':if(Math.random()<.12)glanceAt(cellEl,500);break;
         case'worry':glanceAt(cellEl,1300);st.ttilt=8;play('nod',620);break;
         case'oops':glanceAt(cellEl,900);play('oops',620);blink(true);break;
-        case'formed':play('perk',620);st.tx=0;st.ty=.8;st.mode='glance';st.until=performance.now()+900;break;
+        case'formed':play('lookin',900);st.tx=0;st.ty=.8;st.mode='glance';st.until=performance.now()+900;break;
         case'hint':glanceAt(cellEl,1700);play('perk',620);break;
         case'win':happy(2600);document.querySelectorAll('.cell .pc').forEach(pc=>{pc.classList.add('happy');setTimeout(()=>pc.classList.remove('happy'),2600)});play('cheer',2200);st.mode='glance';st.until=performance.now()+2600;st.tx=0;st.ty=0;
           if(!calm()){heart();setTimeout(heart,300);setTimeout(heart,650)}break;
@@ -7081,6 +7091,12 @@ function retroRewards(){
 
   clearTimeout(retroRewards.t);retroRewards.t=setTimeout(()=>{if(intro.hidden||$('step-menu').hidden||Reward.open())return;store.rwSeen=1;save();Reward.show(list,null,true)},900);
 }
+
+function sitFit(el){const sv=el.firstChild;if(!sv||!sv.getBBox)return;
+  const go=()=>{let bb;try{bb=sv.getBBox()}catch(e){return}if(!bb.height){requestAnimationFrame(go);return}
+    const v=sv.viewBox.baseVal,u=44/Math.max(v.width,v.height),dy=Math.min(0,36-(bb.y+bb.height-v.y)*u);
+    sv.style.transform=dy?`translateY(${dy.toFixed(1)}px)`:''};
+  requestAnimationFrame(go)}
 function renderHome(){
   dailyCard();gInbox();friendsCorner();if(friendsOn())giftsLoad();
   $('h-seeds-n').textContent=store.seeds;
@@ -7113,7 +7129,7 @@ function renderHome(){
   {const c=$('h-vale'),open=valeOpen(),VS=worldStages('vale');c.classList.toggle('soon',!open);c.classList.toggle('open',open);c.setAttribute('aria-disabled',!open);
    $('m-vsub').textContent=open?t('jungleSub',{n:VS.filter(s=>M[s.id]).length,t:VS.length}):t('valeShut')}
   $('h-nest-buddy').innerHTML=buddySVG(S.piece,wornHat());
-  const c=contChoice();$('h-cont').hidden=!c;if(c){$('h-cont-s').textContent=c.label+' · '+fmt(c.time);$('h-cont-sit').innerHTML=buddySVG(S.piece,wornHat())}
+  const c=contChoice();$('h-cont').hidden=!c;if(c){$('h-cont-s').textContent=c.label+' · '+fmt(c.time);$('h-cont-sit').innerHTML=buddySVG(S.piece,wornHat());sitFit($('h-cont-sit'))}
   worldTiles();
   retroRewards();
 }

@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 31</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 32</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1148,15 +1148,17 @@ html.calm .n-pick .locked.mystery>svg:first-child,html.calm .resume-disc.mystery
 .g-swap{position:relative;justify-self:end}.g-swap svg{width:21px;height:21px}.g-swap .g-sw-make,.g-swap.to-make .g-sw-open{display:none}.g-swap.to-make .g-sw-make{display:block}
 .g-swap .g-swap-n{top:-5px;right:-5px}
 
-.g-edrow{display:flex;justify-content:center;gap:18px;margin-top:-2px}.g-edrow .g-sw{flex:0 0 32px;width:32px}
+.g-edrow{display:flex;justify-content:space-between;align-items:center;gap:10px;width:min(100%,330px)}.g-edrow .g-sw{flex:0 0 38px;width:38px;max-width:38px}
+.g-edrow #g-finish{flex:0 1 auto;min-width:0;font-size:15px;padding:10px 18px}
+#g-next{width:min(100%,330px);justify-content:center;font-size:15px;padding:12px 8px}
 .g-sw.g-clr{background:var(--surface);color:var(--muted);display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--line);transition:box-shadow .2s,background-color .2s,color .2s}
 .g-sw.g-clr svg{width:19px;height:19px}
-.g-act{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:min(100%,330px)}.g-act .btn{width:100%;justify-content:center;text-align:center;font-size:15px;padding:11px 8px;min-width:0}
+
 .g-pane{display:flex;flex-direction:column;align-items:center;gap:11px;width:100%}
 .g-lead{margin:0;font-size:14px;color:var(--muted);font-weight:600;text-align:center;max-width:340px}
 .g-size{max-width:300px}
 
-.g-board{--n:6;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:calc(16px / var(--n) + 2px);width:min(100%,330px,max(220px,calc(var(--app-h,100dvh) - 382px)));aspect-ratio:1;padding:8px;border-radius:18px;background:var(--surface);border:2px solid var(--line);touch-action:none;cursor:crosshair;box-sizing:border-box}
+.g-board{--n:6;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:calc(16px / var(--n) + 2px);width:min(100%,330px,max(220px,calc(var(--app-h,100dvh) - 396px)));aspect-ratio:1;padding:8px;border-radius:18px;background:var(--surface);border:2px solid var(--line);touch-action:none;cursor:crosshair;box-sizing:border-box}
 .g-board i{display:block;border-radius:22%;background:var(--rc);transition:background-color .18s ease,box-shadow .18s ease}
 .g-board i.e{background:transparent;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--muted) 45%,transparent)}
 .g-board i.new{animation:gFill .4s cubic-bezier(.3,1.3,.5,1) var(--d,0ms) both}
@@ -1248,7 +1250,7 @@ html.calm .g-out{animation:none}
 .fr-ask{position:absolute;z-index:2;inset:-1px;display:flex;border-radius:16px;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .25s ease}
 .fr-card.arm .fr-ask{opacity:1;pointer-events:auto}
 .fr-ask button{border:0;margin:0;cursor:pointer;font:700 15px/1.1 var(--body);padding:0 8px}
-.fr-yes{flex:0 0 78%;background:color-mix(in srgb,#C23A30 95%,transparent);color:#fff;transform:translateX(12px);transition:transform .3s cubic-bezier(.3,1.2,.5,1)}
+.fr-yes{flex:0 0 78%;background:radial-gradient(ellipse 62% 85% at 50% 50%,color-mix(in srgb,var(--bad) 52%,transparent),color-mix(in srgb,var(--bad) 22%,transparent) 62%,color-mix(in srgb,var(--bad) 6%,transparent)),color-mix(in srgb,var(--surface) 95%,transparent);color:color-mix(in srgb,var(--bad) 72%,var(--ink));transform:translateX(12px);transition:transform .3s cubic-bezier(.3,1.2,.5,1)}
 .fr-card.arm .fr-yes{transform:none}
 .fr-no{flex:1;background:color-mix(in srgb,var(--surface) 94%,transparent);color:var(--ink);font-size:13.5px!important;box-shadow:inset 1px 0 0 var(--line)}
 html.calm .fr-yes{transform:none;transition:none}
@@ -2009,9 +2011,9 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
       <div class="chips g-size" id="g-size" role="group" data-l10n-aria="sizeAria"></div>
       <div class="g-board" id="g-board"></div>
       <div class="g-pal" id="g-pal" role="group" data-l10n-aria="giftPalA"></div>
-      <div class="g-edrow"><button class="g-sw g-erase" id="g-erase" data-g="-1" aria-pressed="false" data-l10n-aria="giftErase" data-l10n-title="giftErase"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 15.5 13 7l5.5 5.5L10 21H6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 11.5l5.5 5.5M10 21h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="g-sw g-clr" id="g-clear" data-l10n-aria="giftClear" data-l10n-title="giftClear"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12.5h8L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="g-edrow"><button class="g-sw g-erase" id="g-erase" data-g="-1" aria-pressed="false" data-l10n-aria="giftErase" data-l10n-title="giftErase"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 15.5 13 7l5.5 5.5L10 21H6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 11.5l5.5 5.5M10 21h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button class="btn" id="g-finish" data-l10n="giftFinish">Finish it for me</button><button class="g-sw g-clr" id="g-clear" data-l10n-aria="giftClear" data-l10n-title="giftClear"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12.5h8L17 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <button class="btn primary" id="g-next" data-l10n="giftNext" disabled>Wrap it up</button>
       <p class="g-check" id="g-check" aria-live="polite"><span class="g-dot" aria-hidden="true"></span><span id="g-check-t"></span></p>
-      <div class="g-act"><button class="btn" id="g-finish" data-l10n="giftFinish">Finish it for me</button><button class="btn primary" id="g-next" data-l10n="giftNext" disabled>Wrap it up</button></div>
     </div>
     
     <div class="g-pane g-wrap" id="g-wrap" hidden>
@@ -2205,7 +2207,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=7a0de8a256"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=71c1ed9faf"><\/script>')})();
 </script>
 <script>
 
@@ -2918,7 +2920,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='7a0de8a256';let updateTo=null;
+const BUILD='71c1ed9faf';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 30</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 31</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2197,7 +2197,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=b9253c1e9d"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=65d454e13d"><\/script>')})();
 </script>
 <script>
 
@@ -2910,7 +2910,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='b9253c1e9d';let updateTo=null;
+const BUILD='65d454e13d';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6553,12 +6553,13 @@ function showStep(which,back){
   const prev=['title','rules','menu','play','nest','name','gift'].map(k=>$('step-'+k)).find(e=>!e.hidden&&e.id!=='step-'+which);
   const cross=prev&&!intro.hidden&&!calm()&&!document.documentElement.classList.contains('ingame');
   if(cross){const r=prev.getBoundingClientRect();prev.style.cssText='left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px';prev.classList.add('stepaway');prev.setAttribute('inert','');prev.setAttribute('aria-hidden','true');ghostStep=prev;if(back)prev.classList.add('back');ghostT=setTimeout(endGhost,back?380:300)}
-  {const nx=$('step-'+which);nx.classList.toggle('backin',!!(cross&&back));if(cross&&back)nx.addEventListener('animationend',()=>nx.classList.remove('backin'),{once:true})}
+
+  if(prev)prev.classList.remove('backin');$('step-'+which).classList.toggle('backin',!!(cross&&back));
   for(const k of ['title','rules','menu','play','nest','name','gift'])if(!(cross&&$('step-'+k)===prev))$('step-'+k).hidden=which!==k;
   if(which!=='nest')nestOpen=null;
   if(which==='name'){$('name-disc').innerHTML=buddySVG(S.piece,wornHat());const ni=$('name-in');ni.value=S.name||'';if(!matchMedia('(pointer:coarse)').matches)setTimeout(()=>ni.focus({preventScroll:true}),350)}
 
-  if(which==='menu'){renderHome();cardDeco(true)}else if(which==='play')openMenu();else if(which==='gift')giftShow();else if(which==='nest'){renderNest();$('n-ask').hidden=true;if((store.mood||{}).asked!==todayStr()&&nestOpen!=='friends')setTimeout(askMood,calm()?300:1100)}
+  if(which==='menu'){renderHome();cardDeco(!back)}else if(which==='play')openMenu();else if(which==='gift')giftShow();else if(which==='nest'){renderNest();$('n-ask').hidden=true;if((store.mood||{}).asked!==todayStr()&&nestOpen!=='friends')setTimeout(askMood,calm()?300:1100)}
   if(updateTo)setTimeout(applyUpdate,400);
   $('rules-go').textContent=pz?t('backToGame'):t('letsPlay');
   intro.scrollTop=0;

@@ -242,6 +242,7 @@
 "skip":"スキップ",
 "bestScoreL":"ベストスコア",
 "namePh":"なまえ（なくてもOK）",
+"namePhS":"なくてもOK",
 "yourName":"なまえ",
 "helloName":"おかえり、{name}！",
 "notYou":"ちがう？",

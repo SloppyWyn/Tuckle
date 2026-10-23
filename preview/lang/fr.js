@@ -242,6 +242,7 @@
 "skip":"Passer",
 "bestScoreL":"meilleur score",
 "namePh":"Votre prénom (facultatif)",
+"namePhS":"Facultatif",
 "yourName":"Votre prénom",
 "helloName":"Bon retour, {name} !",
 "notYou":"ce n’est pas vous ?",

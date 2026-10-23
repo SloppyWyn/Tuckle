@@ -242,6 +242,7 @@
 "skip":"Überspringen",
 "bestScoreL":"Bestwert",
 "namePh":"Dein Name (freiwillig)",
+"namePhS":"Freiwillig",
 "yourName":"Dein Name",
 "helloName":"Schön, dich zu sehen, {name}!",
 "notYou":"nicht du?",

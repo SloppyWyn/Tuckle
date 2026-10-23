@@ -242,6 +242,7 @@
 "skip":"Pular",
 "bestScoreL":"melhor pontuação",
 "namePh":"Seu nome (opcional)",
+"namePhS":"Opcional",
 "yourName":"Seu nome",
 "helloName":"Que bom te ver, {name}!",
 "notYou":"não é você?",

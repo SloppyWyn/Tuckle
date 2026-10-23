@@ -242,6 +242,7 @@
 "skip":"건너뛰기",
 "bestScoreL":"최고 점수",
 "namePh":"이름(선택)",
+"namePhS":"선택",
 "yourName":"이름",
 "helloName":"다시 만나서 반가워요, {name}!",
 "notYou":"본인이 아닌가요?",

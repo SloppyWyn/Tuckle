@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 37</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 38</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1259,6 +1259,12 @@ html.calm .fr-yes{transform:none;transition:none}
 .fr-list>*{width:100%;box-sizing:border-box}.fr-msg.ok{color:var(--ink)}
 .fr-empty{margin:6px 0;font:600 14px/1.4 var(--body);color:var(--muted);text-align:center}
 
+.n-bond{gap:6px;padding:5px 12px 5px 9px;font-size:14px;cursor:pointer}.n-bond[hidden]{display:none}
+.n-bond .bond-h{width:16px;height:16px;fill:var(--r4);stroke:color-mix(in srgb,var(--r4) 60%,var(--ink));stroke-width:1.6;stroke-linejoin:round}
+.n-bond .bond-bar{width:44px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}.n-bond .bond-bar i{display:block;height:100%;border-radius:inherit;background:var(--r4)}
+.n-bond b{color:var(--ink)}.n-bond .bond-note{width:15px;height:15px;color:var(--accent-text)}
+.nest.plated #n-bond{display:none}
+
 .jdeco,.m-map,.cdeco{--jstem:color-mix(in srgb,var(--rj) 72%,#16301f);--jvein:color-mix(in srgb,#fff 38%,var(--rj))}
 .board.jungle{background:color-mix(in srgb,var(--rj) 12%,var(--b-bg,var(--board-bg)));border-color:color-mix(in srgb,var(--rj) 32%,var(--b-edge,var(--tray-edge)))}
 .jdeco{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -1708,6 +1714,124 @@ html.calm .m-say.out{animation:none}
 .m-paws{position:absolute;left:50%;top:-84px;width:100px;height:100px;margin-left:-50px;z-index:2;pointer-events:none}
 .m-paws svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 2px 0 rgba(0,0,0,.12))}
 @media (max-width:480px){.m-paws{width:80px;height:80px;margin-left:-40px;top:-67px}}
+
+.mascot.dance>svg,svg.bdance{transform-origin:50% 100%}
+.rw-art svg.bdance,.rw-art svg.bdance *{animation-iteration-count:infinite!important}
+html.calm .rw-art svg.bdance,html.calm .rw-art svg.bdance *,html.calm .mascot .sprout{animation:none!important}
+@keyframes bd-wag{0%,60%,100%{transform:none}6%,18%,30%,42%,54%{transform:rotate(-24deg)}12%,24%,36%,48%{transform:rotate(6deg)}}
+@keyframes bd-slowL{0%,24%,52%,100%{transform:none}12%,38%{transform:rotate(30deg)}}
+@keyframes bd-slowR{0%,24%,52%,100%{transform:none}12%,38%{transform:rotate(-30deg)}}
+@keyframes bd-flapL{0%,20%,40%,60%,100%{transform:none}10%,30%,50%{transform:rotate(38deg)}}
+@keyframes bd-flapR{0%,20%,40%,60%,100%{transform:none}10%,30%,50%{transform:rotate(-38deg)}}
+.mascot.dance .sprout{transform-box:fill-box;transform-origin:50% 100%}
+
+:is(.mascot.dance[data-k="cat"]>svg,svg.bdance[data-t="cat"]){animation:bd-cat 3.6s ease-in-out}
+.mascot.dance[data-k="cat"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-cat{0%,62%,100%{transform:none}8%{transform:translate(-5px,0) rotate(-7deg)}16%{transform:translate(5px,0) rotate(7deg)}24%{transform:translate(-5px,0) rotate(-7deg)}32%{transform:translate(0,-10px) rotate(0deg) scale(1.05)}38%,54%{transform:translate(0,-8px) rotate(-5deg) scale(1.05)}}
+
+:is(.mascot.dance[data-k="owl"]>svg,svg.bdance[data-t="owl"]){animation:bd-owl 3.6s ease-in-out}
+.mascot.dance[data-k="owl"] .wl{animation:bd-slowL 3.6s ease-in-out}.mascot.dance[data-k="owl"] .wr{animation:bd-slowR 3.6s ease-in-out}
+@keyframes bd-owl{0%,62%,100%{transform:none}12%{transform:rotate(-8deg)}26%{transform:rotate(8deg)}40%{transform:rotate(-6deg)}48%{transform:rotate(0deg) translate(0,0)}55%{transform:translate(0,6px) scale(1,.97)}}
+
+:is(.mascot.dance[data-k="stone"]>svg,svg.bdance[data-t="stone"]){animation:bd-stone 3.6s ease-in-out}
+.mascot.dance[data-k="stone"] .sprout{animation:bd-sprout 3.6s ease-in-out}
+@keyframes bd-stone{0%{transform:none}5%{transform:scale(1.1,.86)}11%{transform:translate(0,-10px) scale(.94,1.08)}17%{transform:scale(1.1,.86)}24%{transform:translate(0,-16px) scale(.94,1.08)}31%{transform:scale(1.12,.84)}42%{transform:translate(0,-24px) rotate(360deg) scale(.96,1.05)}52%{transform:translate(0,0) rotate(360deg) scale(1.1,.88)}58%,100%{transform:rotate(360deg)}}
+@keyframes bd-sprout{0%,60%,100%{transform:none}11%,24%,42%{transform:rotate(14deg)}17%,31%,52%{transform:rotate(-14deg)}}
+
+:is(.mascot.dance[data-k="lantern"]>svg,svg.bdance[data-t="lantern"]){animation:bd-lantern 3.6s ease-in-out;transform-origin:50% 4%}
+.mascot.dance[data-k="lantern"]>svg{animation:bd-lantern 3.6s ease-in-out,bd-lumi 3.6s ease-in-out}
+@keyframes bd-lantern{0%,62%,100%{transform:none}10%{transform:translate(0,-6px) rotate(9deg)}22%{transform:translate(0,-8px) rotate(-8deg)}34%{transform:translate(0,-8px) rotate(6deg)}46%{transform:translate(0,-6px) rotate(-3deg)}56%{transform:translate(0,-2px) rotate(0deg)}}
+@keyframes bd-lumi{0%,62%,100%{filter:drop-shadow(0 2px 0 rgba(0,0,0,.12)) var(--m-rim)}20%,50%{filter:drop-shadow(0 2px 0 rgba(0,0,0,.12)) drop-shadow(0 0 9px rgba(255,194,122,.95))}}
+
+:is(.mascot.dance[data-k="poodle"]>svg,svg.bdance[data-t="poodle"]){animation:bd-poodle 3.6s ease-in-out}
+.mascot.dance[data-k="poodle"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-poodle{0%,62%,100%{transform:translate(0,0) rotate(0deg) scale(1)}6%{transform:translate(-8px,-10px) rotate(-8deg) scale(1)}12%{transform:translate(-8px,0) rotate(0deg) scale(1.05,.93)}20%{transform:translate(8px,-10px) rotate(8deg) scale(1)}26%{transform:translate(8px,0) rotate(0deg) scale(1.05,.93)}36%{transform:translate(0,-16px) rotate(0deg) scale(.96,1.06)}44%{transform:translate(0,0) rotate(0deg) scale(1.06,.92)}52%{transform:translate(0,-3px) rotate(-4deg) scale(1)}}
+
+:is(.mascot.dance[data-k="monkey"]>svg,svg.bdance[data-t="monkey"]){animation:bd-monkey 3.6s ease-in-out;transform-origin:50% 0}
+.mascot.dance[data-k="monkey"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-monkey{0%,62%,100%{transform:none}10%{transform:translate(-10px,-4px) rotate(12deg)}22%{transform:translate(10px,-4px) rotate(-12deg)}34%{transform:translate(-8px,-3px) rotate(9deg)}44%{transform:translate(0,-14px) rotate(0deg) scale(.96,1.06)}52%{transform:translate(0,0) scale(1.06,.92)}}
+
+:is(.mascot.dance[data-k="lion"]>svg,svg.bdance[data-t="lion"]){animation:bd-lion 3.6s ease-in-out}
+.mascot.dance[data-k="lion"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-lion{0%,62%,100%{transform:none}10%{transform:translate(0,4px) scale(1.05,.93)}22%,30%{transform:translate(0,-10px) scale(1.04,1.08)}33%{transform:translate(0,-10px) rotate(-4deg) scale(1.04,1.08)}36%{transform:translate(0,-10px) rotate(4deg) scale(1.04,1.08)}39%{transform:translate(0,-10px) rotate(-4deg) scale(1.04,1.08)}42%{transform:translate(0,-10px) rotate(3deg) scale(1.04,1.08)}52%{transform:translate(0,0) rotate(0deg) scale(1)}}
+
+:is(.mascot.dance[data-k="toucan"]>svg,svg.bdance[data-t="toucan"]){animation:bd-toucan 3.6s ease-in-out}
+@keyframes bd-toucan{0%,8%,16%,24%,32%,40%,48%,62%,100%{transform:none}4%,12%,20%,28%{transform:translate(0,5px) rotate(-6deg)}36%,44%{transform:translate(0,5px) rotate(6deg)}55%{transform:translate(0,-8px) scale(.97,1.05)}}
+
+:is(.mascot.dance[data-k="seal"]>svg,svg.bdance[data-t="seal"]){animation:bd-seal 3.6s ease-in-out}
+.mascot.dance[data-k="seal"] .wl{animation:bd-clapL 3.6s ease-in-out}.mascot.dance[data-k="seal"] .wr{animation:bd-clapR 3.6s ease-in-out}
+@keyframes bd-seal{0%,62%,100%{transform:none}8%,24%,40%{transform:translate(0,-8px) rotate(-5deg)}16%,32%,48%{transform:translate(0,0) rotate(5deg)}55%{transform:translate(0,-4px) rotate(0deg)}}
+@keyframes bd-clapL{0%,56%,100%{transform:none}4%,12%,20%,28%,36%,44%,52%{transform:rotate(-40deg)}8%,16%,24%,32%,40%,48%{transform:rotate(10deg)}}
+@keyframes bd-clapR{0%,56%,100%{transform:none}4%,12%,20%,28%,36%,44%,52%{transform:rotate(40deg)}8%,16%,24%,32%,40%,48%{transform:rotate(-10deg)}}
+
+:is(.mascot.dance[data-k="emperor"]>svg,svg.bdance[data-t="emperor"]){animation:bd-emperor 3.6s ease-in-out}
+.mascot.dance[data-k="emperor"] .wl{animation:bd-slowL 3.6s ease-in-out}.mascot.dance[data-k="emperor"] .wr{animation:bd-slowR 3.6s ease-in-out}
+@keyframes bd-emperor{0%,62%,100%{transform:none}7%{transform:translate(-3px,-3px) rotate(-6deg)}14%{transform:translate(0,0) rotate(0deg)}21%{transform:translate(3px,-3px) rotate(6deg)}28%{transform:translate(0,0) rotate(0deg)}35%{transform:translate(-3px,-3px) rotate(-6deg)}42%{transform:translate(0,0) rotate(0deg)}50%,56%{transform:translate(0,7px) scale(1,.96)}}
+
+:is(.mascot.dance[data-k="orca"]>svg,svg.bdance[data-t="orca"]){animation:bd-orca 3.6s cubic-bezier(.4,0,.4,1)}
+.mascot.dance[data-k="orca"] .wl{animation:bd-flapL 3.6s linear}.mascot.dance[data-k="orca"] .wr{animation:bd-flapR 3.6s linear}
+@keyframes bd-orca{0%,62%,100%{transform:none}12%{transform:translate(0,10px) scale(1.06,.9)}28%{transform:translate(-6px,-26px) rotate(-14deg)}40%{transform:translate(6px,-22px) rotate(14deg)}52%{transform:translate(0,4px) rotate(0deg) scale(1.08,.9)}57%{transform:translate(0,-2px) scale(.98,1.02)}}
+
+:is(.mascot.dance[data-k="redpanda"]>svg,svg.bdance[data-t="redpanda"]){animation:bd-redpanda 3.6s ease-in-out}
+.mascot.dance[data-k="redpanda"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-redpanda{0%,62%,100%{transform:none}10%{transform:translate(0,-14px) scale(.95,1.1)}18%,30%{transform:translate(0,-16px) scale(.94,1.12)}22%{transform:translate(-3px,-16px) rotate(-5deg) scale(.94,1.12)}26%{transform:translate(3px,-16px) rotate(5deg) scale(.94,1.12)}42%{transform:translate(0,0) scale(1.06,.92)}52%{transform:translate(0,-3px) rotate(-3deg)}}
+
+:is(.mascot.dance[data-k="snowleo"]>svg,svg.bdance[data-t="snowleo"]){animation:bd-snowleo 3.6s cubic-bezier(.45,0,.3,1)}
+.mascot.dance[data-k="snowleo"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-snowleo{0%,62%,100%{transform:none}16%,22%{transform:translate(-4px,8px) rotate(-4deg) scale(1.08,.88)}36%{transform:translate(6px,-20px) rotate(6deg) scale(.96,1.05)}48%{transform:translate(0,2px) rotate(0deg) scale(1.04,.96)}56%{transform:translate(0,0) scale(1)}}
+
+:is(.mascot.dance[data-k="yak"]>svg,svg.bdance[data-t="yak"]){animation:bd-yak 3.6s ease-in-out}
+@keyframes bd-yak{0%,62%,100%{transform:none}10%{transform:translate(-4px,-4px) rotate(-5deg)}18%{transform:translate(-4px,3px) rotate(-5deg) scale(1.03,.96)}28%{transform:translate(4px,-4px) rotate(5deg)}36%{transform:translate(4px,3px) rotate(5deg) scale(1.03,.96)}42%{transform:rotate(-4deg)}46%{transform:rotate(4deg)}50%{transform:rotate(-3deg)}55%{transform:rotate(0deg)}}
+
+:is(.mascot.dance[data-k="booby"]>svg,svg.bdance[data-t="booby"]){animation:bd-booby 3.6s ease-in-out}
+.mascot.dance[data-k="booby"] .wl{animation:bd-spreadL 3.6s ease-in-out}.mascot.dance[data-k="booby"] .wr{animation:bd-spreadR 3.6s ease-in-out}
+@keyframes bd-booby{0%,62%,100%{transform:none}8%{transform:translate(-4px,-6px) rotate(-7deg)}16%{transform:translate(0,0) rotate(0deg)}24%{transform:translate(4px,-6px) rotate(7deg)}32%{transform:translate(0,0) rotate(0deg)}42%,52%{transform:translate(0,-14px) scale(.95,1.1)}}
+@keyframes bd-spreadL{0%,36%,58%,100%{transform:none}42%,52%{transform:rotate(55deg)}}
+@keyframes bd-spreadR{0%,36%,58%,100%{transform:none}42%,52%{transform:rotate(-55deg)}}
+
+:is(.mascot.dance[data-k="tortoise"]>svg,svg.bdance[data-t="tortoise"]){animation:bd-tortoise 3.6s ease-in-out}
+.mascot.dance[data-k="tortoise"] .wl{animation:bd-slowL 3.6s ease-in-out}.mascot.dance[data-k="tortoise"] .wr{animation:bd-slowR 3.6s ease-in-out}
+@keyframes bd-tortoise{0%,62%,100%{transform:none}18%{transform:translate(-2px,-3px) rotate(-4deg)}36%{transform:translate(2px,-3px) rotate(4deg)}48%{transform:translate(0,4px) rotate(0deg) scale(1,.97)}56%{transform:translate(0,0)}}
+
+:is(.mascot.dance[data-k="iguana"]>svg,svg.bdance[data-t="iguana"]){animation:bd-iguana 3.6s ease-out}
+.mascot.dance[data-k="iguana"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-iguana{0%,10%,20%,30%,62%,100%{transform:none}5%,15%,25%{transform:translate(0,-9px) scale(.98,1.04)}38%{transform:translate(-8px,0) rotate(-4deg)}46%{transform:translate(8px,0) rotate(4deg)}54%{transform:translate(0,0) rotate(0deg)}}
+
+:is(.mascot.dance[data-k="moonbun"]>svg,svg.bdance[data-t="moonbun"]){animation:bd-moonbun 3.6s ease-out}
+.mascot.dance[data-k="moonbun"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-moonbun{0%,62%,100%{transform:none}6%{transform:translate(-8px,-14px) rotate(-6deg)}12%{transform:translate(-8px,0) scale(1.06,.92)}20%{transform:translate(0,-18px) rotate(0deg)}26%{transform:translate(0,0) scale(1.06,.92)}34%{transform:translate(8px,-14px) rotate(6deg)}40%{transform:translate(8px,0) scale(1.06,.92)}48%{transform:translate(0,-4px)}52%{transform:translate(0,3px) scale(1.08,.9)}56%{transform:none}}
+
+:is(.mascot.dance[data-k="starwhale"]>svg,svg.bdance[data-t="starwhale"]){animation:bd-starwhale 3.6s ease-in-out}
+.mascot.dance[data-k="starwhale"] .wl{animation:bd-slowL 3.6s ease-in-out}.mascot.dance[data-k="starwhale"] .wr{animation:bd-slowR 3.6s ease-in-out}
+@keyframes bd-starwhale{0%,62%,100%{transform:none}20%{transform:translate(0,-14px) rotate(-7deg)}40%{transform:translate(0,-16px) rotate(7deg)}56%{transform:translate(0,0) rotate(0deg)}}
+
+:is(.mascot.dance[data-k="cometfox"]>svg,svg.bdance[data-t="cometfox"]){animation:bd-cometfox 3.6s cubic-bezier(.4,0,.3,1)}
+.mascot.dance[data-k="cometfox"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-cometfox{0%{transform:none}8%{transform:translate(-12px,-4px) rotate(-10deg)}16%{transform:translate(12px,-4px) rotate(10deg)}24%{transform:translate(0,0) rotate(0deg)}40%{transform:translate(0,-18px) rotate(360deg)}50%{transform:translate(0,2px) rotate(360deg) scale(1.06,.92)}56%,100%{transform:rotate(360deg)}}
+
+:is(.mascot.dance[data-k="clownfish"]>svg,svg.bdance[data-t="clownfish"]){animation:bd-clownfish 3.6s ease-in-out}
+.mascot.dance[data-k="clownfish"] .wl{animation:bd-flapL 3.6s linear}.mascot.dance[data-k="clownfish"] .wr{animation:bd-flapR 3.6s linear}
+.mascot.dance[data-k="clownfish"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-clownfish{0%,4%,12%,20%,28%,36%,62%,100%{transform:none}2%,10%,18%,26%,34%{transform:translate(-3px,0) rotate(-6deg)}6%,14%,22%,30%{transform:translate(3px,0) rotate(6deg)}46%,54%{transform:translate(0,-10px) rotate(-3deg) scale(1.04)}}
+
+:is(.mascot.dance[data-k="octopus"]>svg,svg.bdance[data-t="octopus"]){animation:bd-octopus 3.6s ease-in-out}
+.mascot.dance[data-k="octopus"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-octopus{0%,62%,100%{transform:none}8%{transform:translate(-3px,0) rotate(-5deg) scale(1.08,.92)}18%{transform:translate(3px,-8px) rotate(5deg) scale(.93,1.08)}28%{transform:translate(-3px,0) rotate(-5deg) scale(1.08,.92)}38%{transform:translate(3px,-8px) rotate(5deg) scale(.93,1.08)}48%{transform:translate(0,0) rotate(0deg) scale(1.05,.95)}55%{transform:none}}
+
+:is(.mascot.dance[data-k="seahorse"]>svg,svg.bdance[data-t="seahorse"]){animation:bd-seahorse 3.6s ease-in-out}
+.mascot.dance[data-k="seahorse"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-seahorse{0%,62%,100%{transform:none}14%{transform:translate(0,-10px) rotate(-5deg)}28%{transform:translate(0,-2px) rotate(3deg)}42%{transform:translate(0,-12px) rotate(-4deg)}56%{transform:translate(0,0) rotate(0deg)}}
+
+:is(.mascot.dance[data-k="dragon"]>svg,svg.bdance[data-t="dragon"]){animation:bd-dragon 3.6s ease-in-out}
+@keyframes bd-dragon{0%,62%,100%{transform:none}12%{transform:translate(0,4px) scale(1.04,.95)}26%,36%{transform:translate(0,-12px) scale(1.06,1.06)}42%{transform:translate(0,-12px) rotate(-6deg) scale(1.06)}48%{transform:translate(0,-12px) rotate(6deg) scale(1.06)}56%{transform:translate(0,0) rotate(0deg) scale(1)}}
+
+:is(.mascot.dance[data-k="unicorn"]>svg,svg.bdance[data-t="unicorn"]){animation:bd-unicorn 3.6s ease-out}
+.mascot.dance[data-k="unicorn"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-unicorn{0%,62%,100%{transform:none}8%{transform:translate(0,-10px) rotate(-8deg)}14%{transform:translate(0,0) rotate(-4deg)}22%{transform:translate(0,-10px) rotate(8deg)}28%{transform:translate(0,0) rotate(4deg)}38%{transform:translate(0,-6px) rotate(-3deg)}48%,54%{transform:translate(0,0) rotate(-5deg)}}
+
+:is(.mascot.dance[data-k="griffin"]>svg,svg.bdance[data-t="griffin"]){animation:bd-griffin 3.6s ease-in-out}
+.mascot.dance[data-k="griffin"] .tail{animation:bd-wag 3.6s ease-in-out}
+@keyframes bd-griffin{0%,62%,100%{transform:none}10%{transform:translate(0,-6px) scale(1.1,1.04)}16%{transform:translate(0,-6px) rotate(-5deg) scale(1.1,1.04)}22%{transform:translate(0,-6px) rotate(5deg) scale(1.1,1.04)}28%{transform:translate(0,-6px) rotate(-5deg) scale(1.1,1.04)}40%,52%{transform:translate(0,-12px) rotate(-8deg) scale(1.04,1.08)}}
 .overlay{position:absolute;inset:0;display:grid;place-items:center;background:color-mix(in srgb,var(--ground) 84%,transparent);border-radius:10px;padding:8px}
 .overlay .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;text-align:center;max-width:320px;box-shadow:var(--shadow)}
 
@@ -2215,7 +2339,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=6bbbecce44"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=eb5a8ea96e"><\/script>')})();
 </script>
 <script>
 
@@ -2907,6 +3031,15 @@ const BUDDY_LOCKS={monkey:'jungleGold',seal:'iceGold',lion:'jungleAll',emperor:'
 if(!store.zarGoal){if(HAD_SAVE)store.unlocked=Object.assign({},store.unlocked,{dragon:1});store.zarGoal=1}
 function buddyOwned(k){const U=store.unlocked||{};return SHOP[k]?bought(k)||!!U[k]:!BUDDY_LOCKS[k]||!!U[k]}
 
+const BOND_GOAL=10,BOND_PET=.1,BOND_PET_DAY=.5;
+const bondPts=k=>(store.bond||{})[k]||0;
+const bondLv=k=>(store.bondLv||{})[k]||0;
+function bondAdd(k,n){store.bond=Object.assign({},store.bond,{[k]:Math.round((bondPts(k)+n)*10)/10})}
+function bondPet(k){if(!buddyOwned(k))return;const d=todayStr();if(!store.bondPet||store.bondPet.d!==d)store.bondPet={d,n:{}};
+  const P=store.bondPet.n,had=P[k]||0;if(had>=BOND_PET_DAY-1e-9)return;P[k]=Math.round((had+BOND_PET)*10)/10;bondAdd(k,BOND_PET);save()}
+
+function bondWin(k){bondAdd(k,1);if(bondLv(k)||bondPts(k)<BOND_GOAL)return false;store.bondLv=Object.assign({},store.bondLv,{[k]:1});return true}
+
 if(store.hat===undefined&&!(store.solved>0))store.hat='';
 
 const SEED_ICON='<svg class="seed-i" viewBox="4 3.4 16 18.4" aria-hidden="true"><ellipse cx="12" cy="17.2" rx="5.2" ry="3.7" fill="#C08A57" stroke="#8F6238" stroke-width="1"/><path d="M12 14.6V9.6" stroke="#4E8A45" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.4C11.8 6.6 9.2 5 5.8 5.4c.1 3.4 2.4 5.3 6.2 5Z" fill="#7CC47F" stroke="#4E8A45" stroke-width=".9"/><path d="M12 9.6c.2-3.6 2.7-5.2 6.1-4.9-.1 3.3-2.4 5.1-6.1 4.9Z" fill="#9BDCA0" stroke="#4E8A45" stroke-width=".9"/></svg>';
@@ -2915,6 +3048,7 @@ const SEEDS={medal:[0,3,5,8,12],letter:10,letterPerfect:5,daily:10,streak:5,free
 const freeSeeds=p=>(SEEDS.free[p.diff]||{})[p.N]||0;
 if(typeof store.seeds!=='number')store.seeds=0;
 let lastSeeds=0;
+let lastBond=null;
 
 function markX(s){return String(s).replace(/(?<![\d}]\s?)×(?!\s?[\d{])/g,'<span class="xm" role="img" aria-label="×"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></span>')}
 function wornHat(){const h=store.hat===undefined?'beanie':store.hat;return h===''||hatOwned(h)?h:'beanie'}
@@ -2928,7 +3062,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='6bbbecce44';let updateTo=null;
+const BUILD='eb5a8ea96e';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -2958,7 +3092,7 @@ en:{
   g1:'This colour has just one square, so its {P} goes right here. Tap it twice, quickly.',dm1:'One {P} per colour: the rest of its colour is out.',dm2:'One per row: the rest of its row is out too.',dm3:'And one per column.',dm4:'No two {Ps} ever touch, not even at the corners.',dm5:'Those × are notes. Tap a square once to add your own.',
   tipCookie:'That cost a cookie. You get three per stage, and a wrong {P} takes a bite.',tipHint:'Not sure what’s next? Hint shows you the next step.',tipHintJ:'Not sure what’s next? Hint shows you the next step. You get three per stage.',
   startHere:'New here? Start in the Jungle: its first stages teach you the game.',tipTray:'These faces are the colours. Each lights up once a {P} sits in it.',tipDrag:'Tip: drag across squares to mark many at once.',tipTimer:'The timer only matters for gold. Take your time.',lastCookie:'Last cookie. Take it slow.',lastBanana:'Last banana. Take it slow.',tipBanana:'That cost a banana. You get three per stage, and a wrong {P} takes a bite.',lettersNew:'New: a bonus letter! Letters are extra stages that spell JUNGLE.',wordDone:'You spelled {w}!',worldsT:'Worlds',nextWorld:'Next world',nextWorldS:'After the Jungle… somewhere chilly',collectT:'Collection',collectS:'Your buddy, words and medals',wordsT:'Words',medalsT:'Medals',soonT:'Coming soon',noHat:'No hat',holdTry:'Hold to try',holdPeek:'Hold to preview',soonMore:'More is coming soon',soonHats:'Hats',soonThemes:'Board themes',soonBuddies:'New buddies',shinesN:'{n} with a shine',back:'Back',opensLetter:'opens letter {ch}',
-  lockedE:'Solve stage {n} first to open this one',lockedTier:'Opens after stage {n} on {d}',lockedLetter:'Letter {ch} opens after stage {n}',newsT:'What’s new',news:['A new world: Dragon Vale, with Zar, Tilly and Arlo','A new world: the Coral Reef, with Pip, Inky and Marina','Finish every Nebula stage to earn Midnight, a starry look for Pudding. Thank you, Alexandra, for finishing them all, and every word','A new world: the Nebula, with Luna, Mira and Vega'],
+  lockedE:'Solve stage {n} first to open this one',lockedTier:'Opens after stage {n} on {d}',lockedLetter:'Letter {ch} opens after stage {n}',newsT:'What’s new',news:['Play with a buddy and it learns a win dance','A new world: Dragon Vale, with Zar, Tilly and Arlo','A new world: the Coral Reef, with Pip, Inky and Marina','Finish every Nebula stage to earn Midnight, a starry look for Pudding. Thank you, Alexandra, for finishing them all, and every word'],
   jungleSub:'{n} of {t} stages',stageLabel:'{w} · Stage {n}',stageLabelT:'{w} · {d} · Stage {n}',stageNote:'Stage {s} · {idea}',mapAria:'Stage map',lockedT:'locked',
   ideas:['The three rules','One square left','Mind the corners','Practice','Area in a line','Practice','Line in an area','Both ways','Bigger garden','Mixed','Long walk','Jungle boss'],
   medals:['Bronze','Silver','Gold','Diamond'],medalGot:'{m} medal!',silverHow:'Silver: at most one slip — a hint or a mistake',goldHow:'Gold: no hints, no mistakes, under {t}',
@@ -2980,7 +3114,7 @@ en:{
   letsPlay:"Let's play",backToGame:'Back to my game',coach:'The rules live here whenever you need them.',hmph:'hmph!',
   r1:'Each colour area gets exactly one {P}.',r2:'One {P} per row and one per column.',r3:"{Psc} can't touch, not even corner to corner.",
 resumeT:'Welcome back!',resumeQ:'Pick up where you left off?',resumeSum:'{what} · {time} · {n} placed',continueBtn:'Continue',newGame:'New game',
-  hatsT:'Hats',grpYours:'Yours',grpSeeds:'For seeds',grpEarn:'Still to earn',seedsT:'Seeds',playAgain:'Play again',rwBuddyT:'New buddy!',rwHatT:'New hat!',rwBoardT:'New board!',rwWorldT:'A new world!',rwBuddyS:'{n} is with you now. Say hi in the Collection.',rwThingS:'It’s waiting for you in the Collection.',rwWorldS:'New stages are waiting on the map.',rwWear:'Wear it',rwPlay:'Play with {n}',rwUse:'Use it',rwGo:'Take a look',worldHere:'New world open: {w}',fbT:'Feedback',fbS:'Ideas, bugs, a wrong word in any language: anything helps.',fbGo:'Send feedback',tipT:'Support Tuckle',tipS:'Tuckle is free and has no ads, made by one person. If it brightens your day, a coffee helps it keep growing.',tipGo:'Buy me a coffee',rwOk:'Lovely!',keepGoingP:'or keep going, just for practice',tourSkip:'I know how to play',treatsT:'Treats',treatNames:{auto:'Auto',cookie:'Cookies',banana:'Bananas',fish:'Fish',heart:'Hearts',momo:'Momos',mallow:'Marshmallows',stardrop:'Star candies',madeleine:'Madeleines',dragonfruit:'Dragon fruit'},treatAutoS:'Auto: each world brings its own treat, and cookies at home.',treatPickS:'{t} everywhere you play.',treatLock_banana:'Finish the Jungle’s Medium trail to unlock bananas.',treatLock_fish:'Finish Antarctica’s Medium trail to unlock fish.',treatLock_momo:'Finish Shangri-La’s Medium trail to unlock momos.',rwTreatT:'New treat!',rwTreatS:'Pick it in the Collection, under Treats.',rwTreatOn:'On now, everywhere you play.',lastHeart:'Last heart. Take it slow.',tipHeart:'That cost a heart. You get three per stage, and a wrong {P} cracks one.',outTH:'Out of hearts',outPH:'Three wrong {Ps} and the hearts are gone.',keepGoingH:'Keep going without hearts',gSingleA:'This colour has only one open square left, so its {P} goes there. Tap it twice.',gSingleR:'This row has only one open square left, so its {P} goes there. Tap it twice.',gSingleC:'This column has only one open square left, so its {P} goes there. Tap it twice.',gMarkYou:'Your turn to mark: tap each glowing square once. Your new {P} rules them out.',gMarkMore:'And mark what this one rules out, too.',gLast:'One {P} left. Your turn: find its square.',freePays1:'Each new puzzle at this size brings 1 seed.',freePays2:'Each new puzzle at this size brings 2 seeds.',freePays3:'Each new puzzle at this size brings 3 seeds.',dm1b:'One {P} per colour, and this colour has no other squares.',dmX:'Each × means “no {P} here”.',freeRestart:'Same puzzle again: no seeds for this one now. A new puzzle brings them.',freeNoSeeds:'Seeds come from new puzzles, not from starting over.',practiceT:'Finished',practiceP:'Out of treats, so it doesn’t count: no medal, no seeds.',practicePD:'Out of treats, so today’s doesn’t count yet: no seeds, no streak.',practicePF:'Out of treats, so it doesn’t count: no seeds.',giftT:"Gift a puzzle",giftSub:"Draw one for someone, or open yours",giftMake:"Make one",giftOpen:"Open one",giftLead:"Paint an area for every colour. Tuckle checks it has one answer.",giftPalA:"Colours",giftColA:"Colour {n}",giftErase:"Eraser",giftEmpty:"{n} squares still empty. Paint them, or tap Finish it for me.",giftMissing:"Use all {all} colours: {n} still missing.",giftBroken:"A colour is in two pieces. Join it up.",giftNone:"No answer fits yet. Reshape an area, or erase a few squares and tap Finish it for me.",giftMany:"More than one answer fits. Reshape an area, or erase a few squares and tap Finish it for me.",giftGuess:"One answer, but it takes guessing to find. Reshape an area a little.",giftOk:"One answer, found by logic alone. Ready to send!",giftCant:"Tuckle couldn’t finish this one. Try erasing a few more squares around your drawing.",giftFinish:"Finish it for me",giftAgain:"Another way",giftNoFit:"No answer can fit around this drawing. Try making it a little smaller, or leave a gap at the edges.",giftFinishing:"Finishing…",giftClear:"Clear",giftClearSure:"Tap the bin again to clear the board.",giftFromPh:"Your name",giftNotePh:"A note (optional)",giftGo:"Make the gift",giftNext:"Wrap it up",giftWrapLead:"Sign it, and add a note if you like.",giftRedraw:"Back to the drawing",giftWho:"Who is it for?",giftWhoLead:"Who is it for? Add a note if you like.",giftSendTo:"Send to {n}",giftPickF:"Pick a friend",giftSending:"Sending…",giftSent:"Sent! It’s waiting in {n}’s game.",giftSentB:"Sent",giftSendFail:"Couldn’t send it. Check the connection and try again.",giftInboxLead:"Gifts from your friends:",giftInboxNone:"Gifts from your friends land here.",giftNewN:"{n} new gifts",giftFromF:"From {name}",giftReady:"Ready! Send the link, or this code:",giftCopy:"Copy link",giftShare:"Share",giftTry:"Try it",giftCopied:"Link copied. Paste it in a message.",giftCopyHand:"Copy the code above and send it.",giftShareText:"I made you a Tuckle puzzle!",giftShareFrom:"{name} made you a Tuckle puzzle!",giftOpenLead:"Got a puzzle from someone? Paste its link or code.",giftInPh:"Link or code",giftOpenGo:"Open",giftBad:"That doesn’t open a puzzle. Check it was copied whole.",giftFromH:"A puzzle from {name}",giftForYou:"A puzzle for you",giftLabel:"Gift from {name}",giftLabelA:"Gift puzzle",giftSign:"from {name}",giftBack:"Make one back",setSound:"Sound and music",setSoundS:"Sounds, music and how they feel",setGame:"Game",setGameS:"Treats, clashes, marks and your buddy",setAccess:"Accessibility",setAccessS:"Motion, colours, light and dark",setRecordS:"Your stats and a backup code",setHelp:"Help and feedback",setHelpS:"Controls, feedback and support",sfxT:"Sound style",sfxPlay:"Playful",sfxCalm:"Calm",sfxS_play:"Bright plucks and a lively tune",sfxS_calm:"Lower, softer notes and a slower tune",friendsT:"Friends",frLead:"Friends see each other’s buddy, today’s Daily and medals. Nothing else.",frCode:"Your code",frSend:"Send my link",frInPh:"Friend’s code",frAdd:"Add",frAdded:"{n} is your friend now!",frNoCode:"No one has that code. Check it and try again.",frSelf:"That’s your own code.",frOff:"Can’t reach Friends right now. Try again in a bit.",frWait:"Just a moment…",frEmpty:"No friends here yet. Send your link to someone you’d like to play with.",frYou:"You",frNoName:"A friend",frDaily:"Today’s Daily: {t}",frHints:"{n} hints",frNoHints:"no hints",frNotYet:"No Daily yet today",frRemove:"Remove friend",frSure:"Remove",frNo:"Cancel",frShareText:"Be my friend on Tuckle! — {name}",frCopied:"Link copied. Paste it in a message.",frSub0:"Send your link to a friend",frSubN:"{n} of {all} solved today’s Daily",practicePG:"Out of treats, so it doesn’t count this time.",keptNo:'Not there: that square can’t hold a {P}. Nothing more to lose now, so take your time.',seedsHint:'Earn seeds by solving; spend them on things with a price tag.',shopHat:'{h} · {n} seeds (hold to try it on)',shopAsk:'Buy for {n} seeds? Tap again. You have {have}.',shopShort:'Not yet: {n} more seeds to go.',buyNo:'Not now',buyBtn:'Buy',shopTwice:'{n} seeds · tap twice to buy',shopBuddyAsk:'{n} · {p} seeds. You have {have}.',shopBuddyShort:'{n} · {p} seeds. You have {have}, so {m} more to go.',homeBtn:'Bring home',moreToGo:'{m} more to go',shopGot:'{h} is yours!',seedsToGet:'Seeds for today’s Daily',seedsGot:'Today’s Daily seeds are yours',dailyNext:'New one in {t}',streakN:'{n} days in a row',streakWin:'That’s {n} days in a row. Lovely.',moodWin_tired:['Well done. Now maybe a little rest?','Nicely done. Maybe a cup of tea next?','Solved! Your eyes have earned a break.','All tucked in. Maybe you could be too, soon.','Good job. No rush for the next one.','Lovely. Remember to look after yourself.'],moodWin_low:['You did it. I hope that helped a little.','Solved. It’s good to have you here.','One small thing done. It counts.','Well done. Go gently today.','You did it. I’m right here with you.','Nice. One step at a time is plenty.'],applauseT:'Applause',applauseS:'The crowd claps when you solve: a few claps for bronze, a full room for gold',moodAsk:{cat:'Hey you. How are you feeling today?',owl:'Hoo. How is your day going, friend?',stone:'Hi hi! How are you feeling today?',lantern:'Um… how are you doing today?',monkey:'Ooh-ooh! How are you feeling today?',seal:'Arf! Hi hi! How are you today?',lion:'Hey there, friend. How’s your day going?',emperor:'Good day to you. And how are we feeling today?',toucan:'Kek! Hello, hello! How are you feeling?',orca:'Wheee, hi! How are you doing today?',redpanda:'Eep! Hi! How are you feeling today?',snowleo:'Hello, friend. How is your heart today?',yak:'Mmrh. Hello. How are you doing today?',poodle:'Woof! Hi hi! How are you feeling today?',booby:'Ha-honk! Hi, hi! How are you feeling today?',tortoise:'Hello… friend. How… is your day?',iguana:'Pff. Hey. How are you today?',moonbun:'Pon! Hello there. How are you feeling today?',starwhale:'Ooooh… hello, friend. How is your day?',cometfox:'Hey hey! How are you today?',clownfish:'Blub! Hey there! How are you feeling today?',octopus:'Ooh, hello! How are you feeling today?',seahorse:'Oh… hello, friend. How is your day?',dragon:'Hm. Hello, friend. How is your heart today?',unicorn:'Oh… hi. How are you feeling today?',griffin:'Ha! Greetings! How fares my friend today?'},buddyJoined:'{n} joins you! Say hi in the Collection.',buddyLock_jungleGold:'{n} joins you when {all} Jungle stages have gold. {have} so far.',buddyLock_iceGold:'{n} joins you when {all} Antarctica stages have gold. {have} so far.',buddyLock_jungleAll:'{n} joins you when every Jungle stage has gold. {have} of {all} so far.',buddyLock_iceAll:'{n} joins you when every Antarctica stage has gold. {have} of {all} so far.',buddyLock_shanGold:'{n} joins you when {all} Shangri-La stages have gold. {have} so far.',buddyLock_shanAll:'{n} joins you when every Shangri-La stage has gold. {have} of {all} so far.',skinNames:{cloud:'Little cloud',teddy:'Teddy cut',midnight:'Midnight',jade:'Jade',pearl:'Pearl'},skinsT:'Looks',rwSkinT:'New look!',rwSkinS:'Pick it in the Collection: tap {n} and choose a look.',skinLock_midnight:'Finish every Nebula stage to unlock Midnight.',wordDone:'{w}: spelled! Reward: {h}.',wordTodo:'{w}: {n} of {t} letters ({wn}, {d}). Reward: {h}.',moodNames:{great:'Great',okay:'Okay',tired:'Tired',low:'Not great'},moodReply:{great:'Yay! That makes me happy too.',okay:'Okay is perfectly fine. I’m glad you’re here.',tired:'Let’s keep it gentle today. One little puzzle, then rest?',low:'I’m sorry it’s a hard day. I’m right here, so take all the time you need.'},petT:'Pet your buddy',hatNames:{beanie:'Beanie',flowercrown:'Flower crown',icecrown:'Ice crown',earmuffs:'Earmuffs',trapper:'Explorer’s fur hat',fishhat:'Fish hat',explorer:'Explorer hat',crown:'Tiny crown',mane:'Lion mane',bamboohat:'Bamboo hat',momohat:'Momo hat',yetihat:'Yeti hat',blossomcrown:'Blossom crown',mallowhat:'Marshmallow hat',sunhat:'Sun hat',volcanohat:'Volcano hat',embercrown:'Ember crown',spacehelmet:'Space helmet',moonband:'Moon headband',novacrown:'Nova crown',planethalo:'Planet halo',shellcrown:'Shell crown',clamhat:'Clam hat',kelpwreath:'Kelp wreath',snorkel:'Snorkel mask',hornhood:'Dragon-horn hood',wizardhat:'Wizard hat',runecircle:'Rune circlet',knighthelm:'Knight’s helmet'},hatWorn:'{h} · hold and slide (or drag it on your buddy) to adjust; tap to take it off',boardNames:{classic:'Classic',city:'City',cloud:'Cloud',leafy:'Leafy',frost:'Frost',blossom:'Blossom',lava:'Lava',starlight:'Starlight',lagoon:'Lagoon',spellbook:'Spellbook'},hatOff:'{h} · tap to put it on',hatLocked:'{h} · spell {w} to earn it (hold to try it on)',hatEarned:'New in your Collection: {h}!',hatSoon:'{h} · you spelled {w}! It’s on its way',names:{owl:'Hoot',cat:'Miso',lantern:'Lumi',stone:'Mochi',monkey:'Kiki',seal:'Nori',lion:'Leo',emperor:'Monty',toucan:'Tiko',orca:'Oli',redpanda:'Pema',snowleo:'Tashi',yak:'Norbu',poodle:'Pudding',booby:'Lola',tortoise:'Jorge',iguana:'Iggy',moonbun:'Luna',starwhale:'Mira',cometfox:'Vega',clownfish:'Pip',octopus:'Inky',seahorse:'Marina',dragon:'Zar',unicorn:'Tilly',griffin:'Arlo'}
+  hatsT:'Hats',grpYours:'Yours',grpSeeds:'For seeds',grpEarn:'Still to earn',seedsT:'Seeds',playAgain:'Play again',rwBuddyT:'New buddy!',rwHatT:'New hat!',rwBoardT:'New board!',rwWorldT:'A new world!',rwBuddyS:'{n} is with you now. Say hi in the Collection.',rwThingS:'It’s waiting for you in the Collection.',rwWorldS:'New stages are waiting on the map.',rwWear:'Wear it',rwPlay:'Play with {n}',rwUse:'Use it',rwGo:'Take a look',worldHere:'New world open: {w}',fbT:'Feedback',fbS:'Ideas, bugs, a wrong word in any language: anything helps.',fbGo:'Send feedback',tipT:'Support Tuckle',tipS:'Tuckle is free and has no ads, made by one person. If it brightens your day, a coffee helps it keep growing.',tipGo:'Buy me a coffee',rwOk:'Lovely!',keepGoingP:'or keep going, just for practice',tourSkip:'I know how to play',treatsT:'Treats',treatNames:{auto:'Auto',cookie:'Cookies',banana:'Bananas',fish:'Fish',heart:'Hearts',momo:'Momos',mallow:'Marshmallows',stardrop:'Star candies',madeleine:'Madeleines',dragonfruit:'Dragon fruit'},treatAutoS:'Auto: each world brings its own treat, and cookies at home.',treatPickS:'{t} everywhere you play.',treatLock_banana:'Finish the Jungle’s Medium trail to unlock bananas.',treatLock_fish:'Finish Antarctica’s Medium trail to unlock fish.',treatLock_momo:'Finish Shangri-La’s Medium trail to unlock momos.',rwTreatT:'New treat!',rwTreatS:'Pick it in the Collection, under Treats.',rwTreatOn:'On now, everywhere you play.',lastHeart:'Last heart. Take it slow.',tipHeart:'That cost a heart. You get three per stage, and a wrong {P} cracks one.',outTH:'Out of hearts',outPH:'Three wrong {Ps} and the hearts are gone.',keepGoingH:'Keep going without hearts',gSingleA:'This colour has only one open square left, so its {P} goes there. Tap it twice.',gSingleR:'This row has only one open square left, so its {P} goes there. Tap it twice.',gSingleC:'This column has only one open square left, so its {P} goes there. Tap it twice.',gMarkYou:'Your turn to mark: tap each glowing square once. Your new {P} rules them out.',gMarkMore:'And mark what this one rules out, too.',gLast:'One {P} left. Your turn: find its square.',freePays1:'Each new puzzle at this size brings 1 seed.',freePays2:'Each new puzzle at this size brings 2 seeds.',freePays3:'Each new puzzle at this size brings 3 seeds.',dm1b:'One {P} per colour, and this colour has no other squares.',dmX:'Each × means “no {P} here”.',freeRestart:'Same puzzle again: no seeds for this one now. A new puzzle brings them.',freeNoSeeds:'Seeds come from new puzzles, not from starting over.',practiceT:'Finished',practiceP:'Out of treats, so it doesn’t count: no medal, no seeds.',practicePD:'Out of treats, so today’s doesn’t count yet: no seeds, no streak.',practicePF:'Out of treats, so it doesn’t count: no seeds.',giftT:"Gift a puzzle",giftSub:"Draw one for someone, or open yours",giftMake:"Make one",giftOpen:"Open one",giftLead:"Paint an area for every colour. Tuckle checks it has one answer.",giftPalA:"Colours",giftColA:"Colour {n}",giftErase:"Eraser",giftEmpty:"{n} squares still empty. Paint them, or tap Finish it for me.",giftMissing:"Use all {all} colours: {n} still missing.",giftBroken:"A colour is in two pieces. Join it up.",giftNone:"No answer fits yet. Reshape an area, or erase a few squares and tap Finish it for me.",giftMany:"More than one answer fits. Reshape an area, or erase a few squares and tap Finish it for me.",giftGuess:"One answer, but it takes guessing to find. Reshape an area a little.",giftOk:"One answer, found by logic alone. Ready to send!",giftCant:"Tuckle couldn’t finish this one. Try erasing a few more squares around your drawing.",giftFinish:"Finish it for me",giftAgain:"Another way",giftNoFit:"No answer can fit around this drawing. Try making it a little smaller, or leave a gap at the edges.",giftFinishing:"Finishing…",giftClear:"Clear",giftClearSure:"Tap the bin again to clear the board.",giftFromPh:"Your name",giftNotePh:"A note (optional)",giftGo:"Make the gift",giftNext:"Wrap it up",giftWrapLead:"Sign it, and add a note if you like.",giftRedraw:"Back to the drawing",giftWho:"Who is it for?",giftWhoLead:"Who is it for? Add a note if you like.",giftSendTo:"Send to {n}",giftPickF:"Pick a friend",giftSending:"Sending…",giftSent:"Sent! It’s waiting in {n}’s game.",giftSentB:"Sent",giftSendFail:"Couldn’t send it. Check the connection and try again.",giftInboxLead:"Gifts from your friends:",giftInboxNone:"Gifts from your friends land here.",giftNewN:"{n} new gifts",giftFromF:"From {name}",giftReady:"Ready! Send the link, or this code:",giftCopy:"Copy link",giftShare:"Share",giftTry:"Try it",giftCopied:"Link copied. Paste it in a message.",giftCopyHand:"Copy the code above and send it.",giftShareText:"I made you a Tuckle puzzle!",giftShareFrom:"{name} made you a Tuckle puzzle!",giftOpenLead:"Got a puzzle from someone? Paste its link or code.",giftInPh:"Link or code",giftOpenGo:"Open",giftBad:"That doesn’t open a puzzle. Check it was copied whole.",giftFromH:"A puzzle from {name}",giftForYou:"A puzzle for you",giftLabel:"Gift from {name}",giftLabelA:"Gift puzzle",giftSign:"from {name}",giftBack:"Make one back",setSound:"Sound and music",setSoundS:"Sounds, music and how they feel",setGame:"Game",setGameS:"Treats, clashes, marks and your buddy",setAccess:"Accessibility",setAccessS:"Motion, colours, light and dark",setRecordS:"Your stats and a backup code",setHelp:"Help and feedback",setHelpS:"Controls, feedback and support",sfxT:"Sound style",sfxPlay:"Playful",sfxCalm:"Calm",sfxS_play:"Bright plucks and a lively tune",sfxS_calm:"Lower, softer notes and a slower tune",friendsT:"Friends",frLead:"Friends see each other’s buddy, today’s Daily and medals. Nothing else.",frCode:"Your code",frSend:"Send my link",frInPh:"Friend’s code",frAdd:"Add",frAdded:"{n} is your friend now!",frNoCode:"No one has that code. Check it and try again.",frSelf:"That’s your own code.",frOff:"Can’t reach Friends right now. Try again in a bit.",frWait:"Just a moment…",frEmpty:"No friends here yet. Send your link to someone you’d like to play with.",frYou:"You",frNoName:"A friend",frDaily:"Today’s Daily: {t}",frHints:"{n} hints",frNoHints:"no hints",frNotYet:"No Daily yet today",frRemove:"Remove friend",frSure:"Remove",frNo:"Cancel",frShareText:"Be my friend on Tuckle! — {name}",frCopied:"Link copied. Paste it in a message.",frSub0:"Send your link to a friend",frSubN:"{n} of {all} solved today’s Daily",practicePG:"Out of treats, so it doesn’t count this time.",keptNo:'Not there: that square can’t hold a {P}. Nothing more to lose now, so take your time.',seedsHint:'Earn seeds by solving; spend them on things with a price tag.',shopHat:'{h} · {n} seeds (hold to try it on)',shopAsk:'Buy for {n} seeds? Tap again. You have {have}.',shopShort:'Not yet: {n} more seeds to go.',buyNo:'Not now',buyBtn:'Buy',shopTwice:'{n} seeds · tap twice to buy',shopBuddyAsk:'{n} · {p} seeds. You have {have}.',shopBuddyShort:'{n} · {p} seeds. You have {have}, so {m} more to go.',homeBtn:'Bring home',moreToGo:'{m} more to go',shopGot:'{h} is yours!',seedsToGet:'Seeds for today’s Daily',seedsGot:'Today’s Daily seeds are yours',dailyNext:'New one in {t}',streakN:'{n} days in a row',streakWin:'That’s {n} days in a row. Lovely.',moodWin_tired:['Well done. Now maybe a little rest?','Nicely done. Maybe a cup of tea next?','Solved! Your eyes have earned a break.','All tucked in. Maybe you could be too, soon.','Good job. No rush for the next one.','Lovely. Remember to look after yourself.'],moodWin_low:['You did it. I hope that helped a little.','Solved. It’s good to have you here.','One small thing done. It counts.','Well done. Go gently today.','You did it. I’m right here with you.','Nice. One step at a time is plenty.'],applauseT:'Applause',applauseS:'The crowd claps when you solve: a few claps for bronze, a full room for gold',moodAsk:{cat:'Hey you. How are you feeling today?',owl:'Hoo. How is your day going, friend?',stone:'Hi hi! How are you feeling today?',lantern:'Um… how are you doing today?',monkey:'Ooh-ooh! How are you feeling today?',seal:'Arf! Hi hi! How are you today?',lion:'Hey there, friend. How’s your day going?',emperor:'Good day to you. And how are we feeling today?',toucan:'Kek! Hello, hello! How are you feeling?',orca:'Wheee, hi! How are you doing today?',redpanda:'Eep! Hi! How are you feeling today?',snowleo:'Hello, friend. How is your heart today?',yak:'Mmrh. Hello. How are you doing today?',poodle:'Woof! Hi hi! How are you feeling today?',booby:'Ha-honk! Hi, hi! How are you feeling today?',tortoise:'Hello… friend. How… is your day?',iguana:'Pff. Hey. How are you today?',moonbun:'Pon! Hello there. How are you feeling today?',starwhale:'Ooooh… hello, friend. How is your day?',cometfox:'Hey hey! How are you today?',clownfish:'Blub! Hey there! How are you feeling today?',octopus:'Ooh, hello! How are you feeling today?',seahorse:'Oh… hello, friend. How is your day?',dragon:'Hm. Hello, friend. How is your heart today?',unicorn:'Oh… hi. How are you feeling today?',griffin:'Ha! Greetings! How fares my friend today?'},buddyJoined:'{n} joins you! Say hi in the Collection.',buddyLock_jungleGold:'{n} joins you when {all} Jungle stages have gold. {have} so far.',buddyLock_iceGold:'{n} joins you when {all} Antarctica stages have gold. {have} so far.',buddyLock_jungleAll:'{n} joins you when every Jungle stage has gold. {have} of {all} so far.',buddyLock_iceAll:'{n} joins you when every Antarctica stage has gold. {have} of {all} so far.',buddyLock_shanGold:'{n} joins you when {all} Shangri-La stages have gold. {have} so far.',buddyLock_shanAll:'{n} joins you when every Shangri-La stage has gold. {have} of {all} so far.',skinNames:{cloud:'Little cloud',teddy:'Teddy cut',midnight:'Midnight',jade:'Jade',pearl:'Pearl'},skinsT:'Looks',rwSkinT:'New look!',rwSkinS:'Pick it in the Collection: tap {n} and choose a look.',bondAt:'After {n} puzzles together, {b} learns a win dance. Petting helps a little too.',bondNext:'{b} dances on your next win.',bondDone:'{b} dances when you win.',rwBondT:'Closer friends!',rwBondS:'From now on, {b} dances when you win.',bondNews:'{b} learned a win dance!',skinLock_midnight:'Finish every Nebula stage to unlock Midnight.',wordDone:'{w}: spelled! Reward: {h}.',wordTodo:'{w}: {n} of {t} letters ({wn}, {d}). Reward: {h}.',moodNames:{great:'Great',okay:'Okay',tired:'Tired',low:'Not great'},moodReply:{great:'Yay! That makes me happy too.',okay:'Okay is perfectly fine. I’m glad you’re here.',tired:'Let’s keep it gentle today. One little puzzle, then rest?',low:'I’m sorry it’s a hard day. I’m right here, so take all the time you need.'},petT:'Pet your buddy',hatNames:{beanie:'Beanie',flowercrown:'Flower crown',icecrown:'Ice crown',earmuffs:'Earmuffs',trapper:'Explorer’s fur hat',fishhat:'Fish hat',explorer:'Explorer hat',crown:'Tiny crown',mane:'Lion mane',bamboohat:'Bamboo hat',momohat:'Momo hat',yetihat:'Yeti hat',blossomcrown:'Blossom crown',mallowhat:'Marshmallow hat',sunhat:'Sun hat',volcanohat:'Volcano hat',embercrown:'Ember crown',spacehelmet:'Space helmet',moonband:'Moon headband',novacrown:'Nova crown',planethalo:'Planet halo',shellcrown:'Shell crown',clamhat:'Clam hat',kelpwreath:'Kelp wreath',snorkel:'Snorkel mask',hornhood:'Dragon-horn hood',wizardhat:'Wizard hat',runecircle:'Rune circlet',knighthelm:'Knight’s helmet'},hatWorn:'{h} · hold and slide (or drag it on your buddy) to adjust; tap to take it off',boardNames:{classic:'Classic',city:'City',cloud:'Cloud',leafy:'Leafy',frost:'Frost',blossom:'Blossom',lava:'Lava',starlight:'Starlight',lagoon:'Lagoon',spellbook:'Spellbook'},hatOff:'{h} · tap to put it on',hatLocked:'{h} · spell {w} to earn it (hold to try it on)',hatEarned:'New in your Collection: {h}!',hatSoon:'{h} · you spelled {w}! It’s on its way',names:{owl:'Hoot',cat:'Miso',lantern:'Lumi',stone:'Mochi',monkey:'Kiki',seal:'Nori',lion:'Leo',emperor:'Monty',toucan:'Tiko',orca:'Oli',redpanda:'Pema',snowleo:'Tashi',yak:'Norbu',poodle:'Pudding',booby:'Lola',tortoise:'Jorge',iguana:'Iggy',moonbun:'Luna',starwhale:'Mira',cometfox:'Vega',clownfish:'Pip',octopus:'Inky',seahorse:'Marina',dragon:'Zar',unicorn:'Tilly',griffin:'Arlo'}
 ,galaW:'Galápagos',galaShut:'Opens when you finish Shangri-La’s Easy trail',jg1:'Welcome to the Galápagos. Warm rocks, gentle waves, and toasted marshmallows to keep you going.',ideas_gala:['Black sand','Tide pools','Lava fields','Sea lion beach','Prickly pear','Mangroves','Tortoise trail','Booby colony','Crater lake','Misty highlands','Steam vents','Sunset summit'],lastMallow:'Last marshmallow. Take it slow.',tipMallow:'That cost a marshmallow. You get three per stage, and a wrong {P} takes a bite.',outTMl:'Out of marshmallows',outPMl:'Three wrong {Ps} and the marshmallows are gone.',keepGoingMl:'Keep going without marshmallows',treatLock_mallow:'Finish the Galápagos’ Medium trail to unlock marshmallows.',buddyLock_galaGold:'{n} joins you when {all} Galápagos stages have gold. {have} so far.',buddyLock_galaAll:'{n} joins you when every Galápagos stage has gold. {have} of {all} so far.',nebW:'Nebula',nebShut:'Opens when you finish the Galápagos’ Easy trail',reefW:'Coral Reef',reefShut:'Opens when you finish the Nebula’s Easy trail',valeW:'Dragon Vale',valeShut:'Opens when you finish the Coral Reef’s Easy trail',jv1:'Welcome to Dragon Vale. Old stones, glowing crystals, and sweet dragon fruit for the road.',lastDragonfruit:'Last dragon fruit. Take it slow.',tipDragonfruit:'That cost a dragon fruit. You get three per stage, and a wrong {P} takes a bite.',outTDf:'Out of dragon fruit',outPDf:'Three wrong {Ps} and the dragon fruit is gone.',keepGoingDf:'Keep going without dragon fruit',treatLock_dragonfruit:'Finish Dragon Vale’s Medium trail to unlock dragon fruit.',buddyLock_valeGold:'{n} joins you when {all} Dragon Vale stages have gold. {have} so far.',buddyLock_valeAll:'{n} joins you when every Dragon Vale stage has gold. {have} of {all} so far.',ideas_vale:['Mossy gate','Crystal path','Toadstool ring','Old bridge','Castle steps','Rune stone','Wishing well','Dragon’s lookout','Moonlit tower','Spellbook library','Cave mouth','Zar’s nest'],jr1:'Welcome to the Coral Reef. Warm shallows, swaying kelp, and golden madeleines to keep you going.',lastMadeleine:'Last madeleine. Take it slow.',tipMadeleine:'That cost a madeleine. You get three per stage, and a wrong {P} takes a bite.',outTMd:'Out of madeleines',outPMd:'Three wrong {Ps} and the madeleines are gone.',keepGoingMd:'Keep going without madeleines',treatLock_madeleine:'Finish the Coral Reef’s Medium trail to unlock madeleines.',buddyLock_reefGold:'{n} joins you when {all} Coral Reef stages have gold. {have} so far.',buddyLock_reefAll:'{n} joins you when every Coral Reef stage has gold. {have} of {all} so far.',ideas_reef:['Sunny shallows','Sea glass','Bubble trail','Clownfish home','Kelp forest','Starfish cove','Tide pool','Pearl bed','Coral garden','Turtle crossing','Lagoon light','Sunset reef'],jn1:'Welcome to the Nebula. Soft stars, a sleepy moon, and sweet star candies to keep you going.',ideas_neb:['Stardust','First light','Moon garden','Planet rings','Comet trail','Twin stars','Quiet orbit','Milky Way','Star nursery','Aurora drift','Moonrise','Starfall'],lastStardrop:'Last star candy. Take it slow.',tipStardrop:'That cost a star candy. You get three per stage, and a wrong {P} takes a bite.',outTSd:'Out of star candies',outPSd:'Three wrong {Ps} and the star candies are gone.',keepGoingSd:'Keep going without star candies',treatLock_stardrop:'Finish the Nebula’s Medium trail to unlock star candies.',buddyLock_nebGold:'{n} joins you when {all} Nebula stages have gold. {have} so far.',buddyLock_nebAll:'{n} joins you when every Nebula stage has gold. {have} of {all} so far.'},
 };
 
@@ -4486,6 +4620,8 @@ function checkWin(){
   if(n!==N)return afterPlace();
 
   if(G.kept){pendingPlace=-1;won=true;timerOn=false;Mascot.react('place');Sound.play('row');render();showPractice();return}
+
+  lastBond=bondWin(S.piece)?S.piece:null;
   pendingPlace=-1;Mascot.react('win');setTimeout(()=>Sound.play('win'),180);setTimeout(confetti,160);Chat.moment('win');
   won=true;timerOn=false;setTimeout(updateHeartsNote);
   store.solved=(store.solved||0)+1;
@@ -4522,6 +4658,7 @@ function checkWin(){
   if(!valeWas&&valeOpen())rw.push({k:'world',id:'vale'});
   if(!midWas&&skinOwned('poodle','midnight'))rw.push({k:'skin',id:'poodle:midnight'});
   for(const k of ['banana','fish','momo','mallow','stardrop','madeleine','dragonfruit'])if(!treatWas[k]&&treatOwned(k))rw.push({k:'treat',id:k});
+  if(lastBond)rw.push({k:'bond',id:lastBond});
 
   const P=pz,WIN_BEAT=calm()?500:1300;
   if(rw.length){setTimeout(()=>{if(pz===P&&won&&intro.hidden)Reward.show(rw,()=>{if(won&&pz===P)showWin(false,prevBest)},true,$('board').closest('.boardwrap')||$('board'));else if(pz===P&&won)showWin(false,prevBest)},calm()?200:1050)}
@@ -4604,6 +4741,7 @@ function showWin(already,prevBest,instant){
   const jw=store.jungle.won;
   if(!already&&jw&&jw.id===pz.stage&&jw.buddy)news.push(t('buddyJoined',{n:t('names')[jw.buddy]}));
   if(sp&&!already&&jw&&jw.id===pz.stage&&!jw.had&&tierStages(sp.ti+1)[sp.k])news.push(t('tierOpen',{d:t(TIERS[sp.ti+1]),n:sp.k+1}));
+  if(!already&&lastBond)news.push(t('bondNews',{b:t('names')[lastBond]}));
   if(mode==='daily'&&!already&&!dailyReplay&&streak()>=2)news.push(t('streakWin',{n:streak()}));
   if(sp&&!nxt)hint=nxtS?t('nextLocked',{d:t(TIERS[sp.ti-1]),n:sp.k+2}):t('tierDone',{d:t(TIERS[sp.ti])});
   if(mode==='daily'&&!hint)hint=t('tomorrow');
@@ -4703,6 +4841,8 @@ const Reward=(function(){
 
   function view(r){
     if(r.k==='buddy')return{kick:t('rwBuddyT'),art:buddySVG(r.id,''),name:t('names')[r.id],sub:t('rwBuddyS',{n:t('names')[r.id]})};
+
+    if(r.k==='bond')return{kick:t('rwBondT'),art:buddySVG(r.id,wornHat()).replace('<svg class="pc','<svg class="pc bdance'),name:t('names')[r.id],sub:t('rwBondS',{b:t('names')[r.id]})};
     if(r.k==='hat')return{kick:t('rwHatT'),art:buddySVG(S.piece,r.id),name:t('hatNames')[r.id],sub:t('rwThingS')};
     if(r.k==='board')return{kick:t('rwBoardT'),art:`<div class="bt-prev bt-big" data-board="${r.id}">${BOARD_REG.map(c=>`<i style="--rc:var(--r${c})"></i>`).join('')}</div>`,name:t('boardNames')[r.id],sub:t('rwThingS')};
     if(r.k==='skin'){const[k,id]=r.id.split(':');return{kick:t('rwSkinT'),art:skinArt(k,id),name:t('skinNames')[id],sub:t('rwSkinS',{n:t('names')[k]})}}
@@ -5031,8 +5171,8 @@ const PIECES={
     eyes:[[40,53],[60,53]],pw:5.2,ph:6.2,lid:'#FFB08C',cy:50.5},
   stone:{
     extra:'',
-    top:`<path d="M50 22q-1-8-9-11 8-2 9 8 2-9 10-8-7 3-10 11Z" fill="#7CC47F" stroke="#4E9A55" stroke-width="1.6" stroke-linejoin="round"/>`,
-    body:`<path d="M50 22q-1-8-9-11 8-2 9 8 2-9 10-8-7 3-10 11Z" fill="#7CC47F" stroke="#4E9A55" stroke-width="1.6" stroke-linejoin="round"/>
+    top:`<path class="sprout" d="M50 22q-1-8-9-11 8-2 9 8 2-9 10-8-7 3-10 11Z" fill="#7CC47F" stroke="#4E9A55" stroke-width="1.6" stroke-linejoin="round"/>`,
+    body:`<path class="sprout" d="M50 22q-1-8-9-11 8-2 9 8 2-9 10-8-7 3-10 11Z" fill="#7CC47F" stroke="#4E9A55" stroke-width="1.6" stroke-linejoin="round"/>
       <path d="M50 22c27 0 40 18 40 38 0 20-16 28-40 28S10 80 10 60c0-20 13-38 40-38Z" fill="url(#g-mochi)" stroke="#B3A5CA" stroke-width="2.6"/>
       <ellipse cx="50" cy="80" rx="28" ry="6" fill="#DCCFEA" opacity=".55"/>
       <ellipse cx="33" cy="36" rx="9" ry="5" fill="#fff" opacity=".8" transform="rotate(-25 33 36)"/><ellipse cx="44" cy="30.6" rx="2.4" ry="1.5" fill="#fff" opacity=".85" transform="rotate(-12 44 30.6)"/>
@@ -5963,7 +6103,7 @@ const Mascot=(function(){
   const st=Object.assign(newAttn(),{mode:'idle',until:0,nextGlance:0,nextBlink:0,tx:0,ty:0,x:0,y:0,tilt:0,ttilt:0,lx:0,ly:0,lastPet:0});
 
   function build(t){
-    type=t;T=PIECES[t];
+    type=t;T=PIECES[t];el.dataset.k=t;
     const eyes=T.eyes.map(([x,y])=>eyeMarkup(T,x,y,true)).join('');
     el.innerHTML=`<svg viewBox="${T.peekVB||`0 ${T.peekDy||0} 100 100`}" aria-hidden="true"><g class="m-breathe"><g class="m-head">${hatBack(t,hat)}${T.extra}${hatBody(t,hat)}${eyes}${hat?hatSVG(t,hat):''}</g></g></svg>`;
     svg=el.firstChild;head=svg.querySelector('.m-head');pupils=[...svg.querySelectorAll('.pupil')];
@@ -6058,7 +6198,7 @@ const Mascot=(function(){
         const now=performance.now();
 
         if(mood==='shut'){if(now-st.lastPet>700){play('sigh',1000);heart(true);Sound.play('pet',-1,type)}st.lastPet=now;return}
-        play('hop',740);happy(900);heart();Sound.play('pet',0,type);
+        play('hop',740);happy(900);heart();Sound.play('pet',0,type);bondPet(type);
         if(now-st.lastPet<1500)heart();st.lastPet=now;
       });
       el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&Math.random()<.5)happy(700)});
@@ -6089,7 +6229,7 @@ const Mascot=(function(){
         case'oops':glanceAt(cellEl,900);play('oops',620);blink(true);break;
         case'formed':play('lookin',900);st.tx=0;st.ty=.8;st.mode='glance';st.until=performance.now()+900;break;
         case'hint':glanceAt(cellEl,1700);play('perk',620);break;
-        case'win':happy(2600);document.querySelectorAll('.cell .pc').forEach(pc=>{pc.classList.add('happy');setTimeout(()=>pc.classList.remove('happy'),2600)});play('cheer',2200);st.mode='glance';st.until=performance.now()+2600;st.tx=0;st.ty=0;
+        case'win':happy(2600);document.querySelectorAll('.cell .pc').forEach(pc=>{pc.classList.add('happy');setTimeout(()=>pc.classList.remove('happy'),2600)});play(bondLv(type)?'dance':'cheer',bondLv(type)?2300:2200);st.mode='glance';st.until=performance.now()+2600;st.tx=0;st.ty=0;
           if(!calm()){heart();setTimeout(heart,300);setTimeout(heart,650)}break;
       }
     }
@@ -7503,7 +7643,7 @@ $('n-skins').addEventListener('pointerleave',e=>{if(e.pointerType!=='mouse'||!sk
   const to=e.relatedTarget&&e.relatedTarget.closest&&e.relatedTarget.closest(`#n-pick [data-p="${skinFor}"]`);skinLater(to?1500:250)});
 function nestBuddy(center){
   const keep=$('n-pick').scrollLeft;
-  $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-disc').classList.remove('mystery');buyChip(null);$('n-name').textContent=t('names')[S.piece];
+  $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-disc').classList.remove('mystery');buyChip(null);$('n-name').textContent=t('names')[S.piece];bondChip();
 
   const ks=shelfSort(Object.keys(PIECES),k=>buddyOwned(k)?0:SHOP[k]?1:2);
   $('n-pick').innerHTML=ks.map(k=>buddyOwned(k)
@@ -7525,7 +7665,7 @@ function buyBuddy(k){BuyAsk.open(k,()=>{$('n-seeds-n').textContent=store.seeds;c
 function previewBuddy(k){
 
   if(nestPreview===k&&$('n-buychip')){clearTimeout(buyChip.t);buyChip.t=setTimeout(endPreview,12000);nestFace('happy',900);Sound.play('pet',0,k);return}
-  const d=$('n-disc'),a=$('n-ask');nestPreview=k;moodOpen=false;
+  const d=$('n-disc'),a=$('n-ask');nestPreview=k;moodOpen=false;bondChip();
   const myst=!SHOP[k]&&!buddyOwned(k);
   d.innerHTML=myst?pieceSVG(k):buddySVG(k,wornHat());d.classList.add('trying');d.classList.toggle('mystery',myst);$('n-name').textContent=t('names')[k];
 
@@ -7541,13 +7681,23 @@ function buyChip(k){let c=$('n-buychip');if(!k){if(c)c.remove();return}
   c.innerHTML=`${SEED_ICON}<b>${p}</b><span>· ${can?t('homeBtn'):t('moreToGo',{m:p-store.seeds})}</span>`;
   c.setAttribute('aria-label',t(can?'shopBuddyAsk':'shopBuddyShort',{n:t('names')[k],p,have:store.seeds,m:p-store.seeds}));
   c.onclick=e=>{e.stopPropagation();if(can)buyBuddy(k)};c.classList.remove('pop');void c.offsetWidth;if(!calm())c.classList.add('pop')}
+
+const BOND_NOTE='<svg class="bond-note" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 12.2V3.4l7-1.6v8.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="4.4" cy="12.3" rx="2.4" ry="1.9" fill="currentColor"/><ellipse cx="11.4" cy="10.6" rx="2.4" ry="1.9" fill="currentColor"/></svg>';
+function bondChip(){let c=$('n-bond');const k=S.piece;
+  if(nestPreview||!buddyOwned(k)){if(c)c.hidden=true;return}
+  if(!c){c=document.createElement('button');c.id='n-bond';c.className='n-buychip short n-bond';$('n-disc').after(c);
+    c.onclick=e=>{e.stopPropagation();Sound.play('pet',0,S.piece);pointAt(c,c.getAttribute('aria-label'),4500)}}
+  const p=Math.min(bondPts(k),BOND_GOAL),lv=bondLv(k),b=t('names')[k];c.hidden=false;
+  c.innerHTML=`<svg class="bond-h" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z"/></svg>`+
+    (lv?BOND_NOTE:`<span class="bond-bar"><i style="width:${(p/BOND_GOAL*100).toFixed(0)}%"></i></span><b>${Math.floor(p)}/${BOND_GOAL}</b>`);
+  c.setAttribute('aria-label',lv?t('bondDone',{b}):p>=BOND_GOAL?t('bondNext',{b}):t('bondAt',{b,n:BOND_GOAL}))}
 function goalChip(k){buyChip(null);const L=BUDDY_LOCKS[k],[have,all]=BUDDY_GOAL[L](),w=L.replace(/(Gold|All)$/,'');
   const c=document.createElement('button');c.id='n-buychip';c.className='n-buychip short goal';c.disabled=true;$('n-disc').after(c);
   c.innerHTML=`<svg class="seed-i" viewBox="0 0 24 24" aria-hidden="true">${medalArt(3)}</svg><b>${have}/${all}</b><span>· ${worldName(w)}</span>`;
   c.setAttribute('aria-label',t('buddyLock_'+L,{n:t('names')[k],have,all}));if(!calm())c.classList.add('pop')}
 
 function endPreview(){buyChip(null);if(!nestPreview)return;nestPreview=null;$('n-disc').classList.remove('trying','mystery');$('n-pick').querySelectorAll('.armed').forEach(x=>x.classList.remove('armed'));
-  $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-name').textContent=t('names')[S.piece]}
+  $('n-disc').innerHTML=buddySVG(S.piece,wornHat());$('n-name').textContent=t('names')[S.piece];bondChip()}
 
 const shelfSort=(list,rank)=>list.map((x,i)=>[x,i]).sort((a,b)=>rank(a[0])-rank(b[0])||a[1]-b[1]).map(p=>p[0]);
 function drawHats(W){
@@ -7590,7 +7740,7 @@ function drawHats(W){
 function stillBuddy(){const p=$('n-disc').querySelector('.pc');if(p){p.style.translate=p.style.rotate='';p.classList.remove('perk','startle')}}
 function bobNest(){const p=$('n-disc').querySelector('.pc');if(!p)return;p.classList.remove('bob');void p.getBBox();p.classList.add('bob');clearTimeout(bobNest.t);bobNest.t=setTimeout(()=>p.classList.remove('bob'),1000)}
 
-$('n-disc').onclick=()=>{if(performance.now()-hatDrag.end<350)return;bobNest();nestFace('happy',900);nestHeart();Sound.play('pet',0,nestPreview||S.piece)};
+$('n-disc').onclick=()=>{if(performance.now()-hatDrag.end<350)return;bobNest();nestFace('happy',900);nestHeart();Sound.play('pet',0,nestPreview||S.piece);if(!nestPreview){bondPet(S.piece);bondChip()}};
 
 function nestFace(c,ms){const p=$('n-disc').querySelector('.pc');if(!p)return;p.classList.remove('happy','sleepy','soft');p.classList.add(c);clearTimeout(nestFace.t);nestFace.t=setTimeout(()=>p.classList.remove(c),ms)}
 function nestHeart(sad){const d=$('n-disc'),h=document.createElement('span');h.className='m-heart'+(sad?' sad':'');h.textContent='♥';h.style.left=(35+Math.random()*30)+'%';d.appendChild(h);setTimeout(()=>h.remove(),sad?1700:1100)}
@@ -7794,6 +7944,7 @@ if(new URLSearchParams(location.search).has('test'))window.tuckle={
   lang:l=>setLang(l),
   win:()=>showWin(false,0),
   mascot:(k,m)=>{if(k)Mascot.setType(k);Mascot.setMood(m||null)},
+  bond:(k,n)=>{store.bond=Object.assign({},store.bond,{[k]:n});save();return{pts:bondPts(k),lv:bondLv(k)}},
   lose:()=>showLost(),
 
   art:()=>({PIECES,SKINS,HATS,applySkin,buddySVG,pieceSVG})

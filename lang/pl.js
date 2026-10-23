@@ -242,6 +242,7 @@
 "skip":"Pomiń",
 "bestScoreL":"rekord punktów",
 "namePh":"Twoje imię (opcjonalnie)",
+"namePhS":"Opcjonalnie",
 "yourName":"Twoje imię",
 "helloName":"Witaj ponownie, {name}!",
 "notYou":"to nie ty?",

@@ -242,6 +242,7 @@
 "skip":"Omitir",
 "bestScoreL":"mejor puntuación",
 "namePh":"Tu nombre (opcional)",
+"namePhS":"Opcional",
 "yourName":"Tu nombre",
 "helloName":"¡Hola de nuevo, {name}!",
 "notYou":"¿no eres tú?",

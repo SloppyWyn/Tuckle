@@ -242,6 +242,7 @@
 "skip":"略過",
 "bestScoreL":"最高分",
 "namePh":"你的名字（可不填）",
+"namePhS":"可不填",
 "yourName":"你的名字",
 "helloName":"歡迎回來，{name}！",
 "notYou":"不是你？",

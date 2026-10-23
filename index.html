@@ -457,13 +457,22 @@ html.calm .langpick:hover{transform:none}}
 @keyframes ddIn{from{opacity:0;transform:translateY(-4px)}}
 html.calm .dd-list{animation:none}
 
-@media (min-width:900px){.intro:has(> .step.menu:not([hidden])){align-items:flex-start;padding-top:calc(28px + env(safe-area-inset-top,0px))}.intro .step.menu{padding-top:12px}}
+@media (min-width:900px) and (hover:hover){.intro:has(> .step.menu:not([hidden])){align-items:flex-start;padding-top:calc(28px + env(safe-area-inset-top,0px))}.intro .step.menu{padding-top:12px}}
 #start-game{min-width:min(250px,80vw);justify-content:center;text-align:center}
 #tip-go{display:inline-block;text-decoration:none;margin-top:2px}
 
 .btn.help,.langpick .dd-btn,.dn{position:relative}
 .btn.help::after,.langpick .dd-btn::after,.dn::after{content:"";position:absolute;inset:-6px -4px}
 .langpick .dd-btn::after{inset:-9px -4px}
+
+.seg button,.m-back,#sheet-close,.set-back,.set-x,#hint .btn,.out-link{position:relative}
+.seg button::after{content:"";position:absolute;inset:-8px 0}
+.chips button::after{content:"";position:absolute;inset:-7px 0}
+.opt input[type=checkbox]::after{content:"";position:absolute;inset:-8px -2px}
+.m-back::after,#sheet-close::after,.set-back::after,.set-x::after,.card.res .res-look::after{content:"";position:absolute;inset:-3px;border-radius:50%}
+.news-btn::after{content:"";position:absolute;inset:-6px 0}
+#hint .btn::after{content:"";position:absolute;inset:-5px 0}
+.out-link::after{content:"";position:absolute;inset:-7px 0}
 
 .intro-inner.stepaway{position:fixed;margin:0;z-index:-1;pointer-events:none;transform:none;animation:stepAway .24s cubic-bezier(.2,.7,.3,1) forwards!important}
 @keyframes stepAway{to{opacity:0}}
@@ -526,8 +535,8 @@ h1{font-size:34px}
 #restart.armed{background:var(--bad-soft);color:var(--bad)}
 @media (min-width:900px) and (min-aspect-ratio:1/1) and (min-height:521px){
 
-  :root{--bw:max(280px,min(860px,calc(100vh - 230px),calc(100vw - 32px - 2*var(--side))))}
-  @supports (height:100dvh){:root{--bw:max(280px,min(860px,calc(100dvh - 230px),calc(100vw - 32px - 2*var(--side))))}}
+  :root{--padw:92px;--bw:max(280px,min(860px,calc(100vh - 230px),calc(100vw - var(--padw) - 2*var(--side))))}
+  @supports (height:100dvh){:root{--bw:max(280px,min(860px,calc(100dvh - 230px),calc(100vw - var(--padw) - 2*var(--side))))}}
   .wrap{max-width:calc(var(--bw) + 32px);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
   .layout{margin-block:auto}
   .play{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
@@ -556,6 +565,11 @@ h1{font-size:34px}
   #restart{display:inline-flex}
   .side-panel .tools #restart{color:var(--muted)}.side-panel .tools #restart.newp{color:var(--ink)}
   .side-panel .tools #restart.armed{background:var(--bad-soft);color:var(--bad);box-shadow:0 3px 0 color-mix(in srgb,var(--bad) 35%,transparent)}
+
+  @media (hover:none) and (pointer:coarse){
+    :root{--padw:40px}
+    .panel-tab{display:none}
+  }
 }
 html.calm .side-panel,html.calm .panel-tab svg{transition:none}
 .rowdone{pointer-events:none;z-index:3;margin:-3px;border-radius:clamp(7px,1.5vw,11px);box-shadow:0 0 0 2.5px var(--accent),0 0 14px 2px color-mix(in srgb,var(--accent) 45%,transparent);opacity:0}
@@ -574,6 +588,9 @@ html.calm .rowdone.flash{animation:rowfade 1.4s}
 .resume-disc .pc{width:84%;height:84%}
 .resume-sum{margin:0;font:600 15px var(--display);color:var(--ink);background:var(--surface);padding:8px 16px;border-radius:999px}
 html.calm .resume-disc{animation:none}
+
+.boardwrap > .status .time{transition:opacity .3s}
+@media (min-width:641px){.boardwrap:has(> .m-say.in:not(.solo)) > .status .time{opacity:0}}
 
 .menu{max-width:500px;gap:10px;padding-top:40px}
 
@@ -1622,7 +1639,7 @@ html.calm .res-chip{animation:none}
 @keyframes mtGlint{0%,45%{background-position:100% 0}80%,100%{background-position:0% 0}}
 html.calm .mt{animation:none;background-position:100% 0}
 
-@media (min-width:900px){.intro .gearbtn{left:max(16px,calc(50% - 250px))}.intro .frbtn{right:max(16px,calc(50% - 250px))}
+@media (min-width:900px) and (hover:hover){.intro .gearbtn{left:max(16px,calc(50% - 250px))}.intro .frbtn,.intro .langpick{right:max(16px,calc(50% - 250px))}
   .intro:is([data-step="menu"],[data-step="play"],[data-step="nest"],[data-step="gift"]) :is(.gearbtn,.frbtn){top:calc(36px + env(safe-area-inset-top,0px))}}
 
 .boardwrap{margin-top:80px}
@@ -2343,7 +2360,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
     <div class="set-page set-main" data-p="">
       <div class="sheet-head"><h3 data-l10n="settings" id="sheet-title">Settings</h3><button class="btn ghost iconbtn" id="sheet-close" data-l10n-aria="close">✕</button></div>
       <div class="panel">
-        <div class="opt"><label for="name-set" data-l10n="yourName">Your name</label><input id="name-set" class="nameset" maxlength="16" autocomplete="nickname" spellcheck="false" data-l10n-ph="namePh"></div>
+        <div class="opt"><label for="name-set" data-l10n="yourName">Your name</label><input id="name-set" class="nameset" maxlength="16" autocomplete="nickname" spellcheck="false" data-l10n-ph="namePhS"></div>
         <div class="opt"><label for="lang-set" data-l10n="langT">Language</label>
           <select id="lang-set" class="langsel"><option value="en">English</option><option value="ru">Русский</option><option value="uk">Українська</option><option value="pl">Polski</option><option value="de">Deutsch</option><option value="es">Español</option><option value="pt">Português (Brasil)</option><option value="fr">Français</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="zh">繁體中文</option></select></div>
         <div class="opt"><span id="th-l"><span data-l10n="theme">Theme</span><span class="sub" id="th-sub"></span></span><button class="dn" role="switch" aria-checked="false" data-l10n-aria="darkT"><span class="dn-stars" aria-hidden="true"></span><span class="dn-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><mask id="dn-m2" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24"><rect width="24" height="24" fill="#fff"/><circle class="dn-bite" cx="12" cy="12" r="6.4" fill="#000"/></mask><g class="dn-rays" stroke="#F0A92E" stroke-width="2" stroke-linecap="round"><path d="M12 2.2v2.3" transform="rotate(0 12 12)"/><path d="M12 2.2v2.3" transform="rotate(45 12 12)"/><path d="M12 2.2v2.3" transform="rotate(90 12 12)"/><path d="M12 2.2v2.3" transform="rotate(135 12 12)"/><path d="M12 2.2v2.3" transform="rotate(180 12 12)"/><path d="M12 2.2v2.3" transform="rotate(225 12 12)"/><path d="M12 2.2v2.3" transform="rotate(270 12 12)"/><path d="M12 2.2v2.3" transform="rotate(315 12 12)"/></g><g mask="url(#dn-m2)"><circle class="dn-core" cx="12" cy="12" r="5"/></g></svg></span></button></div>
@@ -2418,7 +2435,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3151da4250"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e676090fd1"><\/script>')})();
 </script>
 <script>
 
@@ -3141,7 +3158,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='3151da4250';let updateTo=null;
+const BUILD='e676090fd1';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -3187,7 +3204,7 @@ en:{
   jh7:'Now with three: three colours squeezed into three lines own those lines.',jh12:'The Jungle’s last trail. Take your time.',
   outT:'Out of cookies',outP:'Three wrong {Ps} and the plate is empty.',keepGoing:'Keep going without cookies',outTJ:'Out of bananas',outPJ:'Three wrong {Ps} and the bunch is gone.',keepGoingJ:'Keep going without bananas',startOver:'Start over',restartSure:'Tap again',restartT:'Start over',panelT:'Tools',
   cellAria:'Row {r}, column {c}, {area}, {state}',stEmpty:'empty',stMarked:'marked',stBlocked:'blocked',
-  pickBuddy:'Pick your buddy',askName:'What should we call you?',nameWhy:'Your buddy would like to know. It stays on this device.',skip:'Skip',bestScoreL:'best score',namePh:'Your name (optional)',yourName:'Your name',helloName:'Welcome back, {name}!',notYou:'not you?',welcomeName:'Welcome back, {name}!',solvedName:'Nicely done, {name}!',tapBegin:'Tap anywhere to begin',introSub:'Find every buddy a cosy spot.',start:'Start game',tapBuddy:'Tap a buddy to choose who you play with.',you:'You',
+  pickBuddy:'Pick your buddy',askName:'What should we call you?',nameWhy:'Your buddy would like to know. It stays on this device.',skip:'Skip',bestScoreL:'best score',namePh:'Your name (optional)',namePhS:'Optional',yourName:'Your name',helloName:'Welcome back, {name}!',notYou:'not you?',welcomeName:'Welcome back, {name}!',solvedName:'Nicely done, {name}!',tapBegin:'Tap anywhere to begin',introSub:'Find every buddy a cosy spot.',start:'Start game',tapBuddy:'Tap a buddy to choose who you play with.',you:'You',
   rulesTitle:'Three little rules',rc1t:'One per colour',rc1s:'Each colour area gets exactly one buddy.',rc2t:'One per row and column',rc2s:'No two buddies share a row or a column.',rc3t:'No touching',rc3s:'Not even corner to corner.',
   tapGuide:'Tap a square to mark <b>×</b>. Tap twice quickly to tuck {aP} in.',remind:'Forgot a rule? Tap <b>?</b> at the top of the game any time.',
   letsPlay:"Let's play",backToGame:'Back to my game',coach:'The rules live here whenever you need them.',hmph:'hmph!',
@@ -4697,6 +4714,7 @@ function checkWin(){
   const N=pz.N;let n=0;
   for(let i=0;i<N*N;i++)if(cells[i]===2){if(!pz.solSet.has(i))return afterPlace();n++}
   if(n!==N)return afterPlace();
+  if(pz.tour)Tour.end(true);
 
   if(G.kept){pendingPlace=-1;won=true;timerOn=false;Mascot.react('place');Sound.play('row');render();showPractice();return}
 
@@ -6332,12 +6350,14 @@ function placeControls(){
 }
 placeControls();
 
+const touchMQ=matchMedia('(hover:none) and (pointer:coarse)');
 function setPanel(open){
+  open=open||touchMQ.matches;
   const sp=$('side-panel'),tab=$('panel-tab');sp.classList.toggle('open',open);tab.setAttribute('aria-expanded',open);
   [...sp.children].forEach(c=>{if(c!==tab)c.inert=deskMQ.matches&&!open});
 }
 $('panel-tab').onclick=()=>{S.panelOpen=!$('side-panel').classList.contains('open');save();setPanel(S.panelOpen)};
-setPanel(!!S.panelOpen);deskMQ.addEventListener('change',()=>setPanel(!!S.panelOpen));
+setPanel(!!S.panelOpen);deskMQ.addEventListener('change',()=>setPanel(!!S.panelOpen));touchMQ.addEventListener('change',()=>setPanel(!!S.panelOpen));
 function setMode(m,opt={}){
   mode=m;updateStats();
   if(m==='jungle'){const id=store.jungle.sel,j=store.jungleProgress;newStage(id,opt.resume&&j&&j.id===id?j:null)}
@@ -6960,9 +6980,9 @@ function frCard(f,you){const today=f.dd===todayStr();
     `<span class="fr-more">${st.streak>1?`<span class="fr-streak">${esc(t('streakN',{n:st.streak}))}</span>`:''}<span class="fr-meds">${meds}</span></span></span>`+
     (you?'':`<button class="fr-x" aria-label="${esc(t('frRemove'))}">×</button><span class="fr-ask"><button class="fr-yes" tabindex="-1">${esc(t('frSure'))}</button><button class="fr-no" tabindex="-1">${esc(t('frNo'))}</button></span>`)+`</div>`}
 function frDraw(){if(!friendsOn())return;const L=store.frList||[],code=store.fr&&store.fr.code;
-  $('n-c-friends').textContent=L.length;
+  $('n-c-friends').textContent=L.length||'';
   $('fr-code').textContent=code?code.slice(0,3)+' '+code.slice(3):'··· ···';$('fr-send').disabled=!code;
-  if(nestOpen==='friends')$('n-sheet-c').textContent=L.length;
+  if(nestOpen==='friends')$('n-sheet-c').textContent=L.length||'';
   const d=store.daily[todayStr()],me={...frMe(),dd:d!=null?todayStr():null,ds:d,dh:dailyHintsUsed()};me.look=frMe().look;me.dd=me.daily_day;me.ds=me.daily_secs;me.dh=me.daily_hints;
 
   const sorted=[...L].sort((a,b)=>{const A=a.dd===todayStr(),B=b.dd===todayStr();return A!==B?B-A:A?a.ds-b.ds:(a.name||'').localeCompare(b.name||'')});
@@ -7090,7 +7110,7 @@ function fitMapRoom(){const w=$('m-wrap'),c=w.querySelector('.m-cta'),n=w.queryS
 const MAP_W=320,MAP_LAYOUTS=[{c:6,q:1,y0:42,rs:64},{c:4,q:1.2,y0:47,rs:72},{c:4,q:1.4,y0:52,rs:84},{c:3,q:1.45,y0:56,rs:86},{c:3,q:1.7,y0:66,rs:100}];
 let mapL=0,mapPick=null,mapUnpick=null;
 const mapGeo=(i=mapL)=>MAP_LAYOUTS[i];
-const mapHeight=i=>{const g=MAP_LAYOUTS[i];return g.y0+(12/g.c-1)*g.rs+74+(g.q-1)*30};
+const mapHeight=i=>{const g=MAP_LAYOUTS[i];return g.y0+(12/g.c-1)*g.rs+80+(g.q-1)*30};
 
 const mapColsFit=()=>{const w=$('m-wrap'),r=w.getBoundingClientRect(),res=parseFloat(w.style.getPropertyValue('--res'))||150;if(!r.width)return 0;
   const size=i=>mapGeo(i).q*Math.min(r.width/MAP_W,(r.height-res)/mapHeight(i));

@@ -21,7 +21,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 41</div>
+<body><div style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em">PREVIEW BUILD 42</div>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -411,7 +411,8 @@ body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}input,
 html.calm .backup-box{animation:none}
 #sheet-close{background:var(--bad-soft);border-color:color-mix(in srgb,var(--bad) 45%,transparent);color:var(--bad);font-size:17px;font-weight:800;transition:background-color .2s,border-color .2s}
 @media (hover:hover){#sheet-close:hover{background:color-mix(in srgb,var(--bad) 26%,transparent);border-color:var(--bad)}}
-@media (max-width:560px){.sheet-back{align-items:flex-end}.sheet{height:auto;max-height:calc(100% - env(safe-area-inset-top,0px) - 12px);padding-top:16px;border-radius:22px 22px 0 0;animation-name:sheetUp}}
+
+@media (max-width:560px){.sheet-back{align-items:flex-end}.sheet{width:100%;height:auto;max-height:calc(100% - env(safe-area-inset-top,0px) - 12px);min-height:min(100%,calc(100% - env(safe-area-inset-top,0px) - 84px));padding-top:16px;border-radius:22px 22px 0 0;animation-name:sheetUp}}
 @keyframes fadeIn{from{opacity:0}}@keyframes sheetIn{from{transform:translateX(40px);opacity:0}}@keyframes sheetUp{from{transform:translateY(60px);opacity:0}}
 .sheet-back.closing{pointer-events:none;animation:fadeOut .3s ease forwards}.sheet-back.closing .sheet{animation:sheetOut .3s cubic-bezier(.4,0,.6,1) forwards}
 @keyframes fadeOut{to{opacity:0}}@keyframes sheetOut{to{transform:translateX(40px);opacity:0}}@keyframes sheetDown{to{transform:translateY(60px);opacity:0}}
@@ -2341,7 +2342,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=fc5113a8ff"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=9b6a68d3b5"><\/script>')})();
 </script>
 <script>
 
@@ -3064,7 +3065,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='fc5113a8ff';let updateTo=null;
+const BUILD='9b6a68d3b5';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

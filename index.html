@@ -998,6 +998,82 @@ html.calm .m-map .node.pick .disc,html.calm .m-map .node.pick .ring,html.calm .m
 @media (hover:hover){.m-map .node:not(.locked):hover .disc{transform:scale(1.08)}}
 .m-map .peek{animation:float 3.6s ease-in-out infinite}
 html.calm .m-map .peek{animation:none}
+
+.m-map .node[data-k],.m-map .node .face,.m-map .node .nest,.m-map .rip{transform-box:fill-box;transform-origin:50% 50%}
+.m-map svg.grow .tm{stroke-dasharray:1 1;animation:segIn var(--sd,120ms) linear calc(var(--t0,100ms) + var(--k)*var(--sd,120ms)) backwards}
+@keyframes segIn{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.m-map svg.grow .peek{animation:rvFade .5s ease calc(var(--k)*var(--st,0ms) + var(--pa,0ms)) backwards,float 3.6s ease-in-out infinite}
+@keyframes rvFade{from{opacity:0}}
+.m-map svg.grow[data-rv="jungle"]{--sd:120ms;--t0:100ms;--st:120ms;--pa:350ms}
+.m-map svg.grow[data-rv="jungle"] .node[data-k] .face{animation:jFace .45s cubic-bezier(.3,1.35,.5,1) calc(60ms + var(--k)*120ms) backwards}
+@keyframes jFace{from{transform:scale(.6);opacity:0}}
+.m-map svg.grow[data-rv="jungle"] .node[data-k] .nest .lf{animation-duration:.8s;animation-delay:calc(100ms + var(--k)*120ms)}
+.m-map svg.grow[data-rv="jungle"] .node[data-k] .nest>g+g .lf{animation-delay:calc(220ms + var(--k)*120ms)}
+
+.m-map svg.grow[data-rv="ice"]{--sd:90ms;--t0:750ms;--st:90ms;--pa:700ms}
+.m-map svg.grow[data-rv="ice"] .tm{animation-timing-function:steps(3,end)}
+.m-map svg.grow[data-rv="ice"] .node[data-k]{animation:floeIn 1s cubic-bezier(.25,.6,.3,1) calc(var(--k)*90ms) backwards}
+@keyframes floeIn{from{transform:translateX(calc(var(--s)*22px));opacity:0}65%{transform:none}82%{transform:translateY(2px)}}
+.m-map svg.grow[data-rv="ice"] .node[data-k] .nest .lf{animation:none}
+.m-map svg.grow[data-rv="ice"] .rip{animation:ripple .9s ease-out calc(var(--k)*90ms + 650ms) backwards}
+@keyframes ripple{0%{opacity:0;transform:none}10%{opacity:.8}100%{opacity:0;transform:scale(1.45)}}
+
+.m-map svg.grow[data-rv="shan"]{--st:110ms;--pa:900ms}
+.m-map svg.grow[data-rv="shan"] .tm{animation:none}
+.m-map svg.grow[data-rv="shan"] :is(.trail,.paws){animation:rvFade .7s ease 1.45s backwards}
+.m-map svg.grow[data-rv="shan"] .node[data-k] .nest{animation:petalFall 1.1s ease-in-out calc(var(--k)*110ms) backwards}
+@keyframes petalFall{from{transform:translate(6px,-34px)}45%{transform:translate(-5px,-18px)}75%{transform:translate(3px,-6px)}}
+.m-map svg.grow[data-rv="shan"] .node[data-k] .nest .lf{animation:petalSpin 1.1s ease-in-out calc(var(--k)*110ms) backwards}
+.m-map svg.grow[data-rv="shan"] .node[data-k] .nest>g+g .lf{animation-delay:calc(var(--k)*110ms + 140ms)}
+@keyframes petalSpin{from{transform:rotate(-50deg);opacity:0}30%{opacity:1}55%{transform:rotate(15deg)}80%{transform:rotate(-6deg)}}
+.m-map svg.grow[data-rv="shan"] .node[data-k] .face{animation:softIn .5s ease calc(var(--k)*110ms + 700ms) backwards}
+@keyframes softIn{from{opacity:0;transform:scale(.92)}}
+
+.m-map svg.grow[data-rv="gala"]{--sd:100ms;--t0:560ms;--st:100ms;--pa:600ms}
+.m-map svg.grow[data-rv="gala"] .node[data-k]{transform-origin:50% 100%;animation:stoneUp .8s cubic-bezier(.3,.7,.4,1) calc(var(--k)*100ms) backwards}
+@keyframes stoneUp{from{transform:translateY(14px) scaleY(.2);opacity:0}55%{transform:translateY(-2px) scaleY(1.06)}78%{transform:scale(1.04,.94)}}
+.m-map svg.grow[data-rv="gala"] .node[data-k] .nest .lf{animation:none}
+.m-map svg.grow[data-rv="gala"] .dust{animation:dust .65s ease-out calc(var(--k)*100ms + 380ms + var(--di)*60ms) backwards}
+@keyframes dust{0%{opacity:0;transform:none}15%{opacity:.9}100%{opacity:0;transform:translate(calc(var(--dx)*8px),-6px)}}
+.m-map svg.grow .lava path{stroke-dasharray:1 1;animation:lava .9s ease-in-out calc(500ms + var(--k)*100ms) backwards}
+@keyframes lava{0%{stroke-dashoffset:1;opacity:1}15%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+
+.m-map svg.grow[data-rv="neb"] .tm{animation:none}
+.m-map svg.grow[data-rv="neb"] .shoot{animation:shoot 1s cubic-bezier(.4,0,.6,1) 80ms backwards}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0)}15%{opacity:1}75%{opacity:1}100%{opacity:0;transform:translate(250px,70px)}}
+.m-map svg.grow[data-rv="neb"] .node[data-k] .face{animation:starOut .8s ease-out calc(var(--r)*110ms + 350ms) backwards}
+@keyframes starOut{0%{opacity:0;transform:scale(.85)}50%{opacity:1;transform:scale(1.05)}}
+.m-map svg.grow[data-rv="neb"] .node[data-k] .nest{animation:rvFade .8s ease calc(var(--r)*110ms + 450ms) backwards}
+.m-map svg.grow[data-rv="neb"] .node[data-k] .nest .lf{animation:none}
+.m-map .spk{transform-box:fill-box;transform-origin:50% 50%}
+.m-map svg.grow[data-rv="neb"] .spk{animation:spark .8s ease-out calc(var(--r)*110ms + 350ms) backwards}
+@keyframes spark{0%{opacity:0;transform:scale(0)}35%{opacity:1;transform:scale(1.25) rotate(45deg)}100%{opacity:0;transform:scale(.4) rotate(90deg)}}
+.m-map svg.grow[data-rv="neb"] .trail path{animation:glimmer .9s ease calc(var(--r)*110ms + 500ms) backwards}
+@keyframes glimmer{0%{opacity:0}40%{opacity:1}65%{opacity:.3}}
+.m-map svg.grow[data-rv="neb"] .paws{animation:rvFade .7s ease 1.5s backwards}
+.m-map svg.grow[data-rv="neb"] .peek{animation:rvFade .5s ease calc(var(--r)*110ms + 700ms) backwards,float 3.6s ease-in-out infinite}
+
+.m-map svg.grow[data-rv="reef"]{--st:110ms;--pa:1000ms}
+.m-map svg.grow[data-rv="reef"] .tm{animation:none}
+.m-map svg.grow[data-rv="reef"] :is(.trail,.paws){animation:rvFade .7s ease 1.4s backwards}
+.m-map svg.grow[data-rv="reef"] .node[data-k]{animation:floatUp 1.3s cubic-bezier(.25,.5,.35,1) calc(var(--k)*110ms) backwards}
+@keyframes floatUp{from{transform:translateY(26px);opacity:0}70%{transform:translateY(-3px)}}
+.m-map svg.grow[data-rv="reef"] .node[data-k] .nest>.lf{animation:none}
+.m-map svg.grow[data-rv="reef"] .node[data-k] .nest>g .lf{animation:coralUp 1.1s ease-out calc(var(--k)*110ms + 800ms) backwards}
+@keyframes coralUp{from{transform:rotate(-30deg) scaleY(.4);opacity:0}60%{transform:rotate(8deg)}80%{transform:rotate(-3deg)}}
+.m-map .bub{transform-box:fill-box}
+.m-map svg.grow[data-rv="reef"] .bub{animation:bubUp 1.3s ease-in calc(var(--k)*110ms + 120ms + var(--bi)*170ms) backwards}
+@keyframes bubUp{0%{opacity:0;transform:none}15%{opacity:1}100%{opacity:0;transform:translate(var(--bx),-46px)}}
+
+.m-map svg.grow[data-rv="vale"]{--sd:150ms;--t0:250ms;--st:150ms;--pa:450ms}
+.m-map svg.grow[data-rv="vale"] .node[data-k] .face{animation:wake .5s ease calc(190ms + var(--k)*150ms) backwards}
+@keyframes wake{from{opacity:.28}}
+.m-map svg.grow[data-rv="vale"] .node[data-k] .nest>.lf{animation:wake .5s ease calc(190ms + var(--k)*150ms) backwards}
+.m-map svg.grow[data-rv="vale"] .node[data-k] .nest>g .lf{animation:crystUp .65s ease-out calc(290ms + var(--k)*150ms) backwards}
+@keyframes crystUp{from{transform:scaleY(0);opacity:0}70%{transform:scaleY(1.1)}}
+.m-map .glw{transform-box:fill-box;transform-origin:50% 50%}
+.m-map svg.grow[data-rv="vale"] .glw{animation:glw .9s ease-out calc(210ms + var(--k)*150ms) backwards}
+@keyframes glw{0%{opacity:0;transform:scale(.6)}30%{opacity:.7;transform:none}100%{opacity:0;transform:scale(1.2)}}
 .medal-got{display:flex;align-items:center;justify-content:center;gap:8px;margin:2px 0 6px;font:700 17px var(--display)}
 .medal-got svg{width:56px;height:56px;position:relative}
 
@@ -2342,7 +2418,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=7e18da2bd4"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=3151da4250"><\/script>')})();
 </script>
 <script>
 
@@ -3065,7 +3141,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='7e18da2bd4';let updateTo=null;
+const BUILD='3151da4250';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -7097,14 +7173,26 @@ function drawMap(anim){
   [[30,10,7],[70,7,5],[118,10,8],[166,12,6],[214,8,7],[262,6,5],[300,8,6]].forEach(([x,y,l],i)=>h+=`<path class="lf" style="--d:${120+i*110}ms" d="M${x-2.2} ${y}L${x} ${y+l}L${x+2.2} ${y}Z" fill="color-mix(in srgb,var(--ice) 35%,#fff)" stroke="var(--snow-edge)" stroke-width=".6" opacity=".85"/>`);
   }
   if(!ice&&!shan&&!gala&&!neb&&!reef&&!vale&&!tierLetters(ti).length)for(let i=0;i<10;i++)h+=leafG(14+i*32.4,H+2,-90+(i%2?24:-24),.95,300+i*70,.4);
+  let tr='',tm='',lv='';
   for(let k=0;k<L.length-1;k++){
     const[x1,y1]=mapPos(k),[x2,y2]=mapPos(k+1);
     const d=y1===y2?`M${x1} ${y1}Q${(x1+x2)/2} ${y1+(k%2?8:-8)} ${x2} ${y2}`:`M${x1} ${y1}C${x1+(x1>MAP_W/2?36:-36)} ${y1} ${x2+(x2>MAP_W/2?36:-36)} ${y2} ${x2} ${y2}`;
     segs.push({d,done:!!M[L[k].id]});
-    h+=`<path d="${d}" fill="none" stroke="var(--ink)" stroke-opacity=".2" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="0.1 6"/>`;
+    tr+=`<path style="--k:${k};--r:${(k*7+4)%11}" d="${d}" fill="none" stroke="var(--ink)" stroke-opacity=".2" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="0.1 6"/>`;
+    tm+=`<path class="tm" style="--k:${k}" d="${d}" pathLength="1"/>`;
+    if(gala)lv+=`<path style="--k:${k}" d="${d}" pathLength="1" opacity="0"/>`;
   }
-  h+='<g class="paws"></g>';
+
+  h+=`<defs><mask id="trm" maskUnits="userSpaceOnUse" x="-10" y="-10" width="${MAP_W+20}" height="${H+20}"><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round">${tm}</g></mask></defs>`;
+  h+=`<g class="trail" mask="url(#trm)">${tr}</g>`;
+  if(gala)h+=`<g class="lava" fill="none" stroke="var(--ember)" stroke-width="2.6" stroke-linecap="round">${lv}</g>`;
+  if(neb)h+=`<g transform="translate(20 10)" pointer-events="none"><g class="shoot" opacity="0"><path d="M0 0L-34 -12" stroke="var(--starlight)" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><path d="${starD(4)}" fill="var(--starlight)"/></g></g>`;
+  h+='<g class="paws" mask="url(#trm)"></g>';
   const nest=mapGeo().c===6?[1.6,1.3]:[1.95*q,1.62*q];
+
+  const nestFx=(x,y,q)=>ice?`<ellipse class="rip" cx="${x}" cy="${y+10*q}" rx="${24*q}" ry="${9*q}" fill="none" stroke="var(--snow-edge)" stroke-width="1.2" opacity="0"/>`
+    :gala?[-1,1].flatMap(sd=>[0,1].map(i=>`<circle class="dust" style="--dx:${sd};--di:${i}" cx="${x+sd*(20+i*5)*q}" cy="${y+(16-i*2)*q}" r="${(2.6-i*.6)*q}" fill="var(--sand)" stroke="color-mix(in srgb,var(--sand) 60%,var(--rock-edge))" stroke-width=".6" opacity="0"/>`)).join('')
+    :reef?[0,1,2].map(i=>`<circle class="bub" style="--bi:${i};--bx:${(i-1)*3}px" cx="${x+(i-1)*9*q}" cy="${y+18*q}" r="${[2.4,3.2,2][i]*q}" fill="var(--bubble)" stroke="var(--bubble-edge)" stroke-width=".8" opacity="0"/>`).join(''):'';
   L.forEach((s,k)=>{
     const[x,y]=mapPos(k),open=stageUnlocked(k,ti),m=M[s.id]||0,sel=s.id===menuStage,a=k%2?[-145,30]:[-35,150];
 
@@ -7114,15 +7202,15 @@ function drawMap(anim){
     const tag=lch?`<g class="ltag" pointer-events="none"><rect x="${x-21}" y="${y-21}" width="13" height="13" rx="4" fill="${lopen?'var(--rj)':'var(--surface)'}" stroke="var(--rj)" stroke-width="1.2"${lopen?'':' stroke-dasharray="2.2 1.8"'}/>
       <text x="${x-14.5}" y="${y-11.4}" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="9" fill="${lopen?'#fff':'var(--rj)'}">${lch}</text></g>`:'';
     const label=t('stageNote',{s:k+1,idea:ideaFor(ti,k)})+(m?' · '+t('medals')[m-1]:open?'':' · '+t('lockedT'))+(lch?' · '+t('opensLetter',{ch:lch}):'');
-    h+=`<g class="node${open?'':' locked'}${sel?' sel':''}${pickCls(s.id)}" data-k="${k}" data-sid="${s.id}" role="button" tabindex="${open?0:-1}" aria-label="${label}"${open?'':' aria-disabled="true"'}${sel?' aria-current="step"':''} opacity="${open?1:.6}">
-      <g class="nest">${vale?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--moss) 46%,var(--surface))" stroke="var(--moss-edge)" stroke-width="1" opacity=".95"/>`+crystalG(x+18*q,y+10*q,24,.42*q,200+k*75):reef?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--sand) 70%,var(--reef))" stroke="color-mix(in srgb,var(--sand) 55%,var(--reef-edge))" stroke-width="1.1" opacity=".95"/>`+coralG(x+19*q,y+10*q,24,.55*q,200+k*75):neb?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--nebula) 38%,var(--surface))" stroke="var(--nebula)" stroke-width="1.1" opacity=".95"/>`:gala?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8.5*q}" fill="var(--sand)" stroke="color-mix(in srgb,var(--sand) 70%,var(--rock-edge))" stroke-width="1.1" opacity=".95"/>`:shan?petalG(x,y,a[0],nest[0]*.95,160+k*75,.85)+petalG(x,y,a[1],nest[1]*.95,220+k*75,.7):ice?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${24*q}" ry="${9*q}" fill="var(--snow)" stroke="var(--snow-edge)" stroke-width="1.2" opacity=".95"/>`:leafG(x,y,a[0],nest[0],160+k*75,.8)+leafG(x,y,a[1],nest[1],220+k*75,.6)}</g><g transform="translate(${x} ${y}) scale(${q}) translate(${-x} ${-y})">
+    h+=`<g class="node${open?'':' locked'}${sel?' sel':''}${pickCls(s.id)}" data-k="${k}" data-sid="${s.id}" style="--k:${k};--r:${(k*5+3)%L.length};--s:${k%2?1:-1}" role="button" tabindex="${open?0:-1}" aria-label="${label}"${open?'':' aria-disabled="true"'}${sel?' aria-current="step"':''} opacity="${open?1:.6}">
+      <g class="nest">${vale?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--moss) 46%,var(--surface))" stroke="var(--moss-edge)" stroke-width="1" opacity=".95"/>`+crystalG(x+18*q,y+10*q,24,.42*q,200+k*75):reef?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--sand) 70%,var(--reef))" stroke="color-mix(in srgb,var(--sand) 55%,var(--reef-edge))" stroke-width="1.1" opacity=".95"/>`+coralG(x+19*q,y+10*q,24,.55*q,200+k*75):neb?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8*q}" fill="color-mix(in srgb,var(--nebula) 38%,var(--surface))" stroke="var(--nebula)" stroke-width="1.1" opacity=".95"/>`:gala?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${23*q}" ry="${8.5*q}" fill="var(--sand)" stroke="color-mix(in srgb,var(--sand) 70%,var(--rock-edge))" stroke-width="1.1" opacity=".95"/>`:shan?petalG(x,y,a[0],nest[0]*.95,160+k*75,.85)+petalG(x,y,a[1],nest[1]*.95,220+k*75,.7):ice?`<ellipse class="lf" style="--d:${160+k*75}ms" cx="${x}" cy="${y+10*q}" rx="${24*q}" ry="${9*q}" fill="var(--snow)" stroke="var(--snow-edge)" stroke-width="1.2" opacity=".95"/>`:leafG(x,y,a[0],nest[0],160+k*75,.8)+leafG(x,y,a[1],nest[1],220+k*75,.6)}${nestFx(x,y,q)}</g><g transform="translate(${x} ${y}) scale(${q}) translate(${-x} ${-y})"><g class="face">${neb?`<g transform="translate(${x} ${y})"><path class="spk" d="${starD(13)}" fill="var(--starlight)" opacity="0"/></g>`:vale?`<circle class="glw" cx="${x}" cy="${y}" r="23" fill="var(--glow)" opacity="0"/>`:''}
       <circle class="ring" cx="${x}" cy="${y}" r="21.5"/>
       <g class="disc"><circle cx="${x}" cy="${y}" r="16.5" fill="${m?(vale?'color-mix(in srgb,var(--vale) 52%,var(--surface))':reef?'color-mix(in srgb,var(--reef) 50%,var(--surface))':neb?'color-mix(in srgb,var(--nebula) 45%,var(--surface))':gala?'color-mix(in srgb,var(--ember) 38%,var(--surface))':shan?'color-mix(in srgb,var(--bloom) 45%,var(--surface))':ice?'color-mix(in srgb,var(--ice) 35%,var(--surface))':'color-mix(in srgb,var(--r0) 45%,var(--surface))'):'var(--surface)'}" stroke="var(--tray-edge)" stroke-width="1.5"/>
       ${top?`<g transform="translate(${x-15} ${y-15.4}) scale(1.25)">${SHINE_RAYS}${medalArt(4)}</g>
       <circle cx="${x+12}" cy="${y+12}" r="7.2" fill="var(--surface)" stroke="var(--tray-edge)" stroke-width="1.2"/>
       <text x="${x+12}" y="${y+15.2}" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="9.5" fill="var(--ink)">${k+1}</text></g>`
       :`<text x="${x}" y="${y+5}" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="14" fill="${open?'var(--ink)':'color-mix(in srgb,var(--muted) 55%,var(--ink))'}">${k+1}</text></g>
-      ${m?`<g transform="translate(${x+3} ${y}) scale(.84)">${M2.shine[s.id]?SHINE_RAYS:''}${medalArt(m)}</g>`:''}`}${tag}</g></g>`;
+      ${m?`<g transform="translate(${x+3} ${y}) scale(.84)">${M2.shine[s.id]?SHINE_RAYS:''}${medalArt(m)}</g>`:''}`}${tag}</g></g></g>`;
   });
 
   const LW=store.jungle.letters||{},WL=tierLetters(ti),off=(6-WL.length)*50.4/2;
@@ -7135,8 +7223,9 @@ function drawMap(anim){
       <text x="${x+12}" y="${y+17.4}" text-anchor="middle" font-family="var(--display)" font-weight="700" font-size="15" fill="${got?'#fff':open?'var(--rj)':'color-mix(in srgb,var(--muted) 55%,var(--ink))'}">${s.ch}</text></g></g></g>`;
   });
   const[px,py]=mapPos(stageIdx(next));
-  if(!M[next])h+=`<use class="peek" href="#p-${S.piece}" x="${px-11*q}" y="${py-21.5*q-18.5-(q-1)*4}" width="${22*q}" height="${22*q}" pointer-events="none"/>`;
-  svg.innerHTML=h;mapPick=mapUnpick=null;
+  if(!M[next])h+=`<use class="peek" style="--k:${stageIdx(next)};--r:${(stageIdx(next)*5+3)%L.length}" href="#p-${S.piece}" x="${px-11*q}" y="${py-21.5*q-18.5-(q-1)*4}" width="${22*q}" height="${22*q}" pointer-events="none"/>`;
+  svg.innerHTML=h;svg.dataset.rv=WORLD;mapPick=mapUnpick=null;
+  if(vale&&svg.classList.contains('grow'))firefly(svg,segs);
 
   const paws=svg.querySelector('.paws'),ns='http://www.w3.org/2000/svg';let ph='';
   segs.forEach(sg=>{if(!sg.done)return;const p=document.createElementNS(ns,'path');p.setAttribute('d',sg.d);svg.appendChild(p);
@@ -7163,6 +7252,15 @@ function drawMap(anim){
       if(store.tips.letters||intro.hidden||$('m-map-box').hidden||menuTier()!==0||!g)return;
       store.tips.letters=1;save();pointAt(g,t('lettersNew'),6500)},calm()?200:1100);
 }
+
+function firefly(svg,segs){const ns='http://www.w3.org/2000/svg',SD=150,T0=250,pts=[];
+  segs.forEach((sg,k)=>{const p=document.createElementNS(ns,'path');p.setAttribute('d',sg.d);svg.appendChild(p);const len=p.getTotalLength();
+    for(let i=k?1:0;i<=8;i++){const a=p.getPointAtLength(len*i/8);pts.push([a.x,a.y])}p.remove()});
+  if(!pts.length)return;
+  const f=document.createElementNS(ns,'g');f.setAttribute('pointer-events','none');f.innerHTML='<circle r="7.5" fill="var(--ffly)" opacity=".45"/><circle r="3" fill="var(--glow)"/>';svg.appendChild(f);
+  const kf=pts.map(([x,y],i)=>({transform:`translate(${x.toFixed(1)}px,${(y-4+Math.sin(i*.8)*3).toFixed(1)}px)`}));
+  f.animate(kf,{duration:SD*segs.length,delay:T0,easing:'linear',fill:'backwards'});
+  f.animate([{opacity:0},{opacity:1,offset:.08},{opacity:1,offset:.9},{opacity:0}],{duration:SD*segs.length+300,delay:T0-150,fill:'both'}).onfinish=()=>f.remove()}
 
 function noteFlash(text){const n=$('m-note');setNote(text);clearTimeout(n._t);n._t=setTimeout(()=>{mapSoft=menuStage;renderMenu(false)},2600)}
 function lockedWhy(g,text){noteFlash(text);if(calm())return;const d=g.querySelector('.disc');d.classList.remove('nudge');void d.getBBox();d.classList.add('nudge')}

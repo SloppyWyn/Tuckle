@@ -33,7 +33,7 @@ img{max-width:100%}
 html,body{overscroll-behavior:none}
 </style>
 </head>
-<body><div id="pv-badge" style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em;white-space:nowrap">PREVIEW BUILD 47</div><script>(function(){var b=document.getElementById("pv-badge");function f(){b.textContent="PREVIEW BUILD 47 \u00b7 "+innerWidth+"px \u00d7"+(window.__tz||1)}f();addEventListener("resize",f)})()</script>
+<body><div id="pv-badge" style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 2px);left:50%;transform:translateX(-50%);z-index:9999;background:#d6336c;color:#fff;font:700 11px/1 system-ui,sans-serif;padding:4px 9px;border-radius:999px;pointer-events:none;letter-spacing:.04em;white-space:nowrap">PREVIEW BUILD 48</div><script>(function(){var b=document.getElementById("pv-badge");function f(){b.textContent="PREVIEW BUILD 48 \u00b7 "+innerWidth+"px \u00d7"+(window.__tz||1)}f();addEventListener("resize",f)})()</script>
 <title>Tuckle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,7 +291,7 @@ html.calm .confetti{display:none}
 @keyframes ember{0%{opacity:0;transform:translate(0,0) scale(.3)}8%{opacity:1}30%{transform:translate(calc(var(--cx)*.6),var(--cy0)) scale(1) rotate(calc(var(--cr)*.4))}
   55%{opacity:1}64%{opacity:.55}72%{opacity:.95}84%{opacity:.6}100%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(.15) rotate(var(--cr))}}
 
-.intro{position:fixed;inset:0;z-index:50;user-select:none;-webkit-user-select:none;overflow-y:auto;background:
+.intro{position:fixed;inset:0;z-index:50;user-select:none;-webkit-user-select:none;overflow-y:auto;overflow-x:hidden;background:
   radial-gradient(38% 30% at 12% 14%,var(--blob1),transparent 70%),
   radial-gradient(34% 28% at 88% 18%,var(--blob2),transparent 70%),
   radial-gradient(40% 30% at 85% 88%,var(--blob3),transparent 70%),
@@ -2447,7 +2447,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=da5a2bd72e"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=d771ab673e"><\/script>')})();
 </script>
 <script>
 
@@ -3170,7 +3170,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='da5a2bd72e';let updateTo=null;
+const BUILD='d771ab673e';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}

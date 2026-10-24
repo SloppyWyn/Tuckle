@@ -3,6 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<script>
+
+(function(){var ua=navigator.userAgent,a=Math.min(screen.width,screen.height),b=Math.max(screen.width,screen.height);
+  var tab=navigator.maxTouchPoints>0&&(/Android|iPad/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1)||matchMedia('(hover:none) and (pointer:coarse)').matches);
+  if(a<700||!tab)return;
+  var z=Math.round(Math.min(a/600,b/920,1.5)*100)/100;if(z<1.05)return;
+  var land=matchMedia('(orientation:landscape)'),m=document.querySelector('meta[name=viewport]');
+  window.__tz=z;window.__tlock='';
+  window.__tv=function(){return 'width='+Math.floor((land.matches?b:a)/z)+',initial-scale='+z+',minimum-scale='+z+',viewport-fit=cover,interactive-widget=resizes-content'};
+  var put=function(){m.setAttribute('content',window.__tv()+window.__tlock)};put();
+  land.addEventListener?land.addEventListener('change',put):land.addListener(put)})();
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -279,7 +291,7 @@ html.calm .confetti{display:none}
 @keyframes ember{0%{opacity:0;transform:translate(0,0) scale(.3)}8%{opacity:1}30%{transform:translate(calc(var(--cx)*.6),var(--cy0)) scale(1) rotate(calc(var(--cr)*.4))}
   55%{opacity:1}64%{opacity:.55}72%{opacity:.95}84%{opacity:.6}100%{opacity:0;transform:translate(var(--cx),var(--cy)) scale(.15) rotate(var(--cr))}}
 
-.intro{position:fixed;inset:0;z-index:50;user-select:none;-webkit-user-select:none;overflow-y:auto;background:
+.intro{position:fixed;inset:0;z-index:50;user-select:none;-webkit-user-select:none;overflow-y:auto;overflow-x:hidden;background:
   radial-gradient(38% 30% at 12% 14%,var(--blob1),transparent 70%),
   radial-gradient(34% 28% at 88% 18%,var(--blob2),transparent 70%),
   radial-gradient(40% 30% at 85% 88%,var(--blob3),transparent 70%),
@@ -499,8 +511,8 @@ html.calm .dd-list{animation:none}
 .panel>.opt:first-child{border-top:0;padding-top:0}
 .set-head .iconbtn{padding:0;justify-content:center}.set-back svg{width:20px;height:20px;flex:none}.sheet-head h3{font:700 20px var(--display)}.set-page>.sheet-head{padding-inline:2px}
 
-:root{--side:236px;--gapx:28px;--bw:max(220px,min(640px,calc(100vw - 32px),calc(100vh - 346px)))}
-@supports (height:100dvh){:root{--bw:max(220px,min(640px,calc(100vw - 32px),calc(100dvh - 346px)))}}
+:root{--side:236px;--gapx:28px;--bw:max(220px,min(640px,calc(100vw - 32px),calc(100vh - 326px - max(20px,4vh))))}
+@supports (height:100dvh){:root{--bw:max(220px,min(640px,calc(100vw - 32px),calc(100dvh - 326px - max(20px,4vh))))}}
 .wrap{max-width:calc(var(--bw) + 32px);padding-block:14px 24px;container-type:inline-size}
 header.top{align-items:center;margin-bottom:10px;flex-wrap:nowrap}
 .brand{min-width:0}.brand > div{min-width:0}
@@ -1977,7 +1989,7 @@ html.calm .hint-left.pill-in{animation:none}
   .wrap{min-height:calc(var(--app-h,100dvh) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;padding-bottom:max(20px,4vh);touch-action:none}
   html.ingame,html.ingame body{overflow:hidden}
   .layout{flex:1;display:flex;flex-direction:column}
-  .play{flex:1}
+  .play{flex:1;justify-content:center}
 
   .tools #clear{display:none}
   .tools{order:5;margin-top:10px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;max-width:var(--bw);padding-top:8px}
@@ -2435,7 +2447,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=e676090fd1"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=d771ab673e"><\/script>')})();
 </script>
 <script>
 
@@ -3158,7 +3170,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='e676090fd1';let updateTo=null;
+const BUILD='d771ab673e';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -6802,9 +6814,9 @@ function drawMinis(){
 
 function dropFloaters(){newsClose();document.querySelectorAll('.coach').forEach(c=>{if(c._done)c._done(true);c.remove()});Chat.hide(true)}
 
+const TZ=window.__tz||1;
 const VIEW_FREE='width=device-width,initial-scale=1,minimum-scale=1,viewport-fit=cover,interactive-widget=resizes-content';
-let pinchOff=true;
-function viewLock(on){pinchOff=on;const m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',on?VIEW_FREE+',maximum-scale=1,user-scalable=no':VIEW_FREE)}
+function viewLock(on){pinchOff=on;const m=document.querySelector('meta[name=viewport]'),lock=on?',maximum-scale='+TZ+',user-scalable=no':'';if(window.__tv)window.__tlock=lock;if(m)m.setAttribute('content',(window.__tv?window.__tv():VIEW_FREE)+lock)}
 let ghostStep=null,ghostT=0;
 function endGhost(){clearTimeout(ghostT);if(ghostStep){const g=ghostStep;ghostStep=null;g.classList.remove('stepaway','back');g.removeAttribute('inert');g.removeAttribute('aria-hidden');g.style.cssText='';if(!g._keep)g.hidden=true}}
 function showStep(which,back){

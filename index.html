@@ -1016,16 +1016,13 @@ html.kbd .m-map .node:focus-visible .ring{opacity:1;stroke-dasharray:4 3}
 .m-map .node .ring{transform-box:fill-box;transform-origin:center}
 .m-map .node.pick .disc{animation:pickPop .55s cubic-bezier(.3,1.4,.5,1)}
 .m-map .node.pick .ring{animation:ringIn .5s cubic-bezier(.3,1.3,.5,1) both}
-.m-map .node.pick .nest .lf{animation:rustle .7s ease-out}
 
-.m-map svg:not([data-rv="ice"]) .node.pick .nest>ellipse.lf{animation:none}
 .m-map .node.unpick .ring{animation:ringOut .3s ease both}
 @keyframes pickPop{0%{transform:scale(.92)}45%{transform:scale(1.14)}100%{transform:scale(1)}}
 @keyframes ringIn{from{opacity:0;transform:scale(.6)}60%{opacity:1}}
 @keyframes ringOut{from{opacity:1}to{opacity:0}}
-@keyframes rustle{30%{transform:rotate(-14deg)}65%{transform:rotate(7deg)}}
 .m-note.in{animation:noteIn .35s ease both}@keyframes noteIn{from{opacity:0}}
-html.calm .m-map .node.pick .disc,html.calm .m-map .node.pick .ring,html.calm .m-map .node.pick .lf,html.calm .m-map .node.unpick .ring,html.calm .m-note.in{animation:none}
+html.calm .m-map .node.pick .disc,html.calm .m-map .node.pick .ring,html.calm .m-map .node.unpick .ring,html.calm .m-note.in{animation:none}
 @media (hover:hover){.m-map .node:not(.locked):hover .disc{transform:scale(1.08)}}
 .m-map .peek{animation:float 3.6s ease-in-out infinite}
 html.calm .m-map .peek{animation:none}
@@ -2449,7 +2446,7 @@ html.calm .board.touring .cell{transition:none}html.calm .cell.tnudge{animation:
 
 (function(){var l;try{l=(JSON.parse(localStorage.getItem('roost.v1')||'{}').settings||{}).lang}catch(e){}
   if(!l)l=(navigator.language||'en').slice(0,2);
-  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=6f84cf6e64"><\/script>')})();
+  if(['ru','pl','ja','zh','es','pt','fr','de','uk','ko'].indexOf(l)>=0)document.write('<script src="lang/'+l+'.js?v=20dfb1a7c1"><\/script>')})();
 </script>
 <script>
 
@@ -3172,7 +3169,7 @@ if(!store.defaultsV3){S.hearts=true;store.defaultsV3=1;try{localStorage.setItem(
 
 let shownHearts=null;
 let mode='daily',pz=null,cells=null,undoStack=[],hearts=3,gHearts=true,G={mistakes:0,hints:0,crosses:false},elapsed=0,timerOn=false,won=false,lost=false,lastTick=0,crossForgive=null;
-const BUILD='6f84cf6e64';let updateTo=null;
+const BUILD='20dfb1a7c1';let updateTo=null;
 let rowEls=[],doneRows=null,doneAreas=null,hintStep=null,focusIdx=0,cellEls=[],hintMarks=new Set(),hintTargets=new Set();
 
 function softDay(){const m=store.mood;return !!(m&&m.d===todayStr()&&(m.m==='tired'||m.m==='low'))}
@@ -7135,9 +7132,21 @@ const pickCls=id=>calm()?'':id===mapPick?' pick':id===mapUnpick?' unpick':'';
 
 let mapSoft=null;
 function mapSelect(oldId,newId){const svg=$('m-map'),q=id=>svg.querySelector(`.node[data-sid="${id}"]`),o=q(oldId),n=q(newId);if(!n)return false;
+  if(o===n)return true;
   svg.querySelectorAll('.node.pick,.node.unpick').forEach(e=>e.classList.remove('pick','unpick'));
   if(o&&o!==n){o.classList.remove('sel');o.removeAttribute('aria-current');if(!calm()){void o.getBBox();o.classList.add('unpick')}}
-  n.classList.add('sel');n.setAttribute('aria-current','step');if(!calm()){void n.getBBox();n.classList.add('pick')}return true}
+  n.classList.add('sel');n.setAttribute('aria-current','step');if(!calm()){void n.getBBox();n.classList.add('pick');nestNudge(n)}return true}
+
+function nestNudge(n){const W=$('m-map').dataset.rv,nest=n.querySelector('.nest');if(!nest)return;
+  const play=(e,kf,o)=>e.animate(kf,{duration:700,easing:'ease-out',...o});
+  nest.querySelectorAll('.lf').forEach(e=>{if(e.tagName!=='ellipse')return play(e,[{transform:'none'},{transform:'rotate(-14deg)',offset:.3},{transform:'rotate(7deg)',offset:.65},{transform:'none'}]);
+    if(W==='ice')play(e,[{transform:'none'},{transform:'translateY(2.5px)',offset:.35},{transform:'translateY(-1px)',offset:.7},{transform:'none'}],{duration:800,easing:'ease-in-out'})});
+  nest.querySelectorAll('.dust').forEach(e=>{const dx=+e.style.getPropertyValue('--dx')||0,di=+e.style.getPropertyValue('--di')||0;
+    play(e,[{opacity:0,transform:'none'},{opacity:.9,offset:.15},{opacity:0,transform:`translate(${dx*8}px,-6px)`}],{duration:650,delay:di*60})});
+  nest.querySelectorAll('.bub').forEach(e=>{const bi=+e.style.getPropertyValue('--bi')||0;
+    play(e,[{opacity:0,transform:'none'},{opacity:1,offset:.15},{opacity:0,transform:`translate(${e.style.getPropertyValue('--bx')||'0px'},-46px)`}],{duration:1300,delay:bi*170,easing:'ease-in'})});
+  n.querySelectorAll('.spk').forEach(e=>play(e,[{opacity:0,transform:'scale(0)'},{opacity:1,transform:'scale(1.25) rotate(45deg)',offset:.35},{opacity:0,transform:'scale(.4) rotate(90deg)'}],{duration:800}));
+  n.querySelectorAll('.glw').forEach(e=>play(e,[{opacity:0,transform:'scale(.6)'},{opacity:.7,transform:'none',offset:.3},{opacity:0,transform:'scale(1.2)'}],{duration:900}))}
 function drawMap(anim){
   const ti=menuTier(),L=tierStages(ti),svg=$('m-map'),M=store.jungle.medals,M2=store.jungle,next=nextStageId(ti),segs=[];
   svg.classList.toggle('grow',(anim||ti!==mapTier)&&!calm());mapTier=ti;
